@@ -6,6 +6,7 @@ File Form.cs is code about display.
 If you want to up your algorithms, let's push on DrawTool file
 
 Function:
+- Draw follow size : done
 - Free draw (draw Pixel by Mouse position): done
 - Draw Arrow (not fill color and fill color): done
-- Fill Red Color : developing
+- Fill Red Color (fill follow rim) : developing
