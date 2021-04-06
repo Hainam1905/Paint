@@ -21,6 +21,7 @@ namespace Paint
         private int widthLine;
         private DrawTool dt;
 
+        private Boolean bMouseClick = false;
         private Boolean bMouseDown = false;
         private Boolean bDraw = false;
         private Boolean bMousePress = false;
@@ -42,6 +43,12 @@ namespace Paint
             myDraw(e);
         }
 
+        private void pbDrawZone_MouseClick(object sender, MouseEventArgs e)
+        {
+            bMouseClick = true;
+            //FillColor(e);
+        }
+
         private void pbDrawZone_MouseMove(object sender, MouseEventArgs e)
         {
             if (bMouseDown == true)
@@ -56,6 +63,7 @@ namespace Paint
             bMouseUp = true;
             bMouseDown = false;
             bMousePress = false;
+            bMouseClick = false;
 
             myDraw(e);
             bDraw = false;
@@ -69,6 +77,7 @@ namespace Paint
             if(btDrawPixel.BackColor == SystemColors.Control)
             {
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
+                if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
 
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
@@ -85,6 +94,7 @@ namespace Paint
             if (btDrawArrow.BackColor == SystemColors.Control)
             {
                 if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
+                if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
 
                 btDrawArrow.BackColor = SystemColors.ControlDark;
 
@@ -106,8 +116,10 @@ namespace Paint
         private void start()
         {
             //widthLine = int.Parse(cbWidthLine.SelectedValue.ToString());
-            cbWidthLine.SelectedIndex = 0;
             newBitMap(pbDrawZone.Width, pbDrawZone.Height);
+
+            cbWidthLine.SelectedIndex = 3;
+            cbDrawColor.Checked = false;
         }
 
         //Reset điểm
@@ -169,9 +181,9 @@ namespace Paint
             Ở đây mình dùng thư viện cho nhanh :v */
             p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-            if (oldPoint != Point.Empty && newPoint != Point.Empty)  dt.DrawArrow(oldPoint, newPoint, p, label2);
+            if (oldPoint != Point.Empty && newPoint != Point.Empty)  dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
                                                                      //gp.DrawLine(p, oldPoint, newPoint);
-
+            
             pbDrawZone.Image = bm;
         }
 
@@ -183,6 +195,38 @@ namespace Paint
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbDrawColor_CheckedChanged(object sender, EventArgs e)
+        {
+            cbDrawColor.Checked = true;
+        }
+
+        private void btFillColor_Click(object sender, EventArgs e)
+        {
+            if (btFillColor.BackColor == SystemColors.Control)
+            {
+                if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
+                if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
+
+                btFillColor.BackColor = SystemColors.ControlDark;
+
+                line = "color";
+            }
+            else if (btFillColor.BackColor == SystemColors.ControlDark)
+            {
+                btFillColor.BackColor = SystemColors.Control;
+                line = String.Empty;
+            }
+        }
+
+        private void FillColor(MouseEventArgs e)
+        {
+            Point fillPoint = new Point();
+
+            fillPoint = e.Location;
+
+            dt.FillColor(fillPoint, Color.Red);
         }
 
         //hàm vẽ
@@ -198,6 +242,10 @@ namespace Paint
                 else if (line == "arrow")
                 {
                     drawArrow(e);
+                }
+                else if (line == "color")
+                {
+                    //FillColor(e);
                 }
             }
         }

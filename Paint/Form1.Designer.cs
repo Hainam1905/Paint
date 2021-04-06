@@ -34,6 +34,8 @@
             this.cbWidthLine = new System.Windows.Forms.ComboBox();
             this.lbDoDay = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbDrawColor = new System.Windows.Forms.CheckBox();
+            this.btFillColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,11 +43,12 @@
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pbDrawZone.Location = new System.Drawing.Point(0, 29);
+            this.pbDrawZone.Location = new System.Drawing.Point(0, 51);
             this.pbDrawZone.Name = "pbDrawZone";
-            this.pbDrawZone.Size = new System.Drawing.Size(800, 421);
+            this.pbDrawZone.Size = new System.Drawing.Size(855, 507);
             this.pbDrawZone.TabIndex = 0;
             this.pbDrawZone.TabStop = false;
+            this.pbDrawZone.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbDrawZone_MouseClick);
             this.pbDrawZone.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbDrawZone_MouseDown);
             this.pbDrawZone.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbDrawZone_MouseMove);
             this.pbDrawZone.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbDrawZone_MouseUp);
@@ -91,7 +94,7 @@
             "8",
             "9",
             "10"});
-            this.cbWidthLine.Location = new System.Drawing.Point(761, 2);
+            this.cbWidthLine.Location = new System.Drawing.Point(816, 2);
             this.cbWidthLine.Name = "cbWidthLine";
             this.cbWidthLine.Size = new System.Drawing.Size(39, 23);
             this.cbWidthLine.TabIndex = 2;
@@ -102,7 +105,7 @@
             this.lbDoDay.AutoSize = true;
             this.lbDoDay.BackColor = System.Drawing.SystemColors.Control;
             this.lbDoDay.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDoDay.Location = new System.Drawing.Point(730, 2);
+            this.lbDoDay.Location = new System.Drawing.Point(785, 2);
             this.lbDoDay.Name = "lbDoDay";
             this.lbDoDay.Size = new System.Drawing.Size(25, 26);
             this.lbDoDay.TabIndex = 3;
@@ -111,18 +114,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(294, 0);
+            this.label2.Location = new System.Drawing.Point(350, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
+            // 
+            // cbDrawColor
+            // 
+            this.cbDrawColor.AutoSize = true;
+            this.cbDrawColor.Location = new System.Drawing.Point(91, 31);
+            this.cbDrawColor.Name = "cbDrawColor";
+            this.cbDrawColor.Size = new System.Drawing.Size(55, 19);
+            this.cbDrawColor.TabIndex = 5;
+            this.cbDrawColor.Text = "Color";
+            this.cbDrawColor.UseVisualStyleBackColor = true;
+            this.cbDrawColor.CheckedChanged += new System.EventHandler(this.cbDrawColor_CheckedChanged);
+            // 
+            // btFillColor
+            // 
+            this.btFillColor.Location = new System.Drawing.Point(184, 0);
+            this.btFillColor.Name = "btFillColor";
+            this.btFillColor.Size = new System.Drawing.Size(75, 45);
+            this.btFillColor.TabIndex = 6;
+            this.btFillColor.Text = "Fill Color\r\n(Red)";
+            this.btFillColor.UseVisualStyleBackColor = true;
+            this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(851, 555);
+            this.Controls.Add(this.btFillColor);
+            this.Controls.Add(this.cbDrawColor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbDoDay);
             this.Controls.Add(this.cbWidthLine);
@@ -145,6 +171,8 @@
         private System.Windows.Forms.ComboBox cbWidthLine;
         private System.Windows.Forms.Label lbDoDay;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox cbDrawColor;
+        private System.Windows.Forms.Button btFillColor;
     }
 }
 
