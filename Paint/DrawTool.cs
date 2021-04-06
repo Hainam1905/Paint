@@ -1,0 +1,754 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Paint
+{
+    class DrawTool
+    {
+        private Bitmap bm, bmTemp, bmDefault;
+
+        public DrawTool(Bitmap bitmap)
+        {
+            //Bitmap chính
+            bm = bitmap;
+
+            //Bitmap Để tô màu
+            bmTemp = new Bitmap(bm);
+
+            //Bitmap mặc định, không phải để vẽ
+            bmDefault = new Bitmap(bm);
+        }
+
+        private Point CongPoint(Point A, Point B)
+        {
+            return new Point(A.X + B.X, A.Y + B.Y);
+        }
+        private Point CongPoint(PointF A, PointF B)
+        {
+            return new Point((int)(A.X + B.X), (int)(A.Y + B.Y));
+        }
+
+        private Point TruPoint(Point A, Point B)
+        {
+            return new Point(A.X - B.X, A.Y - B.Y);
+        }
+        private Point TruPoint(PointF A, PointF B)
+        {
+            return new Point((int)(A.X - B.X), (int)(A.Y - B.Y));
+        }
+
+        private void GanPoint(ref Point A, ref Point B)
+        {
+            A.X = B.X;
+            A.Y = B.Y;
+        }
+
+        private void ToMauXungQuanh(Point point, Pen pen)
+        {
+            int i = 1;
+
+            if (bm.GetPixel(point.X, point.Y + i) != pen.Color)
+                bm.SetPixel(point.X, point.Y + i, pen.Color);
+            if (bm.GetPixel(point.X, point.Y) != pen.Color)
+                bm.SetPixel(point.X, point.Y, pen.Color);
+            if (bm.GetPixel(point.X, point.Y - i) != pen.Color)
+                bm.SetPixel(point.X, point.Y - i, pen.Color);
+            if (bm.GetPixel(point.X + i, point.Y + i) != pen.Color)
+                bm.SetPixel(point.X + i, point.Y + i, pen.Color);
+            if (bm.GetPixel(point.X + i, point.Y) != pen.Color)
+                bm.SetPixel(point.X + i, point.Y, pen.Color);
+            if (bm.GetPixel(point.X + i, point.Y - i) != pen.Color)
+                bm.SetPixel(point.X + i, point.Y - i, pen.Color);
+            if (bm.GetPixel(point.X - i, point.Y + i) != pen.Color)
+                bm.SetPixel(point.X - i, point.Y + i, pen.Color);
+            if (bm.GetPixel(point.X - i, point.Y) != pen.Color)
+                bm.SetPixel(point.X - i, point.Y, pen.Color);
+            if (bm.GetPixel(point.X - i, point.Y - i) != pen.Color)
+                bm.SetPixel(point.X - i, point.Y - i, pen.Color);
+        }
+
+        private void ToMauDuongBienDeQuy(int x, int y, Color color)
+        {
+            Color c = bm.GetPixel(x, y);
+
+
+            if (x <= 1 || y <= 1) return;
+            else if (bm.GetPixel(x, y) == c && x < bm.Width && y < bm.Height && x > 0 && y > 0)
+            {
+                bm.SetPixel(x, y, color);
+                ToMauDuongBienDeQuy(x - 1, y, color);
+                ToMauDuongBienDeQuy(x, y - 1, color);
+                ToMauDuongBienDeQuy(x + 1, y, color);
+                ToMauDuongBienDeQuy(x, y + 1, color);
+                x = x / 0;
+            }
+        }
+
+        private void ToMauDuongBienKhuDeQuy(int x, int y, Color color)
+        {
+            Color clBackGround = bmTemp.GetPixel(x, y);
+            List<Point> Q = new List<Point>();
+            Point m = new Point();
+            Point tg = new Point();
+
+            if(bmTemp.GetPixel(x,y) == clBackGround && x < bmTemp.Width && y < bmTemp.Height)
+            {
+                m.X = x;
+                m.Y = y;
+                bm.SetPixel(m.X, m.Y, color);
+                Q.Add(m);
+
+                while(Q != null)
+                {
+                    Q.RemoveAt(0);
+
+                    //Xét điểm lân cận
+                    if(bmTemp.GetPixel(m.X + 1, m.Y) == clBackGround)
+                    {
+                        bm.SetPixel(m.X + 1, m.Y, color); bmTemp.SetPixel(m.X + 1, m.Y, color);
+                        tg.X = m.X + 1;
+                        tg.Y = m.Y;
+                        Q.Add(tg);
+                    }
+                    if (bmTemp.GetPixel(m.X - 1, m.Y) == clBackGround)
+                    {
+                        bm.SetPixel(m.X - 1, m.Y, color); bmTemp.SetPixel(m.X - 1, m.Y, color);
+                        tg.X = m.X - 1;
+                        tg.Y = m.Y;
+                        Q.Add(tg);
+                    }
+                    if (bmTemp.GetPixel(m.X, m.Y + 1) == clBackGround)
+                    {
+                        bm.SetPixel(m.X, m.Y + 1, color); bmTemp.SetPixel(m.X, m.Y + 1, color);
+                        tg.X = m.X;
+                        tg.Y = m.Y + 1;
+                        Q.Add(tg);
+                    }
+                    if (bmTemp.GetPixel(m.X, m.Y - 1) == clBackGround)
+                    {
+                        bm.SetPixel(m.X, m.Y - 1, color); bmTemp.SetPixel(m.X, m.Y - 1, color);
+                        tg.X = m.X;
+                        tg.Y = m.Y - 1;
+                        Q.Add(tg);
+                    }
+
+                    if (Q.Count == 0) break;
+                    //Đưa về giá trị đầu của Q
+                    m = Q[0];
+                }
+            }
+        }
+
+        //Tô màu
+        private void ToMauTheoDuongBien(Point point, Pen pen)
+        {
+            if (bm.GetPixel(point.X, point.Y) != pen.Color) bm.SetPixel(point.X, point.Y, pen.Color);
+            if (bm.GetPixel(point.X, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1) 
+                ToMauTheoDuongBien(new Point(point.X, point.Y + 1), pen);
+            if (bm.GetPixel(point.X, point.Y - 1) != pen.Color && point.Y - 1 > 0) 
+                ToMauTheoDuongBien(new Point(point.X, point.Y - 1), pen);
+            if (bm.GetPixel(point.X + 1, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1 && point.X + 1 < bm.Width - 1) 
+                ToMauTheoDuongBien(new Point(point.X + 1, point.Y + 1), pen);
+            if (bm.GetPixel(point.X + 1, point.Y) != pen.Color && point.X + 1 < bm.Width - 1) 
+                ToMauTheoDuongBien(new Point(point.X + 1, point.Y), pen);
+            if (bm.GetPixel(point.X + 1, point.Y - 1) != pen.Color && point.X + 1 < bm.Width - 1 && point.Y - 1 > 0) 
+                ToMauTheoDuongBien(new Point(point.X + 1, point.Y - 1), pen);
+            if (bm.GetPixel(point.X - 1, point.Y + 1) != pen.Color && point.X - 1 > 0 && point.Y + 1 < bm.Height - 1) 
+                ToMauTheoDuongBien(new Point(point.X - 1, point.Y + 1), pen);
+            if (bm.GetPixel(point.X - 1, point.Y) != pen.Color && point.X - 1 > 0) 
+                ToMauTheoDuongBien(new Point(point.X - 1, point.Y), pen);
+            if (bm.GetPixel(point.X - 1, point.Y - 1) != pen.Color && point.X - 1 > 0 && point.Y - 1 > 0) 
+                ToMauTheoDuongBien(new Point(point.X - 1, point.Y + 1), pen);
+
+            //    int i = 1;
+            //while (bm.GetPixel(point.X, point.Y + i) != pen.Color
+            //    || bm.GetPixel(point.X, point.Y) != pen.Color
+            //    || bm.GetPixel(point.X, point.Y - i) != pen.Color
+            //    || bm.GetPixel(point.X + i, point.Y + i) != pen.Color
+            //    || bm.GetPixel(point.X + i, point.Y) != pen.Color
+            //    || bm.GetPixel(point.X + i, point.Y - i) != pen.Color
+            //    || bm.GetPixel(point.X - i, point.Y + i) != pen.Color
+            //    || bm.GetPixel(point.X - i, point.Y) != pen.Color
+            //    || bm.GetPixel(point.X - i, point.Y - i) != pen.Color)
+            //{
+            //    ToMauXungQuanh(point, pen);
+            //
+            //    if (point.X + i < 0
+            //        || point.X - i < 0
+            //        || point.Y + i < 0
+            //        || point.Y - i < 0)
+            //        return;
+            //}
+        }
+
+        //private int UCLN(int a, int b)
+        //{
+        //    while (a != b && b >= 0 && a >= 0)
+        //    {
+        //        if (a > b)
+        //            a = a - b;
+        //        else
+        //            b = b - a;
+        //    }
+        //    return a;
+        //}
+
+        //private Point rutGonP(Point point)
+        //{
+        //    int UC;
+        //    UC = UCLN(point.X, point.Y);
+
+        //    if(UC > 0)
+        //    {
+        //        point.X = point.X / UC;
+        //        point.Y = point.Y / UC;
+        //    }
+
+        //    return point;
+        //}
+
+        private Point timVTPT(Point A, Point B, int lenght)
+        {
+            Point VTPT = new Point();
+
+            VTPT.X = B.Y - A.Y;
+            VTPT.Y = -(B.X - A.X);
+
+            if (VTPT.X == 0)
+            {
+                if (VTPT.Y > 0) VTPT.Y = lenght;
+                else if (VTPT.Y < 0) VTPT.Y = -lenght;
+                else VTPT.Y = 0;
+            }
+            else if (VTPT.Y == 0)
+            {
+                if (VTPT.X > 0) VTPT.X = lenght;
+                else if (VTPT.X < 0) VTPT.X = -lenght;
+                else VTPT.X = 0;
+                //VTPT.X = lenght;
+            }
+            else
+            {
+                int x, y;
+                double a;
+
+                x = VTPT.X;
+                y = VTPT.Y;
+                a = ((float)lenght / Math.Sqrt((double)(1 + (y * y) / (x * x))));
+
+                if (VTPT.X > 0) VTPT.X = (int)a;
+                else VTPT.X = -(int)a;
+
+                //if (VTPT.Y > 0) VTPT.Y = (int)(a * y / x);
+                //else 
+                VTPT.Y = (int)(a * y / Math.Abs(x));
+
+            }
+
+            return VTPT;
+            //rutGonP(VTPT);
+        }
+        private PointF timVTPT(PointF A, PointF B, int lenght)
+        {
+            PointF VTPT = new PointF();
+
+            VTPT.X = B.Y - A.Y;
+            VTPT.Y = -(B.X - A.X);
+
+            if (VTPT.X == 0)
+            {
+                if (VTPT.Y > 0) VTPT.Y = lenght;
+                else if (VTPT.Y < 0) VTPT.Y = -lenght;
+                else VTPT.Y = 0;
+            }
+            else if (VTPT.Y == 0)
+            {
+                if (VTPT.X > 0) VTPT.X = lenght;
+                else if (VTPT.X < 0) VTPT.X = -lenght;
+                else VTPT.X = 0;
+                //VTPT.X = lenght;
+            }
+            else
+            {
+                float x, y;
+                double a;
+
+                x = VTPT.X;
+                y = VTPT.Y;
+                a = ((float)lenght / Math.Sqrt((double)(1 + (y * y) / (x * x))));
+
+                if (VTPT.X > 0) VTPT.X = (int)a;
+                else VTPT.X = -(int)a;
+
+                //if (VTPT.Y > 0) VTPT.Y = (int)(a * y / x);
+                //else 
+                VTPT.Y = (int)(a * y / Math.Abs(x));
+
+            }
+
+            return VTPT;
+        }
+
+        private Point timVTCP(Point A, Point B, int lenght)
+        {
+            Point VTCP = new Point();
+
+            VTCP.X = B.X - A.X;
+            VTCP.Y = B.Y - A.Y;
+
+            if (VTCP.X == 0)
+            {
+                //VTCP.Y = lenght;
+                if (VTCP.Y > 0) VTCP.Y = lenght;
+                else if (VTCP.Y < 0) VTCP.Y = -lenght;
+                else VTCP.Y = 0;
+            }
+            else if (VTCP.Y == 0)
+            {
+                if (VTCP.X > 0) VTCP.X = lenght;
+                else if (VTCP.X < 0) VTCP.X = -lenght;
+                else VTCP.X = 0;
+                //VTCP.X = lenght;
+            }
+            else
+            {
+                int x, y;
+                double a;
+
+                x = VTCP.X;
+                y = VTCP.Y;
+                a = ((float)lenght / Math.Sqrt((double)(1 + (y * y) / (x * x))));
+
+
+                if (VTCP.X > 0) VTCP.X = (int)a;
+                else VTCP.X = -(int)a;
+
+                //if (VTCP.Y > 0) VTCP.Y = (int)(a * y / x);
+                //else 
+                VTCP.Y = (int)(a * y / Math.Abs(x));
+            }
+
+            return VTCP;
+            //rutGonP(VTCP);
+        }
+
+        //private void PutPixel(Point point, Pen pen)
+        //{
+        //    for(int i = 0; i < pen.Width; i++)
+        //    {
+        //        bm.SetPixel(point.X + i, point.Y, pen.Color);
+        //        bm.SetPixel(point.X + i, point.Y + i, pen.Color);
+        //        bm.SetPixel(point.X + i, point.Y - i, pen.Color);
+        //        bm.SetPixel(point.X, point.Y + i, pen.Color);
+        //        bm.SetPixel(point.X, point.Y - i, pen.Color);
+        //        bm.SetPixel(point.X, point.Y, pen.Color);
+        //        bm.SetPixel(point.X - i, point.Y + i, pen.Color);
+        //        bm.SetPixel(point.X - i, point.Y - i, pen.Color);
+        //        bm.SetPixel(point.X - i, point.Y, pen.Color);
+        //    }
+        //}
+
+        //Thuật toán Mid Point
+
+        private void DrawMidPoint(Point A, Point B, Pen pen)
+        {
+            MidPoint(A.X, B.X, A.Y, B.Y, pen);
+        }
+        private void DrawMidPoint(Point A, Point B, Pen pen, Bitmap bitmap)
+        {
+            MidPoint(A.X, B.X, A.Y, B.Y, pen, bitmap);
+        }
+
+        private void MidPoint(int x1, int x2, int y1, int y2, Pen pen)
+        {
+            //Khởi tạo biến
+            int a, b, x, y, p, temp;
+            float hsg;
+
+            //Vẽ theo hướng vào gần trục Oy
+            if (x2 - x1 < 0)
+            {
+                //Hoán đổi (x1,y1) và (x2,y2)
+                temp = x1; x1 = x2; x2 = temp;
+                temp = y1; y1 = y2; y2 = temp;
+            }
+
+            a = y2 - y1;
+            b = -(x2 - x1);
+            y = y1;
+            x = x1;
+
+            //Tính hệ số góc
+            if (b == 0) hsg = 0;
+            else hsg = -(float)a / b;
+
+            bm.SetPixel(x, y, pen.Color);
+            //PutPixel(new Point(x, y), pen);
+
+            //Vẽ theo hướng ra xa trục Ox
+            if (a > 0)
+            {
+                if (hsg < 1 && hsg > 0)
+                {
+                    p = 2 * a + b;
+
+                    while (x < x2)
+                    {
+                        if (p < 0)
+                        {
+                            p += 2 * a;
+                        }
+                        else
+                        {
+                            y++;
+                            p += 2 * (a + b);
+                        }
+
+                        x++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bm.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg >= 1)
+                {
+                    p = a + 2 * b;
+
+                    while (y < y2)
+                    {
+                        if (p > 0)
+                        {
+                            p += 2 * b;
+                        }
+                        else
+                        {
+                            x++;
+                            p += 2 * (a + b);
+                        }
+
+                        y++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bm.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg == 0)
+                {
+                    while (y < y2)
+                    {
+                        y++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bm.SetPixel(x, y, pen.Color);
+                    }
+                }
+            }
+            // Vẽ theo hướng về gần trục Ox
+            else if (a <= 0)
+            {
+                if (hsg > -1 && hsg < 0)
+                {
+                    p = 2 * a - b;
+
+                    while (x < x2)
+                    {
+                        if (p > 0)
+                        {
+                            p += 2 * a;
+                        }
+                        else
+                        {
+                            y--;
+                            p += 2 * (a - b);
+                        }
+
+                        x++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bm.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg <= -1)
+                {
+                    p = a - 2 * b;
+
+                    while (y > y2)
+                    {
+                        if (p < 0)
+                        {
+                            p += -2 * b;
+                        }
+                        else
+                        {
+                            x++;
+                            p += 2 * (a - b);
+                        }
+
+                        y--;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bm.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg == 0)
+                {
+                    if(a != 0)
+                        while (y > y2)
+                        {
+                            y--;
+
+                            //PutPixel(new Point(x, y), pen);
+                            bm.SetPixel(x, y, pen.Color);
+                        }
+                    else
+                        while (x < x2)
+                        {
+                            x++;
+
+                            //PutPixel(new Point(x, y), pen);
+                            bm.SetPixel(x, y, pen.Color);
+                        }
+                }
+            } 
+        }
+        private void MidPoint(int x1, int x2, int y1, int y2, Pen pen, Bitmap bitmap)
+        {
+            //Khởi tạo biến
+            int a, b, x, y, p, temp;
+            float hsg;
+
+            //Vẽ theo hướng vào gần trục Oy
+            if (x2 - x1 < 0)
+            {
+                //Hoán đổi (x1,y1) và (x2,y2)
+                temp = x1; x1 = x2; x2 = temp;
+                temp = y1; y1 = y2; y2 = temp;
+            }
+
+            a = y2 - y1;
+            b = -(x2 - x1);
+            y = y1;
+            x = x1;
+
+            //Tính hệ số góc
+            if (b == 0) hsg = 0;
+            else hsg = -(float)a / b;
+
+            bitmap.SetPixel(x, y, pen.Color);
+            //PutPixel(new Point(x, y), pen);
+
+            //Vẽ theo hướng ra xa trục Ox
+            if (a > 0)
+            {
+                if (hsg < 1 && hsg > 0)
+                {
+                    p = 2 * a + b;
+
+                    while (x < x2)
+                    {
+                        if (p < 0)
+                        {
+                            p += 2 * a;
+                        }
+                        else
+                        {
+                            y++;
+                            p += 2 * (a + b);
+                        }
+
+                        x++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bitmap.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg >= 1)
+                {
+                    p = a + 2 * b;
+
+                    while (y < y2)
+                    {
+                        if (p > 0)
+                        {
+                            p += 2 * b;
+                        }
+                        else
+                        {
+                            x++;
+                            p += 2 * (a + b);
+                        }
+
+                        y++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bitmap.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg == 0)
+                {
+                    while (y < y2)
+                    {
+                        y++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bitmap.SetPixel(x, y, pen.Color);
+                    }
+                }
+            }
+            // Vẽ theo hướng về gần trục Ox
+            else if (a <= 0)
+            {
+                if (hsg > -1 && hsg < 0)
+                {
+                    p = 2 * a - b;
+
+                    while (x < x2)
+                    {
+                        if (p > 0)
+                        {
+                            p += 2 * a;
+                        }
+                        else
+                        {
+                            y--;
+                            p += 2 * (a - b);
+                        }
+
+                        x++;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bitmap.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg <= -1)
+                {
+                    p = a - 2 * b;
+
+                    while (y > y2)
+                    {
+                        if (p < 0)
+                        {
+                            p += -2 * b;
+                        }
+                        else
+                        {
+                            x++;
+                            p += 2 * (a - b);
+                        }
+
+                        y--;
+
+                        //PutPixel(new Point(x, y), pen);
+                        bitmap.SetPixel(x, y, pen.Color);
+                    }
+                }
+                else if (hsg == 0)
+                {
+                    if (a != 0)
+                        while (y > y2)
+                        {
+                            y--;
+
+                            //PutPixel(new Point(x, y), pen);
+                            bitmap.SetPixel(x, y, pen.Color);
+                        }
+                    else
+                        while (x < x2)
+                        {
+                            x++;
+
+                            //PutPixel(new Point(x, y), pen);
+                            bitmap.SetPixel(x, y, pen.Color);
+                        }
+                }
+            }
+        }
+
+        public void DrawLineByMidPoint(Point firstPoint, Point lastPoint, Pen pen)
+        {
+            if (pen.Width == 1) MidPoint(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, pen);
+            else
+            {
+                bmTemp.Dispose();
+                bmTemp = new Bitmap(bmDefault);
+
+                Point A, B, C, D, diemToMau;
+                PointF VTPT = timVTPT((PointF)firstPoint, (PointF)lastPoint, (int)pen.Width + 1);
+
+                A = CongPoint(firstPoint, VTPT); 
+                B = TruPoint(firstPoint, VTPT);
+                C = CongPoint(lastPoint, VTPT);
+                D = TruPoint(lastPoint, VTPT);
+
+                //Vẽ hình Chữ nhật có width đã nhập
+                DrawMidPoint(A, B, pen);
+                DrawMidPoint(A, C, pen);
+                DrawMidPoint(B, D, pen);
+                DrawMidPoint(C, D, pen);
+
+                //Vẽ vào bitmap tạm để tô màu
+                DrawMidPoint(A, B, pen, bmTemp);
+                DrawMidPoint(A, C, pen, bmTemp);
+                DrawMidPoint(B, D, pen, bmTemp);
+                DrawMidPoint(C, D, pen, bmTemp);
+
+                //Tô màu hình chữ nhật
+                diemToMau = new Point(CongPoint(firstPoint, lastPoint).X / 2, CongPoint(firstPoint, lastPoint).Y / 2);
+                ToMauDuongBienKhuDeQuy(diemToMau.X, diemToMau.Y, pen.Color);
+                //ToMauXungQuanh(diemToMau, pen);
+            }
+        }
+
+        private void DrawTriangleByMidPoint(Point day1TGC, Point day2TGC, Point dinhTGC, Pen pen)
+        {
+            if(pen.Width == 1)
+            {
+                DrawMidPoint(day1TGC, day2TGC, pen);
+                DrawMidPoint(day2TGC, dinhTGC, pen);
+                DrawMidPoint(dinhTGC, day1TGC, pen);
+            } 
+            else
+            {
+                bmTemp.Dispose();
+                bmTemp = new Bitmap(bmDefault);
+
+                Point diemToMau = new Point((day1TGC.X + day2TGC.X + dinhTGC.X) / 3,
+                    (day1TGC.Y + day2TGC.Y + dinhTGC.Y) / 3);
+
+                DrawMidPoint(day1TGC, day2TGC, pen);
+                DrawMidPoint(day2TGC, dinhTGC, pen);
+                DrawMidPoint(dinhTGC, day1TGC, pen);
+
+                DrawMidPoint(day1TGC, day2TGC, pen, bmTemp);
+                DrawMidPoint(day2TGC, dinhTGC, pen, bmTemp);
+                DrawMidPoint(dinhTGC, day1TGC, pen, bmTemp);
+
+                ToMauDuongBienKhuDeQuy(diemToMau.X, diemToMau.Y, pen.Color);
+            }
+        }
+
+        public void DrawArrow(Point firstPoint, Point lastPoint, Pen pen, Label label)
+        {
+            Point dinhTGC = new Point();
+            Point day1TGC = new Point();
+            Point day2TGC = new Point();
+
+            dinhTGC = lastPoint;
+
+            Point VTCP = timVTCP(firstPoint, lastPoint, (int)pen.Width * 3);
+            Point VTPT = timVTPT(firstPoint, lastPoint, (int)pen.Width * 3);
+
+            lastPoint.X = lastPoint.X - VTCP.X; lastPoint.Y = lastPoint.Y - VTCP.Y;
+            day1TGC.X = dinhTGC.X - VTCP.X + VTPT.X; day1TGC.Y = dinhTGC.Y - VTCP.Y + VTPT.Y;
+            day2TGC.X = dinhTGC.X - VTCP.X - VTPT.X; day2TGC.Y = dinhTGC.Y - VTCP.Y - VTPT.Y;
+
+
+            DrawLineByMidPoint(firstPoint, lastPoint, pen);
+
+            DrawTriangleByMidPoint(day1TGC, day2TGC, dinhTGC, pen);
+        }
+    }
+}
