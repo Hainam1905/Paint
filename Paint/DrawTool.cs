@@ -10,6 +10,7 @@ namespace Paint
     {
         private Bitmap bm, bmTemp, bmDefault;
 
+        //Constructor
         public DrawTool(Bitmap bitmap)
         {
             //Bitmap chính
@@ -326,32 +327,11 @@ namespace Paint
                 if (VTCP.X > 0) VTCP.X = (int)a;
                 else VTCP.X = -(int)a;
 
-                //if (VTCP.Y > 0) VTCP.Y = (int)(a * y / x);
-                //else 
                 VTCP.Y = (int)(a * y / Math.Abs(x));
             }
 
             return VTCP;
-            //rutGonP(VTCP);
         }
-
-        //private void PutPixel(Point point, Pen pen)
-        //{
-        //    for(int i = 0; i < pen.Width; i++)
-        //    {
-        //        bm.SetPixel(point.X + i, point.Y, pen.Color);
-        //        bm.SetPixel(point.X + i, point.Y + i, pen.Color);
-        //        bm.SetPixel(point.X + i, point.Y - i, pen.Color);
-        //        bm.SetPixel(point.X, point.Y + i, pen.Color);
-        //        bm.SetPixel(point.X, point.Y - i, pen.Color);
-        //        bm.SetPixel(point.X, point.Y, pen.Color);
-        //        bm.SetPixel(point.X - i, point.Y + i, pen.Color);
-        //        bm.SetPixel(point.X - i, point.Y - i, pen.Color);
-        //        bm.SetPixel(point.X - i, point.Y, pen.Color);
-        //    }
-        //}
-
-        //Thuật toán Mid Point
 
         private void DrawMidPoint(Point A, Point B, Pen pen)
         {
@@ -362,6 +342,8 @@ namespace Paint
             MidPoint(A.X, B.X, A.Y, B.Y, pen, bitmap);
         }
 
+        //Thuật toán Mid Point
+        //MidPoint vẽ vào main Bitmap
         private void MidPoint(int x1, int x2, int y1, int y2, Pen pen)
         {
             //Khởi tạo biến
@@ -712,16 +694,19 @@ namespace Paint
             } 
             else
             {
+                //Rest lại bmTemp để tô màu
                 bmTemp.Dispose();
                 bmTemp = new Bitmap(bmDefault);
 
                 Point diemToMau = new Point((day1TGC.X + day2TGC.X + dinhTGC.X) / 3,
                     (day1TGC.Y + day2TGC.Y + dinhTGC.Y) / 3);
 
+                //Vẽ tam giác vào main bitmap
                 DrawMidPoint(day1TGC, day2TGC, pen);
                 DrawMidPoint(day2TGC, dinhTGC, pen);
                 DrawMidPoint(dinhTGC, day1TGC, pen);
 
+                //Vẽ tam giác vào bmTemp để tô màu
                 DrawMidPoint(day1TGC, day2TGC, pen, bmTemp);
                 DrawMidPoint(day2TGC, dinhTGC, pen, bmTemp);
                 DrawMidPoint(dinhTGC, day1TGC, pen, bmTemp);
@@ -738,9 +723,11 @@ namespace Paint
 
             dinhTGC = lastPoint;
 
+            //Tìm VTCP và VTPT
             Point VTCP = timVTCP(firstPoint, lastPoint, (int)pen.Width * 3);
             Point VTPT = timVTPT(firstPoint, lastPoint, (int)pen.Width * 3);
 
+            //Tìm chân đường cao và điểm của tam giác
             lastPoint.X = lastPoint.X - VTCP.X; lastPoint.Y = lastPoint.Y - VTCP.Y;
             day1TGC.X = dinhTGC.X - VTCP.X + VTPT.X; day1TGC.Y = dinhTGC.Y - VTCP.Y + VTPT.Y;
             day2TGC.X = dinhTGC.X - VTCP.X - VTPT.X; day2TGC.Y = dinhTGC.Y - VTCP.Y - VTPT.Y;
