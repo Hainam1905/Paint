@@ -9,4 +9,5 @@ Feature:
 - Draw follow size : done
 - Free draw (draw Pixel by Mouse position): done
 - Draw Arrow (not fill color and fill color): done
-- Fill Red Color (fill follow rim) : developing
+- Fill Red Color (fill follow rim) : done
+- Draw Cirle (not fill color and fill color: done
