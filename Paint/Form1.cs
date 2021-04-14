@@ -33,6 +33,11 @@ namespace Paint
             start();
         }
 
+        private void TurnOffModeDraw(Button btCheck)
+        {
+            if (btCheck.BackColor == SystemColors.ControlDark) btCheck.BackColor = SystemColors.Control;
+        }
+
         private void pbDrawZone_MouseDown(object sender, MouseEventArgs e)
         {
             bDraw = true;
@@ -78,6 +83,7 @@ namespace Paint
             {
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
+                TurnOffModeDraw(btDrawCircle);
 
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
@@ -95,6 +101,7 @@ namespace Paint
             {
                 if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
+                TurnOffModeDraw(btDrawCircle);
 
                 btDrawArrow.BackColor = SystemColors.ControlDark;
 
@@ -135,9 +142,40 @@ namespace Paint
 
             pbDrawZone.Image = bm;
 
-            dt = new DrawTool(bm);
+            dt = new DrawTool(bm, label2);
 
             gp = Graphics.FromImage(bm);
+        }
+
+        //Vẽ đường tròn
+        private void drawCircle(MouseEventArgs e)
+        {
+            if(bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen pen = new Pen(clLine, widthLine);
+
+            try
+            {
+                if(newPoint != Point.Empty)
+                {
+                    dt.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen, cbDrawColor.Checked);
+                } 
+            }
+            catch (FormatException)
+            {
+                tbRadius.Text = String.Empty;
+            } 
+            catch (ArgumentOutOfRangeException)
+            {
+                tbRadius.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
         }
 
         //Vẽ pixel
@@ -187,6 +225,21 @@ namespace Paint
             pbDrawZone.Image = bm;
         }
 
+        //Tô màu
+        private void FillColor(MouseEventArgs e)
+        {
+            Point fillPoint = new Point();
+
+            if (bMouseUp == true)
+            {
+                fillPoint = e.Location;
+            }
+
+            dt.FillColor(fillPoint, Color.Red);
+
+            pbDrawZone.Image = bm;
+        }
+
         private void cbWidthLine_SelectedIndexChanged(object sender, EventArgs e)
         {
             widthLine = int.Parse(cbWidthLine.SelectedItem.ToString());
@@ -208,6 +261,7 @@ namespace Paint
             {
                 if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
+                TurnOffModeDraw(btDrawCircle);
 
                 btFillColor.BackColor = SystemColors.ControlDark;
 
@@ -220,13 +274,28 @@ namespace Paint
             }
         }
 
-        private void FillColor(MouseEventArgs e)
+        private void btDrawCircle_Click(object sender, EventArgs e)
         {
-            Point fillPoint = new Point();
+            if(btDrawCircle.BackColor == SystemColors.Control)
+            {
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btFillColor);
 
-            fillPoint = e.Location;
+                btDrawCircle.BackColor = SystemColors.ControlDark;
 
-            dt.FillColor(fillPoint, Color.Red);
+                line = "circle";
+            }
+            else if (btDrawCircle.BackColor == SystemColors.ControlDark)
+            {
+                btDrawCircle.BackColor = SystemColors.Control;
+                line = String.Empty;
+            }
+        }
+
+        private void tbRadius_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         //hàm vẽ
@@ -245,7 +314,11 @@ namespace Paint
                 }
                 else if (line == "color")
                 {
-                    //FillColor(e);
+                    FillColor(e);
+                }
+                else if (line == "circle")
+                {
+                    drawCircle(e);
                 }
             }
         }

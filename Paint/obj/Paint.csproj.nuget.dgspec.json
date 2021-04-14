@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Code\\XuLyAnh\\Paint\\Paint\\Paint.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Code\\XuLyAnh\\Paint\\Paint\\Paint.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Code\\XuLyAnh\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Code\\XuLyAnh\\Paint\\Paint\\Paint.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Code\\XuLyAnh\\Paint\\Paint\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -36,6 +36,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbDrawColor = new System.Windows.Forms.CheckBox();
             this.btFillColor = new System.Windows.Forms.Button();
+            this.btDrawCircle = new System.Windows.Forms.Button();
+            this.tbRadius = new System.Windows.Forms.TextBox();
+            this.lbRadius = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(350, 0);
+            this.label2.Location = new System.Drawing.Point(496, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 4;
@@ -123,7 +126,7 @@
             // cbDrawColor
             // 
             this.cbDrawColor.AutoSize = true;
-            this.cbDrawColor.Location = new System.Drawing.Point(91, 31);
+            this.cbDrawColor.Location = new System.Drawing.Point(800, 31);
             this.cbDrawColor.Name = "cbDrawColor";
             this.cbDrawColor.Size = new System.Drawing.Size(55, 19);
             this.cbDrawColor.TabIndex = 5;
@@ -141,12 +144,42 @@
             this.btFillColor.UseVisualStyleBackColor = true;
             this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
+            // btDrawCircle
+            // 
+            this.btDrawCircle.Location = new System.Drawing.Point(279, 0);
+            this.btDrawCircle.Name = "btDrawCircle";
+            this.btDrawCircle.Size = new System.Drawing.Size(102, 24);
+            this.btDrawCircle.TabIndex = 7;
+            this.btDrawCircle.Text = "Draw Circle";
+            this.btDrawCircle.UseVisualStyleBackColor = true;
+            this.btDrawCircle.Click += new System.EventHandler(this.btDrawCircle_Click);
+            // 
+            // tbRadius
+            // 
+            this.tbRadius.Location = new System.Drawing.Point(338, 22);
+            this.tbRadius.Name = "tbRadius";
+            this.tbRadius.Size = new System.Drawing.Size(43, 23);
+            this.tbRadius.TabIndex = 8;
+            this.tbRadius.TextChanged += new System.EventHandler(this.tbRadius_TextChanged);
+            // 
+            // lbRadius
+            // 
+            this.lbRadius.AutoSize = true;
+            this.lbRadius.Location = new System.Drawing.Point(279, 25);
+            this.lbRadius.Name = "lbRadius";
+            this.lbRadius.Size = new System.Drawing.Size(59, 15);
+            this.lbRadius.TabIndex = 9;
+            this.lbRadius.Text = "Bán kính :";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(851, 555);
+            this.Controls.Add(this.lbRadius);
+            this.Controls.Add(this.tbRadius);
+            this.Controls.Add(this.btDrawCircle);
             this.Controls.Add(this.btFillColor);
             this.Controls.Add(this.cbDrawColor);
             this.Controls.Add(this.label2);
@@ -173,6 +206,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbDrawColor;
         private System.Windows.Forms.Button btFillColor;
+        private System.Windows.Forms.Button btDrawCircle;
+        private System.Windows.Forms.TextBox tbRadius;
+        private System.Windows.Forms.Label lbRadius;
     }
 }
 

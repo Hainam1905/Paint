@@ -9,10 +9,13 @@ namespace Paint
     class DrawTool
     {
         private Bitmap bm, bmTemp, bmDefault;
+        private Label Label;
 
         //Constructor
-        public DrawTool(Bitmap bitmap)
+        public DrawTool(Bitmap bitmap, Label label)
         {
+            this.Label = label;
+
             //Bitmap chính
             bm = bitmap;
 
@@ -21,6 +24,77 @@ namespace Paint
 
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
+        }
+
+        //Vẽ 8 điểm từ 1 điểm trên đường tròn
+        private void Draw8Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
+        {
+            //ToMauXungQuanh(new Point(xa + i, ya + j), color);
+            //ToMauXungQuanh(new Point(xa - i, ya + j), color);
+            //ToMauXungQuanh(new Point(xa + i, ya - j), color);
+            //ToMauXungQuanh(new Point(xa - i, ya - j), color);
+            //ToMauXungQuanh(new Point(xa + j, ya + i), color);
+            //ToMauXungQuanh(new Point(xa - j, ya + i), color);
+            //ToMauXungQuanh(new Point(xa + j, ya - i), color);
+            //ToMauXungQuanh(new Point(xa - j, ya - i), color);
+
+            bm.SetPixel(xa + i, ya + j, color);
+            bm.SetPixel(xa - i, ya + j, color);
+            bm.SetPixel(xa + i, ya - j, color);
+            bm.SetPixel(xa - i, ya - j, color);
+            bm.SetPixel(xa + j, ya + i, color);
+            bm.SetPixel(xa - j, ya + i, color);
+            bm.SetPixel(xa + j, ya - i, color);
+            bm.SetPixel(xa - j, ya - i, color);
+        }
+        private void Draw8Pixel(int xa, int ya, int i, int j, Color color, Bitmap temp)
+        {
+            temp.SetPixel(xa + i, ya + j, color);
+            temp.SetPixel(xa - i, ya + j, color);
+            temp.SetPixel(xa + i, ya - j, color);
+            temp.SetPixel(xa - i, ya - j, color);
+            temp.SetPixel(xa + j, ya + i, color);
+            temp.SetPixel(xa - j, ya + i, color);
+            temp.SetPixel(xa + j, ya - i, color);
+            temp.SetPixel(xa - j, ya - i, color);
+        }
+
+        //Vẽ đường tròn bằng MidPoints
+        private void MidPointDrawCircle(int x, int y, int R, Color color)
+        {
+            int i, j, d;
+            i = 0;
+            j = R;
+            d = 1 - R; // thay cho 5/4 - R
+            while (i <= j)
+            {
+                Draw8Pixel(x, y, i, j, color); //Vẽ tại vị trí (0,R)
+                if (d < 0) d += 2 * i + 3; //Chọn y(i+1) = y(i)
+                else
+                {
+                    d += 2 * i - 2 * j + 5; //Chọn y(i+1) = y(i) - 1
+                    j--;
+                }
+                i++;
+            }
+        }
+        private void MidPointDrawCircle(int x, int y, int R, Color color, Bitmap temp)
+        {
+            int i, j, d;
+            i = 0;
+            j = R;
+            d = 1 - R;
+            while (i <= j)
+            {
+                Draw8Pixel(x, y, i, j, color, temp);
+                if (d < 0) d += 2 * i + 3;
+                else
+                {
+                    d += 2 * i - 2 * j + 5;
+                    j--;
+                }
+                i++;
+            }
         }
 
         private Point CongPoint(Point A, Point B)
@@ -47,28 +121,28 @@ namespace Paint
             A.Y = B.Y;
         }
 
-        private void ToMauXungQuanh(Point point, Pen pen)
+        private void ToMauXungQuanh(Point point, Color color)
         {
             int i = 1;
 
-            if (bm.GetPixel(point.X, point.Y + i) != pen.Color)
-                bm.SetPixel(point.X, point.Y + i, pen.Color);
-            if (bm.GetPixel(point.X, point.Y) != pen.Color)
-                bm.SetPixel(point.X, point.Y, pen.Color);
-            if (bm.GetPixel(point.X, point.Y - i) != pen.Color)
-                bm.SetPixel(point.X, point.Y - i, pen.Color);
-            if (bm.GetPixel(point.X + i, point.Y + i) != pen.Color)
-                bm.SetPixel(point.X + i, point.Y + i, pen.Color);
-            if (bm.GetPixel(point.X + i, point.Y) != pen.Color)
-                bm.SetPixel(point.X + i, point.Y, pen.Color);
-            if (bm.GetPixel(point.X + i, point.Y - i) != pen.Color)
-                bm.SetPixel(point.X + i, point.Y - i, pen.Color);
-            if (bm.GetPixel(point.X - i, point.Y + i) != pen.Color)
-                bm.SetPixel(point.X - i, point.Y + i, pen.Color);
-            if (bm.GetPixel(point.X - i, point.Y) != pen.Color)
-                bm.SetPixel(point.X - i, point.Y, pen.Color);
-            if (bm.GetPixel(point.X - i, point.Y - i) != pen.Color)
-                bm.SetPixel(point.X - i, point.Y - i, pen.Color);
+            if (bm.GetPixel(point.X, point.Y + i) != color)
+                bm.SetPixel(point.X, point.Y + i, color);
+            if (bm.GetPixel(point.X, point.Y) != color)
+                bm.SetPixel(point.X, point.Y, color);
+            if (bm.GetPixel(point.X, point.Y - i) != color)
+                bm.SetPixel(point.X, point.Y - i, color);
+            if (bm.GetPixel(point.X + i, point.Y + i) != color)
+                bm.SetPixel(point.X + i, point.Y + i, color);
+            if (bm.GetPixel(point.X + i, point.Y) != color)
+                bm.SetPixel(point.X + i, point.Y, color);
+            if (bm.GetPixel(point.X + i, point.Y - i) != color)
+                bm.SetPixel(point.X + i, point.Y - i, color);
+            if (bm.GetPixel(point.X - i, point.Y + i) != color)
+                bm.SetPixel(point.X - i, point.Y + i, color);
+            if (bm.GetPixel(point.X - i, point.Y) != color)
+                bm.SetPixel(point.X - i, point.Y, color);
+            if (bm.GetPixel(point.X - i, point.Y - i) != color)
+                bm.SetPixel(point.X - i, point.Y - i, color);
         }
 
         private void ToMauDuongBienDeQuy(int x, int y, Color color)
@@ -149,11 +223,11 @@ namespace Paint
             Point m = new Point();
             Point tg = new Point();
 
-            if (bm.GetPixel(x, y) == clBackGround && x < bmTemp.Width && y < bmTemp.Height && x > 0 && y > 0)
+            if (bitmap.GetPixel(x, y) == clBackGround && x < bitmap.Width && y < bitmap.Height && x > 0 && y > 0)
             {
                 m.X = x;
                 m.Y = y;
-                bm.SetPixel(m.X, m.Y, color);
+                bitmap.SetPixel(m.X, m.Y, color);
                 Q.Add(m);
 
                 while (Q != null)
@@ -161,30 +235,30 @@ namespace Paint
                     Q.RemoveAt(0);
 
                     //Xét điểm lân cận
-                    if (bm.GetPixel(m.X + 1, m.Y) == clBackGround)
+                    if (bitmap.GetPixel(m.X + 1, m.Y) == clBackGround)
                     {
-                        bm.SetPixel(m.X + 1, m.Y, color); //bmTemp.SetPixel(m.X + 1, m.Y, color);
+                        bitmap.SetPixel(m.X + 1, m.Y, color); //bmTemp.SetPixel(m.X + 1, m.Y, color);
                         tg.X = m.X + 1;
                         tg.Y = m.Y;
                         Q.Add(tg);
                     }
-                    if (bm.GetPixel(m.X - 1, m.Y) == clBackGround)
+                    if (bitmap.GetPixel(m.X - 1, m.Y) == clBackGround)
                     {
-                        bm.SetPixel(m.X - 1, m.Y, color); //bmTemp.SetPixel(m.X - 1, m.Y, color);
+                        bitmap.SetPixel(m.X - 1, m.Y, color); //bmTemp.SetPixel(m.X - 1, m.Y, color);
                         tg.X = m.X - 1;
                         tg.Y = m.Y;
                         Q.Add(tg);
                     }
-                    if (bm.GetPixel(m.X, m.Y + 1) == clBackGround)
+                    if (bitmap.GetPixel(m.X, m.Y + 1) == clBackGround)
                     {
-                        bm.SetPixel(m.X, m.Y + 1, color); //bmTemp.SetPixel(m.X, m.Y + 1, color);
+                        bitmap.SetPixel(m.X, m.Y + 1, color); //bmTemp.SetPixel(m.X, m.Y + 1, color);
                         tg.X = m.X;
                         tg.Y = m.Y + 1;
                         Q.Add(tg);
                     }
-                    if (bm.GetPixel(m.X, m.Y - 1) == clBackGround)
+                    if (bitmap.GetPixel(m.X, m.Y - 1) == clBackGround)
                     {
-                        bm.SetPixel(m.X, m.Y - 1, color); //bmTemp.SetPixel(m.X, m.Y - 1, color);
+                        bitmap.SetPixel(m.X, m.Y - 1, color); //bmTemp.SetPixel(m.X, m.Y - 1, color);
                         tg.X = m.X;
                         tg.Y = m.Y - 1;
                         Q.Add(tg);
@@ -728,7 +802,7 @@ namespace Paint
             if (b == 0) hsg = 0;
             else hsg = -(float)a / b;
 
-            ToMauXungQuanh(new Point(x, y), pen);
+            ToMauXungQuanh(new Point(x, y), pen.Color);
             //bm.SetPixel(x, y, pen.Color);
             //PutPixel(new Point(x, y), pen);
 
@@ -755,7 +829,7 @@ namespace Paint
 
                         //PutPixel(new Point(x, y), pen);
                         //bm.SetPixel(x, y, pen.Color);
-                        ToMauXungQuanh(new Point(x, y), pen);
+                        ToMauXungQuanh(new Point(x, y), pen.Color);
                     }
                 }
                 else if (hsg >= 1)
@@ -778,7 +852,7 @@ namespace Paint
 
                         //PutPixel(new Point(x, y), pen);
                         //bm.SetPixel(x, y, pen.Color);
-                        ToMauXungQuanh(new Point(x, y), pen);
+                        ToMauXungQuanh(new Point(x, y), pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -789,7 +863,7 @@ namespace Paint
 
                         //PutPixel(new Point(x, y), pen);
                         //bm.SetPixel(x, y, pen.Color);
-                        ToMauXungQuanh(new Point(x, y), pen);
+                        ToMauXungQuanh(new Point(x, y), pen.Color);
                     }
                 }
             }
@@ -816,7 +890,7 @@ namespace Paint
 
                         //PutPixel(new Point(x, y), pen);
                         //bm.SetPixel(x, y, pen.Color);
-                        ToMauXungQuanh(new Point(x, y), pen);
+                        ToMauXungQuanh(new Point(x, y), pen.Color);
                     }
                 }
                 else if (hsg <= -1)
@@ -839,7 +913,7 @@ namespace Paint
 
                         //PutPixel(new Point(x, y), pen);
                         //bm.SetPixel(x, y, pen.Color);
-                        ToMauXungQuanh(new Point(x, y), pen);
+                        ToMauXungQuanh(new Point(x, y), pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -851,7 +925,7 @@ namespace Paint
 
                             //PutPixel(new Point(x, y), pen);
                             //bm.SetPixel(x, y, pen.Color);
-                            ToMauXungQuanh(new Point(x, y), pen);
+                            ToMauXungQuanh(new Point(x, y), pen.Color);
                         }
                     else
                         while (x < x2)
@@ -860,7 +934,7 @@ namespace Paint
 
                             //PutPixel(new Point(x, y), pen);
                             //bm.SetPixel(x, y, pen.Color);
-                            ToMauXungQuanh(new Point(x, y), pen);
+                            ToMauXungQuanh(new Point(x, y), pen.Color);
                         }
                 }
             }
@@ -977,6 +1051,21 @@ namespace Paint
         public void FillColor(Point fillPoint, Color color)
         {
             ToMauDuongBienKhuDeQuy(fillPoint.X, fillPoint.Y, color, bm);
+        }
+
+        public void DrawCircle(Point centerPoint, int R, Pen pen, Boolean fillColor)
+        {
+            MidPointDrawCircle(centerPoint.X, centerPoint.Y, R, pen.Color);
+
+            if (fillColor)
+            {
+                bmTemp.Dispose();
+                bmTemp = new Bitmap(bmDefault);
+
+                MidPointDrawCircle(centerPoint.X, centerPoint.Y, R, pen.Color, bmTemp);
+
+                ToMauDuongBienKhuDeQuy(centerPoint.X, centerPoint.Y, pen.Color);
+            }
         }
     }
 
