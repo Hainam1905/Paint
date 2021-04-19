@@ -62,20 +62,39 @@ namespace Paint
         //Vẽ đường tròn bằng MidPoints
         private void MidPointDrawCircle(int x, int y, int R, Color color)
         {
+            // Khởi tạo các giá trị cho thuật toán
             int i, j, d;
             i = 0;
             j = R;
             d = 1 - R; // thay cho 5/4 - R
+
+
+            int pxCount = 0;//BIẾN ĐẾM PUT PIXEL 
+            int heightPut = 10;// Độ dài cần để put
             while (i <= j)
             {
-                Draw8Pixel(x, y, i, j, color); //Vẽ tại vị trí (0,R)
+
+                if (pxCount == heightPut) // reset lại biến đếm
+                {
+                    pxCount = 0;
+                }
+
+                if (pxCount < heightPut / 2)//Điều kiện put pixel 
+                {
+                    Draw8Pixel(x, y, i, j, color); //Vẽ tại vị trí (0,R)
+                }
+
+                //=== Thuật toán Midpoint=======
                 if (d < 0) d += 2 * i + 3; //Chọn y(i+1) = y(i)
                 else
                 {
                     d += 2 * i - 2 * j + 5; //Chọn y(i+1) = y(i) - 1
                     j--;
                 }
+
                 i++;
+
+                pxCount++;
             }
         }
         private void MidPointDrawCircle(int x, int y, int R, Color color, Bitmap temp)
@@ -169,19 +188,19 @@ namespace Paint
             Point m = new Point();
             Point tg = new Point();
 
-            if(bmTemp.GetPixel(x,y) == clBackGround && x < bmTemp.Width && y < bmTemp.Height && x > 0 && y > 0)
+            if (bmTemp.GetPixel(x, y) == clBackGround && x < bmTemp.Width && y < bmTemp.Height && x > 0 && y > 0)
             {
                 m.X = x;
                 m.Y = y;
                 bm.SetPixel(m.X, m.Y, color);
                 Q.Add(m);
 
-                while(Q != null)
+                while (Q != null)
                 {
                     Q.RemoveAt(0);
 
                     //Xét điểm lân cận
-                    if(bmTemp.GetPixel(m.X + 1, m.Y) == clBackGround)
+                    if (bmTemp.GetPixel(m.X + 1, m.Y) == clBackGround)
                     {
                         bm.SetPixel(m.X + 1, m.Y, color); bmTemp.SetPixel(m.X + 1, m.Y, color);
                         tg.X = m.X + 1;
@@ -274,21 +293,21 @@ namespace Paint
         private void ToMauTheoDuongBien(Point point, Pen pen)
         {
             if (bm.GetPixel(point.X, point.Y) != pen.Color) bm.SetPixel(point.X, point.Y, pen.Color);
-            if (bm.GetPixel(point.X, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1) 
+            if (bm.GetPixel(point.X, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1)
                 ToMauTheoDuongBien(new Point(point.X, point.Y + 1), pen);
-            if (bm.GetPixel(point.X, point.Y - 1) != pen.Color && point.Y - 1 > 0) 
+            if (bm.GetPixel(point.X, point.Y - 1) != pen.Color && point.Y - 1 > 0)
                 ToMauTheoDuongBien(new Point(point.X, point.Y - 1), pen);
-            if (bm.GetPixel(point.X + 1, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1 && point.X + 1 < bm.Width - 1) 
+            if (bm.GetPixel(point.X + 1, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1 && point.X + 1 < bm.Width - 1)
                 ToMauTheoDuongBien(new Point(point.X + 1, point.Y + 1), pen);
-            if (bm.GetPixel(point.X + 1, point.Y) != pen.Color && point.X + 1 < bm.Width - 1) 
+            if (bm.GetPixel(point.X + 1, point.Y) != pen.Color && point.X + 1 < bm.Width - 1)
                 ToMauTheoDuongBien(new Point(point.X + 1, point.Y), pen);
-            if (bm.GetPixel(point.X + 1, point.Y - 1) != pen.Color && point.X + 1 < bm.Width - 1 && point.Y - 1 > 0) 
+            if (bm.GetPixel(point.X + 1, point.Y - 1) != pen.Color && point.X + 1 < bm.Width - 1 && point.Y - 1 > 0)
                 ToMauTheoDuongBien(new Point(point.X + 1, point.Y - 1), pen);
-            if (bm.GetPixel(point.X - 1, point.Y + 1) != pen.Color && point.X - 1 > 0 && point.Y + 1 < bm.Height - 1) 
+            if (bm.GetPixel(point.X - 1, point.Y + 1) != pen.Color && point.X - 1 > 0 && point.Y + 1 < bm.Height - 1)
                 ToMauTheoDuongBien(new Point(point.X - 1, point.Y + 1), pen);
-            if (bm.GetPixel(point.X - 1, point.Y) != pen.Color && point.X - 1 > 0) 
+            if (bm.GetPixel(point.X - 1, point.Y) != pen.Color && point.X - 1 > 0)
                 ToMauTheoDuongBien(new Point(point.X - 1, point.Y), pen);
-            if (bm.GetPixel(point.X - 1, point.Y - 1) != pen.Color && point.X - 1 > 0 && point.Y - 1 > 0) 
+            if (bm.GetPixel(point.X - 1, point.Y - 1) != pen.Color && point.X - 1 > 0 && point.Y - 1 > 0)
                 ToMauTheoDuongBien(new Point(point.X - 1, point.Y + 1), pen);
 
             //    int i = 1;
@@ -608,7 +627,7 @@ namespace Paint
                 }
                 else if (hsg == 0)
                 {
-                    if(a != 0)
+                    if (a != 0)
                         while (y > y2)
                         {
                             y--;
@@ -625,7 +644,7 @@ namespace Paint
                             bm.SetPixel(x, y, pen.Color);
                         }
                 }
-            } 
+            }
         }
         private void MidPoint(int x1, int x2, int y1, int y2, Pen pen, Bitmap bitmap)
         {
@@ -945,7 +964,7 @@ namespace Paint
             if (pen.Width == 1) MidPoint(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, pen);
             else if (pen.Width == 2)
             {
-                Point A, B, C, D; 
+                Point A, B, C, D;
                 PointF VTPT = timVTPT((PointF)firstPoint, (PointF)lastPoint, (int)pen.Width);
 
                 A = CongPoint(firstPoint, VTPT);
@@ -957,7 +976,7 @@ namespace Paint
                 DrawMidPoint(A, C, pen);
                 DrawMidPoint(B, D, pen);
                 DrawMidPoint(C, D, pen);
-                if(drawColor == true) DrawMidPoint(firstPoint, lastPoint, pen, 1);
+                if (drawColor == true) DrawMidPoint(firstPoint, lastPoint, pen, 1);
             }
             else
             {
@@ -967,7 +986,7 @@ namespace Paint
                 Point A, B, C, D, diemToMau;
                 PointF VTPT = timVTPT((PointF)firstPoint, (PointF)lastPoint, (int)pen.Width);
 
-                A = CongPoint(firstPoint, VTPT); 
+                A = CongPoint(firstPoint, VTPT);
                 B = TruPoint(firstPoint, VTPT);
                 C = CongPoint(lastPoint, VTPT);
                 D = TruPoint(lastPoint, VTPT);
@@ -996,12 +1015,12 @@ namespace Paint
 
         private void DrawTriangleByMidPoint(Point day1TGC, Point day2TGC, Point dinhTGC, Pen pen, Boolean drawColor)
         {
-            if(pen.Width == 1 || drawColor == false)
+            if (pen.Width == 1 || drawColor == false)
             {
                 DrawMidPoint(day1TGC, day2TGC, pen);
                 DrawMidPoint(day2TGC, dinhTGC, pen);
                 DrawMidPoint(dinhTGC, day1TGC, pen);
-            } 
+            }
             else
             {
                 //Rest lại bmTemp để tô màu
@@ -1053,19 +1072,19 @@ namespace Paint
             ToMauDuongBienKhuDeQuy(fillPoint.X, fillPoint.Y, color, bm);
         }
 
-        public void DrawCircle(Point centerPoint, int R, Pen pen, Boolean fillColor)
+        public void DrawCircle(Point centerPoint, int R, Pen pen)
         {
             MidPointDrawCircle(centerPoint.X, centerPoint.Y, R, pen.Color);
 
-            if (fillColor)
-            {
-                bmTemp.Dispose();
-                bmTemp = new Bitmap(bmDefault);
+            //if (fillColor)
+            //{
+            //    bmTemp.Dispose();
+            //    bmTemp = new Bitmap(bmDefault);
 
-                MidPointDrawCircle(centerPoint.X, centerPoint.Y, R, pen.Color, bmTemp);
+            //    MidPointDrawCircle(centerPoint.X, centerPoint.Y, R, pen.Color, bmTemp);
 
-                ToMauDuongBienKhuDeQuy(centerPoint.X, centerPoint.Y, pen.Color);
-            }
+            //    ToMauDuongBienKhuDeQuy(centerPoint.X, centerPoint.Y, pen.Color);
+            //}
         }
     }
 
