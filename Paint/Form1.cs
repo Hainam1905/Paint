@@ -156,6 +156,7 @@ namespace Paint
         //Vẽ đường tròn
         private void drawCircle(MouseEventArgs e)
         {
+            resetPoint(ref oldPoint);
             if(bMouseUp == true)
             if (bMouseUp == true)
             {
