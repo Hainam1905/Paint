@@ -10,7 +10,7 @@ namespace Paint
     {
         private Bitmap bm, bmTemp, bmDefault;
         private Label Label;
-
+        
         //Constructor
         public DrawTool(Bitmap bitmap, Label label)
         {
