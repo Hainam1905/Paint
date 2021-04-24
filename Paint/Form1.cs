@@ -82,7 +82,7 @@ namespace Paint
 
         private void btLine_Click(object sender, EventArgs e)
         {
-            if(btDrawPixel.BackColor == SystemColors.Control)
+            if (btDrawPixel.BackColor == SystemColors.Control)
             {
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
@@ -91,14 +91,15 @@ namespace Paint
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
                 line = "pixel";
-            } else if (btDrawPixel.BackColor == SystemColors.ControlDark)
+            }
+            else if (btDrawPixel.BackColor == SystemColors.ControlDark)
             {
                 btDrawPixel.BackColor = SystemColors.Control;
                 line = String.Empty;
             }
         }
 
-        private void btDrawArrow_Click (object sender, EventArgs e)
+        private void btDrawArrow_Click(object sender, EventArgs e)
         {
             if (btDrawArrow.BackColor == SystemColors.Control)
             {
@@ -155,8 +156,8 @@ namespace Paint
         //Vẽ đường tròn
         private void drawCircle(MouseEventArgs e)
         {
-            resetPoint(ref oldPoint);
             if(bMouseUp == true)
+            if (bMouseUp == true)
             {
                 newPoint = e.Location;
             }
@@ -165,15 +166,15 @@ namespace Paint
 
             try
             {
-                if(newPoint != Point.Empty)
+                if (newPoint != Point.Empty)
                 {
-                    dt.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen, cbDrawColor.Checked);
-                } 
+                    dt.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen);
+                }
             }
             catch (FormatException)
             {
                 tbRadius.Text = String.Empty;
-            } 
+            }
             catch (ArgumentOutOfRangeException)
             {
                 tbRadius.Text = String.Empty;
@@ -225,9 +226,9 @@ namespace Paint
             Ở đây mình dùng thư viện cho nhanh :v */
             p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-            if (oldPoint != Point.Empty && newPoint != Point.Empty)  dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
-                                                                     //gp.DrawLine(p, oldPoint, newPoint);
-            
+            if (oldPoint != Point.Empty && newPoint != Point.Empty) dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
+            //gp.DrawLine(p, oldPoint, newPoint);
+
             pbDrawZone.Image = bm;
         }
 
@@ -241,9 +242,18 @@ namespace Paint
                 fillPoint = e.Location;
             }
 
-            dt.FillColor(fillPoint, Color.Red);
+            try
+            {
+                dt.FillColor(fillPoint, Color.Red);
 
-            pbDrawZone.Image = bm;
+                pbDrawZone.Image = bm;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                label2.Text = "out of range!!!";
+            }
+
+
         }
 
         private void cbWidthLine_SelectedIndexChanged(object sender, EventArgs e)
@@ -293,7 +303,7 @@ namespace Paint
 
         private void btDrawCircle_Click(object sender, EventArgs e)
         {
-            if(btDrawCircle.BackColor == SystemColors.Control)
+            if (btDrawCircle.BackColor == SystemColors.Control)
             {
                 TurnOffModeDraw(btDrawArrow);
                 TurnOffModeDraw(btDrawPixel);
