@@ -15,11 +15,12 @@ namespace Paint
         //khai bao can thiet
         private Bitmap bm, bmChon;
         private Graphics gp;
-        private String line;
+        private String line, transalte;
         private Color clLine = Color.Black;
         private Point oldPoint, newPoint, firstPoint, lastPoint;
         private int widthLine;
         private DrawTool dt, dtChon;
+        private ChangeTool ct;
 
         private Boolean bMouseClick = false;
         private Boolean bMouseDown = false;
@@ -78,6 +79,7 @@ namespace Paint
 
             resetPoint(ref oldPoint);
             resetPoint(ref newPoint);
+            label2.Text = firstPoint + " " + lastPoint;
         }
 
         private void btLine_Click(object sender, EventArgs e)
@@ -149,6 +151,7 @@ namespace Paint
 
             dt = new DrawTool(bm, label2);
             dtChon = new DrawTool(bmChon, label2);
+            ct = new ChangeTool(bm, label2);
 
             gp = Graphics.FromImage(bm);
         }
@@ -229,7 +232,7 @@ namespace Paint
 
             if (oldPoint != Point.Empty && newPoint != Point.Empty) dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
             //gp.DrawLine(p, oldPoint, newPoint);
-
+                                                                    
             pbDrawZone.Image = bm;
         }
 
@@ -274,12 +277,21 @@ namespace Paint
 
         private void tbRotate_TextChanged(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(tbRotate.Text))
+
+        }
+
+        private void btRotate_Click(object sender, EventArgs e)
+        {
+            if (btRotate.BackColor == SystemColors.Control)
             {
-                if(line == "arrow")
-                {
-                    
-                }
+                btRotate.BackColor = SystemColors.ControlDark;
+
+                transalte = "rotate";
+            }
+            else if (btRotate.BackColor == SystemColors.ControlDark)
+            {
+                btRotate.BackColor = SystemColors.Control;
+                transalte = String.Empty;
             }
         }
 
@@ -321,11 +333,6 @@ namespace Paint
             }
         }
 
-        private void tbRadius_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void lbDoDay_Click(object sender, EventArgs e)
         {
             float[,] a =
@@ -355,6 +362,21 @@ namespace Paint
                     label2.Text = label2.Text + " " + md.Matrixa[i, j];
         }
 
+        private void RotateArrow(Point aroundPoint)
+        {
+            if(bMouseUp)
+            {
+                if(!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    firstPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
+                    lastPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
+
+                    dt.DrawArrow(firstPoint, lastPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
+                    pbDrawZone.Image = bm;
+                }
+            }
+        }
+
         //hàm vẽ
         private void myDraw(MouseEventArgs e)
         {
@@ -368,6 +390,10 @@ namespace Paint
                 else if (line == "arrow")
                 {
                     drawArrow(e);
+                    if (transalte == "rotate")
+                    {
+                        RotateArrow(e.Location);
+                    }
                 }
                 else if (line == "color")
                 {
