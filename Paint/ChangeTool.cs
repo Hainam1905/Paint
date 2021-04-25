@@ -97,7 +97,7 @@ namespace Paint
                 bm.SetPixel(kq.X, kq.Y, color);
             }
         }
-        public void RotateAroundPoint(Point aroundP, Point rotateP, float angle, Color color)
+        public Point RotateAroundPoint(Point aroundP, Point rotateP, float angle, Color color)
         {
             //Tim Ma tran bien doi
             Matrix rotateAroundPoint = matrixRotateAroundPoint(aroundP, angle);
@@ -111,7 +111,7 @@ namespace Paint
 
                 //Đưa ma trận điểm về điểm
                 Point kq = TransaleToPoint(matrixPoint);
-                bm.SetPixel(kq.X, kq.Y, color);
+            return kq;
         }
 
     }
