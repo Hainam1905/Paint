@@ -13,13 +13,14 @@ namespace Paint
     public partial class Form1 : Form
     {
         //khai bao can thiet
-        private Bitmap bm;
+        private Bitmap bm, bmChon;
         private Graphics gp;
-        private String line;
+        private String line, transalte;
         private Color clLine = Color.Black;
-        private Point oldPoint, newPoint;
+        private Point oldPoint, newPoint, firstPoint, lastPoint;
         private int widthLine;
-        private DrawTool dt;
+        private DrawTool dt, dtChon;
+        private ChangeTool ct;
 
         private Boolean bMouseClick = false;
         private Boolean bMouseDown = false;
@@ -43,8 +44,8 @@ namespace Paint
             bDraw = true;
             bMouseDown = true;
             bMouseUp = false;
-            resetPoint(ref oldPoint);
-            resetPoint(ref newPoint);
+            //resetPoint(ref oldPoint);
+            //resetPoint(ref newPoint);
             myDraw(e);
         }
 
@@ -73,8 +74,12 @@ namespace Paint
             myDraw(e);
             bDraw = false;
 
+            firstPoint = oldPoint;
+            lastPoint = newPoint;
+
             resetPoint(ref oldPoint);
             resetPoint(ref newPoint);
+            label2.Text = firstPoint + " " + lastPoint;
         }
 
         private void btLine_Click(object sender, EventArgs e)
@@ -140,10 +145,13 @@ namespace Paint
         private void newBitMap(int w, int h)
         {
             bm = new Bitmap(w, h);
+            bmChon = bm;
 
             pbDrawZone.Image = bm;
 
             dt = new DrawTool(bm, label2);
+            dtChon = new DrawTool(bmChon, label2);
+            ct = new ChangeTool(bm, label2);
 
             gp = Graphics.FromImage(bm);
         }
@@ -151,6 +159,8 @@ namespace Paint
         //Vẽ đường tròn
         private void drawCircle(MouseEventArgs e)
         {
+            resetPoint(ref oldPoint);
+            if(bMouseUp == true)
             if (bMouseUp == true)
             {
                 newPoint = e.Location;
@@ -222,7 +232,7 @@ namespace Paint
 
             if (oldPoint != Point.Empty && newPoint != Point.Empty) dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
             //gp.DrawLine(p, oldPoint, newPoint);
-
+                                                                    
             pbDrawZone.Image = bm;
         }
 
@@ -265,6 +275,26 @@ namespace Paint
             cbDrawColor.Checked = true;
         }
 
+        private void tbRotate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btRotate_Click(object sender, EventArgs e)
+        {
+            if (btRotate.BackColor == SystemColors.Control)
+            {
+                btRotate.BackColor = SystemColors.ControlDark;
+
+                transalte = "rotate";
+            }
+            else if (btRotate.BackColor == SystemColors.ControlDark)
+            {
+                btRotate.BackColor = SystemColors.Control;
+                transalte = String.Empty;
+            }
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)
@@ -303,9 +333,48 @@ namespace Paint
             }
         }
 
-        private void tbRadius_TextChanged(object sender, EventArgs e)
+        private void lbDoDay_Click(object sender, EventArgs e)
         {
+            float[,] a =
+            {
+                {1, 2, 3}
+            };
+            float[,] b =
+            {
+                {1, 2, 4 },
+                {2, 3, 5 },
+                {2, 4, 1 }
+            };
+            float[,] c =
+            {
+                {1, 2, 4 },
+                {2, 3, 5 },
+                {2, 4, 1 }
+            };
 
+            Matrix ma = new Matrix(a);
+            Matrix mb = new Matrix(b);
+            Matrix mc = new Matrix(c);
+            Matrix md = ma * mb * mc;
+
+            for (int i = 0; i < md.Row; i++)
+                for (int j = 0; j < md.Col; j++)
+                    label2.Text = label2.Text + " " + md.Matrixa[i, j];
+        }
+
+        private void RotateArrow(Point aroundPoint)
+        {
+            if(bMouseUp)
+            {
+                if(!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    firstPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
+                    lastPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
+
+                    dt.DrawArrow(firstPoint, lastPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
+                    pbDrawZone.Image = bm;
+                }
+            }
         }
 
         //hàm vẽ
@@ -321,6 +390,10 @@ namespace Paint
                 else if (line == "arrow")
                 {
                     drawArrow(e);
+                    if (transalte == "rotate")
+                    {
+                        RotateArrow(e.Location);
+                    }
                 }
                 else if (line == "color")
                 {

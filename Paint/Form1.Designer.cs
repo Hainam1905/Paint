@@ -39,6 +39,8 @@
             this.btDrawCircle = new System.Windows.Forms.Button();
             this.tbRadius = new System.Windows.Forms.TextBox();
             this.lbRadius = new System.Windows.Forms.Label();
+            this.btRotate = new System.Windows.Forms.Button();
+            this.tbRotate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +115,7 @@
             this.lbDoDay.Size = new System.Drawing.Size(25, 26);
             this.lbDoDay.TabIndex = 3;
             this.lbDoDay.Text = "Độ\r\ndày";
+            this.lbDoDay.Click += new System.EventHandler(this.lbDoDay_Click);
             // 
             // label2
             // 
@@ -136,22 +139,24 @@
             // 
             // btFillColor
             // 
+            this.btFillColor.BackColor = System.Drawing.SystemColors.Control;
             this.btFillColor.Location = new System.Drawing.Point(184, 0);
             this.btFillColor.Name = "btFillColor";
             this.btFillColor.Size = new System.Drawing.Size(75, 45);
             this.btFillColor.TabIndex = 6;
             this.btFillColor.Text = "Fill Color\r\n(Red)";
-            this.btFillColor.UseVisualStyleBackColor = true;
+            this.btFillColor.UseVisualStyleBackColor = false;
             this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
             // btDrawCircle
             // 
+            this.btDrawCircle.BackColor = System.Drawing.SystemColors.Control;
             this.btDrawCircle.Location = new System.Drawing.Point(279, 0);
             this.btDrawCircle.Name = "btDrawCircle";
             this.btDrawCircle.Size = new System.Drawing.Size(102, 24);
             this.btDrawCircle.TabIndex = 7;
             this.btDrawCircle.Text = "Draw Circle";
-            this.btDrawCircle.UseVisualStyleBackColor = true;
+            this.btDrawCircle.UseVisualStyleBackColor = false;
             this.btDrawCircle.Click += new System.EventHandler(this.btDrawCircle_Click);
             // 
             // tbRadius
@@ -160,7 +165,6 @@
             this.tbRadius.Name = "tbRadius";
             this.tbRadius.Size = new System.Drawing.Size(43, 23);
             this.tbRadius.TabIndex = 8;
-            this.tbRadius.TextChanged += new System.EventHandler(this.tbRadius_TextChanged);
             // 
             // lbRadius
             // 
@@ -171,12 +175,33 @@
             this.lbRadius.TabIndex = 9;
             this.lbRadius.Text = "Bán kính :";
             // 
+            // btRotate
+            // 
+            this.btRotate.BackColor = System.Drawing.SystemColors.Control;
+            this.btRotate.Location = new System.Drawing.Point(736, 0);
+            this.btRotate.Name = "btRotate";
+            this.btRotate.Size = new System.Drawing.Size(43, 25);
+            this.btRotate.TabIndex = 10;
+            this.btRotate.Text = "Xoay";
+            this.btRotate.UseVisualStyleBackColor = false;
+            this.btRotate.Click += new System.EventHandler(this.btRotate_Click);
+            // 
+            // tbRotate
+            // 
+            this.tbRotate.Location = new System.Drawing.Point(736, 27);
+            this.tbRotate.Name = "tbRotate";
+            this.tbRotate.Size = new System.Drawing.Size(43, 23);
+            this.tbRotate.TabIndex = 11;
+            this.tbRotate.TextChanged += new System.EventHandler(this.tbRotate_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(851, 555);
+            this.Controls.Add(this.tbRotate);
+            this.Controls.Add(this.btRotate);
             this.Controls.Add(this.lbRadius);
             this.Controls.Add(this.tbRadius);
             this.Controls.Add(this.btDrawCircle);
@@ -209,6 +234,8 @@
         private System.Windows.Forms.Button btDrawCircle;
         private System.Windows.Forms.TextBox tbRadius;
         private System.Windows.Forms.Label lbRadius;
+        private System.Windows.Forms.Button btRotate;
+        private System.Windows.Forms.TextBox tbRotate;
     }
 }
 
