@@ -11,3 +11,4 @@ Feature:
 - Draw Arrow (not fill color and fill color): done
 - Fill Red Color (fill follow rim) : done
 - Draw Cirle (not fill color and fill color: done
+- Rotate around a point : done
