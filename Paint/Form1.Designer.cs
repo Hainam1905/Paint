@@ -41,6 +41,7 @@
             this.lbRadius = new System.Windows.Forms.Label();
             this.btRotate = new System.Windows.Forms.Button();
             this.tbRotate = new System.Windows.Forms.TextBox();
+            this.btSymmetry = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(496, 0);
+            this.label2.Location = new System.Drawing.Point(0, 543);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 15);
             this.label2.TabIndex = 4;
@@ -194,12 +195,24 @@
             this.tbRotate.TabIndex = 11;
             this.tbRotate.TextChanged += new System.EventHandler(this.tbRotate_TextChanged);
             // 
+            // btSymmetry
+            // 
+            this.btSymmetry.BackColor = System.Drawing.SystemColors.Control;
+            this.btSymmetry.Location = new System.Drawing.Point(665, 1);
+            this.btSymmetry.Name = "btSymmetry";
+            this.btSymmetry.Size = new System.Drawing.Size(65, 24);
+            this.btSymmetry.TabIndex = 12;
+            this.btSymmetry.Text = "Đối xứng";
+            this.btSymmetry.UseVisualStyleBackColor = false;
+            this.btSymmetry.Click += new System.EventHandler(this.btSymmetry_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(851, 555);
+            this.Controls.Add(this.btSymmetry);
             this.Controls.Add(this.tbRotate);
             this.Controls.Add(this.btRotate);
             this.Controls.Add(this.lbRadius);
@@ -236,6 +249,8 @@
         private System.Windows.Forms.Label lbRadius;
         private System.Windows.Forms.Button btRotate;
         private System.Windows.Forms.TextBox tbRotate;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btSymmetry;
     }
 }
 
