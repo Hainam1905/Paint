@@ -75,12 +75,12 @@ namespace Paint
             myDraw(e);
             bDraw = false;
 
-            firstPoint = oldPoint;
-            lastPoint = newPoint;
+
+            if(!oldPoint.IsEmpty) firstPoint = oldPoint;
+            if(!newPoint.IsEmpty) lastPoint = newPoint;
 
             resetPoint(ref oldPoint);
             resetPoint(ref newPoint);
-            label2.Text = firstPoint + " " + lastPoint;
         }
 
         private void btLine_Click(object sender, EventArgs e)
@@ -257,8 +257,6 @@ namespace Paint
             {
                 label2.Text = "out of range!!!";
             }
-
-
         }
 
         private void cbWidthLine_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,12 +284,29 @@ namespace Paint
             if (btRotate.BackColor == SystemColors.Control)
             {
                 btRotate.BackColor = SystemColors.ControlDark;
+                TurnOffModeDraw(btSymmetry);
 
                 transalte = "rotate";
             }
             else if (btRotate.BackColor == SystemColors.ControlDark)
             {
                 btRotate.BackColor = SystemColors.Control;
+                transalte = String.Empty;
+            }
+        }
+
+        private void btSymmetry_Click(object sender, EventArgs e)
+        {
+            if (btSymmetry.BackColor == SystemColors.Control)
+            {
+                btSymmetry.BackColor = SystemColors.ControlDark;
+                TurnOffModeDraw(btRotate);
+
+                transalte = "symmetry";
+            }
+            else if (btSymmetry.BackColor == SystemColors.ControlDark)
+            {
+                btSymmetry.BackColor = SystemColors.Control;
                 transalte = String.Empty;
             }
         }
@@ -369,13 +384,62 @@ namespace Paint
             {
                 if(!String.IsNullOrEmpty(tbRotate.Text))
                 {
-                    firstPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
-                    lastPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
+                    oldPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
+                    newPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
 
-                    dt.DrawArrow(firstPoint, lastPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
+                    dt.DrawArrow(oldPoint, newPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
                     pbDrawZone.Image = bm;
                 }
             }
+        }
+
+        private void SymmetryArrow(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                //oldPoint.X = 100;
+                //oldPoint.Y = 300;
+                //newPoint.X = 300;
+                //newPoint.Y = 100;
+
+                //firstPoint.X = 50;
+                //firstPoint.Y = 100;
+                //lastPoint.X = 200;
+                //lastPoint.Y = 200;
+
+                //dt.DrawArrow(firstPoint, lastPoint, p, cbDrawColor.Checked);
+                dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
+                try
+                {
+                    //dt.DrawLineByMidPoint(firstPoint, lastPoint, p, true);
+                    firstPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, firstPoint, clLine);
+                    lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);
+                    //label2.Text = oldPoint + " " + newPoint;
+                    dt.DrawArrow(firstPoint, lastPoint, p, cbDrawColor.Checked);
+                    //bm.SetPixel(oldPoint.X, oldPoint.Y, Color.Red);
+                    //bm.SetPixel(newPoint.X, newPoint.Y, Color.Green);
+
+                } catch (Exception)
+                {
+                    return;
+                } finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+            pbDrawZone.Image = bm;
         }
 
         //hàm vẽ
@@ -390,11 +454,17 @@ namespace Paint
                 }
                 else if (line == "arrow")
                 {
-                    drawArrow(e);
                     if (transalte == "rotate")
                     {
                         RotateArrow(e.Location);
+                        return;
                     }
+                    else if (transalte == "symmetry")
+                    {
+                        SymmetryArrow(e);
+                        return;
+                    }
+                    drawArrow(e);
                 }
                 else if (line == "color")
                 {
