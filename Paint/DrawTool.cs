@@ -24,6 +24,7 @@ namespace Paint
 
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
+
         }
 
         //Vẽ 8 điểm từ 1 điểm trên đường tròn

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {}
+    "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {
+    "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\obj\\",
+        "projectPath": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\n18dc\\.nuget\\packages\\",
+        "outputPath": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\n18dc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +41,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -55,7 +60,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
