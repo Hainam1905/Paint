@@ -32,6 +32,7 @@ namespace Paint
         {
             InitializeComponent();
             start();
+
         }
 
         private void TurnOffModeDraw(Button btCheck)

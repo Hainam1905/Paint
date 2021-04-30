@@ -27,6 +27,14 @@ namespace Paint
 
         }
 
+        private void PutPixel(int x, int y, Color color)
+        {
+            if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
+            {
+                bm.SetPixel(x, y, color);
+            }
+        }
+         
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
         {
@@ -823,7 +831,7 @@ namespace Paint
             else hsg = -(float)a / b;
 
             ToMauXungQuanh(new Point(x, y), pen.Color);
-            //bm.SetPixel(x, y, pen.Color);
+            //PutPixel(x, y, pen.Color);
             //PutPixel(new Point(x, y), pen);
 
             //Vẽ theo hướng ra xa trục Ox
