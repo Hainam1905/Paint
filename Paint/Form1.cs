@@ -32,6 +32,7 @@ namespace Paint
         {
             InitializeComponent();
             start();
+
         }
 
         private void TurnOffModeDraw(Button btCheck)
@@ -308,6 +309,16 @@ namespace Paint
                 btSymmetry.BackColor = SystemColors.Control;
                 transalte = String.Empty;
             }
+        }
+
+        private void pbDrawZone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbDrawZone_Click_1(object sender, EventArgs e)
+        {
+
         }
 
         private void btFillColor_Click(object sender, EventArgs e)
