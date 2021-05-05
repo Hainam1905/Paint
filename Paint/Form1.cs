@@ -311,6 +311,16 @@ namespace Paint
             }
         }
 
+        private void pbDrawZone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbDrawZone_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)
