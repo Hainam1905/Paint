@@ -321,6 +321,17 @@ namespace Paint
 
         }
 
+        private void btn_drawCircle_Click(object sender, EventArgs e)
+        {
+            inputHtron input = new inputHtron();
+            
+            if (input.ShowDialog() != DialogResult.Cancel)
+            {
+                input.htron.circleMidPoint(Color.Black);
+            }
+
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)

@@ -43,6 +43,7 @@
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_drawCircle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pbDrawZone.Location = new System.Drawing.Point(0, 100);
+            this.pbDrawZone.Location = new System.Drawing.Point(0, 103);
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 642);
@@ -128,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(565, 0);
+            this.label2.Location = new System.Drawing.Point(461, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 4;
@@ -221,11 +222,23 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_drawCircle);
             this.panel1.Controls.Add(this.btSymmetry);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(974, 103);
             this.panel1.TabIndex = 12;
+            // 
+            // btn_drawCircle
+            // 
+            this.btn_drawCircle.Location = new System.Drawing.Point(2, 67);
+            this.btn_drawCircle.Name = "btn_drawCircle";
+            this.btn_drawCircle.Size = new System.Drawing.Size(81, 29);
+            this.btn_drawCircle.TabIndex = 13;
+            this.btn_drawCircle.Text = "circle";
+            this.btn_drawCircle.UseVisualStyleBackColor = true;
+            this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
             // 
             // Form1
             // 
@@ -240,7 +253,6 @@
             this.Controls.Add(this.btDrawCircle);
             this.Controls.Add(this.btFillColor);
             this.Controls.Add(this.cbDrawColor);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.lbDoDay);
             this.Controls.Add(this.cbWidthLine);
             this.Controls.Add(this.btDrawArrow);
@@ -252,6 +264,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,7 +290,7 @@
         private System.Windows.Forms.Button btSymmetry;
 
         private System.Windows.Forms.Panel panel1;
-
+        private System.Windows.Forms.Button btn_drawCircle;
     }
 }
 

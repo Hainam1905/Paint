@@ -33,20 +33,19 @@ namespace Paint
             //vẽ lưới dọc
             for (int i = 0; i < x; i+=5)
             {
-                DrawLineBitmap(new Point(i, 0), new Point(i, y), new Pen(Color.Gray, 1f));
+                DrawLineBitmap(new Point(i, 0), new Point(i, y), new Pen(Color.White, 1f));
             }
 
             //vẽ lưới ngang
             for (int i = 0; i < y; i+=5)
             {
-                DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.Gray, 1f));
+                DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.White, 1f));
             }
             // vẽ trục Oxy
             int x0 = ((x / 5) / 2) * 5;
             int y0 = ((y / 5) / 2) * 5;
             DrawLineBitmap(new Point(x0, 0), new Point(x0, y), new Pen(Color.Black, 1.05f));
             DrawLineBitmap(new Point(0, y0), new Point(x, y0), new Pen(Color.Black, 1.05f));
-
         }
         private void DrawLineBitmap(Point A, Point B, Pen pen)
         {
@@ -54,11 +53,9 @@ namespace Paint
             {
                 for(int j = A.Y; j <= B.Y; j++)
                 {
-                    if (i- 1 > 0 && i + 1 < bm.Width && j - 1 > 0 && j + 1 < bm.Height)
+                    if (i > 0 && i < bm.Width && j > 0 && j < bm.Height)
                     {
                         bm.SetPixel(i, j, pen.Color);
-
-
                     }
                 }
             }
@@ -96,8 +93,6 @@ namespace Paint
             if (x - 1 > 0 && x + 1 < bm.Width && y - 1 > 0 && y + 1 < bm.Height)
             {
                 bm.SetPixel(x, y, color);
-                
-
             }
         }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn

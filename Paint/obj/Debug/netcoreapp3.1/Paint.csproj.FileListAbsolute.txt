@@ -46,3 +46,20 @@ D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimec
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.exe
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.deps.json
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.json
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.dev.json
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csprojAssemblyReference.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Form1.resources
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Properties.Resources.resources
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.GenerateResource.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.AssemblyInfoInputs.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.AssemblyInfo.cs
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.CoreCompileInputs.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.dll
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHtron.resources
