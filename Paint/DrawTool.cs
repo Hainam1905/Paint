@@ -33,13 +33,13 @@ namespace Paint
             //vẽ lưới dọc
             for (int i = 0; i < x; i+=5)
             {
-                DrawLineBitmap(new Point(i, 0), new Point(i, y), new Pen(Color.White, 1f));
+                DrawLineBitmap(new Point(i, 0), new Point(i, y), new Pen(Color.Gray, 1f));
             }
 
             //vẽ lưới ngang
             for (int i = 0; i < y; i+=5)
             {
-                DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.White, 1f));
+                DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.Gray, 1f));
             }
             // vẽ trục Oxy
             int x0 = ((x / 5) / 2) * 5;
@@ -64,22 +64,21 @@ namespace Paint
         {
             if (x -2> 0 && x+2 < bm.Width && y-2 > 0 && y+2 < bm.Height )
             {
-                if(bm.GetPixel(x, y+2) != Color.Gray && bm.GetPixel(x+2, y ) != Color.Gray)
+                x++;
+                y++;
+                if(bm.GetPixel(x, y) != Color.Gray)
                 {
-                    bm.SetPixel(x, y, color);
-                    for (int i = 1; i <= 2; i++)
+                    for (int i =0; i <= 3; i++)
                     {
-
-                        bm.SetPixel(x, y + i, color);
-                        bm.SetPixel(x - i, y + i, color);
-                        bm.SetPixel(x - i, y, color);
-                        bm.SetPixel(x - i, y - i, color);
-                        bm.SetPixel(x, y - i, color);
-                        bm.SetPixel(x + i, y - i, color);
-                        bm.SetPixel(x + i, y + 1, color);
-                        bm.SetPixel(x, y + i, color);
-
+                        for (int j = 0; j <= 3; j++)
+                        {
+                            if (x+i > 0 && x + i < bm.Width && y+j  > 0 && y + j < bm.Height)
+                            {
+                                bm.SetPixel(x + i, y + j, color);
+                            }
+                        }
                     }
+
                     //ToMauXungQuanh(new Point(x, y), color);
                     //FillColor(new Point(x,y), color);
                 }
@@ -90,9 +89,9 @@ namespace Paint
         {
             //x =x*5+ bm.Width / 2;
             //y =y*5+ bm.Height / 2;
-            if (x - 1 > 0 && x + 1 < bm.Width && y - 1 > 0 && y + 1 < bm.Height)
+            if (x  > 0 && x < bm.Width && y  > 0 && y  < bm.Height)
             {
-                bm.SetPixel(x, y, color);
+                ToMauDuongBienKhuDeQuy(x, y, color);
             }
         }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
@@ -185,6 +184,42 @@ namespace Paint
             }
         }
 
+        //Hàm vẽ hình tròn trên lưới pixel dùng thuật toán MidPoint
+        public void draw8Point(int xc, int yc, int x, int y, Color color)
+        {
+            PutPixel(xc + x, yc + y, color);
+            PutPixel(xc + y, yc + x, color);
+            PutPixel(xc + y, yc - x, color);
+            PutPixel(xc + x, yc - y, color);
+            PutPixel(xc - x, yc - y, color);
+            PutPixel(xc - y, yc - x, color);
+            PutPixel(xc - y, yc + x, color);
+            PutPixel(xc - x, yc + y, color);
+        }
+
+        public void circleMidPoint(int xc, int yc, int R, Color color)
+        {
+            float p;
+            int y = R;
+            int x = 0;
+            p = 5 / 4 - R;
+            draw8Point(xc, yc, x, y, color);
+            while (x < y)
+            {
+                if (p < 0)
+                {
+                    p += 2 * x + 3;
+
+                }
+                else
+                {
+                    p += 2 * (x - y) + 5;
+                    y-=5;
+                }
+                x+=5;
+                draw8Point(xc, yc, x, y, color);
+            }
+        }
         private Point CongPoint(Point A, Point B)
         {
             return new Point(A.X + B.X, A.Y + B.Y);

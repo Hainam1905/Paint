@@ -43,7 +43,10 @@
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_TiLe = new System.Windows.Forms.Button();
+            this.btn_tinhtien = new System.Windows.Forms.Button();
             this.btn_drawCircle = new System.Windows.Forms.Button();
+            this.btn_DoiXungQuaO = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -222,6 +225,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_DoiXungQuaO);
+            this.panel1.Controls.Add(this.btn_TiLe);
+            this.panel1.Controls.Add(this.btn_tinhtien);
             this.panel1.Controls.Add(this.btn_drawCircle);
             this.panel1.Controls.Add(this.btSymmetry);
             this.panel1.Controls.Add(this.label2);
@@ -229,6 +235,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(974, 103);
             this.panel1.TabIndex = 12;
+            // 
+            // btn_TiLe
+            // 
+            this.btn_TiLe.Location = new System.Drawing.Point(207, 65);
+            this.btn_TiLe.Name = "btn_TiLe";
+            this.btn_TiLe.Size = new System.Drawing.Size(75, 33);
+            this.btn_TiLe.TabIndex = 15;
+            this.btn_TiLe.Text = "tỉ lệ";
+            this.btn_TiLe.UseVisualStyleBackColor = true;
+            this.btn_TiLe.Click += new System.EventHandler(this.btn_TiLe_Click);
+            // 
+            // btn_tinhtien
+            // 
+            this.btn_tinhtien.Location = new System.Drawing.Point(101, 66);
+            this.btn_tinhtien.Name = "btn_tinhtien";
+            this.btn_tinhtien.Size = new System.Drawing.Size(83, 31);
+            this.btn_tinhtien.TabIndex = 14;
+            this.btn_tinhtien.Text = "tịnh tiến";
+            this.btn_tinhtien.UseVisualStyleBackColor = true;
+            this.btn_tinhtien.Click += new System.EventHandler(this.btn_tinhtien_Click);
             // 
             // btn_drawCircle
             // 
@@ -239,6 +265,16 @@
             this.btn_drawCircle.Text = "circle";
             this.btn_drawCircle.UseVisualStyleBackColor = true;
             this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
+            // 
+            // btn_DoiXungQuaO
+            // 
+            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(298, 65);
+            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
+            this.btn_DoiXungQuaO.TabIndex = 16;
+            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
+            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
+            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
             // 
             // Form1
             // 
@@ -291,6 +327,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_drawCircle;
+        private System.Windows.Forms.Button btn_tinhtien;
+        private System.Windows.Forms.Button btn_TiLe;
+        private System.Windows.Forms.Button btn_DoiXungQuaO;
     }
 }
 

@@ -8,5 +8,11 @@
     <Compile Update="inputHtron.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="inputTiLe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputTinhTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

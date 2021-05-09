@@ -13,6 +13,9 @@ namespace Paint
     public partial class Form1 : Form
     {
         //khai bao can thiet
+        public static int hinh = -1; // stt của hình đang vẽ để xóa nhanh hơn
+        private Htron htron;
+        private int x0, y0; // khai báo tọa độ điểm O trên lưới pixel
         private Bitmap bm, bmChon;
         private Graphics gp;
         private String line, transalte;
@@ -132,6 +135,10 @@ namespace Paint
             //widthLine = int.Parse(cbWidthLine.SelectedValue.ToString());
             newBitMap(pbDrawZone.Width, pbDrawZone.Height);
 
+            //lấy thông tin tọa độ điểm O
+            x0 = ((pbDrawZone.Width / 5) / 2) * 5;
+            y0 = ((pbDrawZone.Height / 5) / 2) * 5;
+
             cbWidthLine.SelectedIndex = 3;
             cbDrawColor.Checked = false;
         }
@@ -153,7 +160,7 @@ namespace Paint
             dt = new DrawTool(bm, label2);
             dtChon = new DrawTool(bmChon, label2);
             ct = new ChangeTool(bm, label2);
-
+            
             gp = Graphics.FromImage(bm);
         }
 
@@ -320,16 +327,81 @@ namespace Paint
         {
 
         }
-
+        private void xoahinh()
+        {
+            Color bgColor = Color.FromArgb(240, 240, 240);
+            if (Form1.hinh == 5)// hình tròn
+            {
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), bgColor);
+            }
+        }
+        //vẽ hình tròn trên lưới pixel
         private void btn_drawCircle_Click(object sender, EventArgs e)
         {
-            inputHtron input = new inputHtron();
-            
-            if (input.ShowDialog() != DialogResult.Cancel)
-            {
-                input.htron.circleMidPoint(Color.Black);
-            }
+            xoahinh();
+            inputHtron input = new inputHtron(x0, y0);
+            input.ShowDialog();
+            if (input.checkchange == false) return;
+            htron = new Htron(input.xc, input.yc, input.R);
+            dt.circleMidPoint(input.xc, input.yc, input.R,Color.Black);
+            Form1.hinh = 5;
+            pbDrawZone.Image = bm;
+        }
 
+        private void btn_tinhtien_Click(object sender, EventArgs e)
+        {
+            inputTinhTien ip = new inputTinhTien();
+            ip.ShowDialog();
+            
+            if (ip.checkchange == false) return;
+
+            if (Form1.hinh == 5)// hình tròn
+            {
+                xoahinh();
+                htron.setx(htron.getx() + ip.x);
+                htron.sety(htron.gety() + ip.y);
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_TiLe_Click(object sender, EventArgs e)
+        {
+            inputTiLe input = new inputTiLe();
+            input.ShowDialog();
+            label2.Text = input.Sx + " vs " + input.Sy;
+            if (input.checkchange == false) return;
+            
+            if (Form1.hinh == 5)//hình tròn
+            {
+                xoahinh();
+                if (input.Sx == input.Sy)//ti le x va y bang nhau 
+                {
+                    htron.setR((int)(htron.getR() * input.Sx));
+                    dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                }
+                Form1.hinh = 5;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_DoiXungQuaO_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) * (-1);
+                int y = ((y0 - htron.gety()) / 5) * (-1);
+                
+                htron.setx(x0 + (x * 5));
+                htron.sety(y0 - (y * 5));
+                /*label2.Text = htron.getx() + " vs " + htron.gety()+"vs "+htron.getR();*/
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            pbDrawZone.Image = bm;
         }
 
         private void btFillColor_Click(object sender, EventArgs e)
