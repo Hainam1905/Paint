@@ -336,12 +336,13 @@ namespace Paint
         {
             gp = Graphics.FromImage(bm);
             gp.Clear(Color.LightGray);
-            
-            drawHill();
-            drawForest();
-            drawStreet();
+
+            //drawHill();
+            //drawForest();
+            //drawStreet();
             //drawSun(590, 80);
-            drawMoon(590, 80);
+            //drawMoon(590, 80);
+            drawCarRightToLeft(250, 200);
             pbDrawZone.Image = bm;
         }
         void drawSun(int x,int y)
@@ -375,9 +376,15 @@ namespace Paint
 
 
         }
-        void drawCar()
+        void drawCarRightToLeft(int x,int y)
         {
-            //dt.MidPointDrawCircle(int )
+            Pen p = new Pen(clLine, widthLine);
+            dt.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
+            dt.DrawMidPoint(new Point(x, y), new Point(x, y-50), p);
+            dt.DrawMidPoint(new Point(x, y-50), new Point(x+100, y - 50), p);
+            dt.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+
+            dt.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
         }
 
         void drawStreet()
