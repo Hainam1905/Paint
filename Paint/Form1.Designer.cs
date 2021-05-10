@@ -51,7 +51,7 @@
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pbDrawZone.Location = new System.Drawing.Point(0, 100);
+            this.pbDrawZone.Location = new System.Drawing.Point(0, 104);
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 642);
