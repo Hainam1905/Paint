@@ -387,6 +387,69 @@ namespace Paint
             pbDrawZone.Image = bm;
         }
 
+        private void btn_DoiXungOx_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                
+                int y = ((y0 - htron.gety()) / 5) * (-1);
+
+                htron.sety(y0 - (y * 5));
+                
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_DoiXungOy_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) * (-1);
+                
+                htron.setx(x0 + (x * 5));
+                
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        private Point layDiemQuay(Point a)
+        {
+            double sin = Math.Sin(Math.PI * 60.0 / 180.0);
+            double cos = Math.Cos(Math.PI * 60.0 / 180.0);
+
+            Point p = new Point(a.X, a.Y);
+
+            a.X = Convert.ToInt32(p.X * cos - sin * p.Y);
+            a.Y = Convert.ToInt32(p.X * sin + cos * p.Y);
+
+            return a;
+        }
+        private void btn_Quay_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) ;
+                int y = ((y0 - htron.gety()) / 5) ;
+
+                Point a = new Point(x, y);
+                a = layDiemQuay(a);
+
+                htron.setx(x0 + (a.X * 5));
+                htron.sety(y0 - (a.Y * 5));
+
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            pbDrawZone.Image = bm;
+        }
+
         private void btn_DoiXungQuaO_Click(object sender, EventArgs e)
         {
             if (Form1.hinh == 5)//hinh tron
@@ -397,7 +460,7 @@ namespace Paint
                 
                 htron.setx(x0 + (x * 5));
                 htron.sety(y0 - (y * 5));
-                /*label2.Text = htron.getx() + " vs " + htron.gety()+"vs "+htron.getR();*/
+                
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
             }

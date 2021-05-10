@@ -43,10 +43,13 @@
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_DoiXungOy = new System.Windows.Forms.Button();
+            this.btn_DoiXungOx = new System.Windows.Forms.Button();
+            this.btn_DoiXungQuaO = new System.Windows.Forms.Button();
             this.btn_TiLe = new System.Windows.Forms.Button();
             this.btn_tinhtien = new System.Windows.Forms.Button();
             this.btn_drawCircle = new System.Windows.Forms.Button();
-            this.btn_DoiXungQuaO = new System.Windows.Forms.Button();
+            this.btn_Quay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +228,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_Quay);
+            this.panel1.Controls.Add(this.btn_DoiXungOy);
+            this.panel1.Controls.Add(this.btn_DoiXungOx);
             this.panel1.Controls.Add(this.btn_DoiXungQuaO);
             this.panel1.Controls.Add(this.btn_TiLe);
             this.panel1.Controls.Add(this.btn_tinhtien);
@@ -235,6 +241,36 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(974, 103);
             this.panel1.TabIndex = 12;
+            // 
+            // btn_DoiXungOy
+            // 
+            this.btn_DoiXungOy.Location = new System.Drawing.Point(595, 64);
+            this.btn_DoiXungOy.Name = "btn_DoiXungOy";
+            this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOy.TabIndex = 18;
+            this.btn_DoiXungOy.Text = "đối xứng qua Oy";
+            this.btn_DoiXungOy.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
+            // 
+            // btn_DoiXungOx
+            // 
+            this.btn_DoiXungOx.Location = new System.Drawing.Point(461, 65);
+            this.btn_DoiXungOx.Name = "btn_DoiXungOx";
+            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOx.TabIndex = 17;
+            this.btn_DoiXungOx.Text = "đối xứng qua Ox";
+            this.btn_DoiXungOx.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
+            // 
+            // btn_DoiXungQuaO
+            // 
+            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(298, 65);
+            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
+            this.btn_DoiXungQuaO.TabIndex = 16;
+            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
+            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
+            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
             // 
             // btn_TiLe
             // 
@@ -266,15 +302,15 @@
             this.btn_drawCircle.UseVisualStyleBackColor = true;
             this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
             // 
-            // btn_DoiXungQuaO
+            // btn_Quay
             // 
-            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(298, 65);
-            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
-            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
-            this.btn_DoiXungQuaO.TabIndex = 16;
-            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
-            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
-            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
+            this.btn_Quay.Location = new System.Drawing.Point(742, 65);
+            this.btn_Quay.Name = "btn_Quay";
+            this.btn_Quay.Size = new System.Drawing.Size(103, 29);
+            this.btn_Quay.TabIndex = 19;
+            this.btn_Quay.Text = "Quay 60°";
+            this.btn_Quay.UseVisualStyleBackColor = true;
+            this.btn_Quay.Click += new System.EventHandler(this.btn_Quay_Click);
             // 
             // Form1
             // 
@@ -330,6 +366,9 @@
         private System.Windows.Forms.Button btn_tinhtien;
         private System.Windows.Forms.Button btn_TiLe;
         private System.Windows.Forms.Button btn_DoiXungQuaO;
+        private System.Windows.Forms.Button btn_DoiXungOx;
+        private System.Windows.Forms.Button btn_DoiXungOy;
+        private System.Windows.Forms.Button btn_Quay;
     }
 }
 
