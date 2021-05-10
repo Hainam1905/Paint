@@ -26,10 +26,11 @@ namespace Paint
             bmDefault = new Bitmap(bm);
 
             //Gọi hàm vẽ lưới pixel 
-            DrawCoordinate(bitmap.Width, bitmap.Height);
-            //PutPixel(50, 50, Color.Black);
+            //DrawCoordinate(bitmap.Width, bitmap.Height);
+          
         }
-        // hàm vẽ lưới pixel
+
+        // Hàm vẽ lưới pixel
         private void DrawCoordinate(int x, int y)
         {
             //vẽ lưới dọc
@@ -44,8 +45,8 @@ namespace Paint
                 DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.White, 1f));
             }
             // vẽ trục Oxy
-            int x0 = ((x / 6) / 2) * 6;
-            int y0 = ((y / 6) / 2) * 6;
+            int x0 = ((x / 6) / 2) * 6;//tâm X
+            int y0 = ((y / 6) / 2) * 6;// tâm Y
             DrawLineBitmap(new Point(x0, 0), new Point(x0, y), new Pen(Color.Black, 1.05f));
             DrawLineBitmap(new Point(0, y0), new Point(x, y0), new Pen(Color.Black, 1.05f));
 
@@ -65,44 +66,36 @@ namespace Paint
         }
 
         // Hàm putPixel theo đơn vị lưới Pixel 
-        private void Put5Pixel(int x, int y, Color color)
+        private void Put5Pixel(Bitmap bitmap,int x, int y, Color color)
         {
-            x = x * 5;
-            y = y * 5;
+            //x = x * 5;
+            //y = y * 5;
             if (x - 2 > 0 && x + 2 < bm.Width && y - 2 > 0 && y + 2 < bm.Height)
             {
-                if (bm.GetPixel(x, y + 2) != Color.Gray && bm.GetPixel(x + 2, y) != Color.Gray)
-                {
+               
+                
                     for (int i = 0; i <= 2; i++)
                     {
                         for (int j = 2; j >= 0; j--)
                         {
-                            bm.SetPixel(x + i, y + j, color);
-                            bm.SetPixel(x - i, y + j, color);
-                            bm.SetPixel(x + i, y - j, color);
-                            bm.SetPixel(x - i, y - j, color);
+                            bitmap.SetPixel(x + i, y + j, color);
+                            bitmap.SetPixel(x - i, y + j, color);
+                            bitmap.SetPixel(x + i, y - j, color);
+                            bitmap.SetPixel(x - i, y - j, color);
 
-                            bm.SetPixel(x + j, y + i, color);
-                            bm.SetPixel(x - j, y + i, color);
-                            bm.SetPixel(x + j, y - i, color);
-                            bm.SetPixel(x - j, y - i, color);
+                            bitmap.SetPixel(x + j, y + i, color);
+                            bitmap.SetPixel(x - j, y + i, color);
+                            bitmap.SetPixel(x + j, y - i, color);
+                            bitmap.SetPixel(x - j, y - i, color);
 
                         }
-                    }
+                    
                 }
             }
         }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
         {
-            //ToMauXungQuanh(new Point(xa + i, ya + j), color);
-            //ToMauXungQuanh(new Point(xa - i, ya + j), color);
-            //ToMauXungQuanh(new Point(xa + i, ya - j), color);
-            //ToMauXungQuanh(new Point(xa - i, ya - j), color);
-            //ToMauXungQuanh(new Point(xa + j, ya + i), color);
-            //ToMauXungQuanh(new Point(xa - j, ya + i), color);
-            //ToMauXungQuanh(new Point(xa + j, ya - i), color);
-            //ToMauXungQuanh(new Point(xa - j, ya - i), color);
 
             bm.SetPixel(xa + i, ya + j, color);
             bm.SetPixel(xa - i, ya + j, color);
