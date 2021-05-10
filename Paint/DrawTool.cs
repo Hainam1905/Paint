@@ -25,8 +25,11 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
+            //Gọi hàm vẽ lưới pixel 
             DrawCoordinate(bitmap.Width, bitmap.Height);
+            //PutPixel(50, 50, Color.Black);
         }
+        // hàm vẽ lưới pixel
         private void DrawCoordinate(int x, int y)
         {
             //vẽ lưới dọc
@@ -60,30 +63,33 @@ namespace Paint
                 }
             }
         }
-        private void PutPixel(int x, int y, Color color)
+
+        // Hàm putPixel theo đơn vị lưới Pixel 
+        private void Put5Pixel(int x, int y, Color color)
         {
-            //Point point = new Point(x, y);
+            x = x * 5;
+            y = y * 5;
             if (x - 2 > 0 && x + 2 < bm.Width && y - 2 > 0 && y + 2 < bm.Height)
             {
                 if (bm.GetPixel(x, y + 2) != Color.Gray && bm.GetPixel(x + 2, y) != Color.Gray)
                 {
-                    bm.SetPixel(x, y, color);
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        for (int j = 2; j >= 0; j--)
+                        {
+                            bm.SetPixel(x + i, y + j, color);
+                            bm.SetPixel(x - i, y + j, color);
+                            bm.SetPixel(x + i, y - j, color);
+                            bm.SetPixel(x - i, y - j, color);
 
-                    //for (int i = 0; i <= 2; i++)
-                    //{
-                    //    bm.SetPixel(x + i, y + i, color);
-                    //    bm.SetPixel(x - i, y + (2 - i), color);
-                    //    bm.SetPixel(x + i, y, color);
-                    //    bm.SetPixel(x - i, y - i, color);
-                    //    bm.SetPixel(x, y - i, color);
-                    //    bm.SetPixel(x + i, y - i, color);
-                    //    bm.SetPixel(x + i, y + 1, color);
-                    //    bm.SetPixel(x, y + i, color);
-                    //    bm.SetPixel(x - i, y - (2 - i), color);
-                    //    bm.SetPixel(x - (2 - i), y - i, color);
-                    //}
+                            bm.SetPixel(x + j, y + i, color);
+                            bm.SetPixel(x - j, y + i, color);
+                            bm.SetPixel(x + j, y - i, color);
+                            bm.SetPixel(x - j, y - i, color);
+
+                        }
+                    }
                 }
-
             }
         }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
@@ -98,14 +104,14 @@ namespace Paint
             //ToMauXungQuanh(new Point(xa + j, ya - i), color);
             //ToMauXungQuanh(new Point(xa - j, ya - i), color);
 
-            PutPixel(xa + i, ya + j, color);
-            PutPixel(xa - i, ya + j, color);
-            PutPixel(xa + i, ya - j, color);
-            PutPixel(xa - i, ya - j, color);
-            PutPixel(xa + j, ya + i, color);
-            PutPixel(xa - j, ya + i, color);
-            PutPixel(xa + j, ya - i, color);
-            PutPixel(xa - j, ya - i, color);
+            bm.SetPixel(xa + i, ya + j, color);
+            bm.SetPixel(xa - i, ya + j, color);
+            bm.SetPixel(xa + i, ya - j, color);
+            bm.SetPixel(xa - i, ya - j, color);
+            bm.SetPixel(xa + j, ya + i, color);
+            bm.SetPixel(xa - j, ya + i, color);
+            bm.SetPixel(xa + j, ya - i, color);
+            bm.SetPixel(xa - j, ya - i, color);
         }
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color, Bitmap temp)
         {
@@ -576,7 +582,7 @@ namespace Paint
             if (b == 0) hsg = 0;
             else hsg = -(float)a / b;
 
-            PutPixel(x, y, pen.Color);
+            bm.SetPixel(x, y, pen.Color);
             //PutPixel(new Point(x, y), pen);
 
             //Vẽ theo hướng ra xa trục Ox
@@ -601,7 +607,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg >= 1)
@@ -623,7 +629,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -633,7 +639,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
             }
@@ -659,7 +665,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg <= -1)
@@ -681,7 +687,7 @@ namespace Paint
                         y--;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -692,7 +698,7 @@ namespace Paint
                             y--;
 
                             //PutPixel(new Point(x, y), pen);
-                            PutPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                     else
                         while (x < x2)
@@ -700,7 +706,7 @@ namespace Paint
                             x++;
 
                             //PutPixel(new Point(x, y), pen);
-                            PutPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                 }
             }
@@ -729,7 +735,7 @@ namespace Paint
             else hsg = -(float)a / b;
 
             //bitmap.SetPixel(x, y, pen.Color);
-            PutPixel(x, y, pen.Color);
+            bm.SetPixel(x, y, pen.Color);
 
             //Vẽ theo hướng ra xa trục Ox
             if (a > 0)
@@ -753,8 +759,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //bitmap.SetPixel(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg >= 1)
@@ -776,8 +781,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //bitmap.SetPixel(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -787,8 +791,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //bitmap.SetPixel(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
             }
@@ -814,8 +817,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //bitmap.SetPixel(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg <= -1)
@@ -837,8 +839,7 @@ namespace Paint
                         y--;
 
                         //PutPixel(new Point(x, y), pen);
-                        //bitmap.SetPixel(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -849,8 +850,7 @@ namespace Paint
                             y--;
 
                             //PutPixel(new Point(x, y), pen);
-                           // bitmap.SetPixel(x, y, pen.Color);
-                            PutPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                     else
                         while (x < x2)
@@ -858,8 +858,7 @@ namespace Paint
                             x++;
 
                             //PutPixel(new Point(x, y), pen);
-                            //bitmap.SetPixel(x, y, pen.Color);
-                            PutPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                 }
             }
