@@ -43,6 +43,7 @@
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bt3D = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -133,6 +134,7 @@
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // cbDrawColor
             // 
@@ -221,11 +223,22 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.bt3D);
             this.panel1.Controls.Add(this.btSymmetry);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(974, 103);
             this.panel1.TabIndex = 12;
+            // 
+            // bt3D
+            // 
+            this.bt3D.Location = new System.Drawing.Point(13, 64);
+            this.bt3D.Name = "bt3D";
+            this.bt3D.Size = new System.Drawing.Size(94, 29);
+            this.bt3D.TabIndex = 13;
+            this.bt3D.Text = "Vẽ 3D";
+            this.bt3D.UseVisualStyleBackColor = true;
+            this.bt3D.Click += new System.EventHandler(this.bt3D_Click);
             // 
             // Form1
             // 
@@ -250,6 +263,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -277,7 +291,7 @@
         private System.Windows.Forms.Button btSymmetry;
 
         private System.Windows.Forms.Panel panel1;
-
+        private System.Windows.Forms.Button bt3D;
     }
 }
 

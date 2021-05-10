@@ -321,6 +321,17 @@ namespace Paint
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void bt3D_Click(object sender, EventArgs e)
+        {
+            Draw3D draw3D = new Draw3D();
+            draw3D.ShowDialog();
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)

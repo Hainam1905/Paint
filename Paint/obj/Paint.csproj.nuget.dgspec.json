@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {}
+    "D:\\Paint\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj": {
+    "D:\\Paint\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\n18dc\\.nuget\\packages\\",
-        "outputPath": "D:\\MyCode\\Csharp\\KyThuatDoHoa\\Paint\\Paint\\obj\\",
+        "projectPath": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\huynh\\.nuget\\packages\\",
+        "outputPath": "D:\\Paint\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\n18dc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\huynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
