@@ -385,6 +385,7 @@ namespace Paint
             dt.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
 
             dt.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
+            dt.MidPointDrawCircle(x + 80, y + 10, 10, Color.Black);
         }
 
         void drawStreet()
