@@ -133,6 +133,27 @@ namespace Paint
             PutPixel(xa + j, ya - i, color);
             PutPixel(xa - j, ya - i, color);
         }
+        //dung cho ham drawMidPointHaftCircle
+        private void Draw4Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
+        {
+            //ToMauXungQuanh(new Point(xa + i, ya + j), color);
+            //ToMauXungQuanh(new Point(xa - i, ya + j), color);
+            //ToMauXungQuanh(new Point(xa + i, ya - j), color);
+            //ToMauXungQuanh(new Point(xa - i, ya - j), color);
+            //ToMauXungQuanh(new Point(xa + j, ya + i), color);
+            //ToMauXungQuanh(new Point(xa - j, ya + i), color);
+            //ToMauXungQuanh(new Point(xa + j, ya - i), color);
+            //ToMauXungQuanh(new Point(xa - j, ya - i), color);
+
+            PutPixel(xa + i, ya + j, color);
+            //PutPixel(xa - i, ya + j, color);
+            PutPixel(xa + i, ya - j, color);
+            //PutPixel(xa - i, ya - j, color);
+            PutPixel(xa + j, ya + i, color);
+            //PutPixel(xa - j, ya + i, color);
+            PutPixel(xa + j, ya - i, color);
+            //PutPixel(xa - j, ya - i, color);
+        }
         private void Draw8PixelIn3D(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
         {
             //ToMauXungQuanh(new Point(xa + i, ya + j), color);
@@ -188,6 +209,44 @@ namespace Paint
                 if (pxCount < heightPut / 2)//Điều kiện put pixel 
                 {
                     Draw8Pixel(x, y, i, j, color); //Vẽ tại vị trí (0,R)
+                }
+
+                //=== Thuật toán Midpoint=======
+                if (d < 0) d += 2 * i + 3; //Chọn y(i+1) = y(i)
+                else
+                {
+                    d += 2 * i - 2 * j + 5; //Chọn y(i+1) = y(i) - 1
+                    j--;
+                }
+
+                i++;
+
+                pxCount++;
+            }
+        }
+        //Vẽ đường tròn bằng MidPoints
+        public void MidPointDrawHaftCircle(int x, int y, int R, Color color)
+        {
+            // Khởi tạo các giá trị cho thuật toán
+            int i, j, d;
+            i = 0;
+            j = R;
+            d = 1 - R; // thay cho 5/4 - R
+
+
+            int pxCount = 0;//BIẾN ĐẾM PUT PIXEL 
+            int heightPut = 10;// Độ dài cần để put
+            while (i <= j)
+            {
+
+                if (pxCount == heightPut) // reset lại biến đếm
+                {
+                    pxCount = 0;
+                }
+
+                if (pxCount < heightPut / 2)//Điều kiện put pixel 
+                {
+                    Draw4Pixel(x, y, i, j, color); //Vẽ tại vị trí (0,R)
                 }
 
                 //=== Thuật toán Midpoint=======
@@ -288,6 +347,59 @@ namespace Paint
                 if (check > 20) check = 0;
             }
         }
+        public void drawHaftElip(int x, int y, int a, int b, Color color)
+        {
+
+
+            
+            double p;
+            int k, d;
+            k = 0;//x
+            d = b;//y
+
+            p = Math.Pow(a, 2) * (1 - 2 * b) + Math.Pow(b, 2);
+            double xQ = Math.Pow(a, 2) / (Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2)));
+           
+            //ve nhanh thu 1(tu tren xuong )
+            while (k < xQ + 1)
+            {
+                
+                draw2PointForHaftElip(x, y, k, d, color);
+                if (p < 0)
+                {
+                    p = p + 2 * Math.Pow(b, 2) * (2 * k + 3);
+                }
+                else
+                {
+                    p = p + 2 * Math.Pow(b, 2) * (2 * k + 3) + 4 * Math.Pow(a, 2) * (1 - d);
+                    d--;
+                }
+                k++;
+                
+            }
+            //ve nhanh thu 2(tu duoi len )
+            d = 0;
+            k = a;
+            p = Math.Pow(b, 2) * (1 - 2 * a) + Math.Pow(a, 2);
+            double yQ = Math.Pow(b, 2) / (Math.Sqrt(Math.Pow(b, 2) + Math.Pow(a, 2)));
+            
+            while (d < yQ + 1)
+            {
+               
+                draw2PointForHaftElip(x, y, k, d, color);
+                if (p < 0)
+                {
+                    p = p + 2 * Math.Pow(a, 2) * (2 * d + 3);
+                }
+                else
+                {
+                    p = p + 2 * Math.Pow(a, 2) * (2 * d + 3) + 4 * Math.Pow(b, 2) * (1 - k);
+                    k--;
+                }
+                d++;
+                
+            }
+        }
         private void draw4PointForEclip(int xc, int yc, int x, int y,Color color, int check)//ve 4 diem doi xung
         {
             PutPixel(xc + x, yc + y,color);
@@ -308,6 +420,15 @@ namespace Paint
                 PutPixelGrid3D(xc - x, yc - y, color);
                 PutPixelGrid3D(xc + x, yc - y, color);
             }
+
+        }
+        private void draw2PointForHaftElip(int xc, int yc, int x, int y, Color color)//ve 4 diem doi xung
+        {
+            PutPixel(xc + x, yc + y, color);
+            //PutPixel(xc - x, yc + y, color);
+            //PutPixel(xc - x, yc - y, color);
+            PutPixel(xc + x, yc - y, color);
+            
 
         }
         private void MidPointDrawCircle(int x, int y, int R, Color color, Bitmap temp)
@@ -353,7 +474,7 @@ namespace Paint
             A.Y = B.Y;
         }
 
-        private void ToMauXungQuanh(Point point, Color color)
+        public void ToMauXungQuanh(Point point, Color color)
         {
             int i = 1;
 
@@ -377,7 +498,7 @@ namespace Paint
                 bm.SetPixel(point.X - i, point.Y - i, color);
         }
 
-        private void ToMauDuongBienDeQuy(int x, int y, Color color)
+        public void ToMauDuongBienDeQuy(int x, int y, Color color)
         {
             Color c = bm.GetPixel(x, y);
 
@@ -394,7 +515,7 @@ namespace Paint
             }
         }
 
-        private void ToMauDuongBienKhuDeQuy(int x, int y, Color color)
+        public void ToMauDuongBienKhuDeQuy(int x, int y, Color color)
         {
             Color clBackGround = bmTemp.GetPixel(x, y);
             List<Point> Q = new List<Point>();
@@ -448,6 +569,7 @@ namespace Paint
                 }
             }
         }
+
         private void ToMauDuongBienKhuDeQuy(int x, int y, Color color, Bitmap bitmap)
         {
             Color clBackGround = bm.GetPixel(x, y);
@@ -503,7 +625,7 @@ namespace Paint
             }
         }
         //Tô màu
-        private void ToMauTheoDuongBien(Point point, Pen pen)
+        public void ToMauTheoDuongBien(Point point, Pen pen)
         {
             if (bm.GetPixel(point.X, point.Y) != pen.Color) bm.SetPixel(point.X, point.Y, pen.Color);
             if (bm.GetPixel(point.X, point.Y + 1) != pen.Color && point.Y + 1 < bm.Height - 1)
