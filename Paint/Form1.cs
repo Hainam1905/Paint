@@ -429,9 +429,10 @@ namespace Paint
                 //lastPoint.Y = 200;
 
                 //dt.DrawArrow(firstPoint, lastPoint, p, cbDrawColor.Checked);
-                dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
+                //label2.Text = oldPoint + " vs " + newPoint;
                 try
                 {
+                    dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
                     //dt.DrawLineByMidPoint(firstPoint, lastPoint, p, true);
                     firstPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, firstPoint, clLine);
                     lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);
