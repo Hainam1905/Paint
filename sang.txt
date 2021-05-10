@@ -1,1 +1,1 @@
-sdadsd
+Sang thêm một vài hàm trong drawtool, giao diện mới: 3DForm.cs.
