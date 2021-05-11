@@ -32,6 +32,7 @@ namespace Paint
         {
             InitializeComponent();
             start();
+
         }
 
         private void TurnOffModeDraw(Button btCheck)
@@ -310,6 +311,16 @@ namespace Paint
             }
         }
 
+        private void pbDrawZone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbDrawZone_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)
@@ -418,9 +429,10 @@ namespace Paint
                 //lastPoint.Y = 200;
 
                 //dt.DrawArrow(firstPoint, lastPoint, p, cbDrawColor.Checked);
-                dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
+                //label2.Text = oldPoint + " vs " + newPoint;
                 try
                 {
+                    dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
                     //dt.DrawLineByMidPoint(firstPoint, lastPoint, p, true);
                     firstPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, firstPoint, clLine);
                     lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);

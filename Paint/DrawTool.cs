@@ -25,8 +25,73 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
+            //Gọi hàm vẽ lưới pixel 
+            DrawCoordinate(bitmap.Width, bitmap.Height);
+            //PutPixel(50, 50, Color.Black);
+        }
+        // hàm vẽ lưới pixel
+        private void DrawCoordinate(int x, int y)
+        {
+            //vẽ lưới dọc
+            for (int i = 0; i < x; i+=6)
+            {
+                DrawLineBitmap(new Point(i, 0), new Point(i, y), new Pen(Color.White, 1f));
+            }
+
+            //vẽ lưới ngang
+            for (int i = 0; i < y; i+=6)
+            {
+                DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.White, 1f));
+            }
+            // vẽ trục Oxy
+            int x0 = ((x / 6) / 2) * 6;
+            int y0 = ((y / 6) / 2) * 6;
+            DrawLineBitmap(new Point(x0, 0), new Point(x0, y), new Pen(Color.Black, 1.05f));
+            DrawLineBitmap(new Point(0, y0), new Point(x, y0), new Pen(Color.Black, 1.05f));
+
+        }
+        private void DrawLineBitmap(Point A, Point B, Pen pen)
+        {
+            for(int i = A.X; i<= B.X; i++)
+            {
+                for(int j = A.Y; j <= B.Y; j++)
+                {
+                    if (i> 0 && i  < bm.Width && j  > 0 && j  < bm.Height)
+                    {
+                        bm.SetPixel(i, j, pen.Color);
+                    }
+                }
+            }
         }
 
+        // Hàm putPixel theo đơn vị lưới Pixel 
+        private void Put5Pixel(int x, int y, Color color)
+        {
+            x = x * 5;
+            y = y * 5;
+            if (x - 2 > 0 && x + 2 < bm.Width && y - 2 > 0 && y + 2 < bm.Height)
+            {
+                if (bm.GetPixel(x, y + 2) != Color.Gray && bm.GetPixel(x + 2, y) != Color.Gray)
+                {
+                    for (int i = 0; i <= 2; i++)
+                    {
+                        for (int j = 2; j >= 0; j--)
+                        {
+                            bm.SetPixel(x + i, y + j, color);
+                            bm.SetPixel(x - i, y + j, color);
+                            bm.SetPixel(x + i, y - j, color);
+                            bm.SetPixel(x - i, y - j, color);
+
+                            bm.SetPixel(x + j, y + i, color);
+                            bm.SetPixel(x - j, y + i, color);
+                            bm.SetPixel(x + j, y - i, color);
+                            bm.SetPixel(x - j, y - i, color);
+
+                        }
+                    }
+                }
+            }
+        }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
         {
@@ -195,7 +260,6 @@ namespace Paint
                 m.Y = y;
                 bm.SetPixel(m.X, m.Y, color);
                 Q.Add(m);
-
                 while (Q != null)
                 {
                     Q.RemoveAt(0);
@@ -670,8 +734,8 @@ namespace Paint
             if (b == 0) hsg = 0;
             else hsg = -(float)a / b;
 
-            bitmap.SetPixel(x, y, pen.Color);
-            //PutPixel(new Point(x, y), pen);
+            //bitmap.SetPixel(x, y, pen.Color);
+            bm.SetPixel(x, y, pen.Color);
 
             //Vẽ theo hướng ra xa trục Ox
             if (a > 0)
@@ -695,7 +759,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        bitmap.SetPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg >= 1)
@@ -717,7 +781,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        bitmap.SetPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -727,7 +791,7 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        bitmap.SetPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
             }
@@ -753,7 +817,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        bitmap.SetPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg <= -1)
@@ -775,7 +839,7 @@ namespace Paint
                         y--;
 
                         //PutPixel(new Point(x, y), pen);
-                        bitmap.SetPixel(x, y, pen.Color);
+                        bm.SetPixel(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -786,7 +850,7 @@ namespace Paint
                             y--;
 
                             //PutPixel(new Point(x, y), pen);
-                            bitmap.SetPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                     else
                         while (x < x2)
@@ -794,7 +858,7 @@ namespace Paint
                             x++;
 
                             //PutPixel(new Point(x, y), pen);
-                            bitmap.SetPixel(x, y, pen.Color);
+                            bm.SetPixel(x, y, pen.Color);
                         }
                 }
             }
@@ -823,7 +887,7 @@ namespace Paint
             else hsg = -(float)a / b;
 
             ToMauXungQuanh(new Point(x, y), pen.Color);
-            //bm.SetPixel(x, y, pen.Color);
+            //PutPixel(x, y, pen.Color);
             //PutPixel(new Point(x, y), pen);
 
             //Vẽ theo hướng ra xa trục Ox
@@ -1008,7 +1072,9 @@ namespace Paint
 
                     //Tô màu hình chữ nhật
                     diemToMau = new Point(CongPoint(firstPoint, lastPoint).X / 2, CongPoint(firstPoint, lastPoint).Y / 2);
-                    ToMauDuongBienKhuDeQuy(diemToMau.X, diemToMau.Y, pen.Color);
+
+                    //ToMauXungQuanh(diemToMau, Color.Red);
+                    ToMauDuongBienKhuDeQuy(diemToMau.X, diemToMau.Y, pen.Color, bm);
                 }
                 //ToMauXungQuanh(diemToMau, pen);
             }
