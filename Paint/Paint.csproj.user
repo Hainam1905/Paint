@@ -8,6 +8,9 @@
     <Compile Update="inputHtron.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="inputHvuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="inputTiLe.cs">
       <SubType>Form</SubType>
     </Compile>

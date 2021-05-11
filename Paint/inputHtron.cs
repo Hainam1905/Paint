@@ -15,7 +15,7 @@ namespace Paint
         public int R;
         public int x0;
         public int y0;
-        public Boolean checkchange;
+        public Boolean checkchange = false;
         public inputHtron(int x0, int y0)
         {
             InitializeComponent();

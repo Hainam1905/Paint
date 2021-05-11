@@ -10,7 +10,7 @@ namespace Paint
     {
         private Bitmap bm, bmTemp, bmDefault;
         private Label Label;
-        
+        public int x0, y0;//tọa độ điểm O(0,0)
         //Constructor
         public DrawTool(Bitmap bitmap, Label label)
         {
@@ -42,8 +42,8 @@ namespace Paint
                 DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.Gray, 1f));
             }
             // vẽ trục Oxy
-            int x0 = ((x / 5) / 2) * 5;
-            int y0 = ((y / 5) / 2) * 5;
+            x0 = ((x / 5) / 2) * 5;
+            y0 = ((y / 5) / 2) * 5;
             DrawLineBitmap(new Point(x0, 0), new Point(x0, y), new Pen(Color.Black, 1.05f));
             DrawLineBitmap(new Point(0, y0), new Point(x, y0), new Pen(Color.Black, 1.05f));
         }
@@ -66,19 +66,20 @@ namespace Paint
             {
                 x++;
                 y++;
-                if(bm.GetPixel(x, y) != Color.Gray)
+
+                if (bm.GetPixel(x, y) != Color.Gray)
                 {
-                    for (int i =0; i <= 3; i++)
+                    for (int i = 0; i <= 3; i++)
                     {
                         for (int j = 0; j <= 3; j++)
                         {
-                            if (x+i > 0 && x + i < bm.Width && y+j  > 0 && y + j < bm.Height)
+                            if (x + i > 0 && x + i < bm.Width && y + j > 0 && y + j < bm.Height)
                             {
                                 bm.SetPixel(x + i, y + j, color);
                             }
                         }
                     }
-
+                    /*bm.SetPixel(x, y, color);*/
                     //ToMauXungQuanh(new Point(x, y), color);
                     //FillColor(new Point(x,y), color);
                 }
@@ -219,6 +220,98 @@ namespace Paint
                 x+=5;
                 draw8Point(xc, yc, x, y, color);
             }
+        }
+
+        public void lineBresenham(int x1, int y1, int x2, int y2,Color color)
+        {
+            int x, y, Dx, Dy, p;
+            Dx = Math.Abs(x2 - x1);
+            Dy = Math.Abs(y2 - y1);
+            p = 2 * Dy - Dx;
+            x = x1;
+            y = y1;
+
+
+            int x_unit = 5, y_unit = 5;
+
+            //xét trường hợp để cho y_unit và x_unit để vẽ tăng lên hay giảm xuống
+            if (x2 - x1 < 0)
+                x_unit = (-1) * x_unit;
+            if (y2 - y1 < 0)
+                y_unit = (-1) * y_unit;
+
+            if (x1 == x2)   // trường hợp vẽ đường thẳng đứng
+            {
+                PutPixel(x, y, color);
+                while (y != y2)
+                {
+                    y += y_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+
+            else if (y1 == y2)  // trường hợp vẽ đường ngang
+            {
+                PutPixel(x, y, color);
+                while (x != x2)
+                {
+                    x += x_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+            // trường hợp vẽ các đường xiên
+            else
+            {
+                PutPixel(x, y, color);
+                while (x != x2)
+                {
+                    
+                    if (p < 0) p += 2 * Dy;
+                    else
+                    {
+                        p += 2 * (Dy - Dx);
+                        y += y_unit;
+                    }
+                    x += x_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+        }
+        public Point findFakePoint(Point p)
+        {
+            p.X = (p.X - x0) / 5;
+            p.Y = (y0- p.Y) / 5;
+            return p;
+        }
+        public Point findRealPoint(Point p)
+        {
+            p.X = p.X*5 + x0;
+            p.Y = y0 - (p.Y * 5);
+            return p;
+        }
+        public Point doiXungQuaO(Point p)
+        {
+            return new Point(p.X * (-1), p.Y * (-1));
+        }
+        public Point doiXungQuaOX(Point p)
+        {
+            return new Point(p.X , p.Y * (-1));
+        }
+        public Point doiXungQuaOY(Point p)
+        {
+            return new Point(p.X * (-1), p.Y);
+        }
+        public Point layDiemQuay(Point a)
+        {
+            double sin = Math.Sin(Math.PI * 60.0 / 180.0);
+            double cos = Math.Cos(Math.PI * 60.0 / 180.0);
+
+            Point p = new Point(a.X, a.Y);
+
+            a.X = Convert.ToInt32(p.X * cos - sin * p.Y);
+            a.Y = Convert.ToInt32(p.X * sin + cos * p.Y);
+
+            return a;
         }
         private Point CongPoint(Point A, Point B)
         {

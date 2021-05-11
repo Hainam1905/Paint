@@ -15,6 +15,7 @@ namespace Paint
         //khai bao can thiet
         public static int hinh = -1; // stt của hình đang vẽ để xóa nhanh hơn
         private Htron htron;
+        private Hvuong hvuong;
         private int x0, y0; // khai báo tọa độ điểm O trên lưới pixel
         private Bitmap bm, bmChon;
         private Graphics gp;
@@ -135,9 +136,7 @@ namespace Paint
             //widthLine = int.Parse(cbWidthLine.SelectedValue.ToString());
             newBitMap(pbDrawZone.Width, pbDrawZone.Height);
 
-            //lấy thông tin tọa độ điểm O
-            x0 = ((pbDrawZone.Width / 5) / 2) * 5;
-            y0 = ((pbDrawZone.Height / 5) / 2) * 5;
+            
 
             cbWidthLine.SelectedIndex = 3;
             cbDrawColor.Checked = false;
@@ -158,6 +157,11 @@ namespace Paint
             pbDrawZone.Image = bm;
 
             dt = new DrawTool(bm, label2);
+
+            //lấy thông tin tọa độ điểm O
+            x0 = dt.x0;
+            y0 = dt.y0;
+
             dtChon = new DrawTool(bmChon, label2);
             ct = new ChangeTool(bm, label2);
             
@@ -333,6 +337,12 @@ namespace Paint
             if (Form1.hinh == 5)// hình tròn
             {
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), bgColor);
+            }else if (Form1.hinh == 6)// hinh vuong
+            {
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, bgColor);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, bgColor);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, bgColor);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, bgColor);
             }
         }
         //vẽ hình tròn trên lưới pixel
@@ -362,6 +372,16 @@ namespace Paint
                 htron.sety(htron.gety() + ip.y);
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+            }else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Hvuong hvuong2 = new Hvuong(hvuong.xA + ip.x, hvuong.yA + ip.y, hvuong.a);
+                hvuong = hvuong2;
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                Form1.hinh = 6;
             }
             
             pbDrawZone.Image = bm;
@@ -371,7 +391,7 @@ namespace Paint
         {
             inputTiLe input = new inputTiLe();
             input.ShowDialog();
-            label2.Text = input.Sx + " vs " + input.Sy;
+            /*label2.Text = input.Sx + " vs " + input.Sy;*/
             if (input.checkchange == false) return;
             
             if (Form1.hinh == 5)//hình tròn
@@ -382,7 +402,24 @@ namespace Paint
                     htron.setR((int)(htron.getR() * input.Sx));
                     dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 }
+                
                 Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                if (input.Sx == input.Sy)//ti le x va y bang nhau
+                {
+                    Hvuong hvuong2 = new Hvuong(hvuong.xA, hvuong.yA, Convert.ToInt32(hvuong.a * input.Sx));
+                    /*label2.Text = hvuong2.a + "";*/
+                    hvuong = hvuong2;
+                    dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                    dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                    dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                    dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                }
+
+                Form1.hinh = 6;
             }
             pbDrawZone.Image = bm;
         }
@@ -400,6 +437,40 @@ namespace Paint
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
             }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaOX(dt.findFakePoint(A));
+                B = dt.doiXungQuaOX(dt.findFakePoint(B));
+                C = dt.doiXungQuaOX(dt.findFakePoint(C));
+                D = dt.doiXungQuaOX(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
             pbDrawZone.Image = bm;
         }
 
@@ -415,21 +486,44 @@ namespace Paint
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
             }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaOY(dt.findFakePoint(A));
+                B = dt.doiXungQuaOY(dt.findFakePoint(B));
+                C = dt.doiXungQuaOY(dt.findFakePoint(C));
+                D = dt.doiXungQuaOY(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
             pbDrawZone.Image = bm;
         }
 
-        private Point layDiemQuay(Point a)
-        {
-            double sin = Math.Sin(Math.PI * 60.0 / 180.0);
-            double cos = Math.Cos(Math.PI * 60.0 / 180.0);
-
-            Point p = new Point(a.X, a.Y);
-
-            a.X = Convert.ToInt32(p.X * cos - sin * p.Y);
-            a.Y = Convert.ToInt32(p.X * sin + cos * p.Y);
-
-            return a;
-        }
+        
         private void btn_Quay_Click(object sender, EventArgs e)
         {
             if (Form1.hinh == 5)//hinh tron
@@ -439,7 +533,7 @@ namespace Paint
                 int y = ((y0 - htron.gety()) / 5) ;
 
                 Point a = new Point(x, y);
-                a = layDiemQuay(a);
+                a = dt.layDiemQuay(a);
 
                 htron.setx(x0 + (a.X * 5));
                 htron.sety(y0 - (a.Y * 5));
@@ -447,6 +541,57 @@ namespace Paint
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
             }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.layDiemQuay(dt.findFakePoint(A));
+                B = dt.layDiemQuay(dt.findFakePoint(B));
+                C = dt.layDiemQuay(dt.findFakePoint(C));
+                D = dt.layDiemQuay(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+
+        private void btn_DrawSquare_Click(object sender, EventArgs e)
+        {
+            xoahinh();
+            inputHvuong input = new inputHvuong(x0, y0);
+            input.ShowDialog();
+            if (input.checkchange == false) return;
+            /*label2.Text = "A(" + input.xA + ", " + input.yA + ") ";*/
+            hvuong = new Hvuong(input.xA, input.yA, input.a);
+            dt.lineBresenham(input.xA, input.yA, input.xB, input.yB, Color.Black);
+            dt.lineBresenham(input.xB, input.yB, input.xC, input.yC, Color.Black);
+            dt.lineBresenham(input.xC, input.yC, input.xD, input.yD, Color.Black);
+            dt.lineBresenham(input.xD, input.yD, input.xA, input.yA, Color.Black);
+            Form1.hinh = 6;
             pbDrawZone.Image = bm;
         }
 
@@ -463,6 +608,40 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaO(dt.findFakePoint(A));
+                B = dt.doiXungQuaO(dt.findFakePoint(B));
+                C = dt.doiXungQuaO(dt.findFakePoint(C));
+                D = dt.doiXungQuaO(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
             }
             pbDrawZone.Image = bm;
         }
