@@ -221,7 +221,7 @@ namespace Paint
                 draw8Point(xc, yc, x, y, color);
             }
         }
-
+        //thiếu trường hợp (bỏ)
         public void lineBresenham(int x1, int y1, int x2, int y2,Color color)
         {
             int x, y, Dx, Dy, p;
@@ -232,7 +232,7 @@ namespace Paint
             y = y1;
 
 
-            int x_unit = 5, y_unit = 5;
+            int x_unit = 1, y_unit = 1;
 
             //xét trường hợp để cho y_unit và x_unit để vẽ tăng lên hay giảm xuống
             if (x2 - x1 < 0)
@@ -275,6 +275,41 @@ namespace Paint
                     x += x_unit;
                     PutPixel(x, y, color);
                 }
+            }
+        }
+        public void drawLineDDA(int xA, int yA, int xB, int yB,Color color)
+        {
+            Point A = new Point(xA, yA);
+            Point B = new Point(xB, yB);
+            A = findFakePoint(A);
+            B = findFakePoint(B);
+
+            int dX = B.X - A.X;
+            int dY = B.Y - A.Y;
+
+            double steps = Math.Max(Math.Abs(dX), Math.Abs(dY));
+            double x_inc = (dX / steps);
+            double y_inc = (dY / steps);
+
+            double x = A.X, y = A.Y;
+
+            Point p = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+            p = findRealPoint(p);
+
+            PutPixel(p.X , p.Y, color);
+            int k = 0;
+
+            while (k < steps)
+            {
+                k++;
+                x += x_inc;
+                y += y_inc;
+
+                p.X = Convert.ToInt32(Math.Round(x));
+                p.Y = Convert.ToInt32(Math.Round(y));
+                p = findRealPoint(p);
+
+                PutPixel(p.X,p.Y , color);
             }
         }
         public Point findFakePoint(Point p)

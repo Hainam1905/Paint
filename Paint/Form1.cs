@@ -339,10 +339,10 @@ namespace Paint
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), bgColor);
             }else if (Form1.hinh == 6)// hinh vuong
             {
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, bgColor);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, bgColor);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, bgColor);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, bgColor);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, bgColor);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, bgColor);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, bgColor);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, bgColor);
             }
         }
         //vẽ hình tròn trên lưới pixel
@@ -377,10 +377,10 @@ namespace Paint
                 xoahinh();
                 Hvuong hvuong2 = new Hvuong(hvuong.xA + ip.x, hvuong.yA + ip.y, hvuong.a);
                 hvuong = hvuong2;
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
                 Form1.hinh = 6;
             }
             
@@ -413,10 +413,10 @@ namespace Paint
                     Hvuong hvuong2 = new Hvuong(hvuong.xA, hvuong.yA, Convert.ToInt32(hvuong.a * input.Sx));
                     /*label2.Text = hvuong2.a + "";*/
                     hvuong = hvuong2;
-                    dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                    dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                    dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                    dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                    dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                    dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                    dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                    dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
                 }
 
                 Form1.hinh = 6;
@@ -464,10 +464,10 @@ namespace Paint
                 hvuong.xD = D.X;
                 hvuong.yD = D.Y;
 
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
             }
@@ -513,10 +513,10 @@ namespace Paint
                 hvuong.xD = D.X;
                 hvuong.yD = D.Y;
 
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
             }
@@ -553,7 +553,8 @@ namespace Paint
                 B = dt.layDiemQuay(dt.findFakePoint(B));
                 C = dt.layDiemQuay(dt.findFakePoint(C));
                 D = dt.layDiemQuay(dt.findFakePoint(D));
-
+                /*label2.Text = A.X + ", " + A.Y + "||" + B.X + ", " + B.Y + "||";*/
+                label2.Text = C.X + ", " + C.Y + "||" + D.X + ", " + D.Y + "||";
                 A = dt.findRealPoint(A);
                 B = dt.findRealPoint(B);
                 C = dt.findRealPoint(C);
@@ -568,10 +569,10 @@ namespace Paint
                 hvuong.xD = D.X;
                 hvuong.yD = D.Y;
 
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
             }
@@ -587,10 +588,10 @@ namespace Paint
             if (input.checkchange == false) return;
             /*label2.Text = "A(" + input.xA + ", " + input.yA + ") ";*/
             hvuong = new Hvuong(input.xA, input.yA, input.a);
-            dt.lineBresenham(input.xA, input.yA, input.xB, input.yB, Color.Black);
-            dt.lineBresenham(input.xB, input.yB, input.xC, input.yC, Color.Black);
-            dt.lineBresenham(input.xC, input.yC, input.xD, input.yD, Color.Black);
-            dt.lineBresenham(input.xD, input.yD, input.xA, input.yA, Color.Black);
+            dt.drawLineDDA(input.xA, input.yA, input.xB, input.yB, Color.Black);
+            dt.drawLineDDA(input.xB, input.yB, input.xC, input.yC, Color.Black);
+            dt.drawLineDDA(input.xC, input.yC, input.xD, input.yD, Color.Black);
+            dt.drawLineDDA(input.xD, input.yD, input.xA, input.yA, Color.Black);
             Form1.hinh = 6;
             pbDrawZone.Image = bm;
         }
@@ -636,10 +637,10 @@ namespace Paint
                 hvuong.xD = D.X;
                 hvuong.yD = D.Y;
 
-                dt.lineBresenham(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                dt.lineBresenham(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                dt.lineBresenham(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                dt.lineBresenham(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
             }
