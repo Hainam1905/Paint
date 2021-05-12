@@ -277,6 +277,7 @@ namespace Paint
                 }
             }
         }
+        //vẽ đường thẳng dùng thuật toán DDA
         public void drawLineDDA(int xA, int yA, int xB, int yB,Color color)
         {
             Point A = new Point(xA, yA);
@@ -323,6 +324,75 @@ namespace Paint
             p.X = p.X*5 + x0;
             p.Y = y0 - (p.Y * 5);
             return p;
+        }
+        public void draw4Point(int xc,int yc,int x,int y,Color color)
+        {
+            Point R = new Point(x + xc, y + yc);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y,color);
+
+            R = new Point(x + xc, yc - y);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+            R = new Point(xc - x, yc - y);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+            R = new Point(xc - x, y + yc);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+        }
+        public void drawEllipsMidPoint(int xc,int yc,int a,int b,Color color)
+        {
+            Point F = new Point(xc, yc);
+            F = findFakePoint(F);
+
+            xc = F.X;
+            yc = F.Y;
+            a = a / 5;
+            b = b / 5;
+
+            int steps = 1;
+            double p;
+            int y = b;
+            int x = 0;
+            double xQ = a * a / (Math.Sqrt(a * a + b * b));
+            p = b * b - a * a * b + a * a / 4;
+            draw4Point(xc, yc, x, y, color);
+            while (x <= xQ)
+            {
+                if (p < 0)
+                {
+                    p += (b * b) * (2 * x + 3);
+                }
+                else
+                {
+                    p += (b * b) * (2 * x + 3) - 2 * a * a * (y - 1);
+                    y-=steps;
+                }
+                x+= steps;
+                draw4Point(xc, yc, x, y, color);
+            }
+            x = a;
+            y = 0;
+            p = a * a - b * b * a + b * b / 4;
+            draw4Point(xc, yc, x, y, color);
+            while (x >= xQ)
+            {
+                if (p < 0)
+                {
+                    p += (a * a) * (2 * y + 3);
+                }
+                else
+                {
+                    p += (a * a) * (2 * y + 3) - 2 * b * b * (x - 1);
+                    x-= steps;
+                }
+                y+= steps;
+                draw4Point(xc, yc, x, y, color);
+            }
         }
         public Point doiXungQuaO(Point p)
         {

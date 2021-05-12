@@ -66,3 +66,4 @@ C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreap
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputTinhTien.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputTiLe.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHvuong.resources
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHelip.resources
