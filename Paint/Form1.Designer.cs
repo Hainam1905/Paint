@@ -285,7 +285,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pbDrawZone;
+        public System.Windows.Forms.PictureBox pbDrawZone;
         private System.Windows.Forms.Button btDrawPixel;
         private System.Windows.Forms.Button btDrawArrow;
         private System.Windows.Forms.ComboBox cbWidthLine;

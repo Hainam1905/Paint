@@ -65,3 +65,4 @@ D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
 D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Draw3D.resources
 D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.globularPopUp.resources
 D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.rectangularPopUp.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Xechayquadoi.resources

@@ -14,5 +14,8 @@
     <Compile Update="rectangularPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Xechayquadoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
