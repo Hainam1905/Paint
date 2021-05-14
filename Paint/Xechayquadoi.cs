@@ -207,9 +207,9 @@ namespace Paint
                paintSun(xSun, tempySun, Color.LightBlue);
 
                 //xoa doi va ve lai:
-                clearHill();
+                /*clearHill();
                 drawHill(Color.Black);
-                paintHill(Color.Brown);
+                paintHill(Color.Brown);*/
 
                 //mat troi tai vi tri moi: 
                 tempySun += 5;
@@ -224,7 +224,12 @@ namespace Paint
                     }
                     else
                     {
-                        drawMoon(xSun, ySun);
+                    //clearHill();
+                   /* drawHill(Color.LightBlue);
+                    paintHill(Color.LightBlue);
+                    drawHill(Color.Black);
+                    paintHill(Color.Brown);*/
+                    drawMoon(xSun, ySun);
                         paintSkyandSoid(Color.DarkViolet, Color.DarkSalmon);
                         check = true;
                     }
