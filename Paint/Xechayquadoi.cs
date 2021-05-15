@@ -11,8 +11,9 @@ namespace Paint
     public partial class Xechayquadoi : Form
     {
         private Bitmap bm;
+        private Bitmap bm2;
         DrawTool dt;
-        //DrawTool dt2;
+        DrawTool dt2;
         private Graphics gp;
         private Color clLine = Color.Black;
         private int widthLine = 1;
@@ -34,14 +35,15 @@ namespace Paint
         public Xechayquadoi()
         {
             InitializeComponent();
-            //Control.CheckForIllegalCrossThreadCalls = false;
+            Control.CheckForIllegalCrossThreadCalls = false;
             start();
         }
         private void start()
         {
             bm = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
+            bm2 = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
             dt = new DrawTool(bm, label1);
-            //dt2 = new DrawTool(bm, label1);
+            dt2 = new DrawTool(bm2, label1);
             gp = Graphics.FromImage(bm);
             pbDrawZone.Image = bm;
         }
@@ -75,31 +77,31 @@ namespace Paint
 
 
             Pen p = new Pen(clLine, widthLine);
-            dt.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
-            dt.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
-            dt.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
 
-            dt.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
-            dt.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
-            dt.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
-            dt.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
-            dt.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
 
             //cua so: 
-            dt.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
-            dt.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
-            dt.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
-            dt.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
-            dt.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
             //banh xe
-            dt.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
-            dt.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
 
-            dt.FillColor(new Point(x + 5, y - 5), Color.Pink);
-            dt.FillColor(new Point(x + 30, y - 12), Color.Blue);
-            dt.FillColor(new Point(x + 70, y - 12), Color.Orange);
+            dt2.FillColor(new Point(x + 5, y - 5), Color.Pink);
+            dt2.FillColor(new Point(x + 30, y - 12), Color.Blue);
+            dt2.FillColor(new Point(x + 70, y - 12), Color.Orange);
 
 
         }
@@ -115,33 +117,33 @@ namespace Paint
             {
                 //xoa xe vi tri cu: 
                 x = xStartFromLeftToRight;
-                dt.FillColor(new Point(x + 5, y - 5), Color.Gray);
-                dt.FillColor(new Point(x + 30, y - 12), Color.Gray);
-                dt.FillColor(new Point(x + 70, y - 12), Color.Gray);
+                dt2.FillColor(new Point(x + 5, y - 5), Color.Gray);
+                dt2.FillColor(new Point(x + 30, y - 12), Color.Gray);
+                dt2.FillColor(new Point(x + 70, y - 12), Color.Gray);
 
                 Pen p = new Pen(Color.Gray, widthLine);
 
-                dt.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
-                dt.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
-                dt.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
+                dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+                dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+                dt2.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
 
-                dt.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
-                dt.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
-                dt.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
-                dt.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
-                dt.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
+                dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
+                dt2.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
+                dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
+                dt2.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
+                dt2.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
 
                 //cua so: 
-                dt.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
-                dt.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
-                dt.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
-                dt.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
+                dt2.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
+                dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
+                dt2.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
+                dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
                 dt.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
                 //banh xe
-                dt.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-                dt.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-                dt.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-                dt.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+                dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
+                dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
+                dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
+                dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
 
                 //ve lai xe: 
                 xStartFromLeftToRight += 5;
@@ -202,19 +204,21 @@ namespace Paint
 
             for (int i = 1; i < 15; i++)
             {
-                //xoa mat troi cu: 
-               dt.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.LightBlue);
-               paintSun(xSun, tempySun, Color.LightBlue);
+                if (check == false)
+                {
+                    //xoa mat troi cu: 
+                    dt.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.LightBlue);
+                    paintSun(xSun, tempySun, Color.LightBlue);
 
-                //xoa doi va ve lai:
-                /*clearHill();
-                drawHill(Color.Black);
-                paintHill(Color.Brown);*/
+                    //xoa doi va ve lai:
+                    clearHill();
+                    drawHill(Color.Black);
+                    paintHill(Color.Brown);
 
-                //mat troi tai vi tri moi: 
-                tempySun += 5;
+                    //mat troi tai vi tri moi: 
+                    tempySun += 5;
 
-                   
+
 
                     if (tempySun < (ySun + 60))
                     {
@@ -224,20 +228,19 @@ namespace Paint
                     }
                     else
                     {
-                    //clearHill();
-                   /* drawHill(Color.LightBlue);
-                    paintHill(Color.LightBlue);
-                    drawHill(Color.Black);
-                    paintHill(Color.Brown);*/
-                    drawMoon(xSun, ySun);
+                        //clearHill();
+
+                        drawMoon(xSun, ySun);
                         paintSkyandSoid(Color.DarkViolet, Color.DarkSalmon);
                         check = true;
                     }
                     //drawStreet();
                     pbDrawZone.Image = bm;
                     Thread.Sleep(100);
-                
-               
+
+                }
+                else return; 
+
             }
 
         }
@@ -521,7 +524,7 @@ namespace Paint
             //hill 8
             dt.DrawMidPointAnimation(new Point(755, 140), new Point(860, 70), p);
             dt.DrawMidPointAnimation(new Point(860, 70), new Point(970, 210), p);
-            pbDrawZone.Image = bm;
+            //pbDrawZone.Image = bm;
         }
         void paintHill(Color color)
         {
@@ -806,9 +809,9 @@ namespace Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            move();
+            //move();
             //sunGoDown(); 
-            //moveCar(); 
+            moveCar(); 
         }
         void move()
         {
