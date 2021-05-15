@@ -12,10 +12,11 @@ namespace Paint
     {
         private Bitmap bm;
         private Bitmap bm2;
-        
         DrawTool dt;
         DrawTool dt2;
+        DrawTool dt3; 
         private Graphics gp;
+        private Graphics gp2; 
         private Color clLine = Color.Black;
         private int widthLine = 1;
         int xStartFromLeftToRight = 10;
@@ -26,7 +27,6 @@ namespace Paint
         int yStartFromRightToLeft = 270;
         int xTankStartFromLeftToRight = 320;
         int xTankStartFromRightToLeft = 400;
-        ThreadStart threadstart;
         int xSun = 590;
         int ySun = 80;
         int tempySun = 80;
@@ -36,14 +36,13 @@ namespace Paint
         public Xechayquadoi()
         {
             InitializeComponent();
-            Control.CheckForIllegalCrossThreadCalls = false;
+           // Control.CheckForIllegalCrossThreadCalls = false;
             start();
         }
         private void start()
         {
             bm = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
-            bm2 = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
-            bm2 = bm; 
+            bm2 = (Bitmap) bm.Clone();
             dt = new DrawTool(bm, label1);
             dt2 = new DrawTool(bm2, label1);
             gp = Graphics.FromImage(bm);
@@ -53,31 +52,36 @@ namespace Paint
         {
             
             gp.Clear(Color.LightGray);
-            drawHill(Color.Black);
-            paintHill(Color.Brown);
+            
+            
             drawStreet();
             drawForest();
             drawSun(590, 80);
             paintSun(xSun, ySun, Color.Red);
-
+            drawHill(Color.Black);
+            paintHill(Color.Brown);
 
 
             ////drawMoon(590, 80);
 
-
-            paintSkyandSoid(Color.LightBlue, Color.LightYellow);
-            paintStreet();
-
+            bm2 = (Bitmap)bm.Clone();
+            dt2 = new DrawTool(bm2, label1);
+            
             drawCarLeftToRight(xStartFromLeftToRight, yStartFromLeftToRight);
 
+
+            bm = (Bitmap)bm2.Clone();
+            dt = new DrawTool(bm, label1);
+            paintSkyandSoid(Color.LightBlue, Color.LightYellow);
+            paintStreet();
+            
             pbDrawZone.Image = bm; 
-            /*car.setConfig(dt, bm, pbDrawZone.Image);
-            car.drawCarLeftToRight(10, 375);*/
         }
         public void drawCarLeftToRight(int x, int y)
         {
 
-            //bm2 = bm; 
+            
+            
             Pen p = new Pen(clLine, widthLine);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
@@ -111,7 +115,8 @@ namespace Paint
         public void translatingCarLeftToRight()
         {
 
-
+            bm2 = (Bitmap)bm.Clone();
+            dt2 = new DrawTool(bm2,label1); 
             //bm2 = bm; 
             int y = yStartFromLeftToRight;
             int x = xStartFromLeftToRight;
@@ -147,10 +152,13 @@ namespace Paint
                 dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
                 dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
 
+                
                 //ve lai xe: 
                 xStartFromLeftToRight += 5;
                 drawCarLeftToRight(xStartFromLeftToRight, yStartFromLeftToRight);
 
+                bm = (Bitmap)bm2.Clone();
+                dt = new DrawTool(bm, label1);
                 /*//ve xe vi tri moi
                 dt.DrawMidPoint(new Point(x, y), new Point(x + 120, y), p);
                 dt.DrawMidPoint(new Point(x, y), new Point(x, y - 30), p);
@@ -179,7 +187,7 @@ namespace Paint
                 dt.FillColor(new Point(x + 70, y - 15), Color.Orange);*/
                 //bm = bm2; 
                 pbDrawZone.Image = bm;
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
             }
 
 
@@ -213,33 +221,32 @@ namespace Paint
                     dt.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.LightBlue);
                     paintSun(xSun, tempySun, Color.LightBlue);
 
+               
                     //xoa doi va ve lai:
                     clearHill();
                     drawHill(Color.Black);
                     paintHill(Color.Brown);
 
+                    
                     //mat troi tai vi tri moi: 
                     tempySun += 5;
-
 
 
                     if (tempySun < (ySun + 60))
                     {
                         drawSun(xSun, tempySun);
                         paintSun(xSun, tempySun, Color.Red);
-
+                        //pbDrawZone.Image = bm; 
                     }
                     else
                     {
-                        //clearHill();
-
                         drawMoon(xSun, ySun);
                         paintSkyandSoid(Color.DarkViolet, Color.DarkSalmon);
                         check = true;
                     }
                     //drawStreet();
                     pbDrawZone.Image = bm;
-                    Thread.Sleep(100);
+                    Thread.Sleep(10);
 
                 }
                 else return; 
@@ -492,60 +499,60 @@ namespace Paint
         }
         void drawHill(Color color)
         {
-            bm2 = bm; 
+            
+            
             Pen p = new Pen(color, widthLine);
-            dt2.DrawMidPointAnimation(new Point(0, 210), new Point(1000, 210), p);
+            dt.DrawMidPointAnimation(new Point(0, 210), new Point(1000, 210), p);
             
             //hill 1
-            dt2.DrawMidPointAnimation(new Point(0, 210), new Point(100, 100),p);
-            dt2.DrawMidPointAnimation(new Point(100, 100), new Point(250, 210), p);
+            dt.DrawMidPointAnimation(new Point(0, 210), new Point(100, 100),p);
+            dt.DrawMidPointAnimation(new Point(100, 100), new Point(250, 210), p);
 
 
             //hill 2
-            dt2.DrawMidPointAnimation(new Point(140, 130), new Point(220, 50), p);
-            dt2.DrawMidPointAnimation(new Point(220, 50), new Point(300, 130), p);
+            dt.DrawMidPointAnimation(new Point(140, 130), new Point(220, 50), p);
+            dt.DrawMidPointAnimation(new Point(220, 50), new Point(300, 130), p);
 
 
             //hill 3
-            dt2.DrawMidPointAnimation(new Point(250, 210), new Point(330, 80), p);
-            dt2.DrawMidPointAnimation(new Point(330, 80), new Point(410, 210), p);
+            dt.DrawMidPointAnimation(new Point(250, 210), new Point(330, 80), p);
+            dt.DrawMidPointAnimation(new Point(330, 80), new Point(410, 210), p);
 
             //hill 4
-            dt2.DrawMidPointAnimation(new Point(380, 155), new Point(440, 100), p);
-            dt2.DrawMidPointAnimation(new Point(440, 100), new Point(480, 150), p);
+            dt.DrawMidPointAnimation(new Point(380, 155), new Point(440, 100), p);
+            dt.DrawMidPointAnimation(new Point(440, 100), new Point(480, 150), p);
             //hill 5
-            dt2.DrawMidPointAnimation(new Point(405, 210), new Point(520, 120), p);
-            dt2.DrawMidPointAnimation(new Point(520, 120), new Point(580, 210), p);
+            dt.DrawMidPointAnimation(new Point(405, 210), new Point(520, 120), p);
+            dt.DrawMidPointAnimation(new Point(520, 120), new Point(580, 210), p);
 
             //hill 6
-            dt2.DrawMidPointAnimation(new Point(605, 210), new Point(655, 130), p);
-            dt2.DrawMidPointAnimation(new Point(655, 130), new Point(700, 210), p);
+            dt.DrawMidPointAnimation(new Point(605, 210), new Point(655, 130), p);
+            dt.DrawMidPointAnimation(new Point(655, 130), new Point(700, 210), p);
             //hill 7
-            dt2.DrawMidPointAnimation(new Point(675, 160), new Point(735, 90), p);
-            dt2.DrawMidPointAnimation(new Point(735, 90), new Point(780, 210), p);
+            dt.DrawMidPointAnimation(new Point(675, 160), new Point(735, 90), p);
+            dt.DrawMidPointAnimation(new Point(735, 90), new Point(780, 210), p);
 
             //hill 8
-            dt2.DrawMidPointAnimation(new Point(755, 140), new Point(860, 70), p);
-            dt2.DrawMidPointAnimation(new Point(860, 70), new Point(970, 210), p);
+            dt.DrawMidPointAnimation(new Point(755, 140), new Point(860, 70), p);
+            dt.DrawMidPointAnimation(new Point(860, 70), new Point(970, 210), p);
 
-            bm = bm2; 
-            //pbDrawZone.Image = bm2;
+           
         }
         void paintHill(Color color)
         {
-            bm2 = bm; 
-            //to mau doi nui
-            dt2.FillColor(new Point(125, 200), color);
-            dt2.FillColor(new Point(200, 120), color);
-            dt2.FillColor(new Point(300, 180), color);
-            dt2.FillColor(new Point(430, 140), color);
-            dt2.FillColor(new Point(500, 200), color);
-            dt2.FillColor(new Point(680, 200), color);
-            dt2.FillColor(new Point(700, 200), color);
-            dt2.FillColor(new Point(850, 200), color);
 
-            bm = bm2; 
-            //pbDrawZone.Image = bm2; 
+            
+            
+            //to mau doi nui
+            dt.FillColor(new Point(125, 200), color);
+            dt.FillColor(new Point(200, 120), color);
+            dt.FillColor(new Point(300, 180), color);
+            dt.FillColor(new Point(430, 140), color);
+            dt.FillColor(new Point(500, 200), color);
+            dt.FillColor(new Point(680, 200), color);
+            dt.FillColor(new Point(700, 200), color);
+            dt.FillColor(new Point(850, 200), color);
+ 
         }
         void paintHillFake()
         {
@@ -629,7 +636,7 @@ namespace Paint
             ypaint = y - 15;
             xpaint = x + 5;
             dt.FillColor(new Point(xpaint, ypaint), Color.RosyBrown);
-            pbDrawZone.Image = bm; 
+            //pbDrawZone.Image = bm; 
         }
 
 
@@ -823,8 +830,9 @@ namespace Paint
         }
         void move()
         {
-             threadstart = new ThreadStart(sunGoDown);
+            ThreadStart threadstart = new ThreadStart(sunGoDown);
             Thread threadSun = new Thread(threadstart);
+            threadSun.IsBackground = true; 
             threadSun.Start(); 
             //sunGoDown(); 
         }
@@ -832,6 +840,7 @@ namespace Paint
         {
             ThreadStart threadStartOfCar = new ThreadStart(translatingCarLeftToRight);
             Thread threadCar = new Thread(threadStartOfCar);
+            threadCar.IsBackground = true; 
             threadCar.Start(); 
         }
 

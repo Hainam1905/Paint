@@ -33,6 +33,7 @@ namespace Paint
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.RunCar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,12 +77,23 @@ namespace Paint
             this.RunCar.UseVisualStyleBackColor = true;
             this.RunCar.Click += new System.EventHandler(this.RunCar_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(783, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "label2";
+            this.label2.Visible = false;
+            // 
             // Xechayquadoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(979, 760);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.RunCar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
@@ -101,5 +113,6 @@ namespace Paint
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button RunCar;
+        private System.Windows.Forms.Label label2;
     }
 }

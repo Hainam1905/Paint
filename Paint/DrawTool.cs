@@ -25,7 +25,7 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
-            DrawCoordinate(bitmap.Width, bitmap.Height);
+            //DrawCoordinate(bitmap.Width, bitmap.Height);
           //  PutPixel(bitmap.Width/2+7, bitmap.Height/2+7, Color.Blue);
         }
         private void DrawCoordinate(int x, int y)
