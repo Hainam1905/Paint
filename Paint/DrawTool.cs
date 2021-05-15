@@ -25,7 +25,7 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
-            //Gọi hàm vẽ lưới pixel 
+            
            DrawCoordinate(bm.Width, bm.Height);
         }
         // Hàm vẽ lưới pixel
