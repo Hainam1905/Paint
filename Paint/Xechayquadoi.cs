@@ -12,6 +12,7 @@ namespace Paint
     {
         private Bitmap bm;
         private Bitmap bm2;
+        
         DrawTool dt;
         DrawTool dt2;
         private Graphics gp;
@@ -42,6 +43,7 @@ namespace Paint
         {
             bm = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
             bm2 = new Bitmap(pbDrawZone.Width, pbDrawZone.Height);
+            bm2 = bm; 
             dt = new DrawTool(bm, label1);
             dt2 = new DrawTool(bm2, label1);
             gp = Graphics.FromImage(bm);
@@ -75,7 +77,7 @@ namespace Paint
         public void drawCarLeftToRight(int x, int y)
         {
 
-
+            //bm2 = bm; 
             Pen p = new Pen(clLine, widthLine);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
@@ -103,14 +105,14 @@ namespace Paint
             dt2.FillColor(new Point(x + 30, y - 12), Color.Blue);
             dt2.FillColor(new Point(x + 70, y - 12), Color.Orange);
 
-
+           
         }
 
         public void translatingCarLeftToRight()
         {
 
 
-         
+            //bm2 = bm; 
             int y = yStartFromLeftToRight;
             int x = xStartFromLeftToRight;
             for (int i = 0; i < 100; i++)
@@ -175,6 +177,7 @@ namespace Paint
                 dt.FillColor(new Point(x + 5, y - 5), Color.Pink);
                 dt.FillColor(new Point(x + 30, y - 15), Color.Blue);
                 dt.FillColor(new Point(x + 70, y - 15), Color.Orange);*/
+                //bm = bm2; 
                 pbDrawZone.Image = bm;
                 Thread.Sleep(100);
             }
@@ -489,55 +492,60 @@ namespace Paint
         }
         void drawHill(Color color)
         {
-            
+            bm2 = bm; 
             Pen p = new Pen(color, widthLine);
-            dt.DrawMidPointAnimation(new Point(0, 210), new Point(1000, 210), p);
+            dt2.DrawMidPointAnimation(new Point(0, 210), new Point(1000, 210), p);
             
             //hill 1
-            dt.DrawMidPointAnimation(new Point(0, 210), new Point(100, 100),p);
-            dt.DrawMidPointAnimation(new Point(100, 100), new Point(250, 210), p);
+            dt2.DrawMidPointAnimation(new Point(0, 210), new Point(100, 100),p);
+            dt2.DrawMidPointAnimation(new Point(100, 100), new Point(250, 210), p);
 
 
             //hill 2
-            dt.DrawMidPointAnimation(new Point(140, 130), new Point(220, 50), p);
-            dt.DrawMidPointAnimation(new Point(220, 50), new Point(300, 130), p);
+            dt2.DrawMidPointAnimation(new Point(140, 130), new Point(220, 50), p);
+            dt2.DrawMidPointAnimation(new Point(220, 50), new Point(300, 130), p);
 
 
             //hill 3
-            dt.DrawMidPointAnimation(new Point(250, 210), new Point(330, 80), p);
-            dt.DrawMidPointAnimation(new Point(330, 80), new Point(410, 210), p);
+            dt2.DrawMidPointAnimation(new Point(250, 210), new Point(330, 80), p);
+            dt2.DrawMidPointAnimation(new Point(330, 80), new Point(410, 210), p);
 
             //hill 4
-            dt.DrawMidPointAnimation(new Point(380, 155), new Point(440, 100), p);
-            dt.DrawMidPointAnimation(new Point(440, 100), new Point(480, 150), p);
+            dt2.DrawMidPointAnimation(new Point(380, 155), new Point(440, 100), p);
+            dt2.DrawMidPointAnimation(new Point(440, 100), new Point(480, 150), p);
             //hill 5
-            dt.DrawMidPointAnimation(new Point(405, 210), new Point(520, 120), p);
-            dt.DrawMidPointAnimation(new Point(520, 120), new Point(580, 210), p);
+            dt2.DrawMidPointAnimation(new Point(405, 210), new Point(520, 120), p);
+            dt2.DrawMidPointAnimation(new Point(520, 120), new Point(580, 210), p);
 
             //hill 6
-            dt.DrawMidPointAnimation(new Point(605, 210), new Point(655, 130), p);
-            dt.DrawMidPointAnimation(new Point(655, 130), new Point(700, 210), p);
+            dt2.DrawMidPointAnimation(new Point(605, 210), new Point(655, 130), p);
+            dt2.DrawMidPointAnimation(new Point(655, 130), new Point(700, 210), p);
             //hill 7
-            dt.DrawMidPointAnimation(new Point(675, 160), new Point(735, 90), p);
-            dt.DrawMidPointAnimation(new Point(735, 90), new Point(780, 210), p);
+            dt2.DrawMidPointAnimation(new Point(675, 160), new Point(735, 90), p);
+            dt2.DrawMidPointAnimation(new Point(735, 90), new Point(780, 210), p);
 
             //hill 8
-            dt.DrawMidPointAnimation(new Point(755, 140), new Point(860, 70), p);
-            dt.DrawMidPointAnimation(new Point(860, 70), new Point(970, 210), p);
-            //pbDrawZone.Image = bm;
+            dt2.DrawMidPointAnimation(new Point(755, 140), new Point(860, 70), p);
+            dt2.DrawMidPointAnimation(new Point(860, 70), new Point(970, 210), p);
+
+            bm = bm2; 
+            //pbDrawZone.Image = bm2;
         }
         void paintHill(Color color)
         {
+            bm2 = bm; 
             //to mau doi nui
-            dt.FillColor(new Point(125, 200), color);
-            dt.FillColor(new Point(200, 120), color);
-            dt.FillColor(new Point(300, 180), color);
-            dt.FillColor(new Point(430, 140), color);
-            dt.FillColor(new Point(500, 200), color);
-            dt.FillColor(new Point(680, 200), color);
-            dt.FillColor(new Point(700, 200), color);
-            dt.FillColor(new Point(850, 200), color);
-            pbDrawZone.Image = bm; 
+            dt2.FillColor(new Point(125, 200), color);
+            dt2.FillColor(new Point(200, 120), color);
+            dt2.FillColor(new Point(300, 180), color);
+            dt2.FillColor(new Point(430, 140), color);
+            dt2.FillColor(new Point(500, 200), color);
+            dt2.FillColor(new Point(680, 200), color);
+            dt2.FillColor(new Point(700, 200), color);
+            dt2.FillColor(new Point(850, 200), color);
+
+            bm = bm2; 
+            //pbDrawZone.Image = bm2; 
         }
         void paintHillFake()
         {
@@ -809,9 +817,9 @@ namespace Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //move();
+            move();
             //sunGoDown(); 
-            moveCar(); 
+            //moveCar(); 
         }
         void move()
         {
@@ -841,6 +849,11 @@ namespace Paint
         private void pbDrawZone_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RunCar_Click(object sender, EventArgs e)
+        {
+            moveCar(); 
         }
     }
 }

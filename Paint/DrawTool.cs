@@ -106,11 +106,11 @@ namespace Paint
             int xFake = x / 5;
             int yFake = y / 5;
             xFake = xFake * 5;
-            yFake = yFake * 5; 
-                Graphics gp = Graphics.FromImage(bm);
+            yFake = yFake * 5;
+            Graphics gp = Graphics.FromImage(bm);
             SolidBrush brush = new SolidBrush(color);
-                gp.FillRectangle(brush, xFake, yFake, 5, 5);
-            
+            gp.FillRectangle(brush, xFake, yFake, 5, 5);
+            //bm.SetPixel(xFake, yFake, color) ;
                 
         }
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
