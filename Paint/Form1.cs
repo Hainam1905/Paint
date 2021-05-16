@@ -354,7 +354,7 @@ namespace Paint
 
             Pen p = new Pen(clLine, widthLine);
 
-            p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+            //p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
             
             try
