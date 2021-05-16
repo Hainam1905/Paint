@@ -380,8 +380,16 @@ namespace Paint
             }else if (Form1.hinh == 6)//hình vuông
             {
                 xoahinh();
-                Hvuong hvuong2 = new Hvuong(hvuong.xA + ip.x, hvuong.yA + ip.y, hvuong.a);
-                hvuong = hvuong2;
+              
+                hvuong.xA = hvuong.xA + ip.x;
+                hvuong.yA = hvuong.yA + ip.y;
+                hvuong.xB = hvuong.xB + ip.x;
+                hvuong.yB = hvuong.yB + ip.y;
+                hvuong.xC = hvuong.xC + ip.x;
+                hvuong.yC = hvuong.yC + ip.y;
+                hvuong.xD = hvuong.xD + ip.x;
+                hvuong.yD = hvuong.yD + ip.y;
+
                 dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
                 dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
                 dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
@@ -429,16 +437,60 @@ namespace Paint
             else if (Form1.hinh == 6)//hình vuông
             {
                 xoahinh();
-                if (input.Sx == input.Sy)//ti le x va y bang nhau
-                {
-                    Hvuong hvuong2 = new Hvuong(hvuong.xA, hvuong.yA, Convert.ToInt32(hvuong.a * input.Sx));
-                    
-                    hvuong = hvuong2;
-                    dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
-                    dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
-                    dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
-                    dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
-                }
+                int XO, YO, Dx, Dy;
+
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                A = dt.findFakePoint(A);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                B = dt.findFakePoint(B);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                C = dt.findFakePoint(C);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+                D = dt.findFakePoint(D);
+
+                //lấy điểm gốc là A
+                XO = A.X;
+                YO = A.Y;
+                //tỉ lể các điểm trên hình vuông
+                A.X = Convert.ToInt32(A.X * input.Sx);
+                A.Y = Convert.ToInt32(A.Y * input.Sy);
+                B.X = Convert.ToInt32(B.X * input.Sx);
+                B.Y = Convert.ToInt32(B.Y * input.Sy);
+                C.X = Convert.ToInt32(C.X * input.Sx);
+                C.Y = Convert.ToInt32(C.Y * input.Sy);
+                D.X = Convert.ToInt32(D.X * input.Sx);
+                D.Y = Convert.ToInt32(D.Y * input.Sy);
+
+                Dx = A.X - XO;
+                Dy = A.Y - YO;
+
+                A.X = A.X - Dx;
+                A.Y = A.Y - Dy;
+                B.X = B.X - Dx;
+                B.Y = B.Y - Dy;
+                C.X = C.X - Dx;
+                C.Y = C.Y - Dy;
+                D.X = D.X - Dx;
+                D.Y = D.Y - Dy;
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
             }else if (Form1.hinh == 7)//hình elip
