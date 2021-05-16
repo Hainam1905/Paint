@@ -250,7 +250,6 @@ namespace Paint
                 //try
                 //{
 
-<<<<<<< HEAD
                 //    pbDrawZone.Refresh();
                 //}
                 //catch (Exception)
@@ -263,9 +262,7 @@ namespace Paint
                 //}
             }                
             //gp.DrawLine(p, oldPoint, newPoint);
-=======
             //p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
->>>>>>> 4d698da9368c8be750f67590615448fae029dc4b
 
             
         }
