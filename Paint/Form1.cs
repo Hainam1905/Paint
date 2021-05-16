@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
 namespace Paint
 {
     public partial class Form1 : Form
@@ -19,7 +19,7 @@ namespace Paint
         private Color clLine = Color.Black;
         private Point oldPoint, newPoint, firstPoint, lastPoint;
         private int widthLine;
-        private DrawTool dt, dtChon;
+        private DrawTool dt, dtChon, dtNam;
         private ChangeTool ct;
 
         private Boolean bMouseClick = false;
@@ -32,12 +32,17 @@ namespace Paint
         {
             InitializeComponent();
             start();
-
+            dtNam.ResetBitmap();
         }
 
         private void TurnOffModeDraw(Button btCheck)
         {
             if (btCheck.BackColor == SystemColors.ControlDark) btCheck.BackColor = SystemColors.Control;
+            if (btCheck == btConLacCD)
+            {
+                cbIsStop.Visible = false;
+                cbIsStop.Checked = true;
+            }
         }
 
         private void pbDrawZone_MouseDown(object sender, MouseEventArgs e)
@@ -90,6 +95,7 @@ namespace Paint
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btConLacCD);
 
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
@@ -109,9 +115,9 @@ namespace Paint
                 if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btConLacCD);
 
                 btDrawArrow.BackColor = SystemColors.ControlDark;
-
                 line = "arrow";
             }
             else if (btDrawArrow.BackColor == SystemColors.ControlDark)
@@ -132,7 +138,7 @@ namespace Paint
             //widthLine = int.Parse(cbWidthLine.SelectedValue.ToString());
             newBitMap(pbDrawZone.Width, pbDrawZone.Height);
 
-            cbWidthLine.SelectedIndex = 3;
+            cbWidthLine.SelectedIndex = 0;
             cbDrawColor.Checked = false;
         }
 
@@ -152,7 +158,9 @@ namespace Paint
 
             dt = new DrawTool(bm, label2);
             dtChon = new DrawTool(bmChon, label2);
-            ct = new ChangeTool(bm, label2);
+            ct = new ChangeTool(label2);
+
+            dtNam = new DrawTool(pbDrawZone, label2);
 
             gp = Graphics.FromImage(bm);
         }
@@ -161,7 +169,6 @@ namespace Paint
         private void drawCircle(MouseEventArgs e)
         {
             resetPoint(ref oldPoint);
-            if(bMouseUp == true)
             if (bMouseUp == true)
             {
                 newPoint = e.Location;
@@ -173,7 +180,9 @@ namespace Paint
             {
                 if (newPoint != Point.Empty)
                 {
-                    dt.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen);
+                    //dtNam.ResetBitmap();
+                    //dt.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen, cbDrawColor.Checked);
+                    dtNam.DrawCircle(e.Location, int.Parse(tbRadius.Text), pen, cbDrawColor.Checked);
                 }
             }
             catch (FormatException)
@@ -186,7 +195,7 @@ namespace Paint
             }
             finally
             {
-                pbDrawZone.Image = bm;
+                pbDrawZone.Refresh();
             }
         }
 
@@ -210,6 +219,7 @@ namespace Paint
         //Vẽ mũi tên
         private void drawArrow(MouseEventArgs e)
         {
+
             if (bMouseDown == true && bMousePress == false)
             {
                 oldPoint = e.Location;
@@ -231,10 +241,29 @@ namespace Paint
             Ở đây mình dùng thư viện cho nhanh :v */
             p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
 
-            if (oldPoint != Point.Empty && newPoint != Point.Empty) dt.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
+            if (oldPoint != Point.Empty && newPoint != Point.Empty)
+            {
+                dtNam.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
+
+                pbDrawZone.Refresh();
+
+                //try
+                //{
+
+                //    pbDrawZone.Refresh();
+                //}
+                //catch (Exception)
+                //{
+                //    cbIsStop.Checked = false;
+                //}
+                //finally
+                //{
+                //    pbDrawZone.Refresh();
+                //}
+            }                
             //gp.DrawLine(p, oldPoint, newPoint);
-                                                                    
-            pbDrawZone.Image = bm;
+
+            
         }
 
         //Tô màu
@@ -271,7 +300,7 @@ namespace Paint
 
         private void cbDrawColor_CheckedChanged(object sender, EventArgs e)
         {
-            cbDrawColor.Checked = true;
+            
         }
 
         private void tbRotate_TextChanged(object sender, EventArgs e)
@@ -321,6 +350,196 @@ namespace Paint
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void DrawConLac(Point A, Point B, Point centerP, int R, Pen p, Boolean isColor)
+        {
+            dtNam.DrawLineByMidPoint(A, B, p, isColor);
+
+
+            dtNam.DrawCircle(centerP, R, p, isColor);
+
+            //if(pbDrawZone != null) pbDrawZone.Image = bm;
+        }
+
+        private void DrawClock(Point A, int height, Color color)
+        {
+            Point B, C, D, E, X, Y, Z, centerP;
+            float radius;
+            Pen p = new Pen(color, 1);
+
+            B = new Point(A.X + height / 2, A.Y); C = new Point(A.X - height / 2, A.Y);
+            D = new Point(B.X, B.Y - height); E = new Point(C.X, D.Y);
+
+            X = new Point(A.X, A.Y - (2 * height) + height / 4);
+            Y = new Point(D.X + (height / 2), D.Y); Z = new Point(E.X - (height / 2), E.Y);
+
+            centerP = new Point(A.X, A.Y - (height / 2));
+            radius = height / 2 - 5;
+
+            Pen deleteP = new Pen(SystemColors.Control, 1);
+
+            //DrawLineByMidPoint(B, C, p, false); DrawLineByMidPoint(C, E, p, false);
+            //DrawLineByMidPoint(E, D, p, false); DrawLineByMidPoint(D, B, p, false);
+            dtNam.DrawLineByMidPoint(new Point(B.X, (B.Y + D.Y) / 2), new Point(C.X, (C.Y + E.Y) / 2), new Pen(Color.Black, height / 2), true);
+
+            dtNam.DrawTriangleByMidPoint(Y, Z, X, p, true);
+
+            dtNam.DrawCircle(centerP, (int)radius, deleteP, true);
+            //FillColor(centerP, p.Color);
+        }
+
+        public void DrawConLacThang(Point A, int height, int R, Color color, Boolean isStop)
+        {
+            ChangeTool ct = new ChangeTool(label2);
+            Point B = new Point(A.X, A.Y + height - R);
+            Point centerP = new Point(B.X, B.Y + R);
+
+            Point centerClockP = new Point(A.X, A.Y - (height / 2));
+            int radiusClock = height / 2 - height / 5;
+            Point lastClockP = new Point(centerClockP.X, centerClockP.Y - radiusClock);
+
+            Point animB, animCenterP, animClock;
+            Pen p = new Pen(color, 2);
+            Pen deleteP = new Pen(SystemColors.Control, 2);
+            float maxAngle = 30;
+            float angle = maxAngle;
+            float angleClock = 0;
+
+            Boolean chieuDuong = true;
+
+            animClock = lastClockP;
+            animB = B; animCenterP = centerP;
+            //int i = 0;
+
+            if(!isStop)
+            {
+                DrawClock(A, height, color);
+                DrawConLac(A, animB, animCenterP, R, p, true);
+            }
+            while (!isStop)
+            {
+                isStop = cbIsStop.Checked;
+                ////Thread.Yield();
+                //label2.Text = i.ToString();
+                //i++;
+
+                if (angle == maxAngle)
+                {
+                    chieuDuong = false;
+
+                    dtNam.DrawArrow(centerClockP, animClock, new Pen(SystemColors.Control, height / 50), false);
+                    animClock = ct.RotateAroundPoint(centerClockP, lastClockP, angleClock, color);
+                    dtNam.DrawArrow(centerClockP, animClock, new Pen(color, height / 50), false);
+
+                    angleClock = angleClock + 6;
+                }
+                else if (angle == -maxAngle)
+                {
+                    chieuDuong = true;
+
+                    dtNam.DrawArrow(centerClockP, animClock, new Pen(SystemColors.Control, height / 50), false);
+                    animClock = ct.RotateAroundPoint(centerClockP, lastClockP, angleClock, color);
+                    dtNam.DrawArrow(centerClockP, animClock, new Pen(color, height / 50), false);
+
+                    angleClock = angleClock + 6;
+                }
+
+
+                DrawConLac(A, animB, animCenterP, R, deleteP, true);
+
+
+                animB = ct.RotateAroundPoint(A, B, angle, color);
+                animCenterP = ct.RotateAroundPoint(A, centerP, angle, color);
+
+                DrawConLac(A, animB, animCenterP, R, p, true);
+                
+                pbDrawZone.Refresh();
+                //pbDrawZone.Image = bm;
+                Thread.Sleep(3);
+
+
+                if (chieuDuong)
+                {
+                    angle++;
+                }
+                else
+                {
+                    angle--;
+                }
+
+            }
+        }
+
+        private void AnimConLac()
+        {
+            //Animation animation = new Animation();
+            Point point = newPoint;
+            label2.Text = newPoint.ToString();
+            int lengh = 50;
+            point.Y = point.Y + lengh / 2;
+
+            //DrawTool dtNew = new DrawTool(pbDrawZone, label2);
+            //dtChon.ResetBitmap();
+            //dtNew.DrawConLacThang(new Point(200, 200), 50 * int.Parse(cbWidthLine.Text), 10 * int.Parse(cbWidthLine.Text), clLine);
+            //dtNam.DrawConLacThang(new Point(200, 200), 50 , 10 , clLine, cbDrawColor.Checked);
+            //DrawConLacThang(new Point(200, 200), 50, 10, clLine, cbDrawColor.Checked);
+            
+            DrawConLacThang(point, lengh * int.Parse(cbWidthLine.Text), 
+                10 * int.Parse(cbWidthLine.Text), clLine, cbIsStop.Checked);
+        }
+
+        private void ThreadAnimConLac(MouseEventArgs e)
+        {
+            Thread t = new Thread(AnimConLac);
+            t.IsBackground = true;
+
+            resetPoint(ref oldPoint);
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+                //if (!cbIsStop.Checked)
+                //{
+                //    cbIsStop.Checked = true;
+                //}
+            }
+
+            if (newPoint != Point.Empty)
+            {
+                cbIsStop.Checked = false;
+                t.Start();
+                Thread.Sleep(50);
+                newPoint = Point.Empty;
+            }
+
+        }
+
+        private void btConLacCD_Click(object sender, EventArgs e)
+        {
+            if (btConLacCD.BackColor == SystemColors.Control)
+            {
+                btConLacCD.BackColor = SystemColors.ControlDark;
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btFillColor);
+
+                cbIsStop.Visible = true;
+                cbIsStop.Checked = false;
+                line = "con lac";
+            }
+            else if (btConLacCD.BackColor == SystemColors.ControlDark)
+            {
+                btConLacCD.BackColor = SystemColors.Control;
+
+                cbIsStop.Visible = false;
+                line = String.Empty;
+            }
+        }
+
         private void btFillColor_Click(object sender, EventArgs e)
         {
             if (btFillColor.BackColor == SystemColors.Control)
@@ -328,6 +547,7 @@ namespace Paint
                 if (btDrawPixel.BackColor == SystemColors.ControlDark) btDrawPixel.BackColor = SystemColors.Control;
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btConLacCD);
 
                 btFillColor.BackColor = SystemColors.ControlDark;
 
@@ -347,6 +567,7 @@ namespace Paint
                 TurnOffModeDraw(btDrawArrow);
                 TurnOffModeDraw(btDrawPixel);
                 TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btConLacCD);
 
                 btDrawCircle.BackColor = SystemColors.ControlDark;
 
@@ -361,31 +582,7 @@ namespace Paint
 
         private void lbDoDay_Click(object sender, EventArgs e)
         {
-            float[,] a =
-            {
-                {1, 2, 3}
-            };
-            float[,] b =
-            {
-                {1, 2, 4 },
-                {2, 3, 5 },
-                {2, 4, 1 }
-            };
-            float[,] c =
-            {
-                {1, 2, 4 },
-                {2, 3, 5 },
-                {2, 4, 1 }
-            };
 
-            Matrix ma = new Matrix(a);
-            Matrix mb = new Matrix(b);
-            Matrix mc = new Matrix(c);
-            Matrix md = ma * mb * mc;
-
-            for (int i = 0; i < md.Row; i++)
-                for (int j = 0; j < md.Col; j++)
-                    label2.Text = label2.Text + " " + md.Matrixa[i, j];
         }
 
         private void RotateArrow(Point aroundPoint)
@@ -484,6 +681,10 @@ namespace Paint
                 else if (line == "circle")
                 {
                     drawCircle(e);
+                }
+                else if( line == "con lac")
+                {
+                    ThreadAnimConLac(e);
                 }
             }
         }
