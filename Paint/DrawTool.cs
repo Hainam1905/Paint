@@ -27,6 +27,7 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
+<<<<<<< HEAD
             //Gọi hàm vẽ lưới pixel 
             //DrawCoordinate(bitmap.Width, bitmap.Height);
             //PutPixel(50, 50, Color.Black);
@@ -50,6 +51,10 @@ namespace Paint
 
             //Gọi hàm vẽ lưới pixel 
             //DrawCoordinate(pbDrawZone.Width, pbDrawZone.Height);
+=======
+            //hàm vẽ đồ thị
+           DrawCoordinate(bm.Width, bm.Height);
+>>>>>>> 4d698da9368c8be750f67590615448fae029dc4b
         }
 
         // hàm vẽ lưới pixel
