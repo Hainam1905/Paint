@@ -258,5 +258,40 @@ namespace Paint
             //Label.Text = TransaleToPoint(matrixSymmertricalP) + " ";
             return TransaleToPoint(matrixSymmertricalP);
         }
+        // BỔ SUNG
+        //Tịnh tiến 
+        public Point TinhTien(Point firstP, int x, int y, Color color)
+        {
+            //Tìm ma trận biến đổi
+            Matrix maTranTinhTien = MatrixTransalting(x, y);
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * maTranTinhTien;
+
+            return TransaleToPoint(maTranDiem);
+        }
+        //Tỉ lệ
+        private Matrix MaTranTiLe(float Sx, float Sy)
+        {
+            float[,] k =
+            {
+                {Sx, 0, 0 },
+                {0, Sy, 0 },
+                {0, 0, 1 }
+            };
+            return new Matrix(k);
+        }
+        public Point TiLe(Point firstP, float Sx, float Sy, Color color)
+        {
+            //Tìm ma trận biến đổi
+            Matrix maTranTiLe = MaTranTiLe(Sx, Sy);
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * maTranTiLe;
+
+            return TransaleToPoint(maTranDiem);
+        }
     }
 }
