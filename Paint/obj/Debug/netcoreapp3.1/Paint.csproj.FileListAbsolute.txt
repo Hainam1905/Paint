@@ -46,3 +46,5 @@ D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimec
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Code\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
+D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
