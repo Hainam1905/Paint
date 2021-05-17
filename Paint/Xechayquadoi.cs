@@ -227,6 +227,7 @@ namespace Paint
             int x = xPlane;
             int y = yPlane;
             int distance = 10; 
+
             for (int i = 0; i < 135; i++)
             {
                 if (i < 115)
@@ -248,7 +249,14 @@ namespace Paint
                 {
                     Brush ve = new SolidBrush(Color.Red);
                     Font font = new Font("Arial", 50);
+                    Font font2 = new Font("Arial", 20);
                     PointF drawPoint = new PointF(distance, 80);
+                    PointF drawPoint20 = new PointF(20, 10);
+                    PointF drawPoint30= new PointF(20, 40);
+
+                    gp2.DrawString("MÔN KỸ THUẬT ĐỒ HỌA", font2, ve, drawPoint20);
+                    gp2.DrawString("Giảng viên: Dương Thanh Thảo", font2, ve, drawPoint30);
+
                     distance += 60;
                     gp2.DrawString("N", font, ve, drawPoint);
                 }
@@ -265,10 +273,10 @@ namespace Paint
                     Brush ve = new SolidBrush(Color.Red);
                     Font font = new Font("Arial", 50);
                     PointF drawPoint = new PointF(distance, 80);
-                    PointF drawPoint2 = new PointF(distance+50, 60);
+                    PointF drawPoint20 = new PointF(distance+50, 60);
                     distance += 60;
                     gp2.DrawString("Ó", font, ve, drawPoint);
-                    //gp2.DrawString("'", font, ve, drawPoint2);
+                    //gp2.DrawString("'", font, ve, drawPoint20);
                 }
                 else if (i / 15 == 4 && i % 15 == 0)
                 {
@@ -300,21 +308,29 @@ namespace Paint
 
 
                 }
-                //thanh vien, lop, ten giang vien, mon hoc
-                else if (i / 15 == 8 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    PointF drawPoint = new PointF(distance, 80);
-                    distance += 60;
-                    gp2.DrawString("0", font, ve, drawPoint);
-
-
-                }
+                
                 pb2.Image = bm2;
                 Thread.Sleep(100); 
             }
             clearAirPlane(x, y);
+
+            Brush ve0 = new SolidBrush(Color.Red);
+            Font font0 = new Font("Arial", 15);
+            PointF drawPoint0 = new PointF(580, 15);
+            gp2.DrawString("Thành viên", font0, ve0, drawPoint0);
+
+
+            Font font1 = new Font("Arial", 12);
+            PointF drawPoint1 = new PointF(600, 40);
+            gp2.DrawString("Nguyễn Hải Nam", font1, ve0, drawPoint1);
+            PointF drawPoint2 = new PointF(600, 60);
+            gp2.DrawString("Nguyễn Văn Chung", font1, ve0, drawPoint2);
+            PointF drawPoint3 = new PointF(600, 80);
+            gp2.DrawString("Huỳnh Phước Sang", font1, ve0, drawPoint3);
+            PointF drawPoint4 = new PointF(600, 100);
+            gp2.DrawString("Nguyễn Tá Huy", font1, ve0, drawPoint4);
+            PointF drawPoint5 = new PointF(600, 120);
+            gp2.DrawString("Lù Vĩnh Trường", font1, ve0, drawPoint5);
             pb2.Image = bm2;
         }
         public void drawCarLeftToRight(int x, int y)
