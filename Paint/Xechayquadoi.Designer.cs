@@ -29,23 +29,25 @@ namespace Paint
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbDrawZone = new System.Windows.Forms.PictureBox();
+            this.pb1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.RunCar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
+            this.pb2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).BeginInit();
             this.SuspendLayout();
             // 
-            // pbDrawZone
+            // pb1
             // 
-            this.pbDrawZone.BackColor = System.Drawing.Color.LightGray;
-            this.pbDrawZone.Location = new System.Drawing.Point(-3, 105);
-            this.pbDrawZone.Name = "pbDrawZone";
-            this.pbDrawZone.Size = new System.Drawing.Size(974, 650);
-            this.pbDrawZone.TabIndex = 0;
-            this.pbDrawZone.TabStop = false;
-            this.pbDrawZone.Click += new System.EventHandler(this.pbDrawZone_Click);
+            this.pb1.BackColor = System.Drawing.Color.LightGray;
+            this.pb1.Location = new System.Drawing.Point(-3, 105);
+            this.pb1.Name = "pb1";
+            this.pb1.Size = new System.Drawing.Size(974, 213);
+            this.pb1.TabIndex = 0;
+            this.pb1.TabStop = false;
+            this.pb1.Click += new System.EventHandler(this.pbDrawZone_Click);
             // 
             // label1
             // 
@@ -87,21 +89,32 @@ namespace Paint
             this.label2.Text = "label2";
             this.label2.Visible = false;
             // 
+            // pb2
+            // 
+            this.pb2.Location = new System.Drawing.Point(-3, 291);
+            this.pb2.Name = "pb2";
+            this.pb2.Size = new System.Drawing.Size(974, 230);
+            this.pb2.TabIndex = 5;
+            this.pb2.TabStop = false;
+            this.pb2.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Xechayquadoi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(979, 760);
+            this.Controls.Add(this.pb2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.RunCar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pbDrawZone);
+            this.Controls.Add(this.pb1);
             this.Name = "Xechayquadoi";
             this.Text = "Xechayquadoi";
             this.Load += new System.EventHandler(this.Xechayquadoi_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,10 +122,11 @@ namespace Paint
 
         #endregion
 
-        public System.Windows.Forms.PictureBox pbDrawZone;
+        public System.Windows.Forms.PictureBox pb1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button RunCar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pb2;
     }
 }

@@ -25,7 +25,7 @@ namespace Paint
             //Bitmap mặc định, không phải để vẽ
             bmDefault = new Bitmap(bm);
 
-            //DrawCoordinate(bitmap.Width, bitmap.Height);
+            DrawCoordinate(bitmap.Width, bitmap.Height);
           //  PutPixel(bitmap.Width/2+7, bitmap.Height/2+7, Color.Blue);
         }
         private void DrawCoordinate(int x, int y)
@@ -73,15 +73,17 @@ namespace Paint
                     bm.SetPixel(x, y, color);
                     for (int i = 1; i <= 2; i++)
                     {
-
-                        bm.SetPixel(x, y + i, color);
-                        bm.SetPixel(x - i, y + i, color);
-                        bm.SetPixel(x - i, y, color);
-                        bm.SetPixel(x - i, y - i, color);
-                        bm.SetPixel(x, y - i, color);
-                        bm.SetPixel(x + i, y - i, color);
-                        bm.SetPixel(x + i, y + 1, color);
-                        bm.SetPixel(x, y + i, color);
+                        
+                            bm.SetPixel(x, y + i, color);
+                            bm.SetPixel(x - i, y + i, color);
+                            bm.SetPixel(x - i, y, color);
+                            bm.SetPixel(x - i, y - i, color);
+                            bm.SetPixel(x, y - i, color);
+                            bm.SetPixel(x + i, y - i, color);
+                            bm.SetPixel(x + i, y + 1, color);
+                            bm.SetPixel(x, y + i, color);
+                        
+                        
 
                     }
                     //ToMauXungQuanh(new Point(x, y), color);
@@ -168,23 +170,16 @@ namespace Paint
 
 
             //tamthoitat
-         /*   PutPixelGrid3D(xa + i, ya + j, color);
+            PutPixelGrid3D(xa + i, ya + j, color);
             PutPixelGrid3D(xa - i, ya + j, color);
             PutPixelGrid3D(xa + i, ya - j, color);
             PutPixelGrid3D(xa - i, ya - j, color);
             PutPixelGrid3D(xa + j, ya + i, color);
             PutPixelGrid3D(xa - j, ya + i, color);
             PutPixelGrid3D(xa + j, ya - i, color);
-            PutPixelGrid3D(xa - j, ya - i, color);*/
+            PutPixelGrid3D(xa - j, ya - i, color);
 
-            PutPixel(xa + i, ya + j, color);
-            PutPixel(xa - i, ya + j, color);
-            PutPixel(xa + i, ya - j, color);
-            PutPixel(xa - i, ya - j, color);
-            PutPixel(xa + j, ya + i, color);
-            PutPixel(xa - j, ya + i, color);
-            PutPixel(xa + j, ya - i, color);
-            PutPixel(xa - j, ya - i, color);
+
         }
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color, Bitmap temp)
         {
@@ -458,10 +453,10 @@ namespace Paint
         }
         private void draw2PointForHaftElip(int xc, int yc, int x, int y, Color color)//ve 4 diem doi xung
         {
-            PutPixel(xc + x, yc + y, color);
+            PutPixelGrid3D(xc + x, yc + y, color);
             //PutPixel(xc - x, yc + y, color);
             //PutPixel(xc - x, yc - y, color);
-            PutPixel(xc + x, yc - y, color);
+            PutPixelGrid3D(xc + x, yc - y, color);
             
 
         }
@@ -1058,9 +1053,9 @@ namespace Paint
 
 
 
-            //PutPixelGrid3D(x, y, pen.Color);
+            PutPixelGrid3D(x, y, pen.Color);
             //PutPixel(new Point(x, y), pen);
-            PutPixel(x, y, pen.Color);
+            
 
             //Vẽ theo hướng ra xa trục Ox
             if (a > 0)
@@ -1084,8 +1079,8 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        PutPixel(x, y, pen.Color);
-                        //PutPixelGrid3D(x, y, pen.Color);
+                        //PutPixel(x, y, pen.Color);
+                        PutPixelGrid3D(x, y, pen.Color);
                     }
                 }
                 else if (hsg >= 1)
@@ -1107,8 +1102,8 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //PutPixelGrid3D(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        PutPixelGrid3D(x, y, pen.Color);
+                        
                     }
                 }
                 else if (hsg == 0)
@@ -1118,8 +1113,8 @@ namespace Paint
                         y++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //PutPixelGrid3D(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        PutPixelGrid3D(x, y, pen.Color);
+                        
                     }
                 }
             }
@@ -1145,8 +1140,7 @@ namespace Paint
                         x++;
 
                         //PutPixel(new Point(x, y), pen);
-                        //PutPixelGrid3D(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        PutPixelGrid3D(x, y, pen.Color);
                     }
                 }
                 else if (hsg <= -1)
@@ -1168,8 +1162,7 @@ namespace Paint
                         y--;
 
                         //PutPixel(new Point(x, y), pen);
-                        //PutPixelGrid3D(x, y, pen.Color);
-                        PutPixel(x, y, pen.Color);
+                        PutPixelGrid3D(x, y, pen.Color);
                     }
                 }
                 else if (hsg == 0)
@@ -1180,8 +1173,7 @@ namespace Paint
                             y--;
 
                             //PutPixel(new Point(x, y), pen);
-                            //PutPixelGrid3D(x, y, pen.Color);
-                            PutPixel(x, y, pen.Color);
+                            PutPixelGrid3D(x, y, pen.Color);
                         }
                     else
                         while (x < x2)
@@ -1189,8 +1181,8 @@ namespace Paint
                             x++;
 
                             //PutPixel(new Point(x, y), pen);
-                            //PutPixelGrid3D(x, y, pen.Color);
-                            PutPixel(x, y, pen.Color);
+                            PutPixelGrid3D(x, y, pen.Color);
+                            
                         }
                 }
             }
