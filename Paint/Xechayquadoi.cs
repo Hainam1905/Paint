@@ -26,7 +26,7 @@ namespace Paint
         private int widthLine = 1;
         int xStartFromLeftToRight = 10;
         int xPlane = 30;
-        int yPlane = 180; 
+        int yPlane = 200; 
         int xLorryStartFromLeftToRight = 150;
         int yStartFromLeftToRight = 195;
         int xStartFromRightToLeft = 920;
@@ -173,7 +173,150 @@ namespace Paint
             dt2.FillColor(new Point(x + 50, y - 15), Color.Red);
         }
 
+        public void clearAirPlane(int x, int y)
+        {
+            // to mau: 
+            dt2.FillColor(new Point(x + 10, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 80, y - 40), Color.Gray);
+            dt2.FillColor(new Point(x + 50, y - 15), Color.Gray);
 
+            Pen p = new Pen(Color.Gray, widthLine);
+
+
+            dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 100, y - 30), p);
+
+
+            //duoi may bay
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 10, y - 60), p);
+            dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x - 10, y - 60), p);
+
+            dt2.DrawMidPointAnimation(new Point(x + 100, y - 30), new Point(x + 70, y - 90), p);
+            dt2.DrawMidPointAnimation(new Point(x + 70, y - 90), new Point(x + 90, y - 90), p);
+
+            dt2.DrawMidPointAnimation(new Point(x + 90, y - 90), new Point(x + 150, y - 30), p);
+
+            //canh kho to 
+            dt2.DrawMidPointAnimation(new Point(x + 70, y - 30), new Point(x + 50, y - 75), p);
+            dt2.DrawMidPointAnimation(new Point(x + 50, y - 75), new Point(x + 60, y - 75), p);
+            dt2.DrawMidPointAnimation(new Point(x + 60, y - 75), new Point(x + 100, y - 30), p);
+
+            //phan dau: 
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 30), new Point(x + 200, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 250, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 200, y - 30), new Point(x + 230, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x + 230, y - 15), new Point(x + 250, y), p);
+
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 10), new Point(x + 170, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 20), new Point(x + 170, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 10), new Point(x + 30, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 170, y - 10), new Point(x + 170, y - 20), p);
+
+            dt2.MidPointDrawCircle(x + 100, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 100, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 180, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 180, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 160, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 160, y + 10, 3, Color.Gray);
+
+         
+        }
+        public void moveAirPlane()
+        {
+            int x = xPlane;
+            int y = yPlane;
+            int distance = 10; 
+            for (int i = 0; i < 135; i++)
+            {
+                if (i < 115)
+                {
+                    clearAirPlane(x, y);
+                    x += 5;
+                    drawAirplane(x, y);
+                }
+
+                else
+                {
+                    clearAirPlane(x, y);
+                    x += 5;
+                    y -= 5;
+                    drawAirplane(x, y);
+                }
+
+                if (i / 15 == 1 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("N", font, ve, drawPoint);
+                }
+                else if (i / 15 == 2 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("H", font, ve, drawPoint);
+                }
+                else if (i / 15 == 3 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    PointF drawPoint2 = new PointF(distance+50, 60);
+                    distance += 60;
+                    gp2.DrawString("Ó", font, ve, drawPoint);
+                    //gp2.DrawString("'", font, ve, drawPoint2);
+                }
+                else if (i / 15 == 4 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 120;
+                    gp2.DrawString("M", font, ve, drawPoint);
+
+
+                }
+                else if (i / 15 == 6 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50); 
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 40;
+                    gp2.DrawString("1", font, ve, drawPoint);
+
+
+                }
+                else if (i / 15 == 7 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("0", font, ve, drawPoint);
+
+
+                }
+                //thanh vien, lop, ten giang vien, mon hoc
+                else if (i / 15 == 8 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("0", font, ve, drawPoint);
+
+
+                }
+                pb2.Image = bm2;
+                Thread.Sleep(100); 
+            }
+            clearAirPlane(x, y);
+            pb2.Image = bm2;
+        }
         public void drawCarLeftToRight(int x, int y)
         {
 
@@ -1233,9 +1376,9 @@ namespace Paint
         {
             /*SoundPlayer simpleSound = new SoundPlayer(@"D:\vietnamoi.wav");
             simpleSound.Play();*/
-            move();
+            //move();
             //moveVehicle(); 
-
+            movePlane(); 
            
         }
         void move()
@@ -1247,6 +1390,13 @@ namespace Paint
 
             
 
+        }
+        void movePlane()
+        {
+            ThreadStart threadstart = new ThreadStart(moveAirPlane);
+            Thread threadAirPlane = new Thread(threadstart);
+            threadAirPlane.IsBackground = true;
+            threadAirPlane.Start();
         }
         void moveVehicle()
         {
