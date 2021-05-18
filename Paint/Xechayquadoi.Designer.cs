@@ -32,7 +32,6 @@ namespace Paint
             this.pb1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.RunCar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.pb2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb1)).BeginInit();
@@ -65,19 +64,9 @@ namespace Paint
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Tinh tuyen xe";
+            this.button1.Text = "START";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // RunCar
-            // 
-            this.RunCar.Location = new System.Drawing.Point(164, 22);
-            this.RunCar.Name = "RunCar";
-            this.RunCar.Size = new System.Drawing.Size(94, 30);
-            this.RunCar.TabIndex = 3;
-            this.RunCar.Text = "Xe chạy";
-            this.RunCar.UseVisualStyleBackColor = true;
-            this.RunCar.Click += new System.EventHandler(this.RunCar_Click);
             // 
             // label2
             // 
@@ -106,7 +95,6 @@ namespace Paint
             this.ClientSize = new System.Drawing.Size(979, 760);
             this.Controls.Add(this.pb2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.RunCar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pb1);
@@ -125,7 +113,6 @@ namespace Paint
         public System.Windows.Forms.PictureBox pb1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button RunCar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pb2;
     }

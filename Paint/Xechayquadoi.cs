@@ -28,12 +28,14 @@ namespace Paint
         int xPlane = 30;
         int yPlane = 200; 
         int xLorryStartFromLeftToRight = 150;
-        int yStartFromLeftToRight = 195;
-        int xStartFromRightToLeft = 920;
         int xLorryStartFromRightToLeft = 750;
-        int yStartFromRightToLeft = 80;
+        int xStartFromRightToLeft = 920;
         int xTankStartFromLeftToRight = 320;
         int xTankStartFromRightToLeft = 400;
+
+
+        int yStartFromLeftToRight = 195;
+        int yStartFromRightToLeft = 80;
         int xSun = 590;
         int ySun = 80;
         int tempySun = 80;
@@ -84,12 +86,49 @@ namespace Paint
 
             CarLeft car1 = new CarLeft();
             listVehicle.Add(car1);
-            //drawCarLeftToRight(car1.X, car1.Y);
+            
 
             CarRight car2 = new CarRight();
             listVehicle.Add(car2);
-            //drawCarRightToLeft(car2.X, car2.Y);
-            //drawAirplane(xStartFromLeftToRight,yStartFromLeftToRight); 
+
+            LorryRight lorry3 = new LorryRight();
+            listVehicle.Add(lorry3);
+
+            
+
+            AmbulanceRight ambulance4 = new AmbulanceRight();
+            listVehicle.Add(ambulance4);
+
+
+            TankLeft tank5 = new TankLeft();
+            listVehicle.Add(tank5);
+
+            PoliceCarRight policeCar6 = new PoliceCarRight();
+            listVehicle.Add(policeCar6);
+            
+            
+            
+            //final:
+            PoliceCarLeft policecar7 = new PoliceCarLeft();
+            listVehicle.Add(policecar7);
+
+            PoliceCarRight policecar12 = new PoliceCarRight();
+            listVehicle.Add(policecar12);
+            
+            AmbulanceLeft ambulance8 = new AmbulanceLeft();
+            listVehicle.Add(ambulance8);
+
+            AmbulanceRight ambulance13 = new AmbulanceRight();
+            listVehicle.Add(ambulance13);
+
+            LorryLeft lorry9 = new LorryLeft();
+            listVehicle.Add(lorry9);
+
+            TankRight tank14 = new TankRight();
+            listVehicle.Add(tank14);
+
+
+            
 
             pb2.Image = bm2; 
 
@@ -101,8 +140,186 @@ namespace Paint
 
             clearStreet();
             drawAirplane(xPlane, yPlane);
+
+
+
             pb2.Image = bm2; 
 
+        }
+        void drawAmbulanceLefttoRight(int x, int y)
+        {
+            Pen p = new Pen(clLine, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x , y-45), p);
+            dt2.DrawMidPointAnimation(new Point(x, y-45), new Point(x+90, y - 45), p);
+
+            //ve chu thap 
+            dt2.DrawMidPointAnimation(new Point(x + 15, y -20), new Point(x + 25, y-20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 15, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 30), new Point(x + 25, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 30), new Point(x + 25, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 40), new Point(x + 35, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 35, y - 40), new Point(x + 35, y - 30), p);
+           dt2.DrawMidPointAnimation(new Point(x + 35, y - 30), new Point(x + 45, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 45, y - 30), new Point(x + 45, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 45, y - 20), new Point(x + 35, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 35, y - 20), new Point(x + 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 10), new Point(x + 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 20), new Point(x + 25, y - 10), p);
+            //phan dau: 
+            dt2.DrawMidPointAnimation(new Point(x+70, y - 45), new Point(x + 70, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 25), new Point(x + 120, y), p);
+            //phan kho to 
+            dt2.DrawMidPointAnimation(new Point(x + 90, y - 45), new Point(x + 120, y-25), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 25), new Point(x + 70, y - 25), p);
+
+            //banh xe: 
+            //banh xe
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+
+            //to mau xe: 
+            dt2.FillColor(new Point(x + 10, y - 10), Color.White);
+            dt2.FillColor(new Point(x + 30, y - 20), Color.Red);
+            dt2.FillColor(new Point(x + 90, y - 10), Color.White);
+            dt2.FillColor(new Point(x + 78, y - 30), Color.White);
+        }
+        void translatingAmbulanceFromLeftToRight(int x, int y)
+        {
+            clearAmbulanceLefttoRight(x, y); 
+            x += 20;
+            drawAmbulanceLefttoRight(x, y);
+
+        }
+        void clearAmbulanceLefttoRight(int x, int y)
+        {
+
+            //to mau xe: 
+            dt2.FillColor(new Point(x + 10, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 30, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x + 90, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 78, y - 30), Color.Gray);
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 45), new Point(x + 90, y - 45), p);
+
+            //ve chu thap 
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 25, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 15, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 30), new Point(x + 25, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 30), new Point(x + 25, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 40), new Point(x + 35, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 35, y - 40), new Point(x + 35, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 35, y - 30), new Point(x + 45, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 45, y - 30), new Point(x + 45, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 45, y - 20), new Point(x + 35, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 35, y - 20), new Point(x + 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 10), new Point(x + 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x + 25, y - 20), new Point(x + 25, y - 10), p);
+            //phan dau: 
+            dt2.DrawMidPointAnimation(new Point(x + 70, y - 45), new Point(x + 70, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 25), new Point(x + 120, y), p);
+            //phan kho to 
+            dt2.DrawMidPointAnimation(new Point(x + 90, y - 45), new Point(x + 120, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 25), new Point(x + 70, y - 25), p);
+
+            //banh xe: 
+            //banh xe
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+
+        }
+        void translatingAmbulanceRightoLeft(int x, int y)
+        {
+            clearAmbulanceRightToLeft(x, y);
+            x -= 20;
+            drawAmbulanceRighttoLeft(x, y);
+            
+        }
+        void clearAmbulanceRightToLeft(int x, int y)
+        {
+            //to mau xe: 
+            dt2.FillColor(new Point(x - 10, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x - 30, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x - 90, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x - 78, y - 30), Color.Gray);
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 45), new Point(x - 90, y - 45), p);
+
+            //ve chu thap 
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 25, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 15, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 30), new Point(x - 25, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 30), new Point(x - 25, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 40), new Point(x - 35, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 40), new Point(x - 35, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 30), new Point(x - 45, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 45, y - 30), new Point(x - 45, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 45, y - 20), new Point(x - 35, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 20), new Point(x - 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 10), new Point(x - 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 20), new Point(x - 25, y - 10), p);
+            //phan dau: 
+            dt2.DrawMidPointAnimation(new Point(x - 70, y - 45), new Point(x - 70, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 25), new Point(x - 120, y), p);
+            //phan kho to 
+            dt2.DrawMidPointAnimation(new Point(x - 90, y - 45), new Point(x - 120, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 25), new Point(x - 70, y - 25), p);
+
+            //banh xe: 
+            //banh xe
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+
+        }
+        void drawAmbulanceRighttoLeft(int x, int y)
+        {
+            Pen p = new Pen(clLine, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 45), new Point(x - 90, y - 45), p);
+
+            //ve chu thap 
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 25, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 15, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 30), new Point(x - 25, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 30), new Point(x - 25, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 40), new Point(x - 35, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 40), new Point(x - 35, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 30), new Point(x - 45, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 45, y - 30), new Point(x - 45, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 45, y - 20), new Point(x - 35, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 35, y - 20), new Point(x - 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 10), new Point(x - 35, y - 10), p);
+            dt2.DrawMidPointAnimation(new Point(x - 25, y - 20), new Point(x - 25, y - 10), p);
+            //phan dau: 
+            dt2.DrawMidPointAnimation(new Point(x - 70, y - 45), new Point(x - 70, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 25), new Point(x- 120, y), p);
+            //phan kho to 
+            dt2.DrawMidPointAnimation(new Point(x - 90, y - 45), new Point(x - 120, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 25), new Point(x - 70, y - 25), p);
+
+            //banh xe: 
+            //banh xe
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
+
+            //to mau xe: 
+            dt2.FillColor(new Point(x - 10, y - 10), Color.White);
+            dt2.FillColor(new Point(x - 30, y - 20), Color.Red);
+            dt2.FillColor(new Point(x - 90, y - 10), Color.White);
+            dt2.FillColor(new Point(x - 78, y - 30), Color.White);
         }
         public void drawBorder1()
         {
@@ -224,139 +441,27 @@ namespace Paint
         }
         public void moveAirPlane()
         {
-            int x = xPlane;
-            int y = yPlane;
-            int distance = 10; 
-
-            for (int i = 0; i < 135; i++)
+            /* int x = xStartFromLeftToRight;
+             int y = yStartFromLeftToRight;
+             for (int i = 0; i < 100; i++)
+             {
+                 translatingPoliceCarLeftToRight(x, y);
+                 x += 5;
+                 drawPoliceCarLeftToRight(x, y);
+                 pb2.Image = bm2;
+                 Thread.Sleep(100);
+             }*/
+            int x = xStartFromRightToLeft;
+            int y = yStartFromRightToLeft;
+            for (int i = 0; i < 100; i++)
             {
-                if (i < 115)
-                {
-                    clearAirPlane(x, y);
-                    x += 5;
-                    drawAirplane(x, y);
-                }
-
-                else
-                {
-                    clearAirPlane(x, y);
-                    x += 5;
-                    y -= 5;
-                    drawAirplane(x, y);
-                }
-
-                if (i / 15 == 1 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    Font font2 = new Font("Arial", 20);
-                    PointF drawPoint = new PointF(distance, 80);
-                    PointF drawPoint20 = new PointF(20, 10);
-                    PointF drawPoint30= new PointF(20, 40);
-
-                    gp2.DrawString("MÔN KỸ THUẬT ĐỒ HỌA", font2, ve, drawPoint20);
-                    gp2.DrawString("Giảng viên: Dương Thanh Thảo", font2, ve, drawPoint30);
-
-                    distance += 60;
-                    gp2.DrawString("N", font, ve, drawPoint);
-                }
-                else if (i / 15 == 2 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    PointF drawPoint = new PointF(distance, 80);
-                    distance += 60;
-                    gp2.DrawString("H", font, ve, drawPoint);
-                }
-                else if (i / 15 == 3 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    PointF drawPoint = new PointF(distance, 80);
-                    PointF drawPoint20 = new PointF(distance+50, 60);
-                    distance += 60;
-                    gp2.DrawString("Ó", font, ve, drawPoint);
-                    //gp2.DrawString("'", font, ve, drawPoint20);
-                }
-                else if (i / 15 == 4 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    PointF drawPoint = new PointF(distance, 80);
-                    distance += 120;
-                    gp2.DrawString("M", font, ve, drawPoint);
-
-
-                }
-                else if (i / 15 == 6 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50); 
-                    PointF drawPoint = new PointF(distance, 80);
-                    distance += 40;
-                    gp2.DrawString("1", font, ve, drawPoint);
-
-
-                }
-                else if (i / 15 == 7 && i % 15 == 0)
-                {
-                    Brush ve = new SolidBrush(Color.Red);
-                    Font font = new Font("Arial", 50);
-                    PointF drawPoint = new PointF(distance, 80);
-                    distance += 60;
-                    gp2.DrawString("0", font, ve, drawPoint);
-
-
-                }
-                
+                translatingPoliceCarRightToLeft(x, y);
+                x -= 5;
+                drawPoliceCarRightToLeft(x, y);
                 pb2.Image = bm2;
                 Thread.Sleep(100);
-
-                
             }
-            clearAirPlane(x, y);
 
-            Brush ve0 = new SolidBrush(Color.Red);
-            Font font0 = new Font("Arial", 15);
-            PointF drawPoint0 = new PointF(580, 15);
-            gp2.DrawString("Thành viên", font0, ve0, drawPoint0);
-
-
-            Font font1 = new Font("Arial", 12);
-            PointF drawPoint1 = new PointF(600, 40);
-            gp2.DrawString("Nguyễn Hải Nam", font1, ve0, drawPoint1);
-            PointF drawPoint2 = new PointF(600, 60);
-            gp2.DrawString("Nguyễn Văn Chung", font1, ve0, drawPoint2);
-            PointF drawPoint3 = new PointF(600, 80);
-            gp2.DrawString("Huỳnh Phước Sang", font1, ve0, drawPoint3);
-            PointF drawPoint4 = new PointF(600, 100);
-            gp2.DrawString("Nguyễn Tá Huy", font1, ve0, drawPoint4);
-            PointF drawPoint5 = new PointF(600, 120);
-            gp2.DrawString("Lù Vĩnh Trường", font1, ve0, drawPoint5);
-            pb2.Image = bm2;
-            Thread.Sleep(1000); 
-            /*distance = 10;
-
-            Brush veclear = new SolidBrush(Color.Yellow);
-            Font fontclear = new Font("Arial", 50);
-            Font font2clear = new Font("Arial", 20);
-            PointF drawPointclear = new PointF(distance, 80);
-            PointF drawPoint20clear = new PointF(20, 10);
-            PointF drawPoint30clear = new PointF(20, 40);
-
-            gp2.DrawString("MÔN KỸ THUẬT ĐỒ HỌA", font2clear, veclear, drawPoint20clear);
-            gp2.DrawString("Giảng viên: Dương Thanh Thảo", font2clear, veclear, drawPoint30clear);
-
-            distance += 60;
-            gp2.DrawString("N", fontclear, veclear, drawPointclear);
-            pb2.Image = bm2;*/
-            gp2 = Graphics.FromImage(bm2); 
-            gp2.Clear(Color.LightGray);
-            drawBorder2();
-            drawStreet();
-            paintStreet();
-            pb2.Image = bm2;
-           
         }
         public void drawCarLeftToRight(int x, int y)
         {
@@ -392,7 +497,174 @@ namespace Paint
 
 
         }
+        public void drawPoliceCarLeftToRight(int x, int y)
+        {
 
+
+
+            Pen p = new Pen(clLine, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
+
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
+
+            //cua so: 
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
+            //den bao: 
+            dt2.DrawMidPointAnimation(new Point(x + 40, y - 40), new Point(x + 40, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 40, y - 50), new Point(x + 70, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 70, y - 50), new Point(x + 70, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 55, y - 50), new Point(x + 55, y - 40), p);
+            //banh xe
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+
+            dt2.FillColor(new Point(x + 5, y - 5), Color.LightBlue);
+            dt2.FillColor(new Point(x + 30, y - 12), Color.White);
+            dt2.FillColor(new Point(x + 70, y - 12), Color.White);
+            dt2.FillColor(new Point(x + 50, y - 45), Color.Blue);
+            dt2.FillColor(new Point(x + 60, y - 45), Color.Red);
+
+        }
+        void translatingPoliceCarLeftToRight(int x, int y)
+        {
+            clearPoliceCarLeftToRight(x, y);
+            x += 25;
+            drawPoliceCarLeftToRight(x, y);
+        }
+        void clearPoliceCarLeftToRight(int x, int y)
+        {
+            dt2.FillColor(new Point(x + 5, y - 5), Color.Gray);
+            dt2.FillColor(new Point(x + 30, y - 12), Color.Gray);
+            dt2.FillColor(new Point(x + 70, y - 12), Color.Gray);
+            dt2.FillColor(new Point(x + 50, y - 45), Color.Gray);
+            dt2.FillColor(new Point(x + 60, y - 45), Color.Gray);
+
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
+
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x + 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x + 20, y - 30), new Point(x + 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 30), new Point(x + 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 40), new Point(x + 80, y - 40), p);
+
+            //cua so: 
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 7), new Point(x + 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 15, y - 20), new Point(x + 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 20), new Point(x + 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
+            //den bao: 
+            dt2.DrawMidPointAnimation(new Point(x + 40, y - 40), new Point(x + 40, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 40, y - 50), new Point(x + 70, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 70, y - 50), new Point(x + 70, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 55, y - 50), new Point(x + 55, y - 40), p);
+            //banh xe
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+
+
+        }
+        public void drawPoliceCarRightToLeft(int x, int y)
+        {
+
+
+
+            Pen p = new Pen(clLine, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y), new Point(x - 120, y - 15), p);
+
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x - 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
+
+            //cua so: 
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
+            //den bao: 
+            dt2.DrawMidPointAnimation(new Point(x - 40, y - 40), new Point(x - 40, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 40, y - 50), new Point(x - 70, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 70, y - 50), new Point(x - 70, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 55, y - 50), new Point(x - 55, y - 40), p);
+            //banh xe
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
+
+            dt2.FillColor(new Point(x - 5, y - 5), Color.LightYellow);
+            dt2.FillColor(new Point(x - 30, y - 12), Color.White);
+            dt2.FillColor(new Point(x - 70, y - 12), Color.White);
+            dt2.FillColor(new Point(x - 50, y - 45), Color.Blue);
+            dt2.FillColor(new Point(x - 60, y - 45), Color.Red);
+
+        }
+        void translatingPoliceCarRightToLeft(int x, int y)
+        {
+            clearPolicCarRightToLeft(x, y);
+            x -= 25;
+            drawPoliceCarRightToLeft(x, y); 
+        }
+        public void clearPolicCarRightToLeft(int x, int y)
+        {
+            dt2.FillColor(new Point(x - 5, y - 5), Color.Gray);
+            dt2.FillColor(new Point(x - 30, y - 12), Color.Gray);
+            dt2.FillColor(new Point(x - 70, y - 12), Color.Gray);
+            dt2.FillColor(new Point(x - 50, y - 45), Color.Gray);
+            dt2.FillColor(new Point(x - 60, y - 45), Color.Gray);
+
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y), new Point(x - 120, y - 15), p);
+
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x - 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
+
+            //cua so: 
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
+            //den bao: 
+            dt2.DrawMidPointAnimation(new Point(x - 40, y - 40), new Point(x - 40, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 40, y - 50), new Point(x - 70, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 70, y - 50), new Point(x - 70, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 55, y - 50), new Point(x - 55, y - 40), p);
+            //banh xe
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+
+
+        }
         public void translatingCarLeftToRight(int x, int y)
         {
             //LEFT TO RIGHT
@@ -429,7 +701,7 @@ namespace Paint
 
 
                //ve lai xe: 
-               x += 5;
+               x += 10;
                drawCarLeftToRight(x, y);
        }
         public void clearCarLeftToRight(int x, int y)
@@ -582,20 +854,28 @@ namespace Paint
             gp2.DrawString("Lù Vĩnh Trường", font1, ve0, drawPoint5);
             pb2.Image = bm2;
             Thread.Sleep(1000);
-            
+
             gp2 = Graphics.FromImage(bm2);
             gp2.Clear(Color.LightGray);
             drawBorder2();
             drawStreet();
             paintStreet();
             pb2.Image = bm2;
-            Thread.Sleep(100); 
+            Thread.Sleep(100);
             int count = 0;
             int limit = 0;
+            bool checkStop = false; 
             while (true)
            {
+                if (checkStop == true) break;
                for (int i = 0; i <limit; i++)
                {
+                    if(limit == 13)
+                    {
+                        checkStop = true; 
+                        break;
+
+                    }
                     if (listVehicle[i].Exist == true)
                     {
                         //left to right
@@ -614,7 +894,74 @@ namespace Paint
                                 else
                                 {
                                     translatingCarLeftToRight(listVehicle[i].X, listVehicle[i].Y);
-                                    listVehicle[i].X += 5;
+                                    listVehicle[i].X += 10;
+                                }
+                            }
+                            //Lorry
+                           else if (listVehicle[i].Type == 2)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X + 165) >= 970)
+                                {
+
+                                    clearLorryFromLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingLorryLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X += 10;
+                                }
+                            }
+
+                            //Tank
+                            else if (listVehicle[i].Type == 3)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X + 150) >= 970)
+                                {
+
+                                    clearTankLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingTankLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X += 10;
+                                }
+                            }
+
+
+                            //Ambulance
+                            else if (listVehicle[i].Type == 4)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X + 150) >= 970)
+                                {
+
+                                    clearAmbulanceLefttoRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingAmbulanceFromLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X += 20;
+                                }
+                            }
+                            //Police Car:
+                            else if (listVehicle[i].Type == 5)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X + 150) >= 970)
+                                {
+
+                                    clearPoliceCarLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingPoliceCarLeftToRight(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X += 25;
                                 }
                             }
                         }
@@ -634,7 +981,73 @@ namespace Paint
                                 else
                                 {
                                     translatingCarRightToLeft(listVehicle[i].X, listVehicle[i].Y);
-                                    listVehicle[i].X -= 5;
+                                    listVehicle[i].X -= 10;
+                                }
+                            }
+                            //lorry
+                            else if (listVehicle[i].Type == 2)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X - 165) <= 0)
+                                {
+
+                                    clearLorryRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingLorryRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X -= 10;
+                                }
+                            }
+
+                            //tank
+                            else if (listVehicle[i].Type == 3)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X - 150) <= 0)
+                                {
+
+                                    clearTankRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingTankRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X -= 10;
+                                }
+                            }
+                            //ambulance
+                            else if (listVehicle[i].Type == 4)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X - 150) <= 0)
+                                {
+
+                                    clearAmbulanceRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingAmbulanceRightoLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X -= 20;
+                                }
+                            }
+
+                            //police car: 
+                            else if (listVehicle[i].Type == 5)
+                            {
+                                //can move more
+                                if ((listVehicle[i].X - 150) <= 0)
+                                {
+
+                                    clearPolicCarRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].Exist = false;
+                                }
+                                else
+                                {
+                                    translatingPoliceCarRightToLeft(listVehicle[i].X, listVehicle[i].Y);
+                                    listVehicle[i].X -= 25;
                                 }
                             }
                         }
@@ -650,158 +1063,78 @@ namespace Paint
                     limit++;
                     drawCarLeftToRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
                 }
-                if (count == 5)
+                else if (count == 5)
                 {
                     limit++;
                     drawCarRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
                 }
-            }
-
-         /*  //bm2 = bm; 
-           int y = yStartFromLeftToRight;
-           int x = xStartFromLeftToRight;
-
-           int x2 = xStartFromRightToLeft;
-           int y2 = yStartFromRightToLeft;
-           Pen p = new Pen(Color.Gray, widthLine);
-           for (int i = 0; i < 157; i++)
-           {
-
-
-
-
-
-
-
-
-
-
-               //RIGHT TO LEFT 
-               x2 = xStartFromRightToLeft;
-
-               dt2.FillColor(new Point(x2 - 5, y2 - 5), Color.Gray);
-               dt2.FillColor(new Point(x2 - 30, y2 - 15), Color.Gray);
-               dt2.FillColor(new Point(x2 - 70, y2 - 15), Color.Gray);
-
-               dt2.DrawMidPoint(new Point(x2, y2), new Point(x2 - 120, y2), p);
-               dt2.DrawMidPoint(new Point(x2, y2), new Point(x2, y2 - 30), p);
-               dt2.DrawMidPoint(new Point(x2 - 120, y2), new Point(x2 - 120, y2 - 15), p);
-
-               dt2.DrawMidPoint(new Point(x2, y2 - 30), new Point(x2 - 20, y2 - 30), p);
-               dt2.DrawMidPoint(new Point(x2 - 120, y2 - 15), new Point(x2 - 80, y2 - 30), p);
-               dt2.DrawMidPoint(new Point(x2 - 20, y2 - 30), new Point(x2 - 30, y2 - 40), p);
-               dt2.DrawMidPoint(new Point(x2 - 80, y2 - 30), new Point(x2 - 80, y2 - 40), p);
-               dt2.DrawMidPoint(new Point(x2 - 30, y2 - 40), new Point(x2 - 80, y2 - 40), p);
-
-
-               dt2.DrawMidPoint(new Point(x2 - 15, y2 - 7), new Point(x2 - 15, y2 - 20), p);
-               dt2.DrawMidPoint(new Point(x2 - 15, y2 - 20), new Point(x2 - 80, y2 - 20), p);
-               dt2.DrawMidPoint(new Point(x2 - 80, y2 - 20), new Point(x2 - 80, y2 - 7), p);
-               dt2.DrawMidPoint(new Point(x2 - 80, y2 - 7), new Point(x2 - 15, y2 - 7), p);
-               dt2.DrawMidPoint(new Point(x2 - 60, y2 - 20), new Point(x2 - 40, y2 - 7), p);
-               //banh xe
-               dt2.MidPointDrawCircle(x2 - 20, y2 + 10, 10, Color.Gray);
-               dt2.MidPointDrawCircle(x2 - 20, y2 + 10, 3, Color.Gray);
-               dt2.MidPointDrawCircle(x2 - 90, y2 + 10, 10, Color.Gray);
-               dt2.MidPointDrawCircle(x2 - 90, y2 + 10, 3, Color.Gray);
-
-               //ve lai xe: 
-               xStartFromRightToLeft -= 5;
-               drawCarRightToLeft(xStartFromRightToLeft, yStartFromRightToLeft);*/
-
-            //TANK 
-            //LEFT TO RIGHT
-            /*              x = xStartFromLeftToRight; 
-
-                          dt2.FillColor(new Point(x + 20, y - 10), Color.Gray);
-                          dt2.FillColor(new Point(x + 35, y - 35), Color.Gray);
-
-                          dt2.DrawMidPoint(new Point(x, y), new Point(x + 120, y), p);
-                          dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 15), p);
-                          dt2.DrawMidPoint(new Point(x + 120, y), new Point(x + 120, y - 15), p);
-                          dt2.DrawMidPoint(new Point(x, y - 15), new Point(x + 10, y - 25), p);
-                          dt2.DrawMidPoint(new Point(x + 120, y - 15), new Point(x + 110, y - 25), p);
-                          dt2.DrawMidPoint(new Point(x + 10, y - 25), new Point(x + 110, y - 25), p);
-                          dt2.DrawMidPoint(new Point(x + 30, y - 25), new Point(x + 30, y - 45), p);
-                          dt2.DrawMidPoint(new Point(x + 90, y - 25), new Point(x + 90, y - 35), p);
-                          dt2.DrawMidPoint(new Point(x + 30, y - 45), new Point(x + 130, y - 45), p);
-                          dt2.DrawMidPoint(new Point(x + 90, y - 35), new Point(x + 130, y - 35), p);
-                          dt2.DrawMidPoint(new Point(x + 130, y - 45), new Point(x + 130, y - 35), p);
-
-
-                          //banh xe: 
-
-                          dt2.MidPointDrawCircle(x + 10, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 10, y + 10, 3, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 30, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 30, y + 10, 3, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 50, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 50, y + 10, 3, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 70, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 70, y + 10, 3, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 110, y + 10, 10, Color.Gray);
-                          dt2.MidPointDrawCircle(x + 110, y + 10, 3, Color.Gray);
-
-
-                          //ve lai xe tank: 
-                          xStartFromLeftToRight += 5;
-                          drawTankLeftToRight(xStartFromLeftToRight, yStartFromLeftToRight);*/
-
-
-
-
-            //RIGHT TO LEFT 
-
-
-          /*  x2 = xStartFromRightToLeft;
-
-                dt2.FillColor(new Point(x2 - 20, y2 - 10), Color.Gray);
-                dt2.FillColor(new Point(x2- 35, y2 - 35), Color.Gray);
-
-                dt2.DrawMidPoint(new Point(x2, y2), new Point(x2 - 120, y2), p);
-                dt2.DrawMidPoint(new Point(x2, y2), new Point(x2, y2 - 15), p);
-                dt2.DrawMidPoint(new Point(x2 - 120, y2), new Point(x2 - 120, y2 - 15), p);
-                dt2.DrawMidPoint(new Point(x2, y2 - 15), new Point(x2 - 10, y2 - 25), p);
-                dt2.DrawMidPoint(new Point(x2 - 120, y2 - 15), new Point(x2 - 110, y2 - 25), p);
-                dt2.DrawMidPoint(new Point(x2 - 10, y2 - 25), new Point(x2 - 110, y2 - 25), p);
-                dt2.DrawMidPoint(new Point(x2 - 30, y2 - 25), new Point(x2 - 30, y2 - 45), p);
-                dt2.DrawMidPoint(new Point(x2 - 90, y2 - 25), new Point(x2 - 90, y2 - 35), p);
-                dt2.DrawMidPoint(new Point(x2 - 30, y2 - 45), new Point(x2 - 130, y2 - 45), p);
-                dt2.DrawMidPoint(new Point(x2 - 90, y2 - 35), new Point(x2 - 130, y2 - 35), p);
-                dt2.DrawMidPoint(new Point(x2 - 130, y2- 45), new Point(x2 - 130, y2 - 35), p);
-
-
-                //banh xe: 
-                *//*dt.DrawMidPoint(new Point(x + 15, y), new Point(x +15, y +20), p);
-                dt.DrawMidPoint(new Point(x + 110, y), new Point(x +110, y + 20), p);
-                dt.DrawMidPoint(new Point(x + 15, y+20), new Point(x + 110, y + 20), p);*//*
-                dt2.MidPointDrawCircle(x2 - 10, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 10, y2 + 10, 3, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 30, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 30, y2 + 10, 3, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 50, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 50, y2 + 10, 3, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 70, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 70, y2 + 10, 3, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 90, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 90, y2 + 10, 3, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 110, y2 + 10, 10, Color.Gray);
-                dt2.MidPointDrawCircle(x2 - 110, y2 + 10, 3, Color.Gray);
-
-
-
-
-                //ve lai xe tank: 
-                xStartFromRightToLeft -= 5;
-                drawTankRightToLeft(xStartFromRightToLeft, yStartFromRightToLeft);
+                else if(count == 40)
+                {
+                    limit++;
+                    drawLorryRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
                 
-                pb2.Image = bm2;
-                Thread.Sleep(100);
-                 
+                else if (count == 120)
+                {
+                    limit++;
+                    drawAmbulanceRighttoLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 190)
+                {
+                    limit++;
+                    drawTankLeftToRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 250)
+                {
+                    limit++;
+                    drawPoliceCarRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 290)
+                {
+                    limit++;
+                    drawPoliceCarLeftToRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 293)
+                {
+                    limit++;
+                    drawPoliceCarRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 298)
+                {
+                    limit++;
+                    drawAmbulanceLefttoRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 300)
+                {
+                    limit++;
+                    drawAmbulanceRighttoLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 310)
+                {
+                    limit++;
+                    drawLorryLeftToRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if (count == 312)
+                {
+                    limit++;
+                    drawTankRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
+                else if(count == 380)
+                {
+                    limit++; 
+                }
+                
+                
+            }
+            gp2.Clear(Color.Yellow);
+            Brush veend = new SolidBrush(Color.Red);
+            Font fontend = new Font("Arial", 33);
+            PointF drawPointend = new PointF(150, 80);
+            gp2.DrawString("TẠM BIỆT CÔ VÀ CÁC BẠN!!!", fontend, veend, drawPointend);
 
-            }*/
+            pb2.Image = bm2;
+            Thread.Sleep(1000);
+
         }
             void drawSun(int x, int y)
         {
@@ -932,51 +1265,51 @@ namespace Paint
         {
             
             Pen p = new Pen(clLine, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt3.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
-            dt3.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
-            dt3.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
-            dt3.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
+            dt2.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
-            dt3.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt3.MidPointDrawCircle(x + 80, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x + 80, y + 10, 3, Color.Black);
-            dt3.MidPointDrawCircle(x + 130, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x + 130, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Black);
 
-            dt3.FillColor(new Point(x + 50, y - 20), Color.Cyan);
-            dt3.FillColor(new Point(x + 120, y - 10), Color.DarkGreen);
-            dt3.FillColor(new Point(x + 105, y - 43), Color.Pink);
+            dt2.FillColor(new Point(x + 50, y - 20), Color.Cyan);
+            dt2.FillColor(new Point(x + 120, y - 10), Color.DarkGreen);
+            dt2.FillColor(new Point(x + 105, y - 43), Color.Pink);
         }
         void drawLorryRightToLeft(int x, int y)
         {
             
             Pen p = new Pen(clLine, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt3.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt3.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt3.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt3.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt3.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
-            dt3.MidPointDrawCircle(x - 80, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x - 80, y + 10, 3, Color.Black);
-            dt3.MidPointDrawCircle(x - 130, y + 10, 10, Color.Black);
-            dt3.MidPointDrawCircle(x - 130, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Black);
 
-            dt3.FillColor(new Point(x - 50, y - 20), Color.Cyan);
-            dt3.FillColor(new Point(x - 120, y - 10), Color.DarkGreen);
-            dt3.FillColor(new Point(x - 105, y - 43), Color.Pink);
+            dt2.FillColor(new Point(x - 50, y - 20), Color.Violet);
+            dt2.FillColor(new Point(x - 120, y - 10), Color.LightCoral);
+            dt2.FillColor(new Point(x - 105, y - 43), Color.Red);
         }
 
         void drawCarRightToLeft(int x, int y)
@@ -1347,116 +1680,156 @@ namespace Paint
 
         void translatingTankLeftToRight(int x, int y)
         {
-            
-            dt3.FillColor(new Point(x + 20, y - 10), Color.Gray);
-            dt3.FillColor(new Point(x + 35, y - 35), Color.Gray);
-            Pen p = new Pen(Color.Gray, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x + 120, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 15), p);
-            dt3.DrawMidPoint(new Point(x + 120, y), new Point(x + 120, y - 15), p);
-            dt3.DrawMidPoint(new Point(x, y - 15), new Point(x + 10, y - 25), p);
-            dt3.DrawMidPoint(new Point(x + 120, y - 15), new Point(x + 110, y - 25), p);
-            dt3.DrawMidPoint(new Point(x + 10, y - 25), new Point(x + 110, y - 25), p);
-            dt3.DrawMidPoint(new Point(x + 30, y - 25), new Point(x + 30, y - 45), p);
-            dt3.DrawMidPoint(new Point(x + 90, y - 25), new Point(x + 90, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 30, y - 45), new Point(x + 130, y - 45), p);
-            dt3.DrawMidPoint(new Point(x + 90, y - 35), new Point(x + 130, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 130, y - 45), new Point(x + 130, y - 35), p);
 
-
-            //banh xe: 
-            
-            dt3.MidPointDrawCircle(x + 10, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 10, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 30, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 30, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 50, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 50, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 70, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 70, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 110, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 110, y + 10, 3, Color.Gray);
+            clearTankLeftToRight(x,y); 
 
 
             //ve lai xe tank: 
-            xTankStartFromLeftToRight += 5;
-            drawTankLeftToRight(xTankStartFromLeftToRight, yStartFromLeftToRight);
+            x += 10;
+            drawTankLeftToRight(x, y);
+        }
+        void clearTankLeftToRight(int x, int y)
+        {
+
+            dt2.FillColor(new Point(x + 20, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 35, y - 35), Color.Gray);
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y), new Point(x + 120, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 15), new Point(x + 10, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x + 120, y - 15), new Point(x + 110, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x + 10, y - 25), new Point(x + 110, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 25), new Point(x + 30, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x + 90, y - 25), new Point(x + 90, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 30, y - 45), new Point(x + 130, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x + 90, y - 35), new Point(x + 130, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 130, y - 45), new Point(x + 130, y - 35), p);
+
+
+            //banh xe: 
+
+            dt2.MidPointDrawCircle(x + 10, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 10, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 30, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 30, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 50, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 50, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 70, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 70, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 110, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 110, y + 10, 3, Color.Gray);
+
+
         }
         void translatingTankRightToLeft(int x, int y)
         {
-            
-            dt3.FillColor(new Point(x - 20, y - 10), Color.Gray);
-            dt3.FillColor(new Point(x - 35, y - 35), Color.Gray);
+
+
+            clearTankRightToLeft(x, y); 
+            //ve lai xe tank: 
+            x -= 10;
+            drawTankRightToLeft(x, y);
+        }
+        void clearTankRightToLeft(int x, int y)
+        {
+
+            dt2.FillColor(new Point(x - 20, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x - 35, y - 35), Color.Gray);
 
             Pen p = new Pen(Color.Gray, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x - 120, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 15), p);
-            dt3.DrawMidPoint(new Point(x - 120, y), new Point(x - 120, y - 15), p);
-            dt3.DrawMidPoint(new Point(x, y - 15), new Point(x - 10, y - 25), p);
-            dt3.DrawMidPoint(new Point(x - 120, y - 15), new Point(x - 110, y - 25), p);
-            dt3.DrawMidPoint(new Point(x - 10, y - 25), new Point(x - 110, y - 25), p);
-            dt3.DrawMidPoint(new Point(x - 30, y - 25), new Point(x - 30, y - 45), p);
-            dt3.DrawMidPoint(new Point(x - 90, y - 25), new Point(x - 90, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 30, y - 45), new Point(x - 130, y - 45), p);
-            dt3.DrawMidPoint(new Point(x - 90, y - 35), new Point(x - 130, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 130, y - 45), new Point(x - 130, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y), new Point(x - 120, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 15), new Point(x - 10, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 15), new Point(x - 110, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x - 10, y - 25), new Point(x - 110, y - 25), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 25), new Point(x - 30, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x - 90, y - 25), new Point(x - 90, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 45), new Point(x - 130, y - 45), p);
+            dt2.DrawMidPointAnimation(new Point(x - 90, y - 35), new Point(x - 130, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 130, y - 45), new Point(x - 130, y - 35), p);
 
 
             //banh xe: 
             /*dt.DrawMidPoint(new Point(x + 15, y), new Point(x +15, y +20), p);
             dt.DrawMidPoint(new Point(x + 110, y), new Point(x +110, y + 20), p);
             dt.DrawMidPoint(new Point(x + 15, y+20), new Point(x + 110, y + 20), p);*/
-            dt3.MidPointDrawCircle(x - 10, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 10, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 30, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 30, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 50, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 50, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 70, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 70, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 110, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 110, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 10, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 10, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 30, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 30, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 50, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 50, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 70, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 70, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 110, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 110, y + 10, 3, Color.Gray);
 
 
 
 
-            //ve lai xe tank: 
-            xTankStartFromRightToLeft -= 5;
-            drawTankRightToLeft(xTankStartFromRightToLeft, yStartFromRightToLeft);
+
         }
         void translatingLorryLeftToRight(int x, int y)
         {
            
-            dt3.FillColor(new Point(x + 50, y - 20), Color.Gray);
-            dt3.FillColor(new Point(x + 120, y - 10), Color.Gray);
-            dt3.FillColor(new Point(x + 105, y - 43), Color.Gray);
+            dt2.FillColor(new Point(x + 50, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x + 120, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 105, y - 43), Color.Gray);
 
 
             Pen p = new Pen(Color.Gray, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt3.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
-            dt3.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
-            dt3.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
-            dt3.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
-            dt3.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
+            dt2.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
-            dt3.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x + 130, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x + 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
-            xLorryStartFromLeftToRight += 5;
-            drawLorryLeftToRight(xLorryStartFromLeftToRight, yStartFromLeftToRight);
+            x += 10;
+            drawLorryLeftToRight(x, y);
+        }
+        void clearLorryFromLeftToRight(int x, int y)
+        {
+            dt2.FillColor(new Point(x + 50, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x + 120, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x + 105, y - 43), Color.Gray);
+
+
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+            dt2.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
+            dt2.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
+
+            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Gray);
+
         }
         void translatingCarRightToLeft(int x, int y)
         {
@@ -1489,7 +1862,7 @@ namespace Paint
             dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
-            x -= 5;
+            x -= 10;
             drawCarRightToLeft(x, y);
 
         }
@@ -1526,30 +1899,54 @@ namespace Paint
         void translatingLorryRightToLeft(int x, int y)
         {
             
-            dt3.FillColor(new Point(x - 50, y - 20), Color.Gray);
-            dt3.FillColor(new Point(x - 120, y - 10), Color.Gray);
-            dt3.FillColor(new Point(x - 105, y - 43), Color.Gray);
+            dt2.FillColor(new Point(x - 50, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
             Pen p = new Pen(Color.Gray, widthLine);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
-            dt3.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt3.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt3.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt3.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt3.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt3.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt3.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 80, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 80, y + 10, 3, Color.Gray);
-            dt3.MidPointDrawCircle(x - 130, y + 10, 10, Color.Gray);
-            dt3.MidPointDrawCircle(x - 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
-            xLorryStartFromRightToLeft -= 5;
-            drawLorryRightToLeft(xLorryStartFromRightToLeft, yStartFromRightToLeft);
+            x -= 10;
+            drawLorryRightToLeft(x, y);
+
+        }
+        void clearLorryRightToLeft(int x, int y)
+        {
+            dt2.FillColor(new Point(x - 50, y - 20), Color.Gray);
+            dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
+            dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
+            Pen p = new Pen(Color.Gray, widthLine);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+
+            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Gray);
 
         }
         private void StartDraw_Click(object sender, EventArgs e)
@@ -1564,7 +1961,7 @@ namespace Paint
             simpleSound.Play();*/
            move();
            moveVehicle(); 
-          // movePlane(); 
+          //movePlane(); 
            
         }
         void move()
