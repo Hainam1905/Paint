@@ -117,8 +117,8 @@ namespace Paint
         public void drawBorder2()
         {
             Pen p = new Pen(clLine, widthLine);
-            dt2.DrawMidPointAnimation(new Point(0, 3), new Point(1000, 3), p);
-            dt2.DrawMidPointAnimation(new Point(0, 225), new Point(1000, 225), p);
+            dt2.DrawMidPointAnimation(new Point(0, 3), new Point(970, 3), p);
+            dt2.DrawMidPointAnimation(new Point(0, 225), new Point(970, 225), p);
 
             dt2.DrawMidPointAnimation(new Point(3, 3), new Point(3, 225), p);
             dt2.DrawMidPointAnimation(new Point(970, 3), new Point(970, 225), p);
@@ -310,7 +310,9 @@ namespace Paint
                 }
                 
                 pb2.Image = bm2;
-                Thread.Sleep(100); 
+                Thread.Sleep(100);
+
+                
             }
             clearAirPlane(x, y);
 
@@ -332,6 +334,29 @@ namespace Paint
             PointF drawPoint5 = new PointF(600, 120);
             gp2.DrawString("Lù Vĩnh Trường", font1, ve0, drawPoint5);
             pb2.Image = bm2;
+            Thread.Sleep(1000); 
+            /*distance = 10;
+
+            Brush veclear = new SolidBrush(Color.Yellow);
+            Font fontclear = new Font("Arial", 50);
+            Font font2clear = new Font("Arial", 20);
+            PointF drawPointclear = new PointF(distance, 80);
+            PointF drawPoint20clear = new PointF(20, 10);
+            PointF drawPoint30clear = new PointF(20, 40);
+
+            gp2.DrawString("MÔN KỸ THUẬT ĐỒ HỌA", font2clear, veclear, drawPoint20clear);
+            gp2.DrawString("Giảng viên: Dương Thanh Thảo", font2clear, veclear, drawPoint30clear);
+
+            distance += 60;
+            gp2.DrawString("N", fontclear, veclear, drawPointclear);
+            pb2.Image = bm2;*/
+            gp2 = Graphics.FromImage(bm2); 
+            gp2.Clear(Color.LightGray);
+            drawBorder2();
+            drawStreet();
+            paintStreet();
+            pb2.Image = bm2;
+           
         }
         public void drawCarLeftToRight(int x, int y)
         {
@@ -446,9 +471,128 @@ namespace Paint
 
         public void mainMove()
        {
+            int x = xPlane;
+            int y = yPlane;
+            int distance = 10;
+
+            for (int i = 0; i < 135; i++)
+            {
+                if (i < 115)
+                {
+                    clearAirPlane(x, y);
+                    x += 5;
+                    drawAirplane(x, y);
+                }
+
+                else
+                {
+                    clearAirPlane(x, y);
+                    x += 5;
+                    y -= 5;
+                    drawAirplane(x, y);
+                }
+
+                if (i / 15 == 1 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    Font font2 = new Font("Arial", 20);
+                    PointF drawPoint = new PointF(distance, 80);
+                    PointF drawPoint20 = new PointF(20, 10);
+                    PointF drawPoint30 = new PointF(20, 40);
+
+                    gp2.DrawString("MÔN KỸ THUẬT ĐỒ HỌA", font2, ve, drawPoint20);
+                    gp2.DrawString("Giảng viên: Dương Thanh Thảo", font2, ve, drawPoint30);
+
+                    distance += 60;
+                    gp2.DrawString("N", font, ve, drawPoint);
+                }
+                else if (i / 15 == 2 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("H", font, ve, drawPoint);
+                }
+                else if (i / 15 == 3 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    PointF drawPoint20 = new PointF(distance + 50, 60);
+                    distance += 60;
+                    gp2.DrawString("Ó", font, ve, drawPoint);
+                    //gp2.DrawString("'", font, ve, drawPoint20);
+                }
+                else if (i / 15 == 4 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 120;
+                    gp2.DrawString("M", font, ve, drawPoint);
+
+
+                }
+                else if (i / 15 == 6 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 40;
+                    gp2.DrawString("1", font, ve, drawPoint);
+
+
+                }
+                else if (i / 15 == 7 && i % 15 == 0)
+                {
+                    Brush ve = new SolidBrush(Color.Red);
+                    Font font = new Font("Arial", 50);
+                    PointF drawPoint = new PointF(distance, 80);
+                    distance += 60;
+                    gp2.DrawString("0", font, ve, drawPoint);
+
+
+                }
+
+                pb2.Image = bm2;
+                Thread.Sleep(100);
+
+
+            }
+            clearAirPlane(x, y);
+
+            Brush ve0 = new SolidBrush(Color.Red);
+            Font font0 = new Font("Arial", 15);
+            PointF drawPoint0 = new PointF(580, 15);
+            gp2.DrawString("Thành viên", font0, ve0, drawPoint0);
+
+
+            Font font1 = new Font("Arial", 12);
+            PointF drawPoint1 = new PointF(600, 40);
+            gp2.DrawString("Nguyễn Hải Nam", font1, ve0, drawPoint1);
+            PointF drawPoint2 = new PointF(600, 60);
+            gp2.DrawString("Nguyễn Văn Chung", font1, ve0, drawPoint2);
+            PointF drawPoint3 = new PointF(600, 80);
+            gp2.DrawString("Huỳnh Phước Sang", font1, ve0, drawPoint3);
+            PointF drawPoint4 = new PointF(600, 100);
+            gp2.DrawString("Nguyễn Tá Huy", font1, ve0, drawPoint4);
+            PointF drawPoint5 = new PointF(600, 120);
+            gp2.DrawString("Lù Vĩnh Trường", font1, ve0, drawPoint5);
+            pb2.Image = bm2;
+            Thread.Sleep(1000);
+            
+            gp2 = Graphics.FromImage(bm2);
+            gp2.Clear(Color.LightGray);
+            drawBorder2();
+            drawStreet();
+            paintStreet();
+            pb2.Image = bm2;
+            Thread.Sleep(100); 
             int count = 0;
-            int limit = 1;
-           while (true)
+            int limit = 0;
+            while (true)
            {
                for (int i = 0; i <limit; i++)
                {
@@ -501,6 +645,11 @@ namespace Paint
 
                }
                 count++;
+                if (count == 1)
+                {
+                    limit++;
+                    drawCarLeftToRight(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
+                }
                 if (count == 5)
                 {
                     limit++;
@@ -682,7 +831,28 @@ namespace Paint
         public void sunGoDown()
         {
 
-            while(true)
+            for (int i = 1; i <= 70; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    paintSun(xSun, ySun, Color.Cyan);
+                    paintSkyandSoid(Color.Chocolate, Color.Chocolate);
+                    
+                }
+                else
+                {
+                    paintSun(xSun, ySun, Color.Violet);
+                    paintSkyandSoid(Color.Cornsilk, Color.Cornsilk);
+                }
+                pb1.Image = bm1;
+                Thread.Sleep(100);
+            }
+            paintSun(xSun, ySun, Color.Red);
+            paintSkyandSoid(Color.LightBlue, Color.LightBlue);
+            pb1.Image = bm1;
+            Thread.Sleep(100);
+
+            while (true)
             {
                 
                 if (check == false)
@@ -1296,22 +1466,22 @@ namespace Paint
             dt2.FillColor(new Point(x - 70, y - 15), Color.Gray);
 
             Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x - 120, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 120, y), new Point(x - 120, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y), new Point(x - 120, y - 15), p);
 
-            dt2.DrawMidPoint(new Point(x, y - 30), new Point(x - 20, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x - 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
 
 
-            dt2.DrawMidPoint(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
-            dt2.DrawMidPoint(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
-            dt2.DrawMidPoint(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
             //banh xe
             dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
             dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
@@ -1330,22 +1500,22 @@ namespace Paint
             dt2.FillColor(new Point(x - 70, y - 15), Color.Gray);
 
             Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x - 120, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 120, y), new Point(x - 120, y - 15), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 120, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y), new Point(x - 120, y - 15), p);
 
-            dt2.DrawMidPoint(new Point(x, y - 30), new Point(x - 20, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
-            dt2.DrawMidPoint(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 30), new Point(x - 20, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 120, y - 15), new Point(x - 80, y - 30), p);
+            dt2.DrawMidPointAnimation(new Point(x - 20, y - 30), new Point(x - 30, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 30), new Point(x - 80, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 30, y - 40), new Point(x - 80, y - 40), p);
 
 
-            dt2.DrawMidPoint(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
-            dt2.DrawMidPoint(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
-            dt2.DrawMidPoint(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
-            dt2.DrawMidPoint(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 7), new Point(x - 15, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 15, y - 20), new Point(x - 80, y - 20), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 20), new Point(x - 80, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
+            dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
             //banh xe
             dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
             dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
@@ -1392,9 +1562,9 @@ namespace Paint
         {
             /*SoundPlayer simpleSound = new SoundPlayer(@"D:\vietnamoi.wav");
             simpleSound.Play();*/
-            //move();
-            //moveVehicle(); 
-            movePlane(); 
+           move();
+           moveVehicle(); 
+          // movePlane(); 
            
         }
         void move()
