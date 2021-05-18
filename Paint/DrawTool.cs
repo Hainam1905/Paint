@@ -9,9 +9,9 @@ namespace Paint
 {
     class DrawTool
     {
-        private Bitmap bm, bmTemp, bmDefault;
+        public Bitmap bm, bmTemp, bmDefault;
         private Label Label;
-        private PictureBox pbDrawZone = null;
+        public PictureBox pbDrawZone = null;
         public int x0, y0;
 
         //Constructor
