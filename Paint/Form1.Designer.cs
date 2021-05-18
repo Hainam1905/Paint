@@ -72,6 +72,8 @@
             this.lbCheoA = new System.Windows.Forms.Label();
             this.btHinhThoi = new System.Windows.Forms.Button();
             this.btDrawLine = new System.Windows.Forms.Button();
+            this.btTatTinhTien = new System.Windows.Forms.Button();
+            this.btTatTiLe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -250,6 +252,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btTatTiLe);
+            this.panel1.Controls.Add(this.btTatTinhTien);
             this.panel1.Controls.Add(this.cbIsStop);
             this.panel1.Controls.Add(this.btConLacCD);
             this.panel1.Controls.Add(this.label2);
@@ -325,7 +329,7 @@
             // 
             // BtXoa
             // 
-            this.BtXoa.Location = new System.Drawing.Point(386, 87);
+            this.BtXoa.Location = new System.Drawing.Point(406, 84);
             this.BtXoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtXoa.Name = "BtXoa";
             this.BtXoa.Size = new System.Drawing.Size(69, 39);
@@ -594,6 +598,28 @@
             this.btDrawLine.UseVisualStyleBackColor = false;
             this.btDrawLine.Click += new System.EventHandler(this.btDrawLine_Click);
             // 
+            // btTatTinhTien
+            // 
+            this.btTatTinhTien.Location = new System.Drawing.Point(228, 102);
+            this.btTatTinhTien.Name = "btTatTinhTien";
+            this.btTatTinhTien.Size = new System.Drawing.Size(17, 29);
+            this.btTatTinhTien.TabIndex = 40;
+            this.btTatTinhTien.Text = "X";
+            this.btTatTinhTien.UseVisualStyleBackColor = true;
+            this.btTatTinhTien.Visible = false;
+            this.btTatTinhTien.Click += new System.EventHandler(this.btTatTinhTien_Click);
+            // 
+            // btTatTiLe
+            // 
+            this.btTatTiLe.Location = new System.Drawing.Point(375, 99);
+            this.btTatTiLe.Name = "btTatTiLe";
+            this.btTatTiLe.Size = new System.Drawing.Size(17, 29);
+            this.btTatTiLe.TabIndex = 41;
+            this.btTatTiLe.Text = "X";
+            this.btTatTiLe.UseVisualStyleBackColor = true;
+            this.btTatTiLe.Visible = false;
+            this.btTatTiLe.Click += new System.EventHandler(this.btTatTiLe_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -661,6 +687,8 @@
         private System.Windows.Forms.Label lbTiLeX;
         private System.Windows.Forms.Button btTiLe;
         private System.Windows.Forms.Button BtXoa;
+        private System.Windows.Forms.Button btTatTiLe;
+        private System.Windows.Forms.Button btTatTinhTien;
     }
 }
 
