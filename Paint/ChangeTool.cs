@@ -8,22 +8,22 @@ namespace Paint
 {
     class ChangeTool
     {
-        private Bitmap bm, bmTemp, bmDefault;
+        //private Bitmap bm;//, bmTemp, bmDefault;
         private Label Label;
 
         //Constructor
-        public ChangeTool(Bitmap bitmap, Label label)
+        public ChangeTool(Label label)
         {
             this.Label = label;
 
             //Bitmap chính
-            bm = bitmap;
+            //bm = bitmap;
 
             //Bitmap Để tô màu
-            bmTemp = new Bitmap(bm);
+            //bmTemp = new Bitmap(bitmap);
 
             //Bitmap mặc định, không phải để vẽ
-            bmDefault = new Bitmap(bm);
+            //bmDefault = new Bitmap(bitmap);
         }
 
         private Matrix MatrixTransalting(int x, int y)
@@ -177,7 +177,46 @@ namespace Paint
                 return Math.Abs(B.X - A.X) / Math.Sqrt(Math.Pow(B.Y - A.Y, 2) + Math.Pow(B.X - A.X, 2));
             else return -Math.Abs(B.X - A.X) / Math.Sqrt(Math.Pow(B.Y - A.Y, 2) + Math.Pow(B.X - A.X, 2));
         }
-    
+
+        private Point timVTCP(Point A, Point B, int lenght)
+        {
+            Point VTCP = new Point();
+
+            VTCP.X = B.X - A.X;
+            VTCP.Y = B.Y - A.Y;
+
+            if (VTCP.X == 0)
+            {
+                //VTCP.Y = lenght;
+                if (VTCP.Y > 0) VTCP.Y = lenght;
+                else if (VTCP.Y < 0) VTCP.Y = -lenght;
+                else VTCP.Y = 0;
+            }
+            else if (VTCP.Y == 0)
+            {
+                if (VTCP.X > 0) VTCP.X = lenght;
+                else if (VTCP.X < 0) VTCP.X = -lenght;
+                else VTCP.X = 0;
+                //VTCP.X = lenght;
+            }
+            else
+            {
+                int x, y;
+                double a;
+
+                x = VTCP.X;
+                y = VTCP.Y;
+                a = ((float)lenght / Math.Sqrt((double)(1 + (y * y) / (x * x))));
+
+
+                if (VTCP.X > 0) VTCP.X = (int)a;
+                else VTCP.X = -(int)a;
+
+                VTCP.Y = (int)(a * y / Math.Abs(x));
+            }
+
+            return VTCP;
+        }
 
         private Matrix MatrixSymmetricalPointByLine(Point firstP, Point lastP)
         {
@@ -185,6 +224,7 @@ namespace Paint
             double deltaX = lastP.X - firstP.X;
             double angle = Math.Atan2(deltaX, deltaX) * 180 * 1.0 / Math.PI;
 
+            Point VTCP = timVTCP(firstP, lastP, 10);
 
             //Tìm ma trận Tịnh tiến firstP về O
             Matrix translateToO = MatrixTransalting(-firstP.X, -firstP.Y);
@@ -195,7 +235,9 @@ namespace Paint
             double cos = Cos(firstP, lastP);
             Label.Text = firstP + " " + lastP + " " + sin + " " + cos + " " + angle;
 
-            Matrix rotate = MatrixRotateAroundO((float)cos, -(float)sin);
+            Matrix rotate = new Matrix();
+            if (VTCP.X * VTCP.Y > 0) rotate = MatrixRotateAroundO((float)cos, -(float)sin);
+            else rotate = MatrixRotateAroundO((float)cos, (float)sin);
 
             //Tìm ma trận đối xứng qua Ox
             Matrix SymmetryOx = MatrixSymmetryPointByOx();
@@ -204,31 +246,33 @@ namespace Paint
             Matrix translateToFirstP = MatrixTransalting(firstP.X, firstP.Y);
 
             //Tìm ma trận quay ngược lại hướng cũ
-            Matrix rotateToOld = MatrixRotateAroundPoint(firstP, (float)cos, (float)sin);
+            Matrix rotateToOld = new Matrix();
+            if (VTCP.X * VTCP.Y > 0) rotateToOld = MatrixRotateAroundPoint(firstP, (float)cos, (float)sin);
+            else rotateToOld = MatrixRotateAroundPoint(firstP, (float)cos, -(float)sin);
 
             return translateToO * rotate * SymmetryOx * translateToFirstP * rotateToOld;
         }
 
         //Quay quanh một điểm
-        public void RotateAroundPoint(Point aroundP, List<Point> listP, float angle, Color color)
-        {
-            //Tim Ma tran bien doi
-            Matrix rotateAroundPoint = MatrixRotateAroundPoint(aroundP, angle);
+        //public void RotateAroundPoint(Point aroundP, List<Point> listP, float angle, Color color)
+        //{
+        //    //Tim Ma tran bien doi
+        //    Matrix rotateAroundPoint = MatrixRotateAroundPoint(aroundP, angle);
 
-            //Dùng ma trận biến đổi để quay các điểm trong listP quanh aroundP với góc angle
-            foreach(Point point in listP)
-            {
-                //Đưa điểm về matrix
-                Matrix matrixPoint = this.TransaleToMatrixPoint(point);
+        //    //Dùng ma trận biến đổi để quay các điểm trong listP quanh aroundP với góc angle
+        //    foreach(Point point in listP)
+        //    {
+        //        //Đưa điểm về matrix
+        //        Matrix matrixPoint = this.TransaleToMatrixPoint(point);
 
-                //Nhân ma trận điểm với ma trận biến đổi
-                matrixPoint = matrixPoint * rotateAroundPoint;
+        //        //Nhân ma trận điểm với ma trận biến đổi
+        //        matrixPoint = matrixPoint * rotateAroundPoint;
 
-                //Đưa ma trận điểm về điểm
-                Point kq = TransaleToPoint(matrixPoint);
-                bm.SetPixel(kq.X, kq.Y, color);
-            }
-        }
+        //        //Đưa ma trận điểm về điểm
+        //        Point kq = TransaleToPoint(matrixPoint);
+        //        bm.SetPixel(kq.X, kq.Y, color);
+        //    }
+        //}
         public Point RotateAroundPoint(Point aroundP, Point rotateP, float angle, Color color)
         {
             //Tim Ma tran bien doi
@@ -257,6 +301,41 @@ namespace Paint
             matrixSymmertricalP = matrixSymmertricalP * matrixSymmertricalPointByLine;
             //Label.Text = TransaleToPoint(matrixSymmertricalP) + " ";
             return TransaleToPoint(matrixSymmertricalP);
+        }
+        // BỔ SUNG
+        //Tịnh tiến 
+        public Point TinhTien(Point firstP, int x, int y, Color color)
+        {
+            //Tìm ma trận biến đổi
+            Matrix maTranTinhTien = MatrixTransalting(x, y);
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * maTranTinhTien;
+
+            return TransaleToPoint(maTranDiem);
+        }
+        //Tỉ lệ
+        private Matrix MaTranTiLe(float Sx, float Sy)
+        {
+            float[,] k =
+            {
+                {Sx, 0, 0 },
+                {0, Sy, 0 },
+                {0, 0, 1 }
+            };
+            return new Matrix(k);
+        }
+        public Point TiLe(Point firstP, float Sx, float Sy, Color color)
+        {
+            //Tìm ma trận biến đổi
+            Matrix maTranTiLe = MaTranTiLe(Sx, Sy);
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * maTranTiLe;
+
+            return TransaleToPoint(maTranDiem);
         }
     }
 }

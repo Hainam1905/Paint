@@ -4,5 +4,12 @@
   "success": true,
   "projectFilePath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
