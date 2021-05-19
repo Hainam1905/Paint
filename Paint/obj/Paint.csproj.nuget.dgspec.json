@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj": {}
+    "D:\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj": {
+    "D:\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
+        "projectPath": "D:\\Paint\\Paint\\Paint.csproj",
         "packagesPath": "C:\\Users\\Vanic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\obj\\",
+        "outputPath": "D:\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

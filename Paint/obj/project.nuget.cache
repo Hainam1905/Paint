@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R0I5oFNuooj04/wa564qrD+r1+AD2kzsrpn1dk+IICuG3MjOlJJWe/YB0lUpyntuGlsRVgTFNj96ma0qdMuwXA==",
+  "dgSpecHash": "lJ2wh3fCR+k7bMD7qKBoiw7Me65BfgV9mATvZPtkQtjVdUP4jNKwfjaZKO+XDSQ5UK7/0qwgII2cW+75KmUF9A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
+  "projectFilePath": "D:\\Paint\\Paint\\Paint.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
