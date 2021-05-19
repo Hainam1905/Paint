@@ -72,11 +72,10 @@ namespace Paint
                 DrawLineBitmap(new Point(0, i), new Point(x, i), new Pen(Color.White, 1f));
             }
             // vẽ trục Oxy
-            int x0 = ((x / 5) / 2) * 5;
-            int y0 = ((y / 5) / 2) * 5;
+            x0 = ((x / 5) / 2) * 5;
+            y0 = ((y / 5) / 2) * 5;
             DrawLineBitmap(new Point(x0, 0), new Point(x0, y), new Pen(Color.Black, 1.05f));
             DrawLineBitmap(new Point(0, y0), new Point(x, y0), new Pen(Color.Black, 1.05f));
-
         }
         private void DrawLineBitmap(Point A, Point B, Pen pen)
         {
@@ -127,25 +126,33 @@ namespace Paint
 
             }
         }
+
         public Color SetPixel(int x, int y, Color color)
         {
-            x = x - x % 5 + 1;
-            y = y - y % 5 + 1;
-            if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
-            {
-                //x++;
-                //y++;
+            //x =x*5+ bm.Width / 2;
+            //y =y*5+ bm.Height / 2;
+            //if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
+            //{
+                ToMauDuongBienKhuDeQuy(x, y, color);
+                x = x - x % 5 + 1;
+                y = y - y % 5 + 1;
+                if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
+                {
+                    //x++;
+                    //y++;
 
-                //if (bm.GetPixel(x, y) != Color.White)
-                //{
-                return bm.GetPixel(x, y);
+                    //if (bm.GetPixel(x, y) != Color.White)
+                    //{
+                    return bm.GetPixel(x, y);
 
-            }
-            else
-            {
-                throw new IndexOutOfRangeException();
-            }
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException();
+                }
+            //}
         }
+
         //Vẽ 8 điểm từ 1 điểm trên đường tròn
         private void Draw8Pixel(int xa, int ya, int i, int j, Color color)//(i,j) toa do 1 diem tren duong tron
         {
@@ -236,6 +243,239 @@ namespace Paint
             }
         }
 
+        //Hàm vẽ hình tròn trên lưới pixel dùng thuật toán MidPoint
+        public void draw8Point(int xc, int yc, int x, int y, Color color)
+        {
+            PutPixel(xc + x, yc + y, color);
+            PutPixel(xc + y, yc + x, color);
+            PutPixel(xc + y, yc - x, color);
+            PutPixel(xc + x, yc - y, color);
+            PutPixel(xc - x, yc - y, color);
+            PutPixel(xc - y, yc - x, color);
+            PutPixel(xc - y, yc + x, color);
+            PutPixel(xc - x, yc + y, color);
+        }
+
+        public void circleMidPoint(int xc, int yc, int R, Color color)
+        {
+            float p;
+            int y = R;
+            int x = 0;
+            p = 5 / 4 - R;
+            draw8Point(xc, yc, x, y, color);
+            while (x < y)
+            {
+                if (p < 0)
+                {
+                    p += 2 * x + 3;
+
+                }
+                else
+                {
+                    p += 2 * (x - y) + 5;
+                    y-=5;
+                }
+                x+=5;
+                draw8Point(xc, yc, x, y, color);
+            }
+        }
+        //thiếu trường hợp (bỏ)
+        public void lineBresenham(int x1, int y1, int x2, int y2,Color color)
+        {
+            int x, y, Dx, Dy, p;
+            Dx = Math.Abs(x2 - x1);
+            Dy = Math.Abs(y2 - y1);
+            p = 2 * Dy - Dx;
+            x = x1;
+            y = y1;
+
+
+            int x_unit = 1, y_unit = 1;
+
+            //xét trường hợp để cho y_unit và x_unit để vẽ tăng lên hay giảm xuống
+            if (x2 - x1 < 0)
+                x_unit = (-1) * x_unit;
+            if (y2 - y1 < 0)
+                y_unit = (-1) * y_unit;
+
+            if (x1 == x2)   // trường hợp vẽ đường thẳng đứng
+            {
+                PutPixel(x, y, color);
+                while (y != y2)
+                {
+                    y += y_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+
+            else if (y1 == y2)  // trường hợp vẽ đường ngang
+            {
+                PutPixel(x, y, color);
+                while (x != x2)
+                {
+                    x += x_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+            // trường hợp vẽ các đường xiên
+            else
+            {
+                PutPixel(x, y, color);
+                while (x != x2)
+                {
+                    
+                    if (p < 0) p += 2 * Dy;
+                    else
+                    {
+                        p += 2 * (Dy - Dx);
+                        y += y_unit;
+                    }
+                    x += x_unit;
+                    PutPixel(x, y, color);
+                }
+            }
+        }
+        //vẽ đường thẳng dùng thuật toán DDA
+        public void drawLineDDA(int xA, int yA, int xB, int yB,Color color)
+        {
+            Point A = new Point(xA, yA);
+            Point B = new Point(xB, yB);
+            A = findFakePoint(A);
+            B = findFakePoint(B);
+
+            int dX = B.X - A.X;
+            int dY = B.Y - A.Y;
+
+            double steps = Math.Max(Math.Abs(dX), Math.Abs(dY));
+            double x_inc = (dX / steps);
+            double y_inc = (dY / steps);
+
+            double x = A.X, y = A.Y;
+
+            Point p = new Point(Convert.ToInt32(x), Convert.ToInt32(y));
+            p = findRealPoint(p);
+
+            PutPixel(p.X , p.Y, color);
+            int k = 0;
+
+            while (k < steps)
+            {
+                k++;
+                x += x_inc;
+                y += y_inc;
+
+                p.X = Convert.ToInt32(Math.Round(x));
+                p.Y = Convert.ToInt32(Math.Round(y));
+                p = findRealPoint(p);
+
+                PutPixel(p.X,p.Y , color);
+            }
+        }
+        public Point findFakePoint(Point p)
+        {
+            p.X = (p.X - x0) / 5;
+            p.Y = (y0- p.Y) / 5;
+            return p;
+        }
+        public Point findRealPoint(Point p)
+        {
+            p.X = p.X*5 + x0;
+            p.Y = y0 - (p.Y * 5);
+            return p;
+        }
+        public void draw4Point(int xc,int yc,int x,int y,Color color)
+        {
+            Point R = new Point(x + xc, y + yc);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y,color);
+
+            R = new Point(x + xc, yc - y);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+            R = new Point(xc - x, yc - y);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+            R = new Point(xc - x, y + yc);
+            R = findRealPoint(R);
+            PutPixel(R.X, R.Y, color);
+
+        }
+        public void drawEllipsMidPoint(int xc,int yc,int a,int b,Color color)
+        {
+            Point F = new Point(xc, yc);
+            F = findFakePoint(F);
+
+            xc = F.X;
+            yc = F.Y;
+            a = a / 5;
+            b = b / 5;
+
+            int steps = 1;
+            double p;
+            int y = b;
+            int x = 0;
+            double xQ = a * a / (Math.Sqrt(a * a + b * b));
+            p = b * b - a * a * b + a * a / 4;
+            draw4Point(xc, yc, x, y, color);
+            while (x <= xQ)
+            {
+                if (p < 0)
+                {
+                    p += (b * b) * (2 * x + 3);
+                }
+                else
+                {
+                    p += (b * b) * (2 * x + 3) - 2 * a * a * (y - 1);
+                    y-=steps;
+                }
+                x+= steps;
+                draw4Point(xc, yc, x, y, color);
+            }
+            x = a;
+            y = 0;
+            p = a * a - b * b * a + b * b / 4;
+            draw4Point(xc, yc, x, y, color);
+            while (x >= xQ)
+            {
+                if (p < 0)
+                {
+                    p += (a * a) * (2 * y + 3);
+                }
+                else
+                {
+                    p += (a * a) * (2 * y + 3) - 2 * b * b * (x - 1);
+                    x-= steps;
+                }
+                y+= steps;
+                draw4Point(xc, yc, x, y, color);
+            }
+        }
+        public Point doiXungQuaO(Point p)
+        {
+            return new Point(p.X * (-1), p.Y * (-1));
+        }
+        public Point doiXungQuaOX(Point p)
+        {
+            return new Point(p.X , p.Y * (-1));
+        }
+        public Point doiXungQuaOY(Point p)
+        {
+            return new Point(p.X * (-1), p.Y);
+        }
+        public Point layDiemQuay(Point a)
+        {
+            double sin = Math.Sin(Math.PI * 60.0 / 180.0);
+            double cos = Math.Cos(Math.PI * 60.0 / 180.0);
+
+            Point p = new Point(a.X, a.Y);
+
+            a.X = Convert.ToInt32(p.X * cos - sin * p.Y);
+            a.Y = Convert.ToInt32(p.X * sin + cos * p.Y);
+
+            return a;
+        }
         private Point CongPoint(Point A, Point B)
         {
             return new Point(A.X + B.X, A.Y + B.Y);

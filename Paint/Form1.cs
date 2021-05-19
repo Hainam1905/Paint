@@ -13,6 +13,12 @@ namespace Paint
     public partial class Form1 : Form
     {
         //khai bao can thiet
+        public static int hinh = -1; // stt của hình đang vẽ để xóa nhanh hơn
+        private Htron htron;
+        private Hvuong hvuong;
+        private Helip helip;
+        private int x0, y0; // khai báo tọa độ điểm O trên lưới pixel
+
         private Bitmap bm, bmChon;
         private Graphics gp;
         private String line, transalte;
@@ -205,6 +211,11 @@ namespace Paint
             pbDrawZone.Image = bm;
 
             dt = new DrawTool(bm, label2);
+
+            //lấy thông tin tọa độ điểm O
+            x0 = dt.x0;
+            y0 = dt.y0;
+
             dtChon = new DrawTool(bmChon, label2);
             ct = new ChangeTool(label2);
 
@@ -395,6 +406,471 @@ namespace Paint
         private void pbDrawZone_Click_1(object sender, EventArgs e)
         {
 
+        }
+        private void xoahinh()
+        {
+            Color bgColor = Color.FromArgb(240, 240, 240);
+            if (Form1.hinh == 5)// hình tròn
+            {
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), bgColor);
+            }else if (Form1.hinh == 6)// hinh vuong
+            {
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, bgColor);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, bgColor);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, bgColor);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, bgColor);
+            }else if (Form1.hinh == 7) // hinh elip
+            {
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, bgColor);
+            }
+        }
+        //vẽ hình tròn trên lưới pixel
+        private void btn_drawCircle_Click(object sender, EventArgs e)
+        {
+            xoahinh();
+            inputHtron input = new inputHtron(x0, y0);
+            input.ShowDialog();
+            if (input.checkchange == false) return;
+            htron = new Htron(input.xc, input.yc, input.R);
+            dt.circleMidPoint(input.xc, input.yc, input.R,Color.Black);
+            Form1.hinh = 5;
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_tinhtien_Click(object sender, EventArgs e)
+        {
+            inputTinhTien ip = new inputTinhTien();
+            ip.ShowDialog();
+            
+            if (ip.checkchange == false) return;
+
+            if (Form1.hinh == 5)// hình tròn
+            {
+                xoahinh();
+                htron.setx(htron.getx() + ip.x);
+                htron.sety(htron.gety() + ip.y);
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+              
+                hvuong.xA = hvuong.xA + ip.x;
+                hvuong.yA = hvuong.yA + ip.y;
+                hvuong.xB = hvuong.xB + ip.x;
+                hvuong.yB = hvuong.yB + ip.y;
+                hvuong.xC = hvuong.xC + ip.x;
+                hvuong.yC = hvuong.yC + ip.y;
+                hvuong.xD = hvuong.xD + ip.x;
+                hvuong.yD = hvuong.yD + ip.y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+                Form1.hinh = 6;
+            }else if (Form1.hinh == 7)// hình elip
+            {
+                xoahinh();
+
+                helip.xc = helip.xc + ip.x;
+                helip.yc = helip.yc + ip.y;
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                Form1.hinh = 7;
+            }
+
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_TiLe_Click(object sender, EventArgs e)
+        {
+            inputTiLe input = new inputTiLe();
+            input.ShowDialog();
+            /*label2.Text = input.Sx + " vs " + input.Sy;*/
+            if (input.checkchange == false) return;
+            
+            if (Form1.hinh == 5)//hình tròn
+            {
+                xoahinh();
+                if (input.Sx == input.Sy)//ti le x va y bang nhau 
+                {
+                    htron.setR((int)(htron.getR() * input.Sx));
+                    dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                    Form1.hinh = 5;
+                }
+                else
+                {
+                    Helip helip2 = new Helip(htron.getx(), htron.gety(), Convert.ToInt32(htron.getR() * input.Sx), Convert.ToInt32(htron.getR() * input.Sy));
+                    helip = helip2;
+                    dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                    Form1.hinh = 7; // hinh tron thanh hinh elip
+                }
+                
+                
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                int XO, YO, Dx, Dy;
+
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                A = dt.findFakePoint(A);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                B = dt.findFakePoint(B);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                C = dt.findFakePoint(C);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+                D = dt.findFakePoint(D);
+
+                //lấy điểm gốc là A
+                XO = A.X;
+                YO = A.Y;
+                //tỉ lể các điểm trên hình vuông
+                A.X = Convert.ToInt32(A.X * input.Sx);
+                A.Y = Convert.ToInt32(A.Y * input.Sy);
+                B.X = Convert.ToInt32(B.X * input.Sx);
+                B.Y = Convert.ToInt32(B.Y * input.Sy);
+                C.X = Convert.ToInt32(C.X * input.Sx);
+                C.Y = Convert.ToInt32(C.Y * input.Sy);
+                D.X = Convert.ToInt32(D.X * input.Sx);
+                D.Y = Convert.ToInt32(D.Y * input.Sy);
+
+                Dx = A.X - XO;
+                Dy = A.Y - YO;
+
+                A.X = A.X - Dx;
+                A.Y = A.Y - Dy;
+                B.X = B.X - Dx;
+                B.Y = B.Y - Dy;
+                C.X = C.X - Dx;
+                C.Y = C.Y - Dy;
+                D.X = D.X - Dx;
+                D.Y = D.Y - Dy;
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }else if (Form1.hinh == 7)//hình elip
+            {
+                xoahinh();
+                helip.a = Convert.ToInt32(helip.a * input.Sx);
+                helip.b = Convert.ToInt32(helip.b * input.Sy);
+
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                Form1.hinh = 7;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_DoiXungOx_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                
+                int y = ((y0 - htron.gety()) / 5) * (-1);
+
+                htron.sety(y0 - (y * 5));
+                
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaOX(dt.findFakePoint(A));
+                B = dt.doiXungQuaOX(dt.findFakePoint(B));
+                C = dt.doiXungQuaOX(dt.findFakePoint(C));
+                D = dt.doiXungQuaOX(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
+            else if (Form1.hinh == 7)//hinh elip
+            {
+                xoahinh();
+                Point A = new Point(helip.xc, helip.yc);
+
+                A = dt.doiXungQuaOX(dt.findFakePoint(A));
+
+                A = dt.findRealPoint(A);
+
+                helip.xc = A.X;
+                helip.yc = A.Y;
+
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                Form1.hinh = 7;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_DoiXungOy_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) * (-1);
+                
+                htron.setx(x0 + (x * 5));
+                
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaOY(dt.findFakePoint(A));
+                B = dt.doiXungQuaOY(dt.findFakePoint(B));
+                C = dt.doiXungQuaOY(dt.findFakePoint(C));
+                D = dt.doiXungQuaOY(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
+            else if (Form1.hinh == 7)//hinh elip
+            {
+                xoahinh();
+                Point A = new Point(helip.xc, helip.yc);
+
+                A = dt.doiXungQuaOY(dt.findFakePoint(A));
+
+                A = dt.findRealPoint(A);
+
+                helip.xc = A.X;
+                helip.yc = A.Y;
+
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                Form1.hinh = 7;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+        
+        private void btn_Quay_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) ;
+                int y = ((y0 - htron.gety()) / 5) ;
+
+                Point a = new Point(x, y);
+                a = dt.layDiemQuay(a);
+
+                htron.setx(x0 + (a.X * 5));
+                htron.sety(y0 - (a.Y * 5));
+
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.layDiemQuay(dt.findFakePoint(A));
+                B = dt.layDiemQuay(dt.findFakePoint(B));
+                C = dt.layDiemQuay(dt.findFakePoint(C));
+                D = dt.layDiemQuay(dt.findFakePoint(D));
+                
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }
+            else if (Form1.hinh == 7)//hinh elip
+            {
+                xoahinh();
+                Point A = new Point(helip.xc, helip.yc);
+
+                A = dt.layDiemQuay(dt.findFakePoint(A));
+
+                A = dt.findRealPoint(A);
+
+                helip.xc = A.X;
+                helip.yc = A.Y;
+
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
+                Form1.hinh = 7;
+            }
+            pbDrawZone.Image = bm;
+        }
+
+
+        private void btn_DrawSquare_Click(object sender, EventArgs e)
+        {
+            xoahinh();
+            inputHvuong input = new inputHvuong(x0, y0);
+            input.ShowDialog();
+            if (input.checkchange == false) return;
+            /*label2.Text = "A(" + input.xA + ", " + input.yA + ") ";*/
+            hvuong = new Hvuong(input.xA, input.yA, input.a);
+            dt.drawLineDDA(input.xA, input.yA, input.xB, input.yB, Color.Black);
+            dt.drawLineDDA(input.xB, input.yB, input.xC, input.yC, Color.Black);
+            dt.drawLineDDA(input.xC, input.yC, input.xD, input.yD, Color.Black);
+            dt.drawLineDDA(input.xD, input.yD, input.xA, input.yA, Color.Black);
+            Form1.hinh = 6;
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_drawElip_Click(object sender, EventArgs e)
+        {
+            xoahinh();
+            inputHelip input = new inputHelip(x0, y0);
+            input.ShowDialog();
+            if (input.checkchange == false) return;
+            helip = new Helip(input.xc, input.yc, input.a, input.b);
+            dt.drawEllipsMidPoint(input.xc, input.yc, input.a, input.b, Color.Black);
+
+            Form1.hinh = 7;
+            pbDrawZone.Image = bm;
+        }
+
+        private void btn_DoiXungQuaO_Click(object sender, EventArgs e)
+        {
+            if (Form1.hinh == 5)//hinh tron
+            {
+                xoahinh();
+                int x = ((htron.getx() - x0) / 5) * (-1);
+                int y = ((y0 - htron.gety()) / 5) * (-1);
+                
+                htron.setx(x0 + (x * 5));
+                htron.sety(y0 - (y * 5));
+                
+                dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
+                Form1.hinh = 5;
+            }
+            else if (Form1.hinh == 6)//hình vuông
+            {
+                xoahinh();
+                Point A = new Point(hvuong.xA, hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                A = dt.doiXungQuaO(dt.findFakePoint(A));
+                B = dt.doiXungQuaO(dt.findFakePoint(B));
+                C = dt.doiXungQuaO(dt.findFakePoint(C));
+                D = dt.doiXungQuaO(dt.findFakePoint(D));
+
+                A = dt.findRealPoint(A);
+                B = dt.findRealPoint(B);
+                C = dt.findRealPoint(C);
+                D = dt.findRealPoint(D);
+
+                hvuong.xA = A.X;
+                hvuong.yA = A.Y;
+                hvuong.xB = B.X;
+                hvuong.yB = B.Y;
+                hvuong.xC = C.X;
+                hvuong.yC = C.Y;
+                hvuong.xD = D.X;
+                hvuong.yD = D.Y;
+
+                dt.drawLineDDA(hvuong.xA, hvuong.yA, hvuong.xB, hvuong.yB, Color.Black);
+                dt.drawLineDDA(hvuong.xB, hvuong.yB, hvuong.xC, hvuong.yC, Color.Black);
+                dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
+                dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
+
+                Form1.hinh = 6;
+            }else if (Form1.hinh == 7)//hinh elip
+            {
+                xoahinh();
+                Point A = new Point(helip.xc, helip.yc);
+
+                A = dt.doiXungQuaO(dt.findFakePoint(A));
+
+                A = dt.findRealPoint(A);
+
+                helip.xc = A.X;
+                helip.yc = A.Y;
+
+                dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b,Color.Black);
+                Form1.hinh = 7;
+            }
+            pbDrawZone.Image = bm;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

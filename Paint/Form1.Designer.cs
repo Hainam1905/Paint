@@ -43,6 +43,16 @@
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_DrawSquare = new System.Windows.Forms.Button();
+            this.btn_Quay = new System.Windows.Forms.Button();
+            this.btn_DoiXungOy = new System.Windows.Forms.Button();
+            this.btn_DoiXungOx = new System.Windows.Forms.Button();
+            this.btn_DoiXungQuaO = new System.Windows.Forms.Button();
+            this.btn_TiLe = new System.Windows.Forms.Button();
+            this.btn_tinhtien = new System.Windows.Forms.Button();
+            this.btn_drawCircle = new System.Windows.Forms.Button();
+            this.btn_drawElip = new System.Windows.Forms.Button();
+
             this.cbIsStop = new System.Windows.Forms.CheckBox();
             this.btConLacCD = new System.Windows.Forms.Button();
             this.BtXoa = new System.Windows.Forms.Button();
@@ -83,6 +93,7 @@
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
             this.pbDrawZone.Location = new System.Drawing.Point(0, 162);
+
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 585);
@@ -252,6 +263,19 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btn_drawElip);
+            this.panel1.Controls.Add(this.btn_DrawSquare);
+            this.panel1.Controls.Add(this.btn_Quay);
+            this.panel1.Controls.Add(this.btn_DoiXungOy);
+            this.panel1.Controls.Add(this.btn_DoiXungOx);
+            this.panel1.Controls.Add(this.btn_DoiXungQuaO);
+            this.panel1.Controls.Add(this.btn_TiLe);
+            this.panel1.Controls.Add(this.btn_tinhtien);
+            this.panel1.Controls.Add(this.btn_drawCircle);
+            this.panel1.Controls.Add(this.btSymmetry);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+
             this.panel1.Controls.Add(this.btTatTiLe);
             this.panel1.Controls.Add(this.btTatTinhTien);
             this.panel1.Controls.Add(this.cbIsStop);
@@ -298,6 +322,7 @@
             this.panel1.Controls.Add(this.btDrawLine);
             this.panel1.Location = new System.Drawing.Point(0, 5);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1113, 161);
             this.panel1.TabIndex = 12;
@@ -620,12 +645,115 @@
             this.btTatTiLe.Visible = false;
             this.btTatTiLe.Click += new System.EventHandler(this.btTatTiLe_Click);
             // 
+            // btn_DrawSquare
+            // 
+            this.btn_DrawSquare.Location = new System.Drawing.Point(439, 27);
+            this.btn_DrawSquare.Name = "btn_DrawSquare";
+            this.btn_DrawSquare.Size = new System.Drawing.Size(94, 29);
+            this.btn_DrawSquare.TabIndex = 20;
+            this.btn_DrawSquare.Text = "hình vuông";
+            this.btn_DrawSquare.UseVisualStyleBackColor = true;
+            this.btn_DrawSquare.Click += new System.EventHandler(this.btn_DrawSquare_Click);
+            // 
+            // btn_Quay
+            // 
+            this.btn_Quay.Location = new System.Drawing.Point(742, 65);
+            this.btn_Quay.Name = "btn_Quay";
+            this.btn_Quay.Size = new System.Drawing.Size(103, 29);
+            this.btn_Quay.TabIndex = 19;
+            this.btn_Quay.Text = "Quay 60°";
+            this.btn_Quay.UseVisualStyleBackColor = true;
+            this.btn_Quay.Click += new System.EventHandler(this.btn_Quay_Click);
+            // 
+            // btn_DoiXungOy
+            // 
+            this.btn_DoiXungOy.Location = new System.Drawing.Point(595, 64);
+            this.btn_DoiXungOy.Name = "btn_DoiXungOy";
+            this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOy.TabIndex = 18;
+            this.btn_DoiXungOy.Text = "đối xứng qua Oy";
+            this.btn_DoiXungOy.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
+            // 
+            // btn_DoiXungOx
+            // 
+            this.btn_DoiXungOx.Location = new System.Drawing.Point(461, 65);
+            this.btn_DoiXungOx.Name = "btn_DoiXungOx";
+            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOx.TabIndex = 17;
+            this.btn_DoiXungOx.Text = "đối xứng qua Ox";
+            this.btn_DoiXungOx.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
+            // 
+            // btn_DoiXungQuaO
+            // 
+            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(298, 65);
+            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
+            this.btn_DoiXungQuaO.TabIndex = 16;
+            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
+            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
+            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
+            // 
+            // btn_TiLe
+            // 
+            this.btn_TiLe.Location = new System.Drawing.Point(207, 65);
+            this.btn_TiLe.Name = "btn_TiLe";
+            this.btn_TiLe.Size = new System.Drawing.Size(75, 33);
+            this.btn_TiLe.TabIndex = 15;
+            this.btn_TiLe.Text = "tỉ lệ";
+            this.btn_TiLe.UseVisualStyleBackColor = true;
+            this.btn_TiLe.Click += new System.EventHandler(this.btn_TiLe_Click);
+            // 
+            // btn_tinhtien
+            // 
+            this.btn_tinhtien.Location = new System.Drawing.Point(101, 66);
+            this.btn_tinhtien.Name = "btn_tinhtien";
+            this.btn_tinhtien.Size = new System.Drawing.Size(83, 31);
+            this.btn_tinhtien.TabIndex = 14;
+            this.btn_tinhtien.Text = "tịnh tiến";
+            this.btn_tinhtien.UseVisualStyleBackColor = true;
+            this.btn_tinhtien.Click += new System.EventHandler(this.btn_tinhtien_Click);
+            // 
+            // btn_drawCircle
+            // 
+            this.btn_drawCircle.Location = new System.Drawing.Point(2, 67);
+            this.btn_drawCircle.Name = "btn_drawCircle";
+            this.btn_drawCircle.Size = new System.Drawing.Size(81, 29);
+            this.btn_drawCircle.TabIndex = 13;
+            this.btn_drawCircle.Text = "circle";
+            this.btn_drawCircle.UseVisualStyleBackColor = true;
+            this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
+            // 
+            // btn_drawElip
+            // 
+            this.btn_drawElip.Location = new System.Drawing.Point(551, 26);
+            this.btn_drawElip.Name = "btn_drawElip";
+            this.btn_drawElip.Size = new System.Drawing.Size(98, 30);
+            this.btn_drawElip.TabIndex = 21;
+            this.btn_drawElip.Text = "hình elip";
+            this.btn_drawElip.UseVisualStyleBackColor = true;
+            this.btn_drawElip.Click += new System.EventHandler(this.btn_drawElip_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(973, 740);
+
+            this.Controls.Add(this.tbRotate);
+            this.Controls.Add(this.btRotate);
+            this.Controls.Add(this.lbRadius);
+            this.Controls.Add(this.tbRadius);
+            this.Controls.Add(this.btDrawCircle);
+            this.Controls.Add(this.btFillColor);
+            this.Controls.Add(this.cbDrawColor);
+            this.Controls.Add(this.lbDoDay);
+            this.Controls.Add(this.cbWidthLine);
+            this.Controls.Add(this.btDrawArrow);
+            this.Controls.Add(this.btDrawPixel);
+
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbDrawZone);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -658,6 +786,17 @@
         private System.Windows.Forms.Button btSymmetry;
 
         private System.Windows.Forms.Panel panel1;
+
+        private System.Windows.Forms.Button btn_drawCircle;
+        private System.Windows.Forms.Button btn_tinhtien;
+        private System.Windows.Forms.Button btn_TiLe;
+        private System.Windows.Forms.Button btn_DoiXungQuaO;
+        private System.Windows.Forms.Button btn_DoiXungOx;
+        private System.Windows.Forms.Button btn_DoiXungOy;
+        private System.Windows.Forms.Button btn_Quay;
+        private System.Windows.Forms.Button btn_DrawSquare;
+        private System.Windows.Forms.Button btn_drawElip;
+
         private System.Windows.Forms.Button btConLacCD;
         private System.Windows.Forms.CheckBox cbIsStop;
         private System.Windows.Forms.Button btDrawLine;
