@@ -8,22 +8,22 @@ namespace Paint
 {
     class ChangeTool
     {
-        private Bitmap bm, bmTemp, bmDefault;
+        //private Bitmap bm;//, bmTemp, bmDefault;
         private Label Label;
 
         //Constructor
-        public ChangeTool(Bitmap bitmap, Label label)
+        public ChangeTool(Label label)
         {
             this.Label = label;
 
             //Bitmap chính
-            bm = bitmap;
+            //bm = bitmap;
 
             //Bitmap Để tô màu
-            bmTemp = new Bitmap(bm);
+            //bmTemp = new Bitmap(bitmap);
 
             //Bitmap mặc định, không phải để vẽ
-            bmDefault = new Bitmap(bm);
+            //bmDefault = new Bitmap(bitmap);
         }
 
         private Matrix MatrixTransalting(int x, int y)
@@ -210,25 +210,25 @@ namespace Paint
         }
 
         //Quay quanh một điểm
-        public void RotateAroundPoint(Point aroundP, List<Point> listP, float angle, Color color)
-        {
-            //Tim Ma tran bien doi
-            Matrix rotateAroundPoint = MatrixRotateAroundPoint(aroundP, angle);
+        //public void RotateAroundPoint(Point aroundP, List<Point> listP, float angle, Color color)
+        //{
+        //    //Tim Ma tran bien doi
+        //    Matrix rotateAroundPoint = MatrixRotateAroundPoint(aroundP, angle);
 
-            //Dùng ma trận biến đổi để quay các điểm trong listP quanh aroundP với góc angle
-            foreach(Point point in listP)
-            {
-                //Đưa điểm về matrix
-                Matrix matrixPoint = this.TransaleToMatrixPoint(point);
+        //    //Dùng ma trận biến đổi để quay các điểm trong listP quanh aroundP với góc angle
+        //    foreach(Point point in listP)
+        //    {
+        //        //Đưa điểm về matrix
+        //        Matrix matrixPoint = this.TransaleToMatrixPoint(point);
 
-                //Nhân ma trận điểm với ma trận biến đổi
-                matrixPoint = matrixPoint * rotateAroundPoint;
+        //        //Nhân ma trận điểm với ma trận biến đổi
+        //        matrixPoint = matrixPoint * rotateAroundPoint;
 
-                //Đưa ma trận điểm về điểm
-                Point kq = TransaleToPoint(matrixPoint);
-                bm.SetPixel(kq.X, kq.Y, color);
-            }
-        }
+        //        //Đưa ma trận điểm về điểm
+        //        Point kq = TransaleToPoint(matrixPoint);
+        //        bm.SetPixel(kq.X, kq.Y, color);
+        //    }
+        //}
         public Point RotateAroundPoint(Point aroundP, Point rotateP, float angle, Color color)
         {
             //Tim Ma tran bien doi
@@ -257,42 +257,6 @@ namespace Paint
             matrixSymmertricalP = matrixSymmertricalP * matrixSymmertricalPointByLine;
             //Label.Text = TransaleToPoint(matrixSymmertricalP) + " ";
             return TransaleToPoint(matrixSymmertricalP);
-        }
-
-        // BỔ SUNG
-        //Tịnh tiến 
-        public Point TinhTien(Point firstP, int x,int y, Color color)
-        {
-            //Tìm ma trận biến đổi
-            Matrix maTranTinhTien = MatrixTransalting(x, y);
-
-            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
-
-            maTranDiem = maTranDiem * maTranTinhTien;
-
-            return TransaleToPoint(maTranDiem);
-        }
-        //Tỉ lệ
-        private Matrix MaTranTiLe(float Sx, float Sy)
-        {
-            float[,] k =
-            {
-                {Sx, 0, 0 },
-                {0, Sy, 0 },
-                {0, 0, 1 }
-            };
-            return new Matrix(k);
-        }
-        public Point TiLe(Point firstP, float Sx, float Sy, Color color)
-        {
-            //Tìm ma trận biến đổi
-            Matrix maTranTiLe = MaTranTiLe(Sx, Sy);
-
-            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
-
-            maTranDiem = maTranDiem * maTranTiLe;
-
-            return TransaleToPoint(maTranDiem);
         }
     }
 }
