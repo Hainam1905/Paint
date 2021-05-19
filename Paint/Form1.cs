@@ -1044,14 +1044,26 @@ namespace Paint
             {
                 xoaHinh();
 
+                
                 //đổi điểm lastPoint về tọa độ người dùng để tìm tỉ lệ
+                firstPoint = dt.changeToFakePoint(firstPoint);
                 lastPoint = dt.changeToFakePoint(lastPoint);
-                lastPoint = ct.TiLe(lastPoint, float.Parse(tbTiLeX.Text), -float.Parse(tbTiLeY.Text), p.Color);
+                //biến dùng để lưu lại vị trí ban đầu của đt
+                Point position = new Point(firstPoint.X, firstPoint.Y);
+
+                firstPoint = ct.TiLe(firstPoint, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                lastPoint = ct.TiLe(lastPoint, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+
+                //tính khoảng cách giữa vị trí ban đầu và vị trí sau tỉ lệ, để tịnh tiến
+                position = new Point(position.X - firstPoint.X, position.Y - firstPoint.Y);
+                //tịnh tiến đt về vị trí ban đầu
+                firstPoint = ct.TinhTien(firstPoint, position.X, position.Y, p.Color);
+                lastPoint = ct.TinhTien(lastPoint, position.X, position.Y, p.Color);
 
                 //đổi điểm lastPoint về tọa độ máy để vẽ
+                firstPoint = dt.changeToRealPoint(firstPoint);
                 lastPoint = dt.changeToRealPoint(lastPoint);
                 dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
-
             }
             catch (FormatException)
             {
@@ -1077,8 +1089,7 @@ namespace Paint
             {
                 if (!String.IsNullOrEmpty(tbRotate.Text))
                 {
-                    newPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
-                    //dt.tim4DiemHinhThoi(newPoint, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+                    
                     // xoay 4 điểm 1 góc angle 
                     Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
                     Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
@@ -1138,23 +1149,19 @@ namespace Paint
             try
             {
                 xoaHinh();
-                dt.tim4DiemHinhThoi(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
-
+                
                 //đổi các điểm về tọa độ ng dùng
-                lastPoint = dt.changeToFakePoint(lastPoint);
                 Ap = dt.changeToFakePoint(Ap);
                 Bp = dt.changeToFakePoint(Bp);
                 Cp = dt.changeToFakePoint(Cp);
                 Dp = dt.changeToFakePoint(Dp);
                 //tịnh tiến các điểm
-                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Cp = ct.TinhTien(Cp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Dp = ct.TinhTien(Dp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
 
                 //đổi các điểm về tọa độ MÁY
-                lastPoint = dt.changeToRealPoint(lastPoint);
                 Ap = dt.changeToRealPoint(Ap);
                 Bp = dt.changeToRealPoint(Bp);
                 Cp = dt.changeToRealPoint(Cp);
@@ -1184,22 +1191,38 @@ namespace Paint
             try
             {
                 xoaHinh();
-                double tileX, tileY, cheoA, cheoB;
-                tileX = double.Parse(tbTiLeX.Text);
-                tileY = double.Parse(tbTiLeY.Text);
-                cheoA = int.Parse(txtCheoA.Text);
-                cheoB = int.Parse(txtCheoB.Text);
-                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
-                cheoA = cheoA * tileX;
-                cheoB = cheoB * tileY;
 
-                //tìm 4 điểm
-                dt.tim4DiemHinhThoi(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, (int)cheoA, (int)cheoB);
-                //vẽ hình
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+
+                //Lưu lại vị trí ban đầu của điểm
+                Point position = new Point(Ap.X, Ap.Y);
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.TiLe(Ap, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text),p.Color);
+                Bp = ct.TiLe(Bp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Cp = ct.TiLe(Cp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Dp = ct.TiLe(Dp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+
+                //tính khoảng cách giữa điểm ban đầu và điểm sau tỉ lệ để tịnh tiến
+                position = new Point(position.X - Ap.X, position.Y - Ap.Y);
+
+                //tịnh tiến
+                Ap = ct.TinhTien(Ap, position.X, position.Y, p.Color);
+                Bp = ct.TinhTien(Bp, position.X, position.Y, p.Color);
+                Cp = ct.TinhTien(Cp, position.X, position.Y, p.Color);
+                Dp = ct.TinhTien(Dp, position.X, position.Y, p.Color);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
-
-                txtCheoA.Text = ((int)cheoA).ToString();
-                txtCheoB.Text = ((int)cheoB).ToString();
 
             }
             catch (FormatException)
@@ -1290,20 +1313,17 @@ namespace Paint
 
                 
                 //đổi các điểm về tọa độ ng dùng
-                lastPoint = dt.changeToFakePoint(lastPoint);
                 Ap = dt.changeToFakePoint(Ap);
                 Bp = dt.changeToFakePoint(Bp);
                 Cp = dt.changeToFakePoint(Cp);
                 Dp = dt.changeToFakePoint(Dp);
                 //tịnh tiến các điểm
-                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Cp = ct.TinhTien(Cp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
                 Dp = ct.TinhTien(Dp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
 
                 //đổi các điểm về tọa độ MÁY
-                lastPoint = dt.changeToRealPoint(lastPoint);
                 Ap = dt.changeToRealPoint(Ap);
                 Bp = dt.changeToRealPoint(Bp);
                 Cp = dt.changeToRealPoint(Cp);
@@ -1333,21 +1353,40 @@ namespace Paint
             try
             {
                 xoaHinh();
-                double tileX, tileY, cheoA, cheoB;
-                tileX = double.Parse(tbTiLeX.Text);
-                tileY = double.Parse(tbTiLeY.Text);
-                cheoA = int.Parse(tbWidth.Text);
-                cheoB = int.Parse(tbHeight.Text);
-                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
-                cheoA = cheoA * tileX;
-                cheoB = cheoB * tileY;
-                //tìm 4 điểm
 
-                dt.tim4DiemHinhChuNhat(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, (int)cheoA, (int)cheoB);
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+
+                //Lưu lại vị trí ban đầu của điểm
+                Point position = new Point(Ap.X, Ap.Y);
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.TiLe(Ap, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Bp = ct.TiLe(Bp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Cp = ct.TiLe(Cp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Dp = ct.TiLe(Dp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+
+                //tính khoảng cách giữa điểm ban đầu và điểm sau tỉ lệ để tịnh tiến
+                position = new Point(position.X - Ap.X, position.Y - Ap.Y);
+
+                //tịnh tiến
+                Ap = ct.TinhTien(Ap, position.X, position.Y, p.Color);
+                Bp = ct.TinhTien(Bp, position.X, position.Y, p.Color);
+                Cp = ct.TinhTien(Cp, position.X, position.Y, p.Color);
+                Dp = ct.TinhTien(Dp, position.X, position.Y, p.Color);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
 
-                tbWidth.Text = ((int)cheoA).ToString();
-                tbHeight.Text = ((int)cheoB).ToString();
+
 
             }
             catch (FormatException)
@@ -1492,20 +1531,38 @@ namespace Paint
             try
             {
                 xoaHinh();
-                float tileX, tileY, day, chieuCao;
-                tileX = float.Parse(tbTiLeX.Text);
-                tileY = float.Parse(tbTiLeY.Text);
-                day = int.Parse(tbRongDay.Text);
-                chieuCao = int.Parse(tbChieuCao.Text);
 
-                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
-                day = day * tileX;
-                chieuCao = chieuCao * tileY;
-                dt.tim3DiemTamGiac(lastPoint, ref Ap, ref Bp, ref Cp, (int)chieuCao, (int)day);
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                lastPoint = dt.changeToFakePoint(lastPoint);
+
+                //Lưu lại vị trí ban đầu của điểm
+                Point position = new Point(lastPoint.X, lastPoint.Y);
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.TiLe(Ap, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Bp = ct.TiLe(Bp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Cp = ct.TiLe(Cp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                lastPoint = ct.TiLe(lastPoint, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+
+                //tính khoảng cách giữa điểm ban đầu và điểm sau tỉ lệ để tịnh tiến
+                position = new Point(position.X - lastPoint.X, position.Y - lastPoint.Y);
+
+                //tịnh tiến
+                Ap = ct.TinhTien(Ap, position.X, position.Y, p.Color);
+                Bp = ct.TinhTien(Bp, position.X, position.Y, p.Color);
+                Cp = ct.TinhTien(Cp, position.X, position.Y, p.Color);
+                lastPoint = ct.TinhTien(lastPoint, position.X, position.Y, p.Color);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                lastPoint = dt.changeToRealPoint(lastPoint);
+
                 dt.veHinhTamGiac(Ap, Bp, Cp, p);
-
-                tbRongDay.Text = ((int)day).ToString();
-                tbChieuCao.Text = ((int)chieuCao).ToString();
 
             }
             catch (FormatException)
@@ -1562,11 +1619,12 @@ namespace Paint
                 if (newPoint != Point.Empty)
                 {
                     //Point A, B, C, D;
-                    Ap = new Point();
+                    Ap = new Point(e.Location.X,e.Location.Y);
                     Bp = new Point();
                     Cp = new Point();
                     Dp = new Point();
-                    dt.tim4DiemHinhThoi(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+                    //dt.tim4DiemHinhThoi(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+                    dt.tim4DiemHinhThoi_Canh(Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
                     dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
                 }
             }
@@ -1602,11 +1660,12 @@ namespace Paint
             {
                 if (newPoint != Point.Empty)
                 {
-                    Ap = new Point();
+                    Ap = new Point(e.Location.X, e.Location.Y);
                     Bp = new Point();
                     Cp = new Point();
                     Dp = new Point();
-                    dt.tim4DiemHinhChuNhat(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
+                    //dt.tim4DiemHinhChuNhat(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
+                    dt.tim4DiemHCN_Canh(Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
                     dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
                 }
             }
