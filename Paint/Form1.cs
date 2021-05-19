@@ -300,7 +300,6 @@ namespace Paint
                 //try
                 //{
 
-            //p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                 //    pbDrawZone.Refresh();
                 //}
                 //catch (Exception)
@@ -312,9 +311,6 @@ namespace Paint
                 //    pbDrawZone.Refresh();
                 //}
             }                
-            //gp.DrawLine(p, oldPoint, newPoint);
-
-            
         }
 
         //Tô màu

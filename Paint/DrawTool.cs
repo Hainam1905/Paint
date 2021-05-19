@@ -53,6 +53,8 @@ namespace Paint
 
             //Gọi hàm vẽ lưới pixel 
             //DrawCoordinate(pbDrawZone.Width, pbDrawZone.Height);
+            //hàm vẽ đồ thị
+            //DrawCoordinate(bm.Width, bm.Height);
         }
 
         // hàm vẽ lưới pixel
