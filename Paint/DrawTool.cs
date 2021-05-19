@@ -60,29 +60,38 @@ namespace Paint
                 }
             }
         }
-        private void PutPixel(int x, int y, Color color)
+        public void PutPixel(int x, int y, Color color)
         {
-            if (x -2> 0 && x+2 < bm.Width && y-2 > 0 && y+2 < bm.Height )
+            //if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
+            //{
+            //    if (bitmap.GetPixel(x, y) != Color.White)
+            //    {
+            //        bitmap.SetPixel(x, y, color);
+            //    }
+            //}
+            x = x - x % 5 + 1;
+            y = y - y % 5 + 1;
+            if (x > 0 && x < bm.Width && y > 0 && y < bm.Height)
             {
-                x++;
-                y++;
+                //x++;
+                //y++;
 
-                if (bm.GetPixel(x, y) != Color.Gray)
+                //if (bm.GetPixel(x, y) != Color.White)
+                //{
+                for (int i = 0; i <= 3; i++)
                 {
-                    for (int i = 0; i <= 3; i++)
+                    for (int j = 0; j <= 3; j++)
                     {
-                        for (int j = 0; j <= 3; j++)
+                        if (x + i > 0 && x + i < bm.Width && y + j > 0 && y + j < bm.Height)
                         {
-                            if (x + i > 0 && x + i < bm.Width && y + j > 0 && y + j < bm.Height)
-                            {
-                                bm.SetPixel(x + i, y + j, color);
-                            }
+                            bm.SetPixel(x + i, y + j, color);
                         }
                     }
-                    /*bm.SetPixel(x, y, color);*/
-                    //ToMauXungQuanh(new Point(x, y), color);
-                    //FillColor(new Point(x,y), color);
                 }
+                /*bm.SetPixel(x, y, color);*/
+                //ToMauXungQuanh(new Point(x, y), color);
+                //FillColor(new Point(x,y), color);
+                //}
 
             }
         }
