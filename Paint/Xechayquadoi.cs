@@ -16,25 +16,19 @@ namespace Paint
         private Bitmap bm1;
         private Bitmap bm2;
         private Bitmap bm3;
-        private Bitmap bm; 
         DrawTool dt1;
         DrawTool dt2;
         DrawTool dt3;
         private Graphics gp1;
-        private Graphics gp2; 
+        private Graphics gp2;
+        private Graphics gp3;
         private Color clLine = Color.Black;
         private int widthLine = 1;
-        int xStartFromLeftToRight = 10;
         int xPlane = 30;
         int yPlane = 200; 
-        int xLorryStartFromLeftToRight = 150;
-        int xLorryStartFromRightToLeft = 750;
+       
         int xStartFromRightToLeft = 920;
-        int xTankStartFromLeftToRight = 320;
-        int xTankStartFromRightToLeft = 400;
-
-
-        int yStartFromLeftToRight = 195;
+        
         int yStartFromRightToLeft = 80;
         int xSun = 590;
         int ySun = 80;
@@ -63,6 +57,9 @@ namespace Paint
             gp2 = Graphics.FromImage(bm2);
 
 
+            bm3 = new Bitmap(pb3.Width, pb3.Height);
+            dt3 = new DrawTool(bm3, label1);
+            gp3 = Graphics.FromImage(bm3);
 
             gp1.Clear(Color.LightGray);
             drawBorder1();
@@ -77,9 +74,9 @@ namespace Paint
             drawBorder2();
             drawStreet();
             paintStreet();
-            
 
-
+            gp3.Clear(Color.LightGray);
+            drawBorder3(); 
 
 
             listVehicle = new List<Vehicle>();
@@ -141,8 +138,15 @@ namespace Paint
             clearStreet();
             drawAirplane(xPlane, yPlane);
 
+            
 
+            /*gp.Clear(Color.LightGray);*/
 
+            
+
+            drawHouses();
+
+            pb3.Image = bm3; 
             pb2.Image = bm2; 
 
         }
@@ -193,6 +197,192 @@ namespace Paint
             drawAmbulanceLefttoRight(x, y);
 
         }
+        void drawHouses()
+        {
+            drawHouse(160, 50);
+            drawHouse(480, 50);
+            drawHouse(800, 50);
+            check = false;
+            fillColorHouse(160, 50, check);
+            fillColorHouse(480, 50, check);
+            fillColorHouse(800, 50, check);
+            dt3.FillColor(new Point(10, 10), Color.Gainsboro);
+        }
+
+        //hàm vẽ một căn nhà
+        void drawHouse(int x, int y)
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+            dt3.DrawMidPointAnimation(new Point(x, y), new Point(x - 50, y + 20), p);
+            dt3.DrawMidPointAnimation(new Point(x, y), new Point(x + 50, y + 20), p);
+            dt3.DrawMidPointAnimation(new Point(x, y), new Point(x, y + 70), p);
+            dt3.DrawMidPointAnimation(new Point(x - 50, y + 20), new Point(x - 50, y + 100), p);
+            dt3.DrawMidPointAnimation(new Point(x + 50, y + 20), new Point(x + 50, y + 100), p);
+            dt3.DrawMidPointAnimation(new Point(x - 50, y + 100), new Point(x, y + 70), p);
+            dt3.DrawMidPointAnimation(new Point(x + 50, y + 100), new Point(x, y + 70), p);
+
+            dt3.DrawMidPointAnimation(new Point(x - 47, y + 97), new Point(x - 47, y + 135), p);
+            dt3.DrawMidPointAnimation(new Point(x + 47, y + 97), new Point(x + 47, y + 135), p);
+            dt3.DrawMidPointAnimation(new Point(x - 47, y + 135), new Point(x + 47, y + 135), p);
+
+            //ve cua so
+            dt3.DrawMidPointAnimation(new Point(x - 25, y + 100), new Point(x + 25, y + 100), p);
+            dt3.DrawMidPointAnimation(new Point(x + 25, y + 100), new Point(x + 25, y + 125), p);
+            dt3.DrawMidPointAnimation(new Point(x + 25, y + 125), new Point(x - 25, y + 125), p);
+            dt3.DrawMidPointAnimation(new Point(x - 25, y + 125), new Point(x - 25, y + 100), p);
+
+            dt3.DrawMidPointAnimation(new Point(x, y + 100), new Point(x, y + 125), p);
+            //ve den
+            dt3.DrawMidPointAnimation(new Point(x + 120, y + 15), new Point(x + 120, y + 75), p);
+            dt3.DrawMidPointAnimation(new Point(x + 120, y + 15), new Point(x + 150, y + 15), p);
+            dt3.DrawMidPointAnimation(new Point(x + 120, y + 15), new Point(x + 90, y + 15), p);
+
+            //ve cay
+            drawTree(x - 120, y + 100);
+
+        }
+        //tô màu lại căn nhà khi sáng hoặc tối
+        void fillColorHouse(int x, int y, Boolean check)
+        {
+            Pen p = new Pen(clLine, widthLine);
+            if (check == false)
+            {
+                //to mau nha ban ngay
+                dt3.FillColor(new Point(x - 10, y + 10), Color.Tomato);
+                dt3.FillColor(new Point(x + 10, y + 10), Color.Tomato);
+
+                dt3.FillColor(new Point(x, y + 80), Color.White);
+
+                dt3.FillColor(new Point(x - 10, y + 110), Color.White);
+                dt3.FillColor(new Point(x + 10, y + 110), Color.White);
+
+                //tat den
+                p = new Pen(Color.Black, widthLine);
+                dt3.DrawMidPointAnimation(new Point(x + 85, y + 20), new Point(x + 100, y + 20), p);
+                dt3.DrawMidPointAnimation(new Point(x + 85, y + 15), new Point(x + 85, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 140, y + 20), new Point(x + 151, y + 20), p);
+                dt3.DrawMidPointAnimation(new Point(x + 151, y + 15), new Point(x + 151, y + 20), p);
+
+                p = new Pen(Color.Gainsboro, widthLine);
+                dt3.DrawMidPointAnimation(new Point(x + 80, y + 15), new Point(x + 80, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 80, y + 25), new Point(x + 105, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 105, y + 25), new Point(x + 105, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 156, y + 15), new Point(x + 156, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 135, y + 25), new Point(x + 156, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 135, y + 20), new Point(x + 135, y + 25), p);
+
+
+                dt3.DrawMidPointAnimation(new Point(x + 75, y + 15), new Point(x + 75, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 75, y + 30), new Point(x + 110, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 110, y + 30), new Point(x + 110, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 161, y + 15), new Point(x + 161, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 130, y + 30), new Point(x + 161, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 130, y + 20), new Point(x + 130, y + 30), p);
+            }
+            else
+            {
+                //to mau nha ban dem
+                dt3.FillColor(new Point(x - 10, y + 10), Color.DarkRed);
+                dt3.FillColor(new Point(x + 10, y + 10), Color.DarkRed);
+
+                dt3.FillColor(new Point(x, y + 80), Color.Gainsboro);
+
+                dt3.FillColor(new Point(x - 10, y + 110), Color.Yellow);
+                dt3.FillColor(new Point(x + 10, y + 110), Color.Yellow);
+
+                //ve den phat sang
+                p = new Pen(Color.DarkOrange, widthLine);
+                dt3.DrawMidPointAnimation(new Point(x + 85, y + 20), new Point(x + 100, y + 20), p);
+                dt3.DrawMidPointAnimation(new Point(x + 85, y + 15), new Point(x + 85, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 140, y + 20), new Point(x + 151, y + 20), p);
+                dt3.DrawMidPointAnimation(new Point(x + 151, y + 15), new Point(x + 151, y + 20), p);
+
+                p = new Pen(Color.Gold, widthLine);
+                dt3.DrawMidPointAnimation(new Point(x + 80, y + 15), new Point(x + 80, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 80, y + 25), new Point(x + 105, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 105, y + 25), new Point(x + 105, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 156, y + 15), new Point(x + 156, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 135, y + 25), new Point(x + 156, y + 25), p);
+                dt3.DrawMidPointAnimation(new Point(x + 135, y + 20), new Point(x + 135, y + 25), p);
+
+                p = new Pen(Color.Yellow, widthLine);
+                dt3.DrawMidPointAnimation(new Point(x + 75, y + 15), new Point(x + 75, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 75, y + 30), new Point(x + 110, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 110, y + 30), new Point(x + 110, y + 20), p);
+
+                dt3.DrawMidPointAnimation(new Point(x + 161, y + 15), new Point(x + 161, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 130, y + 30), new Point(x + 161, y + 30), p);
+                dt3.DrawMidPointAnimation(new Point(x + 130, y + 20), new Point(x + 130, y + 30), p);
+
+            }
+        }
+
+
+       
+         void houseDayandNight()
+        {
+            ThreadStart threadStartOfHouse = new ThreadStart(loopOfHouse);
+            Thread threadHouse = new Thread(threadStartOfHouse);
+            threadHouse.IsBackground = true;
+            threadHouse.Start();
+        }
+
+        //hàm trong luồng
+        void loopOfHouse()
+        {
+            for (int i = 1; i < 40; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    dt3.FillColor(new Point(10, 10), Color.LightGreen);
+                }
+                else
+                {
+                    dt3.FillColor(new Point(10, 10), Color.Cornsilk);
+                }
+                pb3.Image = bm3;
+                Thread.Sleep(100); 
+            }
+
+            Boolean day = true;
+            while (true)
+            {
+                if (check == false && day == false)
+                {
+                    fillColorHouse(160, 50, check);
+                    fillColorHouse(480, 50, check);
+                    fillColorHouse(800, 50, check);
+
+                    dt3.FillColor(new Point(10, 10), Color.Gainsboro);
+
+                    pb3.Image = bm3;
+                    Thread.Sleep(TimeSpan.FromSeconds(8));
+                    day = true;
+                }
+                else if (check == true && day == true)
+                {
+                    fillColorHouse(160, 50, check);
+                    fillColorHouse(480, 50, check);
+                    fillColorHouse(800, 50, check);
+
+                    dt3.FillColor(new Point(10, 10), Color.DarkSlateGray);
+
+                    pb3.Image = bm3;
+                    Thread.Sleep(TimeSpan.FromSeconds(2.5));
+                    day = false;
+                }
+            }
+            
+        }
+
+
+
         void clearAmbulanceLefttoRight(int x, int y)
         {
 
@@ -320,6 +510,15 @@ namespace Paint
             dt2.FillColor(new Point(x - 30, y - 20), Color.Red);
             dt2.FillColor(new Point(x - 90, y - 10), Color.White);
             dt2.FillColor(new Point(x - 78, y - 30), Color.White);
+        }
+        public void drawBorder3()
+        {
+            Pen p = new Pen(clLine, widthLine);
+            //load duong vien
+            dt3.DrawMidPointAnimation(new Point(3, 3), new Point(bm3.Width - 3, 3), p);
+            dt3.DrawMidPointAnimation(new Point(3, 3), new Point(3, bm3.Height - 3), p);
+            dt3.DrawMidPointAnimation(new Point(bm3.Width - 3, 3), new Point(bm3.Width - 3, bm3.Height - 3), p);
+            dt3.DrawMidPointAnimation(new Point(3, bm3.Height - 3), new Point(bm3.Width - 3, bm3.Height - 3), p);
         }
         public void drawBorder1()
         {
@@ -1119,7 +1318,7 @@ namespace Paint
                     limit++;
                     drawTankRightToLeft(listVehicle[limit - 1].X, listVehicle[limit - 1].Y);
                 }
-                else if(count == 380)
+                else if(count == 340)
                 {
                     limit++; 
                 }
@@ -1157,9 +1356,9 @@ namespace Paint
         {
 
 
-            dt1.MidPointDrawHaftCircle(x, y, 65, Color.DarkViolet);
-            dt1.drawHaftElip(x - 10, y, 30, 65, Color.DarkViolet);
-            dt1.FillColor(new Point(x + 60, y), Color.DarkViolet);
+            dt1.MidPointDrawHaftCircle(x, y, 65, Color.DarkSlateGray);
+            dt1.drawHaftElip(x - 10, y, 30, 65, Color.DarkSlateGray);
+            dt1.FillColor(new Point(x + 60, y), Color.DarkSlateGray);
         }
         public void sunGoDown()
         {
@@ -1169,7 +1368,7 @@ namespace Paint
                 if (i % 2 == 0)
                 {
                     paintSun(xSun, ySun, Color.Cyan);
-                    paintSkyandSoid(Color.Chocolate, Color.Chocolate);
+                    paintSkyandSoid(Color.LightGreen, Color.Chocolate);
                     
                 }
                 else
@@ -1215,18 +1414,18 @@ namespace Paint
                     else
                     {
                         drawMoon(xSun, ySun,Color.Yellow);
-                        paintSkyandSoid(Color.DarkViolet, Color.DarkSalmon);
+                        paintSkyandSoid(Color.DarkSlateGray, Color.DarkSalmon);
                         check = true;
                     }
 
                     pb1.Image = bm1;
-                    Thread.Sleep(100);
+                    Thread.Sleep(400);
                 }
                 
                 else
                 {
                     
-                     Thread.Sleep(2000);
+                     Thread.Sleep(3000);
                     clearMoon(xSun,ySun);
                     
                     paintSkyandSoid(Color.LightBlue, Color.LightYellow);
@@ -1957,14 +2156,16 @@ namespace Paint
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*SoundPlayer simpleSound = new SoundPlayer(@"D:\vietnamoi.wav");
-            simpleSound.Play();*/
-           move();
-           moveVehicle(); 
+            SoundPlayer simpleSound = new SoundPlayer("audio.wav");
+            
+            simpleSound.Play();
+           moveSun();   
+           moveVehicle();
+           houseDayandNight(); 
           //movePlane(); 
            
         }
-        void move()
+        void moveSun()
         {
             ThreadStart threadstart = new ThreadStart(sunGoDown);
             Thread threadSun = new Thread(threadstart);
