@@ -27,6 +27,8 @@ namespace Paint
         private Boolean bDraw = false;
         private Boolean bMousePress = false;
         private Boolean bMouseUp = true;
+        private Point Ap, Bp, Cp, Dp;
+        private int countDrawConLac = 0;
 
         public Form1()
         {
@@ -38,10 +40,42 @@ namespace Paint
         private void TurnOffModeDraw(Button btCheck)
         {
             if (btCheck.BackColor == SystemColors.ControlDark) btCheck.BackColor = SystemColors.Control;
+            if (transalte != String.Empty)
+            {
+                btRotate.BackColor= SystemColors.Control;
+                btSymmetry.BackColor = SystemColors.Control;
+            }
+            transalte = String.Empty;
+            /*if (btCheck == btRotate)
+            {
+                transalte = null;
+            }*/
             if (btCheck == btConLacCD)
             {
                 cbIsStop.Visible = false;
                 cbIsStop.Checked = true;
+                countDrawConLac = 0;
+            }
+            else if (btCheck == btTamGiac)
+            {
+                lbChieuCao.Visible = false;
+                lbRongDay.Visible = false;
+                tbChieuCao.Visible = false;
+                tbRongDay.Visible = false;
+            }
+            else if (btCheck == btHinhThoi)
+            {
+                lbCheoA.Visible = false;
+                lbCheoB.Visible = false;
+                txtCheoA.Visible = false;
+                txtCheoB.Visible = false;
+            }
+            else if (btCheck == btHCN)
+            {
+                lbWidth.Visible = false;
+                lbHeight.Visible = false;
+                tbWidth.Visible = false;
+                tbHeight.Visible = false;
             }
         }
 
@@ -96,6 +130,13 @@ namespace Paint
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
                 TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
 
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
@@ -116,6 +157,13 @@ namespace Paint
                 if (btFillColor.BackColor == SystemColors.ControlDark) btFillColor.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
                 TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
 
                 btDrawArrow.BackColor = SystemColors.ControlDark;
                 line = "arrow";
@@ -195,7 +243,8 @@ namespace Paint
             }
             finally
             {
-                pbDrawZone.Refresh();
+                //pbDrawZone.Refresh();
+                pbDrawZone.Image = dtNam.bm;
             }
         }
 
@@ -208,12 +257,13 @@ namespace Paint
 
             if (oldPoint != Point.Empty)
             {
-                gp.FillRectangle(pen.Brush, oldPoint.X - widthLine / 2, oldPoint.Y - widthLine / 2, widthLine, widthLine);
-                gp.DrawLine(pen, oldPoint, newPoint);
+                //gp.FillRectangle(pen.Brush, oldPoint.X - widthLine / 2, oldPoint.Y - widthLine / 2, widthLine, widthLine);
+                //gp.DrawLine(pen, oldPoint, newPoint);
+                dtNam.DrawLineByMidPoint(oldPoint, newPoint, pen, true);
             }
 
             oldPoint = newPoint;
-            pbDrawZone.Image = bm;
+            pbDrawZone.Image = dtNam.bm;
         }
 
         //Vẽ mũi tên
@@ -245,8 +295,8 @@ namespace Paint
             {
                 dtNam.DrawArrow(oldPoint, newPoint, p, cbDrawColor.Checked);
 
-                pbDrawZone.Refresh();
-
+                pbDrawZone.Image = dtNam.bm;
+                //pbDrawZone.Refresh();
                 //try
                 //{
 
@@ -261,10 +311,6 @@ namespace Paint
                 //    pbDrawZone.Refresh();
                 //}
             }                
-            //gp.DrawLine(p, oldPoint, newPoint);
-            //p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
-
-            
         }
 
         //Tô màu
@@ -279,9 +325,9 @@ namespace Paint
 
             try
             {
-                dt.FillColor(fillPoint, Color.Red);
+                dtNam.FillColor(fillPoint, Color.Red);
 
-                pbDrawZone.Image = bm;
+                pbDrawZone.Image = dtNam.bm;
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -313,9 +359,9 @@ namespace Paint
         {
             if (btRotate.BackColor == SystemColors.Control)
             {
-                btRotate.BackColor = SystemColors.ControlDark;
+                
                 TurnOffModeDraw(btSymmetry);
-
+                btRotate.BackColor = SystemColors.ControlDark;
                 transalte = "rotate";
             }
             else if (btRotate.BackColor == SystemColors.ControlDark)
@@ -329,9 +375,9 @@ namespace Paint
         {
             if (btSymmetry.BackColor == SystemColors.Control)
             {
-                btSymmetry.BackColor = SystemColors.ControlDark;
+                
                 TurnOffModeDraw(btRotate);
-
+                btSymmetry.BackColor = SystemColors.ControlDark;
                 transalte = "symmetry";
             }
             else if (btSymmetry.BackColor == SystemColors.ControlDark)
@@ -354,6 +400,191 @@ namespace Paint
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void BtXoa_Click(object sender, EventArgs e)
+        {
+            xoaHinh();
+
+        }
+
+        //sự kiện tịnh tiến và tỉ lệ
+        private void btTinhTien_Click(object sender, EventArgs e)
+        {
+            if (lbTinhTienX.Visible == false)
+            {
+                lbTinhTienX.Visible = true;
+                lbTinhTienY.Visible = true;
+                tbTinhTienX.Visible = true;
+                tbTinhTienY.Visible = true;
+                btTatTinhTien.Visible = true;
+            }
+            else
+            {
+                if (line == "line")
+                {
+                    tinhTienDT();
+                }
+                else if (line == "hinhThoi")
+                {
+                    tinhTienHinhThoi();
+                }
+                else if (line == "HCN")
+                {
+                    tinhTienHCN();
+                }
+                else if (line == "tamGiac")
+                {
+                    tinhTienTamGiac();
+                }
+            }
+        }
+
+        private void btTiLe_Click(object sender, EventArgs e)
+        {
+            if (lbTiLeX.Visible == false)
+            {
+                lbTiLeX.Visible = true;
+                lbTiLeY.Visible = true;
+                tbTiLeX.Visible = true;
+                tbTiLeY.Visible = true;
+                btTatTiLe.Visible = true;
+            }
+            else
+            {
+                if (line == "line")
+                {
+                    tiLeDT();
+                }
+                else if (line == "hinhThoi")
+                {
+                    tiLeHinhThoi();
+                }
+                else if (line == "HCN")
+                {
+                    tiLeHCN();
+                }
+                else if (line == "tamGiac")
+                {
+                    tiLeTamGiac();
+                }
+            }
+        }
+
+        private void btDrawLine_Click(object sender, EventArgs e)
+        {
+            if (btDrawLine.BackColor == SystemColors.Control)
+            {
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btTamGiac);
+                btDrawLine.BackColor = SystemColors.ControlDark;
+
+                line = "line";
+            }
+            else if (btDrawLine.BackColor == SystemColors.ControlDark)
+            {
+                btDrawLine.BackColor = SystemColors.Control;
+                line = String.Empty;
+            }
+        }
+
+        private void btHinhThoi_Click(object sender, EventArgs e)
+        {
+            if (btHinhThoi.BackColor == SystemColors.Control)
+            {
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btTamGiac);;
+                TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btFillColor);
+
+                btHinhThoi.BackColor = SystemColors.ControlDark;
+                lbCheoA.Visible = true;
+                lbCheoB.Visible = true;
+                txtCheoA.Visible = true;
+                txtCheoB.Visible = true;
+                line = "hinhThoi";
+            }
+            else if (btHinhThoi.BackColor == SystemColors.ControlDark)
+            {
+                btHinhThoi.BackColor = SystemColors.Control;
+                line = String.Empty;
+                lbCheoA.Visible = false;
+                lbCheoB.Visible = false;
+                txtCheoA.Visible = false;
+                txtCheoB.Visible = false;
+            }
+        }
+
+        private void btHCN_Click(object sender, EventArgs e)
+        {
+            if (btHCN.BackColor == SystemColors.Control)
+            {
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btFillColor);
+
+                btHCN.BackColor = SystemColors.ControlDark;
+                lbWidth.Visible = true;
+                lbHeight.Visible = true;
+                tbWidth.Visible = true;
+                tbHeight.Visible = true;
+                line = "HCN";
+            }
+            else if (btHCN.BackColor == SystemColors.ControlDark)
+            {
+                btHCN.BackColor = SystemColors.Control;
+                line = String.Empty;
+                lbWidth.Visible = false;
+                lbHeight.Visible = false;
+                tbWidth.Visible = false;
+                tbHeight.Visible = false;
+            }
+        }
+
+        private void btTamGiac_Click(object sender, EventArgs e)
+        {
+            if (btTamGiac.BackColor == SystemColors.Control)
+            {
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawCircle);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btFillColor);
+
+                btTamGiac.BackColor = SystemColors.ControlDark;
+                lbChieuCao.Visible = true;
+                lbRongDay.Visible = true;
+                tbChieuCao.Visible = true;
+                tbRongDay.Visible = true;
+                line = "tamGiac";
+            }
+            else if (btTamGiac.BackColor == SystemColors.ControlDark)
+            {
+                btTamGiac.BackColor = SystemColors.Control;
+                line = String.Empty;
+                lbChieuCao.Visible = false;
+                lbRongDay.Visible = false;
+                tbChieuCao.Visible = false;
+                tbRongDay.Visible = false;
+            }
         }
 
         private void DrawConLac(Point A, Point B, Point centerP, int R, Pen p, Boolean isColor)
@@ -459,7 +690,6 @@ namespace Paint
                 DrawConLac(A, animB, animCenterP, R, p, true);
                 
                 pbDrawZone.Refresh();
-                //pbDrawZone.Image = bm;
                 Thread.Sleep(3);
 
 
@@ -502,18 +732,27 @@ namespace Paint
             if (bMouseUp == true)
             {
                 newPoint = e.Location;
-                //if (!cbIsStop.Checked)
-                //{
-                //    cbIsStop.Checked = true;
-                //}
             }
 
             if (newPoint != Point.Empty)
             {
-                cbIsStop.Checked = false;
-                t.Start();
-                Thread.Sleep(50);
-                newPoint = Point.Empty;
+                if (countDrawConLac == 0)
+                {
+                    t.Start();
+                    Thread.Sleep(50);
+                    newPoint = Point.Empty;
+                }
+                else
+                {
+                    if(cbIsStop.Checked)
+                    {
+                        cbIsStop.Checked = false;
+                        t.Start();
+                        Thread.Sleep(50);
+                        newPoint = Point.Empty;
+                    }
+                }
+                countDrawConLac++;
             }
 
         }
@@ -527,6 +766,11 @@ namespace Paint
                 TurnOffModeDraw(btDrawCircle);
                 TurnOffModeDraw(btDrawPixel);
                 TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
 
                 cbIsStop.Visible = true;
                 cbIsStop.Checked = false;
@@ -549,6 +793,13 @@ namespace Paint
                 if (btDrawArrow.BackColor == SystemColors.ControlDark) btDrawArrow.BackColor = SystemColors.Control;
                 TurnOffModeDraw(btDrawCircle);
                 TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
 
                 btFillColor.BackColor = SystemColors.ControlDark;
 
@@ -569,6 +820,11 @@ namespace Paint
                 TurnOffModeDraw(btDrawPixel);
                 TurnOffModeDraw(btFillColor);
                 TurnOffModeDraw(btConLacCD);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
 
                 btDrawCircle.BackColor = SystemColors.ControlDark;
 
@@ -651,6 +907,785 @@ namespace Paint
             pbDrawZone.Image = bm;
         }
 
+        //lấy đối xứng hình tròn
+        private void SymmetryCircle(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                try
+                {
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+
+                    lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);
+
+                    dt.DrawCircle(lastPoint, int.Parse(tbRadius.Text), p, cbDrawColor.Checked);
+
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+                finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+            pbDrawZone.Image = bm;
+        }
+        //BỔ SUNG
+        //Các phép biến đổi của đường thẳng
+        private void RotateLine(Point aroundPoint)
+        {
+            if (bMouseUp)
+            {
+                if (!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    oldPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
+                    newPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, new Pen(clLine, widthLine));
+                    //dt.DrawLineByMidPoint(oldPoint, newPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
+                    pbDrawZone.Image = bm;
+                }
+            }
+        }
+        private void SymmetryLine(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                try
+                {
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+
+                    firstPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, firstPoint, clLine);
+                    lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);
+                    dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+                finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+            pbDrawZone.Image = bm;
+        }
+
+        private void tinhTienDT()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+
+            try
+            {
+                xoaHinh();
+
+                //đổi điểm về tọa độ người dùng để tìm tỉ lệ
+                firstPoint = dt.changeToFakePoint(firstPoint);
+                lastPoint = dt.changeToFakePoint(lastPoint);
+                firstPoint = ct.TinhTien(firstPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color); ;
+
+                //đổi điểm về tọa độ máy để vẽ
+                firstPoint = dt.changeToRealPoint(firstPoint);
+                lastPoint = dt.changeToRealPoint(lastPoint);
+                dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+            }
+            catch (FormatException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+        private void tiLeDT()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+            try
+            {
+                xoaHinh();
+
+                //đổi điểm lastPoint về tọa độ người dùng để tìm tỉ lệ
+                lastPoint = dt.changeToFakePoint(lastPoint);
+                lastPoint = ct.TiLe(lastPoint, float.Parse(tbTiLeX.Text), -float.Parse(tbTiLeY.Text), p.Color);
+
+                //đổi điểm lastPoint về tọa độ máy để vẽ
+                lastPoint = dt.changeToRealPoint(lastPoint);
+                dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+
+            }
+            catch (FormatException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+
+        }
+
+        //xoay và lấy đối xứng hình thoi
+        private void RotateHinhThoi(Point aroundPoint)
+        {
+            if (bMouseUp)
+            {
+                if (!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    newPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
+                    //dt.tim4DiemHinhThoi(newPoint, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+                    // xoay 4 điểm 1 góc angle 
+                    Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
+                    Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
+                    Cp = ct.RotateAroundPoint(aroundPoint, Cp, int.Parse(tbRotate.Text), clLine);
+                    Dp = ct.RotateAroundPoint(aroundPoint, Dp, int.Parse(tbRotate.Text), clLine);
+                    //vẽ hình
+                    dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+                    pbDrawZone.Image = bm;
+                }
+            }
+        }
+        private void SymmetryHinhThoi(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                try
+                {
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+                    // tìm 4 điểm của hình thoi theo tâm cũ
+                  
+                    // lấy đối xứng 4 điểm của hình thoi qua đt
+                    Ap = ct.SymmetricalPointByLine(oldPoint, newPoint, Ap, clLine);
+                    Bp = ct.SymmetricalPointByLine(oldPoint, newPoint, Bp, clLine);
+                    Cp = ct.SymmetricalPointByLine(oldPoint, newPoint, Cp, clLine);
+                    Dp = ct.SymmetricalPointByLine(oldPoint, newPoint, Dp, clLine);
+
+                    //vẽ hình thoi
+                    dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+                finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+        }
+        private void tinhTienHinhThoi()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+
+            try
+            {
+                xoaHinh();
+                dt.tim4DiemHinhThoi(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+
+                //đổi các điểm về tọa độ ng dùng
+                lastPoint = dt.changeToFakePoint(lastPoint);
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+                //tịnh tiến các điểm
+                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Cp = ct.TinhTien(Cp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Dp = ct.TinhTien(Dp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+
+                //đổi các điểm về tọa độ MÁY
+                lastPoint = dt.changeToRealPoint(lastPoint);
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+                dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+            }
+            catch (FormatException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+        private void tiLeHinhThoi()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+            try
+            {
+                xoaHinh();
+                double tileX, tileY, cheoA, cheoB;
+                tileX = double.Parse(tbTiLeX.Text);
+                tileY = double.Parse(tbTiLeY.Text);
+                cheoA = int.Parse(txtCheoA.Text);
+                cheoB = int.Parse(txtCheoB.Text);
+                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
+                cheoA = cheoA * tileX;
+                cheoB = cheoB * tileY;
+
+                //tìm 4 điểm
+                dt.tim4DiemHinhThoi(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, (int)cheoA, (int)cheoB);
+                //vẽ hình
+                dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                txtCheoA.Text = ((int)cheoA).ToString();
+                txtCheoB.Text = ((int)cheoB).ToString();
+
+            }
+            catch (FormatException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+
+        //Các phép biến đổi của HCN
+        private void RotateHCN(Point aroundPoint)
+        {
+            if (bMouseUp)
+            {
+                if (!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    
+                    // xoay 4 điểm 1 góc angle 
+                    Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
+                    Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
+                    Cp = ct.RotateAroundPoint(aroundPoint, Cp, int.Parse(tbRotate.Text), clLine);
+                    Dp = ct.RotateAroundPoint(aroundPoint, Dp, int.Parse(tbRotate.Text), clLine);
+                    //vẽ hình
+                    dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+                    pbDrawZone.Image = bm;
+                }
+            }
+        }
+        private void SymmetryHCN(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                try
+                {
+                    //dt.DrawLineByMidPoint(oldPoint, newPoint, p, true);
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+
+                    // lấy đối xứng 4 điểm của hình 
+                    Ap = ct.SymmetricalPointByLine(oldPoint, newPoint, Ap, clLine);
+                    Bp = ct.SymmetricalPointByLine(oldPoint, newPoint, Bp, clLine);
+                    Cp = ct.SymmetricalPointByLine(oldPoint, newPoint, Cp, clLine);
+                    Dp = ct.SymmetricalPointByLine(oldPoint, newPoint, Dp, clLine);
+
+                    //vẽ hình thoi
+                    dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+                finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+            pbDrawZone.Image = bm;
+        }
+        private void tinhTienHCN()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+
+            try
+            {
+                xoaHinh();
+
+                
+                //đổi các điểm về tọa độ ng dùng
+                lastPoint = dt.changeToFakePoint(lastPoint);
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+                //tịnh tiến các điểm
+                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Cp = ct.TinhTien(Cp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Dp = ct.TinhTien(Dp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+
+                //đổi các điểm về tọa độ MÁY
+                lastPoint = dt.changeToRealPoint(lastPoint);
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+                dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+            }
+            catch (FormatException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+        private void tiLeHCN()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+            try
+            {
+                xoaHinh();
+                double tileX, tileY, cheoA, cheoB;
+                tileX = double.Parse(tbTiLeX.Text);
+                tileY = double.Parse(tbTiLeY.Text);
+                cheoA = int.Parse(tbWidth.Text);
+                cheoB = int.Parse(tbHeight.Text);
+                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
+                cheoA = cheoA * tileX;
+                cheoB = cheoB * tileY;
+                //tìm 4 điểm
+
+                dt.tim4DiemHinhChuNhat(lastPoint, ref Ap, ref Bp, ref Cp, ref Dp, (int)cheoA, (int)cheoB);
+                dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                tbWidth.Text = ((int)cheoA).ToString();
+                tbHeight.Text = ((int)cheoB).ToString();
+
+            }
+            catch (FormatException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+        private void btTatTinhTien_Click(object sender, EventArgs e)
+        {
+            lbTinhTienX.Visible = false;
+            lbTinhTienY.Visible = false;
+            tbTinhTienX.Visible = false;
+            tbTinhTienY.Visible = false;
+            btTatTinhTien.Visible = false;
+        }
+
+        private void btTatTiLe_Click(object sender, EventArgs e)
+        {
+            lbTiLeX.Visible = false;
+            lbTiLeY.Visible = false;
+            tbTiLeX.Visible = false;
+            tbTiLeY.Visible = false;
+            btTatTiLe.Visible = false;
+        }
+
+
+        //Các phép biến đổi của Tam Giác
+        private void RotateTamGiac(Point aroundPoint)
+        {
+            if (bMouseUp)
+            {
+                if (!String.IsNullOrEmpty(tbRotate.Text))
+                {
+                    
+                    // xoay 4 điểm 1 góc angle 
+                    Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
+                    Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
+                    Cp = ct.RotateAroundPoint(aroundPoint, Cp, int.Parse(tbRotate.Text), clLine);
+                    //vẽ hình
+                    dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+                    pbDrawZone.Image = bm;
+                }
+            }
+        }
+        private void SymmetryTamGiac(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            if (bMouseUp)
+            {
+                try
+                {
+                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+
+                    // lấy đối xứng 3 điểm của hình
+                    Ap = ct.SymmetricalPointByLine(oldPoint, newPoint, Ap, clLine);
+                    Bp = ct.SymmetricalPointByLine(oldPoint, newPoint, Bp, clLine);
+                    Cp = ct.SymmetricalPointByLine(oldPoint, newPoint, Cp, clLine);
+
+                    //vẽ hình
+                    dt.veHinhTamGiac(Ap, Bp, Cp, p);
+                }
+                catch (Exception)
+                {
+                    return;
+                }
+                finally
+                {
+                    pbDrawZone.Image = bm;
+                }
+            }
+
+            pbDrawZone.Image = bm;
+        }
+
+        private void tinhTienTamGiac()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+
+            try
+            {
+                xoaHinh();
+               //đổi các điểm về tọa độ ng dùng để tính toán
+                lastPoint = dt.changeToFakePoint(lastPoint);
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                //tịnh tiến các điểm
+                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Cp = ct.TinhTien(Cp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+
+                //đổi các điểm về tọa độ MÁY
+                lastPoint = dt.changeToRealPoint(lastPoint);
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                dt.veHinhTamGiac(Ap, Bp, Cp, p);
+
+            }
+            catch (FormatException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTinhTienX.Text = String.Empty;
+                tbTinhTienY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+        private void tiLeTamGiac()
+        {
+            Pen p = new Pen(clLine, widthLine);
+
+            try
+            {
+                xoaHinh();
+                float tileX, tileY, day, chieuCao;
+                tileX = float.Parse(tbTiLeX.Text);
+                tileY = float.Parse(tbTiLeY.Text);
+                day = int.Parse(tbRongDay.Text);
+                chieuCao = int.Parse(tbChieuCao.Text);
+
+                //tăng tỉ lệ 2 đường chéo theo tỉ lệ
+                day = day * tileX;
+                chieuCao = chieuCao * tileY;
+                dt.tim3DiemTamGiac(lastPoint, ref Ap, ref Bp, ref Cp, (int)chieuCao, (int)day);
+                dt.veHinhTamGiac(Ap, Bp, Cp, p);
+
+                tbRongDay.Text = ((int)day).ToString();
+                tbChieuCao.Text = ((int)chieuCao).ToString();
+
+            }
+            catch (FormatException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbTiLeX.Text = String.Empty;
+                tbTiLeY.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+        //Vẽ đường thẳng
+        private void drawLine(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+
+            if (oldPoint != Point.Empty && newPoint != Point.Empty) dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+
+            pbDrawZone.Image = bm;
+        }
+
+        //vẽ hình thoi
+        private void veHinhThoi(MouseEventArgs e)
+        {
+            resetPoint(ref oldPoint);
+            if (bMouseUp == true)
+                if (bMouseUp == true)
+                {
+                    newPoint = e.Location;
+                }
+
+            Pen pen = new Pen(clLine, widthLine);
+
+            try
+            {
+                if (newPoint != Point.Empty)
+                {
+                    //Point A, B, C, D;
+                    Ap = new Point();
+                    Bp = new Point();
+                    Cp = new Point();
+                    Dp = new Point();
+                    dt.tim4DiemHinhThoi(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+                    dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
+                }
+            }
+            catch (FormatException)
+            {
+                txtCheoA.Text = String.Empty;
+                txtCheoB.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                txtCheoA.Text = String.Empty;
+                txtCheoB.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+        //vẽ hình chữ nhật
+        private void veHinhChuNhat(MouseEventArgs e)
+        {
+            resetPoint(ref oldPoint);
+            if (bMouseUp == true)
+                if (bMouseUp == true)
+                {
+                    newPoint = e.Location;
+                }
+
+            Pen pen = new Pen(clLine, widthLine);
+
+            try
+            {
+                if (newPoint != Point.Empty)
+                {
+                    Ap = new Point();
+                    Bp = new Point();
+                    Cp = new Point();
+                    Dp = new Point();
+                    dt.tim4DiemHinhChuNhat(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
+                    dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
+                }
+            }
+            catch (FormatException)
+            {
+                tbWidth.Text = String.Empty;
+                tbHeight.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbWidth.Text = String.Empty;
+                tbHeight.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+        //vẽ tam giác
+        private void veTamGiac(MouseEventArgs e)
+        {
+            if (bMouseDown == true && bMousePress == false)
+            {
+                oldPoint = e.Location;
+            }
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            Pen p = new Pen(clLine, widthLine);
+
+            //p.EndCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
+
+
+            try
+            {
+                if (oldPoint != Point.Empty && newPoint != Point.Empty)
+                {
+                    Ap = new Point();
+                    Bp = new Point();
+                    Cp = new Point();
+                    dt.tim3DiemTamGiac(newPoint, ref Ap, ref Bp, ref Cp, int.Parse(tbChieuCao.Text), int.Parse(tbRongDay.Text));
+                    dt.veHinhTamGiac(Ap, Bp, Cp, p);
+                }
+            }
+            catch (FormatException)
+            {
+                tbChieuCao.Text = String.Empty;
+                tbRongDay.Text = String.Empty;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tbChieuCao.Text = String.Empty;
+                tbRongDay.Text = String.Empty;
+            }
+            finally
+            {
+                pbDrawZone.Image = bm;
+            }
+        }
+
+        //hàm xóa hình trước đó
+        private void xoaHinh()
+        {
+            if (line == "line")
+            {
+                dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, new Pen(Color.FromArgb(240, 240, 240), widthLine));
+            }
+            else if (line == "hinhThoi" || line == "HCN")
+            {
+                //tìm điểm và xoa hình thoi cũ
+                dt.VeHinhTuGiac(new Pen(Color.FromArgb(240, 240, 240), widthLine), Ap, Bp, Cp, Dp);
+            }
+            else if (line == "tamGiac")
+            {
+                //tìm điểm và xoa hình cũ
+                dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(Color.FromArgb(240, 240, 240), widthLine));
+            }
+            pbDrawZone.Image = bm;
+        }
+
         //hàm vẽ
         private void myDraw(MouseEventArgs e)
         {
@@ -681,11 +1716,73 @@ namespace Paint
                 }
                 else if (line == "circle")
                 {
+                    if (transalte == "symmetry")
+                    {
+                        SymmetryCircle(e);
+                        return;
+                    }
                     drawCircle(e);
                 }
                 else if( line == "con lac")
                 {
                     ThreadAnimConLac(e);
+                }
+                //Trường-bổ sung my Draw
+                else if (line == "line")
+                {
+                    if (transalte == "rotate")
+                    {
+                        RotateLine(e.Location);
+                        return;
+                    }
+                    else if (transalte == "symmetry")
+                    {
+                        SymmetryLine(e);
+                        return;
+                    }
+                    drawLine(e);
+                }
+                else if (line == "hinhThoi")
+                {
+                    if (transalte == "rotate")
+                    {
+                        RotateHinhThoi(e.Location);
+                        return;
+                    }
+                    else if (transalte == "symmetry")
+                    {
+                        SymmetryHinhThoi(e);
+                        return;
+                    }
+                    veHinhThoi(e);
+                }
+                else if (line == "HCN")
+                {
+                    if (transalte == "rotate")
+                    {
+                        RotateHCN(e.Location);
+                        return;
+                    }
+                    else if (transalte == "symmetry")
+                    {
+                        SymmetryHCN(e);
+                        return;
+                    }
+                    veHinhChuNhat(e);
+                }
+                else if (line == "tamGiac")
+                {
+                    if (transalte == "rotate")
+                    {
+                        RotateTamGiac(e.Location);
+                        return;
+                    }
+                    else if (transalte == "symmetry")
+                    {
+                        SymmetryTamGiac(e);
+                        return;
+                    }
+                    veTamGiac(e);
                 }
             }
         }
