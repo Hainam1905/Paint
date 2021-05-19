@@ -1574,6 +1574,8 @@ namespace Paint
             B = new Point(centerPoint.X - doDaiDay / 2, centerPoint.Y);
             C = new Point(centerPoint.X, centerPoint.Y - chieuCao);
         }
+
+        //tìm 4 điểm HCN theo tâm
         public void tim4DiemHinhChuNhat(Point centerPoint, ref Point A, ref Point B, ref Point C, ref Point D, int width, int height)
         {
             width = width * 5;
@@ -1583,6 +1585,18 @@ namespace Paint
             C = new Point(centerPoint.X + width / 2, centerPoint.Y - height / 2);
             D = new Point(centerPoint.X - width / 2, centerPoint.Y - height / 2);
         }
+
+        //tìm 4 điểm HCN theo 1 điểm cho trc
+        public void tim4DiemHCN_Canh(Point A, ref Point B, ref Point C, ref Point D, int width, int height)
+        {
+            width = width * 5;
+            height = height * 5;
+            B = new Point(A.X + width, A.Y);
+            C = new Point(A.X + width, A.Y - height);
+            D = new Point(A.X , A.Y - height);
+        }
+
+        //tìm 4 điểm hình thoi theo tâm
         public void tim4DiemHinhThoi(Point centerPoint, ref Point A, ref Point B, ref Point C, ref Point D, int cheoA, int cheoB)
         {
             cheoA = cheoA * 5;
@@ -1591,6 +1605,16 @@ namespace Paint
             B = new Point(centerPoint.X, centerPoint.Y - cheoB / 2);
             C = new Point(centerPoint.X + cheoA / 2, centerPoint.Y);
             D = new Point(centerPoint.X, centerPoint.Y + cheoB / 2);
+        }
+
+        //tìm 4 điểm Hình thoi theo 1 điểm cho trc
+        public void tim4DiemHinhThoi_Canh(Point A, ref Point B, ref Point C, ref Point D, int cheoA, int cheoB)
+        {
+            cheoA = cheoA * 5;
+            cheoB = cheoB * 5;
+            B = new Point(A.X + cheoA/2, A.Y-cheoB/2);
+            C = new Point(A.X, A.Y - cheoB);
+            D = new Point(A.X-cheoA/2, A.Y - cheoB/2);
         }
         public void VeHinhTuGiac(Pen pen, Point A, Point B, Point C, Point D)
         {
