@@ -179,10 +179,10 @@ namespace Paint
 
             //banh xe: 
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Black);
 
             //to mau xe: 
             dt2.FillColor(new Point(x + 10, y - 10), Color.White);
@@ -362,7 +362,7 @@ namespace Paint
                     dt3.FillColor(new Point(10, 10), Color.Gainsboro);
 
                     pb3.Image = bm3;
-                    Thread.Sleep(TimeSpan.FromSeconds(8));
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
                     day = true;
                 }
                 else if (check == true && day == true)
@@ -374,7 +374,7 @@ namespace Paint
                     dt3.FillColor(new Point(10, 10), Color.DarkSlateGray);
 
                     pb3.Image = bm3;
-                    Thread.Sleep(TimeSpan.FromSeconds(2.5));
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
                     day = false;
                 }
             }
@@ -418,10 +418,10 @@ namespace Paint
 
             //banh xe: 
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Gray);
 
         }
         void translatingAmbulanceRightoLeft(int x, int y)
@@ -465,10 +465,10 @@ namespace Paint
 
             //banh xe: 
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Gray);
 
         }
         void drawAmbulanceRighttoLeft(int x, int y)
@@ -500,10 +500,10 @@ namespace Paint
 
             //banh xe: 
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Black);
 
             //to mau xe: 
             dt2.FillColor(new Point(x - 10, y - 10), Color.White);
@@ -574,14 +574,14 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 30, y - 10), new Point(x + 30, y - 20), p);
             dt2.DrawMidPointAnimation(new Point(x + 170, y - 10), new Point(x + 170, y - 20), p);
 
-            dt2.MidPointDrawCircle(x + 100, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 100, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 180, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 180, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 160, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 160, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 100, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 100, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 180, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 180, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 160, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 160, y + 10, 3, Color.Black);
 
             // to mau: 
             dt2.FillColor(new Point(x + 10, y - 10), Color.OrangeRed);
@@ -627,14 +627,14 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 30, y - 10), new Point(x + 30, y - 20), p);
             dt2.DrawMidPointAnimation(new Point(x + 170, y - 10), new Point(x + 170, y - 20), p);
 
-            dt2.MidPointDrawCircle(x + 100, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 100, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 180, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 180, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 160, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 160, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 100, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 100, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 180, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 180, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 160, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 160, y + 10, 3, Color.Gray);
 
          
         }
@@ -685,10 +685,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
             dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x + 5, y - 5), Color.Pink);
             dt2.FillColor(new Point(x + 30, y - 12), Color.Blue);
@@ -724,10 +724,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 70, y - 50), new Point(x + 70, y - 40), p);
             dt2.DrawMidPointAnimation(new Point(x + 55, y - 50), new Point(x + 55, y - 40), p);
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x + 5, y - 5), Color.LightBlue);
             dt2.FillColor(new Point(x + 30, y - 12), Color.White);
@@ -773,10 +773,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 70, y - 50), new Point(x + 70, y - 40), p);
             dt2.DrawMidPointAnimation(new Point(x + 55, y - 50), new Point(x + 55, y - 40), p);
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Gray);
 
 
         }
@@ -808,10 +808,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x - 70, y - 50), new Point(x - 70, y - 40), p);
             dt2.DrawMidPointAnimation(new Point(x - 55, y - 50), new Point(x - 55, y - 40), p);
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x - 5, y - 5), Color.LightYellow);
             dt2.FillColor(new Point(x - 30, y - 12), Color.White);
@@ -857,10 +857,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x - 70, y - 50), new Point(x - 70, y - 40), p);
             dt2.DrawMidPointAnimation(new Point(x - 55, y - 50), new Point(x - 55, y - 40), p);
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Gray);
 
 
         }
@@ -893,10 +893,10 @@ namespace Paint
                dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
                dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
                //banh xe
-               dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-               dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-               dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-               dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+               dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+               dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+               dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Gray);
+               dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Gray);
 
 
                //ve lai xe: 
@@ -932,10 +932,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x + 80, y - 7), new Point(x + 15, y - 7), p);
             dt2.DrawMidPointAnimation(new Point(x + 60, y - 20), new Point(x + 40, y - 7), p);
             //banh xe
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Gray);
 
 
         }
@@ -1474,12 +1474,12 @@ namespace Paint
             dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
             dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x + 50, y - 20), Color.Cyan);
             dt2.FillColor(new Point(x + 120, y - 10), Color.DarkGreen);
@@ -1489,22 +1489,22 @@ namespace Paint
         {
             
             Pen p = new Pen(clLine, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x - 50, y - 20), Color.Violet);
             dt2.FillColor(new Point(x - 120, y - 10), Color.LightCoral);
@@ -1532,10 +1532,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
            
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x - 5, y - 5), Color.Cyan);
             dt2.FillColor(new Point(x - 30, y - 15), Color.Green);
@@ -1563,18 +1563,18 @@ namespace Paint
             /*dt.DrawMidPoint(new Point(x + 15, y), new Point(x +15, y +20), p);
             dt.DrawMidPoint(new Point(x + 110, y), new Point(x +110, y + 20), p);
             dt.DrawMidPoint(new Point(x + 15, y+20), new Point(x + 110, y + 20), p);*/
-            dt2.MidPointDrawCircle(x + 10, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 10, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 30, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 30, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 50, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 50, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 70, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 70, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x + 110, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x + 110, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 10, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 10, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 30, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 30, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 50, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 50, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 70, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 70, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x + 110, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x + 110, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x + 20, y - 10), Color.DarkGreen);
             dt2.FillColor(new Point(x + 35, y - 35), Color.DarkGreen);
@@ -1600,18 +1600,18 @@ namespace Paint
             /*dt.DrawMidPoint(new Point(x + 15, y), new Point(x +15, y +20), p);
             dt.DrawMidPoint(new Point(x + 110, y), new Point(x +110, y + 20), p);
             dt.DrawMidPoint(new Point(x + 15, y+20), new Point(x + 110, y + 20), p);*/
-            dt2.MidPointDrawCircle(x - 10, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 10, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 30, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 30, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 50, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 50, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 70, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 70, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Black);
-            dt2.MidPointDrawCircle(x - 110, y + 10, 10, Color.Black);
-            dt2.MidPointDrawCircle(x - 110, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 10, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 10, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 30, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 30, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 50, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 50, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 70, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 70, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Black);
+            dt2.MidPointDrawCircle2(x - 110, y + 10, 10, Color.Black);
+            dt2.MidPointDrawCircle2(x - 110, y + 10, 3, Color.Black);
 
             dt2.FillColor(new Point(x - 20, y - 10), Color.DarkGreen);
             dt2.FillColor(new Point(x - 35, y - 35), Color.DarkGreen);
@@ -1908,18 +1908,18 @@ namespace Paint
 
             //banh xe: 
 
-            dt2.MidPointDrawCircle(x + 10, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 10, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 30, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 30, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 50, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 50, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 70, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 70, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 90, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 110, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 110, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 10, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 10, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 30, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 30, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 50, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 50, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 70, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 70, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 110, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 110, y + 10, 3, Color.Gray);
 
 
         }
@@ -1956,18 +1956,18 @@ namespace Paint
             /*dt.DrawMidPoint(new Point(x + 15, y), new Point(x +15, y +20), p);
             dt.DrawMidPoint(new Point(x + 110, y), new Point(x +110, y + 20), p);
             dt.DrawMidPoint(new Point(x + 15, y+20), new Point(x + 110, y + 20), p);*/
-            dt2.MidPointDrawCircle(x - 10, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 10, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 30, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 30, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 50, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 50, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 70, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 70, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 110, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 110, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 10, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 10, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 30, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 30, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 50, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 50, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 70, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 70, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 110, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 110, y + 10, 3, Color.Gray);
 
 
 
@@ -1993,12 +1993,12 @@ namespace Paint
             dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
             dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
             x += 10;
@@ -2022,12 +2022,12 @@ namespace Paint
             dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
             dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x + 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x + 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x + 130, y + 10, 3, Color.Gray);
 
         }
         void translatingCarRightToLeft(int x, int y)
@@ -2055,10 +2055,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
             dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
             x -= 10;
@@ -2089,10 +2089,10 @@ namespace Paint
             dt2.DrawMidPointAnimation(new Point(x - 80, y - 7), new Point(x - 15, y - 7), p);
             dt2.DrawMidPointAnimation(new Point(x - 60, y - 20), new Point(x - 40, y - 7), p);
             //banh xe
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 90, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 90, y + 10, 3, Color.Gray);
 
         }
         void translatingLorryRightToLeft(int x, int y)
@@ -2102,22 +2102,22 @@ namespace Paint
             dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
             dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
             Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 3, Color.Gray);
 
             //ve lai xe: 
             x -= 10;
@@ -2130,22 +2130,22 @@ namespace Paint
             dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
             dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
             Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt2.DrawMidPoint(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt2.DrawMidPoint(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt2.DrawMidPoint(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt2.DrawMidPoint(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x - 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y - 50), new Point(x - 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 100, y), new Point(x - 150, y), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y), new Point(x - 150, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt2.MidPointDrawCircle(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle(x - 130, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 80, y + 10, 3, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 10, Color.Gray);
+            dt2.MidPointDrawCircle2(x - 130, y + 10, 3, Color.Gray);
 
         }
         private void StartDraw_Click(object sender, EventArgs e)
