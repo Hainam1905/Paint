@@ -5,7 +5,13 @@
     <Compile Update="Animation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Draw3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="globularPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="inputHelip.cs">
@@ -21,6 +27,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="inputTinhTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="rectangularPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Xechayquadoi.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

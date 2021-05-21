@@ -36,23 +36,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbDrawColor = new System.Windows.Forms.CheckBox();
             this.btFillColor = new System.Windows.Forms.Button();
-            this.btDrawCircle = new System.Windows.Forms.Button();
-            this.tbRadius = new System.Windows.Forms.TextBox();
-            this.lbRadius = new System.Windows.Forms.Label();
             this.btRotate = new System.Windows.Forms.Button();
             this.tbRotate = new System.Windows.Forms.TextBox();
             this.btSymmetry = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.bt3D = new System.Windows.Forms.Button();
+            this.btn_drawElip = new System.Windows.Forms.Button();
             this.btn_DrawSquare = new System.Windows.Forms.Button();
             this.btn_Quay = new System.Windows.Forms.Button();
             this.btn_DoiXungOy = new System.Windows.Forms.Button();
             this.btn_DoiXungOx = new System.Windows.Forms.Button();
             this.btn_DoiXungQuaO = new System.Windows.Forms.Button();
-            this.btn_TiLe = new System.Windows.Forms.Button();
-            this.btn_tinhtien = new System.Windows.Forms.Button();
             this.btn_drawCircle = new System.Windows.Forms.Button();
-            this.btn_drawElip = new System.Windows.Forms.Button();
-
+            this.btTatTiLe = new System.Windows.Forms.Button();
+            this.btTatTinhTien = new System.Windows.Forms.Button();
             this.cbIsStop = new System.Windows.Forms.CheckBox();
             this.btConLacCD = new System.Windows.Forms.Button();
             this.BtXoa = new System.Windows.Forms.Button();
@@ -82,8 +80,6 @@
             this.lbCheoA = new System.Windows.Forms.Label();
             this.btHinhThoi = new System.Windows.Forms.Button();
             this.btDrawLine = new System.Windows.Forms.Button();
-            this.btTatTinhTien = new System.Windows.Forms.Button();
-            this.btTatTiLe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -92,8 +88,7 @@
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pbDrawZone.Location = new System.Drawing.Point(0, 162);
-
+            this.pbDrawZone.Location = new System.Drawing.Point(1, 162);
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 585);
@@ -111,7 +106,7 @@
             this.btDrawPixel.BackColor = System.Drawing.SystemColors.Control;
             this.btDrawPixel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btDrawPixel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btDrawPixel.Location = new System.Drawing.Point(0, 0);
+            this.btDrawPixel.Location = new System.Drawing.Point(1, 0);
             this.btDrawPixel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawPixel.Name = "btDrawPixel";
             this.btDrawPixel.Size = new System.Drawing.Size(86, 33);
@@ -125,7 +120,7 @@
             this.btDrawArrow.BackColor = System.Drawing.SystemColors.Control;
             this.btDrawArrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btDrawArrow.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btDrawArrow.Location = new System.Drawing.Point(93, 0);
+            this.btDrawArrow.Location = new System.Drawing.Point(93, 1);
             this.btDrawArrow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawArrow.Name = "btDrawArrow";
             this.btDrawArrow.Size = new System.Drawing.Size(89, 53);
@@ -148,7 +143,7 @@
             "8",
             "9",
             "10"});
-            this.cbWidthLine.Location = new System.Drawing.Point(913, 1);
+            this.cbWidthLine.Location = new System.Drawing.Point(36, 50);
             this.cbWidthLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWidthLine.Name = "cbWidthLine";
             this.cbWidthLine.Size = new System.Drawing.Size(44, 28);
@@ -160,7 +155,7 @@
             this.lbDoDay.AutoSize = true;
             this.lbDoDay.BackColor = System.Drawing.SystemColors.Control;
             this.lbDoDay.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbDoDay.Location = new System.Drawing.Point(878, -1);
+            this.lbDoDay.Location = new System.Drawing.Point(1, 48);
             this.lbDoDay.Name = "lbDoDay";
             this.lbDoDay.Size = new System.Drawing.Size(31, 38);
             this.lbDoDay.TabIndex = 3;
@@ -175,11 +170,12 @@
             this.label2.Size = new System.Drawing.Size(50, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
+            this.label2.Visible = false;
             // 
             // cbDrawColor
             // 
             this.cbDrawColor.AutoSize = true;
-            this.cbDrawColor.Location = new System.Drawing.Point(894, 40);
+            this.cbDrawColor.Location = new System.Drawing.Point(17, 89);
             this.cbDrawColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbDrawColor.Name = "cbDrawColor";
             this.cbDrawColor.Size = new System.Drawing.Size(67, 24);
@@ -191,7 +187,7 @@
             // btFillColor
             // 
             this.btFillColor.BackColor = System.Drawing.SystemColors.Control;
-            this.btFillColor.Location = new System.Drawing.Point(205, 0);
+            this.btFillColor.Location = new System.Drawing.Point(188, 0);
             this.btFillColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btFillColor.Name = "btFillColor";
             this.btFillColor.Size = new System.Drawing.Size(86, 60);
@@ -200,39 +196,10 @@
             this.btFillColor.UseVisualStyleBackColor = false;
             this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
-            // btDrawCircle
-            // 
-            this.btDrawCircle.BackColor = System.Drawing.SystemColors.Control;
-            this.btDrawCircle.Location = new System.Drawing.Point(303, 0);
-            this.btDrawCircle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btDrawCircle.Name = "btDrawCircle";
-            this.btDrawCircle.Size = new System.Drawing.Size(117, 32);
-            this.btDrawCircle.TabIndex = 7;
-            this.btDrawCircle.Text = "Draw Circle";
-            this.btDrawCircle.UseVisualStyleBackColor = false;
-            this.btDrawCircle.Click += new System.EventHandler(this.btDrawCircle_Click);
-            // 
-            // tbRadius
-            // 
-            this.tbRadius.Location = new System.Drawing.Point(370, 40);
-            this.tbRadius.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbRadius.Name = "tbRadius";
-            this.tbRadius.Size = new System.Drawing.Size(49, 27);
-            this.tbRadius.TabIndex = 8;
-            // 
-            // lbRadius
-            // 
-            this.lbRadius.AutoSize = true;
-            this.lbRadius.Location = new System.Drawing.Point(303, 43);
-            this.lbRadius.Name = "lbRadius";
-            this.lbRadius.Size = new System.Drawing.Size(72, 20);
-            this.lbRadius.TabIndex = 9;
-            this.lbRadius.Text = "Bán kính :";
-            // 
             // btRotate
             // 
             this.btRotate.BackColor = System.Drawing.SystemColors.Control;
-            this.btRotate.Location = new System.Drawing.Point(805, -1);
+            this.btRotate.Location = new System.Drawing.Point(805, 0);
             this.btRotate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btRotate.Name = "btRotate";
             this.btRotate.Size = new System.Drawing.Size(65, 33);
@@ -243,7 +210,7 @@
             // 
             // tbRotate
             // 
-            this.tbRotate.Location = new System.Drawing.Point(805, 32);
+            this.tbRotate.Location = new System.Drawing.Point(805, 33);
             this.tbRotate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbRotate.Name = "tbRotate";
             this.tbRotate.Size = new System.Drawing.Size(66, 27);
@@ -263,36 +230,29 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tbRotate);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.lbDoDay);
+            this.panel1.Controls.Add(this.cbDrawColor);
+            this.panel1.Controls.Add(this.btRotate);
+            this.panel1.Controls.Add(this.cbWidthLine);
+            this.panel1.Controls.Add(this.bt3D);
+            this.panel1.Controls.Add(this.btFillColor);
             this.panel1.Controls.Add(this.btn_drawElip);
             this.panel1.Controls.Add(this.btn_DrawSquare);
             this.panel1.Controls.Add(this.btn_Quay);
             this.panel1.Controls.Add(this.btn_DoiXungOy);
+            this.panel1.Controls.Add(this.btDrawArrow);
             this.panel1.Controls.Add(this.btn_DoiXungOx);
+            this.panel1.Controls.Add(this.btDrawPixel);
             this.panel1.Controls.Add(this.btn_DoiXungQuaO);
-            this.panel1.Controls.Add(this.btn_TiLe);
-            this.panel1.Controls.Add(this.btn_tinhtien);
             this.panel1.Controls.Add(this.btn_drawCircle);
-            this.panel1.Controls.Add(this.btSymmetry);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-
             this.panel1.Controls.Add(this.btTatTiLe);
             this.panel1.Controls.Add(this.btTatTinhTien);
             this.panel1.Controls.Add(this.cbIsStop);
             this.panel1.Controls.Add(this.btConLacCD);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.tbRotate);
             this.panel1.Controls.Add(this.btSymmetry);
-            this.panel1.Controls.Add(this.btRotate);
-            this.panel1.Controls.Add(this.cbDrawColor);
-            this.panel1.Controls.Add(this.btDrawPixel);
-            this.panel1.Controls.Add(this.lbRadius);
-            this.panel1.Controls.Add(this.lbDoDay);
-            this.panel1.Controls.Add(this.btDrawArrow);
-            this.panel1.Controls.Add(this.cbWidthLine);
-            this.panel1.Controls.Add(this.tbRadius);
-            this.panel1.Controls.Add(this.btFillColor);
-            this.panel1.Controls.Add(this.btDrawCircle);
             this.panel1.Controls.Add(this.BtXoa);
             this.panel1.Controls.Add(this.tbTiLeY);
             this.panel1.Controls.Add(this.tbTiLeX);
@@ -320,13 +280,124 @@
             this.panel1.Controls.Add(this.lbCheoA);
             this.panel1.Controls.Add(this.btHinhThoi);
             this.panel1.Controls.Add(this.btDrawLine);
-            this.panel1.Location = new System.Drawing.Point(0, 5);
+            this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1113, 161);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(251, 134);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(147, 29);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Xe chạy giữa đồi";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // bt3D
+            // 
+            this.bt3D.Location = new System.Drawing.Point(151, 132);
+            this.bt3D.Name = "bt3D";
+            this.bt3D.Size = new System.Drawing.Size(94, 29);
+            this.bt3D.TabIndex = 13;
+            this.bt3D.Text = "Vẽ 3D";
+            this.bt3D.UseVisualStyleBackColor = true;
+            this.bt3D.Click += new System.EventHandler(this.bt3D_Click);
+            // 
+            // btn_drawElip
+            // 
+            this.btn_drawElip.Location = new System.Drawing.Point(398, 6);
+            this.btn_drawElip.Name = "btn_drawElip";
+            this.btn_drawElip.Size = new System.Drawing.Size(98, 30);
+            this.btn_drawElip.TabIndex = 21;
+            this.btn_drawElip.Text = "hình elip";
+            this.btn_drawElip.UseVisualStyleBackColor = true;
+            this.btn_drawElip.Click += new System.EventHandler(this.btn_drawElip_Click);
+            // 
+            // btn_DrawSquare
+            // 
+            this.btn_DrawSquare.Location = new System.Drawing.Point(298, 7);
+            this.btn_DrawSquare.Name = "btn_DrawSquare";
+            this.btn_DrawSquare.Size = new System.Drawing.Size(94, 29);
+            this.btn_DrawSquare.TabIndex = 20;
+            this.btn_DrawSquare.Text = "hình vuông";
+            this.btn_DrawSquare.UseVisualStyleBackColor = true;
+            this.btn_DrawSquare.Click += new System.EventHandler(this.btn_DrawSquare_Click);
+            // 
+            // btn_Quay
+            // 
+            this.btn_Quay.Location = new System.Drawing.Point(393, 48);
+            this.btn_Quay.Name = "btn_Quay";
+            this.btn_Quay.Size = new System.Drawing.Size(103, 29);
+            this.btn_Quay.TabIndex = 19;
+            this.btn_Quay.Text = "Quay 60°";
+            this.btn_Quay.UseVisualStyleBackColor = true;
+            this.btn_Quay.Click += new System.EventHandler(this.btn_Quay_Click);
+            // 
+            // btn_DoiXungOy
+            // 
+            this.btn_DoiXungOy.Location = new System.Drawing.Point(655, 124);
+            this.btn_DoiXungOy.Name = "btn_DoiXungOy";
+            this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOy.TabIndex = 18;
+            this.btn_DoiXungOy.Text = "đối xứng qua Oy";
+            this.btn_DoiXungOy.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
+            // 
+            // btn_DoiXungOx
+            // 
+            this.btn_DoiXungOx.Location = new System.Drawing.Point(523, 125);
+            this.btn_DoiXungOx.Name = "btn_DoiXungOx";
+            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOx.TabIndex = 17;
+            this.btn_DoiXungOx.Text = "đối xứng qua Ox";
+            this.btn_DoiXungOx.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
+            // 
+            // btn_DoiXungQuaO
+            // 
+            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(804, 120);
+            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
+            this.btn_DoiXungQuaO.TabIndex = 16;
+            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
+            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
+            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
+            // 
+            // btn_drawCircle
+            // 
+            this.btn_drawCircle.Location = new System.Drawing.Point(425, 130);
+            this.btn_drawCircle.Name = "btn_drawCircle";
+            this.btn_drawCircle.Size = new System.Drawing.Size(81, 29);
+            this.btn_drawCircle.TabIndex = 13;
+            this.btn_drawCircle.Text = "circle";
+            this.btn_drawCircle.UseVisualStyleBackColor = true;
+            this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
+            // 
+            // btTatTiLe
+            // 
+            this.btTatTiLe.Location = new System.Drawing.Point(375, 99);
+            this.btTatTiLe.Name = "btTatTiLe";
+            this.btTatTiLe.Size = new System.Drawing.Size(17, 29);
+            this.btTatTiLe.TabIndex = 41;
+            this.btTatTiLe.Text = "X";
+            this.btTatTiLe.UseVisualStyleBackColor = true;
+            this.btTatTiLe.Visible = false;
+            this.btTatTiLe.Click += new System.EventHandler(this.btTatTiLe_Click);
+            // 
+            // btTatTinhTien
+            // 
+            this.btTatTinhTien.Location = new System.Drawing.Point(228, 102);
+            this.btTatTinhTien.Name = "btTatTinhTien";
+            this.btTatTinhTien.Size = new System.Drawing.Size(17, 29);
+            this.btTatTinhTien.TabIndex = 40;
+            this.btTatTinhTien.Text = "X";
+            this.btTatTinhTien.UseVisualStyleBackColor = true;
+            this.btTatTinhTien.Visible = false;
+            this.btTatTinhTien.Click += new System.EventHandler(this.btTatTinhTien_Click);
             // 
             // cbIsStop
             // 
@@ -403,7 +474,7 @@
             // 
             // btTiLe
             // 
-            this.btTiLe.Location = new System.Drawing.Point(262, 64);
+            this.btTiLe.Location = new System.Drawing.Point(251, 61);
             this.btTiLe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btTiLe.Name = "btTiLe";
             this.btTiLe.Size = new System.Drawing.Size(107, 39);
@@ -452,7 +523,7 @@
             // 
             // btTinhTien
             // 
-            this.btTinhTien.Location = new System.Drawing.Point(115, 64);
+            this.btTinhTien.Location = new System.Drawing.Point(115, 53);
             this.btTinhTien.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btTinhTien.Name = "btTinhTien";
             this.btTinhTien.Size = new System.Drawing.Size(107, 39);
@@ -614,126 +685,14 @@
             // btDrawLine
             // 
             this.btDrawLine.BackColor = System.Drawing.SystemColors.Control;
-            this.btDrawLine.Location = new System.Drawing.Point(1, 52);
+            this.btDrawLine.Location = new System.Drawing.Point(866, 3);
             this.btDrawLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawLine.Name = "btDrawLine";
-            this.btDrawLine.Size = new System.Drawing.Size(79, 72);
+            this.btDrawLine.Size = new System.Drawing.Size(108, 41);
             this.btDrawLine.TabIndex = 13;
             this.btDrawLine.Text = "Đường thẳng";
             this.btDrawLine.UseVisualStyleBackColor = false;
             this.btDrawLine.Click += new System.EventHandler(this.btDrawLine_Click);
-            // 
-            // btTatTinhTien
-            // 
-            this.btTatTinhTien.Location = new System.Drawing.Point(228, 102);
-            this.btTatTinhTien.Name = "btTatTinhTien";
-            this.btTatTinhTien.Size = new System.Drawing.Size(17, 29);
-            this.btTatTinhTien.TabIndex = 40;
-            this.btTatTinhTien.Text = "X";
-            this.btTatTinhTien.UseVisualStyleBackColor = true;
-            this.btTatTinhTien.Visible = false;
-            this.btTatTinhTien.Click += new System.EventHandler(this.btTatTinhTien_Click);
-            // 
-            // btTatTiLe
-            // 
-            this.btTatTiLe.Location = new System.Drawing.Point(375, 99);
-            this.btTatTiLe.Name = "btTatTiLe";
-            this.btTatTiLe.Size = new System.Drawing.Size(17, 29);
-            this.btTatTiLe.TabIndex = 41;
-            this.btTatTiLe.Text = "X";
-            this.btTatTiLe.UseVisualStyleBackColor = true;
-            this.btTatTiLe.Visible = false;
-            this.btTatTiLe.Click += new System.EventHandler(this.btTatTiLe_Click);
-            // 
-            // btn_DrawSquare
-            // 
-            this.btn_DrawSquare.Location = new System.Drawing.Point(439, 27);
-            this.btn_DrawSquare.Name = "btn_DrawSquare";
-            this.btn_DrawSquare.Size = new System.Drawing.Size(94, 29);
-            this.btn_DrawSquare.TabIndex = 20;
-            this.btn_DrawSquare.Text = "hình vuông";
-            this.btn_DrawSquare.UseVisualStyleBackColor = true;
-            this.btn_DrawSquare.Click += new System.EventHandler(this.btn_DrawSquare_Click);
-            // 
-            // btn_Quay
-            // 
-            this.btn_Quay.Location = new System.Drawing.Point(742, 65);
-            this.btn_Quay.Name = "btn_Quay";
-            this.btn_Quay.Size = new System.Drawing.Size(103, 29);
-            this.btn_Quay.TabIndex = 19;
-            this.btn_Quay.Text = "Quay 60°";
-            this.btn_Quay.UseVisualStyleBackColor = true;
-            this.btn_Quay.Click += new System.EventHandler(this.btn_Quay_Click);
-            // 
-            // btn_DoiXungOy
-            // 
-            this.btn_DoiXungOy.Location = new System.Drawing.Point(595, 64);
-            this.btn_DoiXungOy.Name = "btn_DoiXungOy";
-            this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 32);
-            this.btn_DoiXungOy.TabIndex = 18;
-            this.btn_DoiXungOy.Text = "đối xứng qua Oy";
-            this.btn_DoiXungOy.UseVisualStyleBackColor = true;
-            this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
-            // 
-            // btn_DoiXungOx
-            // 
-            this.btn_DoiXungOx.Location = new System.Drawing.Point(461, 65);
-            this.btn_DoiXungOx.Name = "btn_DoiXungOx";
-            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
-            this.btn_DoiXungOx.TabIndex = 17;
-            this.btn_DoiXungOx.Text = "đối xứng qua Ox";
-            this.btn_DoiXungOx.UseVisualStyleBackColor = true;
-            this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
-            // 
-            // btn_DoiXungQuaO
-            // 
-            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(298, 65);
-            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
-            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
-            this.btn_DoiXungQuaO.TabIndex = 16;
-            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
-            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
-            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
-            // 
-            // btn_TiLe
-            // 
-            this.btn_TiLe.Location = new System.Drawing.Point(207, 65);
-            this.btn_TiLe.Name = "btn_TiLe";
-            this.btn_TiLe.Size = new System.Drawing.Size(75, 33);
-            this.btn_TiLe.TabIndex = 15;
-            this.btn_TiLe.Text = "tỉ lệ";
-            this.btn_TiLe.UseVisualStyleBackColor = true;
-            this.btn_TiLe.Click += new System.EventHandler(this.btn_TiLe_Click);
-            // 
-            // btn_tinhtien
-            // 
-            this.btn_tinhtien.Location = new System.Drawing.Point(101, 66);
-            this.btn_tinhtien.Name = "btn_tinhtien";
-            this.btn_tinhtien.Size = new System.Drawing.Size(83, 31);
-            this.btn_tinhtien.TabIndex = 14;
-            this.btn_tinhtien.Text = "tịnh tiến";
-            this.btn_tinhtien.UseVisualStyleBackColor = true;
-            this.btn_tinhtien.Click += new System.EventHandler(this.btn_tinhtien_Click);
-            // 
-            // btn_drawCircle
-            // 
-            this.btn_drawCircle.Location = new System.Drawing.Point(2, 67);
-            this.btn_drawCircle.Name = "btn_drawCircle";
-            this.btn_drawCircle.Size = new System.Drawing.Size(81, 29);
-            this.btn_drawCircle.TabIndex = 13;
-            this.btn_drawCircle.Text = "circle";
-            this.btn_drawCircle.UseVisualStyleBackColor = true;
-            this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
-            // 
-            // btn_drawElip
-            // 
-            this.btn_drawElip.Location = new System.Drawing.Point(551, 26);
-            this.btn_drawElip.Name = "btn_drawElip";
-            this.btn_drawElip.Size = new System.Drawing.Size(98, 30);
-            this.btn_drawElip.TabIndex = 21;
-            this.btn_drawElip.Text = "hình elip";
-            this.btn_drawElip.UseVisualStyleBackColor = true;
-            this.btn_drawElip.Click += new System.EventHandler(this.btn_drawElip_Click);
             // 
             // Form1
             // 
@@ -741,24 +700,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(973, 740);
-
-            this.Controls.Add(this.tbRotate);
-            this.Controls.Add(this.btRotate);
-            this.Controls.Add(this.lbRadius);
-            this.Controls.Add(this.tbRadius);
-            this.Controls.Add(this.btDrawCircle);
-            this.Controls.Add(this.btFillColor);
-            this.Controls.Add(this.cbDrawColor);
-            this.Controls.Add(this.lbDoDay);
-            this.Controls.Add(this.cbWidthLine);
-            this.Controls.Add(this.btDrawArrow);
-            this.Controls.Add(this.btDrawPixel);
-
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbDrawZone);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -768,7 +715,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pbDrawZone;
+        public System.Windows.Forms.PictureBox pbDrawZone;
         private System.Windows.Forms.Button btDrawPixel;
         private System.Windows.Forms.Button btDrawArrow;
         private System.Windows.Forms.ComboBox cbWidthLine;
@@ -776,9 +723,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbDrawColor;
         private System.Windows.Forms.Button btFillColor;
-        private System.Windows.Forms.Button btDrawCircle;
-        private System.Windows.Forms.TextBox tbRadius;
-        private System.Windows.Forms.Label lbRadius;
         private System.Windows.Forms.Button btRotate;
         private System.Windows.Forms.TextBox tbRotate;
 
@@ -787,9 +731,11 @@
 
         private System.Windows.Forms.Panel panel1;
 
+        private System.Windows.Forms.Button bt3D;
+        private System.Windows.Forms.Button button2;
+
+
         private System.Windows.Forms.Button btn_drawCircle;
-        private System.Windows.Forms.Button btn_tinhtien;
-        private System.Windows.Forms.Button btn_TiLe;
         private System.Windows.Forms.Button btn_DoiXungQuaO;
         private System.Windows.Forms.Button btn_DoiXungOx;
         private System.Windows.Forms.Button btn_DoiXungOy;
@@ -828,6 +774,7 @@
         private System.Windows.Forms.Button BtXoa;
         private System.Windows.Forms.Button btTatTiLe;
         private System.Windows.Forms.Button btTatTinhTien;
+
     }
 }
 

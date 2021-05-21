@@ -47,6 +47,27 @@ D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
 <<<<<<< HEAD
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.exe
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.deps.json
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.json
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.dev.json
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
+D:\Paint\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csprojAssemblyReference.cache
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Form1.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Properties.Resources.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.GenerateResource.cache
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.AssemblyInfoInputs.cache
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.AssemblyInfo.cs
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.CoreCompileInputs.cache
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.dll
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Draw3D.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.globularPopUp.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.rectangularPopUp.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Xechayquadoi.resources
+=======
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.exe
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.deps.json
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.json
@@ -68,7 +89,6 @@ C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreap
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputTiLe.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHvuong.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHelip.resources
-=======
 C:\Users\Admin\Desktop\Code\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
 D:\MyCode\Csharp\KyThuatDoHoa\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
 >>>>>>> 9727501b60e11238f6c3ec360eaa9ae28b6171bd
@@ -95,3 +115,10 @@ D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.CoreCompileInputs.cache
 D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.dll
 D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
 D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+>>>>>>> 853b4a6bf25720d7de21a41c7a8844d42bd84bf4
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHelip.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHtron.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputHvuong.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputTiLe.resources
+D:\Paint\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.inputTinhTien.resources
