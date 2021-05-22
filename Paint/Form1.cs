@@ -2055,6 +2055,62 @@ namespace Paint
             btTatTinhTien.Visible = false;
         }
 
+        private void lbChieuCao_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbChieuCao_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbRongDay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbRongDay_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbCheoA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCheoA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbCheoB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCheoB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void btTatTiLe_Click(object sender, EventArgs e)
         {
             lbTiLeX.Visible = false;

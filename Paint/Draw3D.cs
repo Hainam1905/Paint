@@ -315,5 +315,20 @@ namespace Paint
             g.Clear(Color.LightGray);
             tructoado();
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

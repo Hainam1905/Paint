@@ -111,6 +111,7 @@ namespace Paint
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pb1);
             this.Name = "Xechayquadoi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Xechayquadoi";
             this.Load += new System.EventHandler(this.Xechayquadoi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb1)).EndInit();

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Animation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Draw3D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ElipseControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Update="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+=======
+>>>>>>> 908b2338ad0588e632dc129df9a704b0056f1f3b
+    <Compile Update="globularPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputHelip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputHtron.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputHvuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputTiLe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="inputTinhTien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="rectangularPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Xechayquadoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
