@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Paint
 {
@@ -41,6 +42,11 @@ namespace Paint
         {
             Xechayquadoi xechayquadoi = new Xechayquadoi();
             xechayquadoi.ShowDialog();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

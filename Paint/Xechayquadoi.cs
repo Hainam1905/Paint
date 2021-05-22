@@ -1464,15 +1464,15 @@ namespace Paint
         {
             
             Pen p = new Pen(clLine, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
-            dt2.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
-            dt2.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
-            dt2.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 100, y), new Point(x + 150, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y), new Point(x + 150, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
             dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Black);
             dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Black);
@@ -2012,15 +2012,15 @@ namespace Paint
 
 
             Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x + 100, y), p);
-            dt2.DrawMidPoint(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPoint(new Point(x, y - 50), new Point(x + 100, y - 50), p);
-            dt2.DrawMidPoint(new Point(x + 100, y - 50), new Point(x + 100, y), p);
-            dt2.DrawMidPoint(new Point(x + 100, y), new Point(x + 150, y), p);
-            dt2.DrawMidPoint(new Point(x + 150, y), new Point(x + 150, y - 35), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
-            dt2.DrawMidPoint(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x + 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x + 100, y - 50), p);
+            dt2.DrawMidPointAnimation(new Point(x + 100, y - 50), new Point(x + 100, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 100, y), new Point(x + 150, y), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y), new Point(x + 150, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 35), new Point(x + 100, y - 35), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 35), new Point(x + 150, y - 40), p);
+            dt2.DrawMidPointAnimation(new Point(x + 150, y - 40), new Point(x + 100, y - 50), p);
 
             dt2.MidPointDrawCircle2(x + 20, y + 10, 10, Color.Gray);
             dt2.MidPointDrawCircle2(x + 20, y + 10, 3, Color.Gray);
@@ -2097,27 +2097,8 @@ namespace Paint
         }
         void translatingLorryRightToLeft(int x, int y)
         {
-            
-            dt2.FillColor(new Point(x - 50, y - 20), Color.Gray);
-            dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
-            dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
-            Pen p = new Pen(Color.Gray, widthLine);
-            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 100, y), p);
-            dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
-            dt2.DrawMidPointAnimation(new Point(x, y - 50), new Point(x - 100, y - 50), p);
-            dt2.DrawMidPointAnimation(new Point(x - 100, y - 50), new Point(x - 100, y), p);
-            dt2.DrawMidPointAnimation(new Point(x - 100, y), new Point(x - 150, y), p);
-            dt2.DrawMidPointAnimation(new Point(x - 150, y), new Point(x - 150, y - 35), p);
-            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 100, y - 35), p);
-            dt2.DrawMidPointAnimation(new Point(x - 150, y - 35), new Point(x - 150, y - 40), p);
-            dt2.DrawMidPointAnimation(new Point(x - 150, y - 40), new Point(x - 100, y - 50), p);
 
-            dt2.MidPointDrawCircle2(x - 20, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle2(x - 20, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle2(x - 80, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle2(x - 80, y + 10, 3, Color.Gray);
-            dt2.MidPointDrawCircle2(x - 130, y + 10, 10, Color.Gray);
-            dt2.MidPointDrawCircle2(x - 130, y + 10, 3, Color.Gray);
+            clearLorryRightToLeft(x, y); 
 
             //ve lai xe: 
             x -= 10;
@@ -2129,6 +2110,7 @@ namespace Paint
             dt2.FillColor(new Point(x - 50, y - 20), Color.Gray);
             dt2.FillColor(new Point(x - 120, y - 10), Color.Gray);
             dt2.FillColor(new Point(x - 105, y - 43), Color.Gray);
+
             Pen p = new Pen(Color.Gray, widthLine);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x - 100, y), p);
             dt2.DrawMidPointAnimation(new Point(x, y), new Point(x, y - 50), p);
@@ -2146,6 +2128,8 @@ namespace Paint
             dt2.MidPointDrawCircle2(x - 80, y + 10, 3, Color.Gray);
             dt2.MidPointDrawCircle2(x - 130, y + 10, 10, Color.Gray);
             dt2.MidPointDrawCircle2(x - 130, y + 10, 3, Color.Gray);
+
+           
 
         }
         private void StartDraw_Click(object sender, EventArgs e)

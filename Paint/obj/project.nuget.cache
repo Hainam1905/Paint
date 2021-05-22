@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hAUHBjNKyYuQpEcMA8CH/v88UhmpvsPfZ6e6TXWA+eDjrYy4wI3ma8M23cEUd6+rLKw6QP7TSsJfydaAcsOqDA==",
+  "dgSpecHash": "Goy1KukbgvI+zfZ0v4MHUa1stZYQeOeqHahD57fQF+gIC8SfpNU+0qmj5MRBh1TMeYNEQlTTa4LnKfOxG2sSpg==",
   "success": true,
-  "projectFilePath": "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj",
+  "projectFilePath": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
