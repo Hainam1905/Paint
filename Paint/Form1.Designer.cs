@@ -35,7 +35,14 @@
             this.lbDoDay = new System.Windows.Forms.Label();
             this.cbDrawColor = new System.Windows.Forms.CheckBox();
             this.btFillColor = new System.Windows.Forms.Button();
+
             this.btSymmetry = new System.Windows.Forms.Button();
+
+            this.btRotate = new System.Windows.Forms.Button();
+            this.tbRotate = new System.Windows.Forms.TextBox();
+            this.btSymmetry = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            //this.button2 = new System.Windows.Forms.Button();
             this.btn_drawElip = new System.Windows.Forms.Button();
             this.btn_DrawSquare = new System.Windows.Forms.Button();
             this.btn_DoiXungOy = new System.Windows.Forms.Button();
@@ -73,6 +80,7 @@
             this.lbCheoA = new System.Windows.Forms.Label();
             this.btHinhThoi = new System.Windows.Forms.Button();
             this.btDrawLine = new System.Windows.Forms.Button();
+
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -83,8 +91,9 @@
             this.btRotate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            //this.button2 = new System.Windows.Forms.Button();
             this.elipseControl1 = new Paint.ElipseControl();
+
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,7 +107,10 @@
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
+
             this.pbDrawZone.Location = new System.Drawing.Point(410, 198);
+
+            this.pbDrawZone.Location = new System.Drawing.Point(1, 162);
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 585);
@@ -115,8 +127,12 @@
             // 
             this.btDrawPixel.BackColor = System.Drawing.SystemColors.Control;
             this.btDrawPixel.Cursor = System.Windows.Forms.Cursors.Hand;
+
             this.btDrawPixel.ForeColor = System.Drawing.Color.Red;
             this.btDrawPixel.Location = new System.Drawing.Point(6, 27);
+
+            this.btDrawPixel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btDrawPixel.Location = new System.Drawing.Point(1, 0);
             this.btDrawPixel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawPixel.Name = "btDrawPixel";
             this.btDrawPixel.Size = new System.Drawing.Size(86, 46);
@@ -129,8 +145,13 @@
             // 
             this.btDrawArrow.BackColor = System.Drawing.SystemColors.Control;
             this.btDrawArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btDrawArrow.ForeColor = System.Drawing.Color.Red;
-            this.btDrawArrow.Location = new System.Drawing.Point(98, 27);
+
+           /* this.btDrawArrow.ForeColor = System.Drawing.Color.Red;
+            this.btDrawArrow.Location = new System.Drawing.Point(98, 27);*/
+
+            this.btDrawArrow.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btDrawArrow.Location = new System.Drawing.Point(93, 1);
+
             this.btDrawArrow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawArrow.Name = "btDrawArrow";
             this.btDrawArrow.Size = new System.Drawing.Size(109, 46);
@@ -153,7 +174,12 @@
             "8",
             "9",
             "10"});
-            this.cbWidthLine.Location = new System.Drawing.Point(85, 95);
+
+            //sua
+            //this.cbWidthLine.Location = new System.Drawing.Point(85, 95);
+
+            this.cbWidthLine.Location = new System.Drawing.Point(36, 50);
+
             this.cbWidthLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbWidthLine.Name = "cbWidthLine";
             this.cbWidthLine.Size = new System.Drawing.Size(98, 28);
@@ -163,9 +189,15 @@
             // lbDoDay
             // 
             this.lbDoDay.AutoSize = true;
-            this.lbDoDay.BackColor = System.Drawing.Color.Transparent;
+ //sua
+            /*this.lbDoDay.BackColor = System.Drawing.Color.Transparent;
             this.lbDoDay.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbDoDay.Location = new System.Drawing.Point(20, 98);
+            this.lbDoDay.Location = new System.Drawing.Point(20, 98);*/
+
+            this.lbDoDay.BackColor = System.Drawing.SystemColors.Control;
+            this.lbDoDay.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbDoDay.Location = new System.Drawing.Point(1, 48);
+
             this.lbDoDay.Name = "lbDoDay";
             this.lbDoDay.Size = new System.Drawing.Size(59, 20);
             this.lbDoDay.TabIndex = 3;
@@ -175,8 +207,12 @@
             // cbDrawColor
             // 
             this.cbDrawColor.AutoSize = true;
-            this.cbDrawColor.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+//sua
+           /* this.cbDrawColor.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cbDrawColor.Location = new System.Drawing.Point(201, 82);
+*/
+            this.cbDrawColor.Location = new System.Drawing.Point(17, 89);
+
             this.cbDrawColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbDrawColor.Name = "cbDrawColor";
             this.cbDrawColor.Size = new System.Drawing.Size(79, 29);
@@ -188,7 +224,12 @@
             // btFillColor
             // 
             this.btFillColor.BackColor = System.Drawing.SystemColors.Control;
-            this.btFillColor.Location = new System.Drawing.Point(6, 26);
+
+            //sua
+            //this.btFillColor.Location = new System.Drawing.Point(6, 26);
+
+            this.btFillColor.Location = new System.Drawing.Point(188, 0);
+
             this.btFillColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btFillColor.Name = "btFillColor";
             this.btFillColor.Size = new System.Drawing.Size(73, 92);
@@ -197,6 +238,7 @@
             this.btFillColor.UseVisualStyleBackColor = false;
             this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
+
             // btSymmetry
             // 
             this.btSymmetry.BackColor = System.Drawing.SystemColors.Control;
@@ -237,9 +279,23 @@
             this.btn_DoiXungOy.Text = "Qua Oy";
             this.btn_DoiXungOy.UseVisualStyleBackColor = true;
             this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
+
+            // btRotate
+            // sua
+            this.btRotate.BackColor = System.Drawing.SystemColors.Control;
+            this.btRotate.Location = new System.Drawing.Point(805, 0);
+            this.btRotate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btRotate.Name = "btRotate";
+            this.btRotate.Size = new System.Drawing.Size(65, 33);
+            this.btRotate.TabIndex = 10;
+            this.btRotate.Text = "Xoay";
+            this.btRotate.UseVisualStyleBackColor = false;
+            this.btRotate.Click += new System.EventHandler(this.btRotate_Click);
+
             // 
             // btn_DoiXungOx
             // 
+
             this.btn_DoiXungOx.Location = new System.Drawing.Point(140, 72);
             this.btn_DoiXungOx.Name = "btn_DoiXungOx";
             this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
@@ -247,6 +303,14 @@
             this.btn_DoiXungOx.Text = "Qua Ox";
             this.btn_DoiXungOx.UseVisualStyleBackColor = true;
             this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
+
+            this.tbRotate.Location = new System.Drawing.Point(805, 33);
+            this.tbRotate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbRotate.Name = "tbRotate";
+            this.tbRotate.Size = new System.Drawing.Size(66, 27);
+            this.tbRotate.TabIndex = 11;
+            this.tbRotate.TextChanged += new System.EventHandler(this.tbRotate_TextChanged);
+
             // 
             // btn_DoiXungQuaO
             // 
@@ -260,6 +324,7 @@
             // 
             // btn_drawCircle
             // 
+
             this.btn_drawCircle.Location = new System.Drawing.Point(116, 80);
             this.btn_drawCircle.Name = "btn_drawCircle";
             this.btn_drawCircle.Size = new System.Drawing.Size(103, 49);
@@ -284,6 +349,177 @@
             this.btTatTinhTien.Location = new System.Drawing.Point(221, 72);
             this.btTatTinhTien.Name = "btTatTinhTien";
             this.btTatTinhTien.Size = new System.Drawing.Size(33, 29);
+            this.btTatTinhTien.TabIndex = 40;
+            this.btTatTinhTien.Text = "X";
+            this.btTatTinhTien.UseVisualStyleBackColor = true;
+            this.btTatTinhTien.Visible = false;
+            this.btTatTinhTien.Click += new System.EventHandler(this.btTatTinhTien_Click);
+
+            this.panel1.Controls.Add(this.tbRotate);
+            //this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.lbDoDay);
+            this.panel1.Controls.Add(this.cbDrawColor);
+            this.panel1.Controls.Add(this.btRotate);
+            this.panel1.Controls.Add(this.cbWidthLine);
+            this.panel1.Controls.Add(this.btFillColor);
+            this.panel1.Controls.Add(this.btn_drawElip);
+            this.panel1.Controls.Add(this.btn_DrawSquare);
+            this.panel1.Controls.Add(this.btn_Quay);
+            this.panel1.Controls.Add(this.btn_DoiXungOy);
+            this.panel1.Controls.Add(this.btDrawArrow);
+            this.panel1.Controls.Add(this.btn_DoiXungOx);
+            this.panel1.Controls.Add(this.btDrawPixel);
+            this.panel1.Controls.Add(this.btn_DoiXungQuaO);
+            this.panel1.Controls.Add(this.btn_drawCircle);
+            this.panel1.Controls.Add(this.btTatTiLe);
+            this.panel1.Controls.Add(this.btTatTinhTien);
+            this.panel1.Controls.Add(this.cbIsStop);
+            this.panel1.Controls.Add(this.btConLacCD);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.btSymmetry);
+            this.panel1.Controls.Add(this.BtXoa);
+            this.panel1.Controls.Add(this.tbTiLeY);
+            this.panel1.Controls.Add(this.tbTiLeX);
+            this.panel1.Controls.Add(this.lbTiLeY);
+            this.panel1.Controls.Add(this.lbTiLeX);
+            this.panel1.Controls.Add(this.btTiLe);
+            this.panel1.Controls.Add(this.tbTinhTienY);
+            this.panel1.Controls.Add(this.lbTinhTienY);
+            this.panel1.Controls.Add(this.tbTinhTienX);
+            this.panel1.Controls.Add(this.lbTinhTienX);
+            this.panel1.Controls.Add(this.btTinhTien);
+            this.panel1.Controls.Add(this.tbRongDay);
+            this.panel1.Controls.Add(this.tbChieuCao);
+            this.panel1.Controls.Add(this.lbRongDay);
+            this.panel1.Controls.Add(this.lbChieuCao);
+            this.panel1.Controls.Add(this.btTamGiac);
+            this.panel1.Controls.Add(this.tbHeight);
+            this.panel1.Controls.Add(this.tbWidth);
+            this.panel1.Controls.Add(this.lbHeight);
+            this.panel1.Controls.Add(this.lbWidth);
+            this.panel1.Controls.Add(this.btHCN);
+            this.panel1.Controls.Add(this.txtCheoB);
+            this.panel1.Controls.Add(this.txtCheoA);
+            this.panel1.Controls.Add(this.lbCheoB);
+            this.panel1.Controls.Add(this.lbCheoA);
+            this.panel1.Controls.Add(this.btHinhThoi);
+            this.panel1.Controls.Add(this.btDrawLine);
+            this.panel1.Location = new System.Drawing.Point(0, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1113, 161);
+            this.panel1.TabIndex = 12;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+
+            // 
+            // button2
+            // 
+
+            /*this.button2.Location = new System.Drawing.Point(251, 134);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(147, 29);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Xe chạy giữa đồi";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);*/
+
+            // 
+            // bt3D
+            // 
+            /*this.bt3D.Location = new System.Drawing.Point(151, 132);
+            this.bt3D.Name = "bt3D";
+            this.bt3D.Size = new System.Drawing.Size(94, 29);
+            this.bt3D.TabIndex = 13;
+            this.bt3D.Text = "Vẽ 3D";
+            this.bt3D.UseVisualStyleBackColor = true;
+            this.bt3D.Click += new System.EventHandler(this.bt3D_Click);*/
+            // 
+            // btn_drawElip
+            // 
+            this.btn_drawElip.Location = new System.Drawing.Point(398, 6);
+            this.btn_drawElip.Name = "btn_drawElip";
+            this.btn_drawElip.Size = new System.Drawing.Size(98, 30);
+            this.btn_drawElip.TabIndex = 21;
+            this.btn_drawElip.Text = "hình elip";
+            this.btn_drawElip.UseVisualStyleBackColor = true;
+            this.btn_drawElip.Click += new System.EventHandler(this.btn_drawElip_Click);
+            // 
+            // btn_DrawSquare
+            // 
+            this.btn_DrawSquare.Location = new System.Drawing.Point(298, 7);
+            this.btn_DrawSquare.Name = "btn_DrawSquare";
+            this.btn_DrawSquare.Size = new System.Drawing.Size(94, 29);
+            this.btn_DrawSquare.TabIndex = 20;
+            this.btn_DrawSquare.Text = "hình vuông";
+            this.btn_DrawSquare.UseVisualStyleBackColor = true;
+            this.btn_DrawSquare.Click += new System.EventHandler(this.btn_DrawSquare_Click);
+            // 
+            // btn_Quay
+            // 
+            this.btn_Quay.Location = new System.Drawing.Point(393, 48);
+            this.btn_Quay.Name = "btn_Quay";
+            this.btn_Quay.Size = new System.Drawing.Size(103, 29);
+            this.btn_Quay.TabIndex = 19;
+            this.btn_Quay.Text = "Quay 60°";
+            this.btn_Quay.UseVisualStyleBackColor = true;
+            this.btn_Quay.Click += new System.EventHandler(this.btn_Quay_Click);
+            // 
+            // btn_DoiXungOy
+            // 
+            this.btn_DoiXungOy.Location = new System.Drawing.Point(655, 124);
+            this.btn_DoiXungOy.Name = "btn_DoiXungOy";
+            this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOy.TabIndex = 18;
+            this.btn_DoiXungOy.Text = "đối xứng qua Oy";
+            this.btn_DoiXungOy.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOy.Click += new System.EventHandler(this.btn_DoiXungOy_Click);
+            // 
+            // btn_DoiXungOx
+            // 
+            this.btn_DoiXungOx.Location = new System.Drawing.Point(523, 125);
+            this.btn_DoiXungOx.Name = "btn_DoiXungOx";
+            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 32);
+            this.btn_DoiXungOx.TabIndex = 17;
+            this.btn_DoiXungOx.Text = "đối xứng qua Ox";
+            this.btn_DoiXungOx.UseVisualStyleBackColor = true;
+            this.btn_DoiXungOx.Click += new System.EventHandler(this.btn_DoiXungOx_Click);
+            // 
+            // btn_DoiXungQuaO
+            // 
+            this.btn_DoiXungQuaO.Location = new System.Drawing.Point(804, 120);
+            this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(153, 33);
+            this.btn_DoiXungQuaO.TabIndex = 16;
+            this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
+            this.btn_DoiXungQuaO.UseVisualStyleBackColor = true;
+            this.btn_DoiXungQuaO.Click += new System.EventHandler(this.btn_DoiXungQuaO_Click);
+            // 
+            // btn_drawCircle
+            // 
+            this.btn_drawCircle.Location = new System.Drawing.Point(425, 130);
+            this.btn_drawCircle.Name = "btn_drawCircle";
+            this.btn_drawCircle.Size = new System.Drawing.Size(81, 29);
+            this.btn_drawCircle.TabIndex = 13;
+            this.btn_drawCircle.Text = "circle";
+            this.btn_drawCircle.UseVisualStyleBackColor = true;
+            this.btn_drawCircle.Click += new System.EventHandler(this.btn_drawCircle_Click);
+            // 
+            // btTatTiLe
+            // 
+            this.btTatTiLe.Location = new System.Drawing.Point(375, 99);
+            this.btTatTiLe.Name = "btTatTiLe";
+            this.btTatTiLe.Size = new System.Drawing.Size(17, 29);
+            this.btTatTiLe.TabIndex = 41;
+            this.btTatTiLe.Text = "X";
+            this.btTatTiLe.UseVisualStyleBackColor = true;
+            this.btTatTiLe.Visible = false;
+            this.btTatTiLe.Click += new System.EventHandler(this.btTatTiLe_Click);
+            // 
+            // btTatTinhTien
+            // 
+            this.btTatTinhTien.Location = new System.Drawing.Point(228, 102);
+            this.btTatTinhTien.Name = "btTatTinhTien";
+            this.btTatTinhTien.Size = new System.Drawing.Size(17, 29);
             this.btTatTinhTien.TabIndex = 40;
             this.btTatTinhTien.Text = "X";
             this.btTatTinhTien.UseVisualStyleBackColor = true;
@@ -369,7 +605,11 @@
             // 
             // btTiLe
             // 
+//sua
             this.btTiLe.Location = new System.Drawing.Point(269, 28);
+
+            this.btTiLe.Location = new System.Drawing.Point(251, 61);
+
             this.btTiLe.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btTiLe.Name = "btTiLe";
             this.btTiLe.Size = new System.Drawing.Size(166, 39);
@@ -418,7 +658,11 @@
             // 
             // btTinhTien
             // 
-            this.btTinhTien.Location = new System.Drawing.Point(85, 28);
+//sua
+            //this.btTinhTien.Location = new System.Drawing.Point(85, 28);
+
+            this.btTinhTien.Location = new System.Drawing.Point(115, 53);
+
             this.btTinhTien.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btTinhTien.Name = "btTinhTien";
             this.btTinhTien.Size = new System.Drawing.Size(169, 39);
@@ -588,15 +832,22 @@
             // btDrawLine
             // 
             this.btDrawLine.BackColor = System.Drawing.SystemColors.Control;
-            this.btDrawLine.Location = new System.Drawing.Point(211, 27);
+//sua
+            /*this.btDrawLine.Location = new System.Drawing.Point(211, 27);
             this.btDrawLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawLine.Name = "btDrawLine";
-            this.btDrawLine.Size = new System.Drawing.Size(112, 46);
+            this.btDrawLine.Size = new System.Drawing.Size(112, 46);*/
+
+            this.btDrawLine.Location = new System.Drawing.Point(866, 3);
+            this.btDrawLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btDrawLine.Name = "btDrawLine";
+            this.btDrawLine.Size = new System.Drawing.Size(108, 41);
+
             this.btDrawLine.TabIndex = 13;
             this.btDrawLine.Text = "Đường thẳng";
             this.btDrawLine.UseVisualStyleBackColor = false;
             this.btDrawLine.Click += new System.EventHandler(this.btDrawLine_Click);
-            // 
+
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -738,7 +989,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button2);
+            //this.panel1.Controls.Add(this.button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -771,14 +1022,17 @@
             this.elipseControl1.CornerRadius = 40;
             this.elipseControl1.TargetControl = this;
             // 
-            // Form1
-            // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
+
             this.BackgroundImage = global::Paint.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1425, 796);
+
+            this.ClientSize = new System.Drawing.Size(973, 740); 
+
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
@@ -819,8 +1073,17 @@
         private System.Windows.Forms.CheckBox cbDrawColor;
         private System.Windows.Forms.Button btFillColor;
 
-        private System.Windows.Forms.Button button1;
+        //private System.Windows.Forms.Button btRotate;
+        //private System.Windows.Forms.TextBox tbRotate;
+
+        //private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btSymmetry;
+
+
+        //private System.Windows.Forms.Panel panel1;
+
+        //private System.Windows.Forms.Button bt3D;
+        //private System.Windows.Forms.Button button2;
 
 
         private System.Windows.Forms.Button btn_drawCircle;
@@ -861,6 +1124,7 @@
         private System.Windows.Forms.Button BtXoa;
         private System.Windows.Forms.Button btTatTiLe;
         private System.Windows.Forms.Button btTatTinhTien;
+
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -873,6 +1137,7 @@
         private ElipseControl elipseControl1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
+
     }
 }
 

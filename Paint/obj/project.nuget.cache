@@ -4,5 +4,12 @@
   "success": true,
   "projectFilePath": "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

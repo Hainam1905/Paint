@@ -131,6 +131,7 @@ namespace Paint
                         bm.SetPixel(x + i, y - i, color);
                         bm.SetPixel(x + i, y + 1, color);
                         bm.SetPixel(x, y + i, color);
+
                     }
                     //ToMauXungQuanh(new Point(x, y), color);
                     //FillColor(new Point(x,y), color);

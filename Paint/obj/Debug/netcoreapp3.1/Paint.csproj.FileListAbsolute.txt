@@ -176,3 +176,4 @@ E:\ALL_inPTITHCM\KyThuatDoHoa\Pain_chinh\Paint_Fis\Paint\obj\Debug\netcoreapp3.1
 E:\ALL_inPTITHCM\KyThuatDoHoa\Pain_chinh\Paint_Fis\Paint\obj\Debug\netcoreapp3.1\Paint.dll
 E:\ALL_inPTITHCM\KyThuatDoHoa\Pain_chinh\Paint_Fis\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
 E:\ALL_inPTITHCM\KyThuatDoHoa\Pain_chinh\Paint_Fis\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+>>>>>>> 908b2338ad0588e632dc129df9a704b0056f1f3b
