@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj": {}
+    "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj": {
+    "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\Chunn\\.nuget\\packages\\",
-        "outputPath": "E:\\ALL_inPTITHCM\\KyThuatDoHoa\\Pain_chinh\\Paint_Fis\\Paint\\obj\\",
+        "projectPath": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\n18dc\\.nuget\\packages\\",
+        "outputPath": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Chunn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\n18dc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

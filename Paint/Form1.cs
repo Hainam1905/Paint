@@ -2303,7 +2303,9 @@ namespace Paint
             if (oldPoint != Point.Empty && newPoint != Point.Empty)
             {
                 xoaHinh();
-                dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+                Ap = new Point();
+                dt.MidPoint(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p, true);
+                //dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
             }
             pbDrawZone.Image = bm;
         }

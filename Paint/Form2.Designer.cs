@@ -129,8 +129,9 @@ namespace Paint
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::Paint.Properties.Resources.BGTeam10;
+            this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1545, 868);
@@ -147,6 +148,7 @@ namespace Paint
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(131, 132);
             this.panel3.TabIndex = 6;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // elipseControl1
             // 
