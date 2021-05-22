@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 Sang thêm một vài hàm trong drawtool, giao diện mới: 3DForm.cs.
+=======
+Sang đã xong!
+>>>>>>> 853b4a6bf25720d7de21a41c7a8844d42bd84bf4
