@@ -1594,10 +1594,10 @@ namespace Paint
                 if (!String.IsNullOrEmpty(tbRotate.Text))
                 {
                     xoaHinh();
-                    oldPoint = ct.RotateAroundPoint(aroundPoint, firstPoint, int.Parse(tbRotate.Text), clLine);
-                    newPoint = ct.RotateAroundPoint(aroundPoint, lastPoint, int.Parse(tbRotate.Text), clLine);
-                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, new Pen(clLine, widthLine));
-                    //dt.DrawLineByMidPoint(oldPoint, newPoint, new Pen(clLine, widthLine), cbDrawColor.Checked);
+                    Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
+                    Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
+                    dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+
                     pbDrawZone.Image = bm;
                 }
             }
@@ -1620,11 +1620,11 @@ namespace Paint
                 try
                 {
                     xoaHinh();
-                    dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+                    dt.MidPoint(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p,true);
 
-                    firstPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, firstPoint, clLine);
-                    lastPoint = ct.SymmetricalPointByLine(oldPoint, newPoint, lastPoint, clLine);
-                    dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+                    Ap = ct.SymmetricalPointByLine(oldPoint, newPoint, Ap, clLine);
+                    Bp = ct.SymmetricalPointByLine(oldPoint, newPoint, Bp, clLine);
+                    dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p,true);
 
                 }
                 catch (Exception)
@@ -1650,15 +1650,15 @@ namespace Paint
                 xoaHinh();
 
                 //đổi điểm về tọa độ người dùng để tìm tỉ lệ
-                firstPoint = dt.changeToFakePoint(firstPoint);
-                lastPoint = dt.changeToFakePoint(lastPoint);
-                firstPoint = ct.TinhTien(firstPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
-                lastPoint = ct.TinhTien(lastPoint, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color); ;
+                Ap = dt.changeToFakePoint(firstPoint);
+                Bp = dt.changeToFakePoint(Bp);
+                Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color); ;
 
                 //đổi điểm về tọa độ máy để vẽ
-                firstPoint = dt.changeToRealPoint(firstPoint);
-                lastPoint = dt.changeToRealPoint(lastPoint);
-                dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p, true);
             }
             catch (FormatException)
             {
@@ -1683,26 +1683,26 @@ namespace Paint
             {
                 xoaHinh();
 
-                
-                //đổi điểm lastPoint về tọa độ người dùng để tìm tỉ lệ
-                firstPoint = dt.changeToFakePoint(firstPoint);
-                lastPoint = dt.changeToFakePoint(lastPoint);
-                //biến dùng để lưu lại vị trí ban đầu của đt
-                Point position = new Point(firstPoint.X, firstPoint.Y);
 
-                firstPoint = ct.TiLe(firstPoint, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
-                lastPoint = ct.TiLe(lastPoint, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                //đổi điểm lastPoint về tọa độ người dùng để tìm tỉ lệ
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                //biến dùng để lưu lại vị trí ban đầu của đt
+                Point position = new Point(Ap.X, Ap.Y);
+
+                Ap = ct.TiLe(Ap, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
+                Bp = ct.TiLe(Bp, float.Parse(tbTiLeX.Text), float.Parse(tbTiLeY.Text), p.Color);
 
                 //tính khoảng cách giữa vị trí ban đầu và vị trí sau tỉ lệ, để tịnh tiến
-                position = new Point(position.X - firstPoint.X, position.Y - firstPoint.Y);
+                position = new Point(position.X - Ap.X, position.Y - Ap.Y);
                 //tịnh tiến đt về vị trí ban đầu
-                firstPoint = ct.TinhTien(firstPoint, position.X, position.Y, p.Color);
-                lastPoint = ct.TinhTien(lastPoint, position.X, position.Y, p.Color);
+                Ap = ct.TinhTien(Ap, position.X, position.Y, p.Color);
+                Bp = ct.TinhTien(Bp, position.X, position.Y, p.Color);
 
                 //đổi điểm lastPoint về tọa độ máy để vẽ
-                firstPoint = dt.changeToRealPoint(firstPoint);
-                lastPoint = dt.changeToRealPoint(lastPoint);
-                dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, p);
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p,true);
             }
             catch (FormatException)
             {
@@ -2303,9 +2303,9 @@ namespace Paint
             if (oldPoint != Point.Empty && newPoint != Point.Empty)
             {
                 xoaHinh();
-                Ap = new Point();
-                dt.MidPoint(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p, true);
-                //dt.DDALineGrid(oldPoint.X, newPoint.X, oldPoint.Y, newPoint.Y, p);
+                Ap = new Point(oldPoint.X, oldPoint.Y);
+                Bp = new Point(newPoint.X, newPoint.Y);
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p, true);
             }
             pbDrawZone.Image = bm;
         }
@@ -2444,7 +2444,7 @@ namespace Paint
         private void xoaHinh()
         {
            
-           dt.DDALineGrid(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, new Pen(Color.FromArgb(240, 240, 240), widthLine));
+           dt.MidPoint(firstPoint.X, lastPoint.X, firstPoint.Y, lastPoint.Y, new Pen(Color.FromArgb(240, 240, 240), widthLine),true);
            //tìm điểm và xoa hình thoi cũ
            dt.VeHinhTuGiac(new Pen(Color.FromArgb(240, 240, 240), widthLine), Ap, Bp, Cp, Dp);
            //tìm điểm và xoa hình cũ
