@@ -2111,6 +2111,11 @@ namespace Paint
             this.Dispose();
         }
 
+        private void buttonX_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
         private void btTatTiLe_Click(object sender, EventArgs e)
         {
             lbTiLeX.Visible = false;
