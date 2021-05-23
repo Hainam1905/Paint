@@ -401,5 +401,19 @@ namespace Paint
 
             return TransaleToPoint(maTranDiem);
         }
+
+        //xoay quanh Tâm O
+        public Point XoayQuanhTamO(Point firstP, int angle)
+        {
+            //Tìm ma trận biến đổi
+            Matrix quayTamO = MatrixRotateAroundO(angle);
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * quayTamO;
+
+            return TransaleToPoint(maTranDiem);
+
+        }
     }
 }
