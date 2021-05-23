@@ -684,6 +684,68 @@ namespace Paint
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
             }
+            //trường bổ sung
+            if (line == "line")
+            {
+                xoaHinh();
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+
+                Ap = ct.DoiXungOx(Ap);
+                Bp = ct.DoiXungOx(Bp);
+
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+
+            }
+            else if (line == "hinhThoi" || line == "HCN")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.DoiXungOx(Ap);
+                Bp = ct.DoiXungOx(Bp);
+                Cp = ct.DoiXungOx(Cp);
+                Dp = ct.DoiXungOx(Dp);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+
+                dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+            }
+            else if (line == "tamGiac")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+
+                // lấy đối xứng 3 điểm của hình
+                Ap = ct.DoiXungOx(Ap);
+                Bp = ct.DoiXungOx(Bp);
+                Cp = ct.DoiXungOx(Cp);
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+
+                //vẽ hình
+                dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+            }
             pbDrawZone.Image = bm;
         }
 
@@ -748,6 +810,69 @@ namespace Paint
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
             }
+            //trường bổ sung
+            if(line=="line")
+            {
+                xoaHinh();
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+
+                Ap = ct.DoiXungOy(Ap);
+                Bp = ct.DoiXungOy(Bp);
+
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+
+            }
+            else if(line == "hinhThoi" || line == "HCN")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.DoiXungOy(Ap);
+                Bp = ct.DoiXungOy(Bp);
+                Cp = ct.DoiXungOy(Cp);
+                Dp = ct.DoiXungOy(Dp);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+
+                dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+            }
+            else if(line == "tamGiac")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+
+                // lấy đối xứng 3 điểm của hình
+                Ap = ct.DoiXungOy(Ap);
+                Bp = ct.DoiXungOy(Bp);
+                Cp = ct.DoiXungOy(Cp);
+                 //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+
+                //vẽ hình
+                dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+            }
+           
             pbDrawZone.Image = bm;
         }
 
@@ -818,6 +943,46 @@ namespace Paint
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
             }
+            //trường bổ xung
+            if(line== "line")
+            {
+                xoaHinh();
+                Ap = ct.RotateAroundPoint(new Point(x0,y0), Ap, 60, clLine);
+                Bp = ct.RotateAroundPoint(new Point(x0, y0), Bp, 60, clLine);
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+            }   
+            else if (line == "hinhThoi")
+            {
+                xoaHinh();
+                // xoay 4 điểm 1 góc angle 
+                Ap = ct.RotateAroundPoint(new Point(x0, y0), Ap, 60, clLine);
+                Bp = ct.RotateAroundPoint(new Point(x0, y0), Bp, 60, clLine);
+                Cp = ct.RotateAroundPoint(new Point(x0, y0), Cp, 60, clLine);
+                Dp = ct.RotateAroundPoint(new Point(x0, y0), Dp, 60, clLine);
+                //vẽ hình
+                dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+            }
+            else if(line == "tamGiac")
+            {
+                xoaHinh();
+                // xoay 4 điểm 1 góc angle 
+                Ap = ct.RotateAroundPoint(new Point(x0, y0), Ap, 60, clLine);
+                Bp = ct.RotateAroundPoint(new Point(x0, y0), Bp, 60, clLine);
+                Cp = ct.RotateAroundPoint(new Point(x0, y0), Cp, 60, clLine);
+                //vẽ hình
+                dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+            }
+            else if(line=="HCN")
+            {
+                xoaHinh();
+                // xoay 4 điểm 1 góc angle 
+                Ap = ct.RotateAroundPoint(new Point(x0, y0), Ap, 60, clLine);
+                Bp = ct.RotateAroundPoint(new Point(x0, y0), Bp, 60, clLine);
+                Cp = ct.RotateAroundPoint(new Point(x0, y0), Cp, 60, clLine);
+                Dp = ct.RotateAroundPoint(new Point(x0, y0), Dp, 60, clLine);
+                //vẽ hình
+                dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+            }    
             pbDrawZone.Image = bm;
         }
 
@@ -913,6 +1078,70 @@ namespace Paint
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b,Color.Black);
                 Form1.hinh = 7;
             }
+
+            //trường bổ sung
+            if (line == "line")
+            {
+                xoaHinh();
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+
+                Ap = ct.DoiXungO(Ap);
+                Bp = ct.DoiXungO(Bp);
+
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+
+                dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+
+            }
+            else if (line == "hinhThoi" || line == "HCN")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+                Dp = dt.changeToFakePoint(Dp);
+
+
+                //lấy tỉ lệ các điểm của hình
+                Ap = ct.DoiXungO(Ap);
+                Bp = ct.DoiXungO(Bp);
+                Cp = ct.DoiXungO(Cp);
+                Dp = ct.DoiXungO(Dp);
+
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+                Dp = dt.changeToRealPoint(Dp);
+
+                dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+            }
+            else if (line == "tamGiac")
+            {
+                xoaHinh();
+
+                //Đổi các điểm về tọa độ ng dùng
+                Ap = dt.changeToFakePoint(Ap);
+                Bp = dt.changeToFakePoint(Bp);
+                Cp = dt.changeToFakePoint(Cp);
+
+                // lấy đối xứng 3 điểm của hình
+                Ap = ct.DoiXungO(Ap);
+                Bp = ct.DoiXungO(Bp);
+                Cp = ct.DoiXungO(Cp);
+                //đổi về tọa độ máy để vẽ hình
+                Ap = dt.changeToRealPoint(Ap);
+                Bp = dt.changeToRealPoint(Bp);
+                Cp = dt.changeToRealPoint(Cp);
+
+                //vẽ hình
+                dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+            }
+
             pbDrawZone.Image = bm;
         }
 

@@ -337,5 +337,69 @@ namespace Paint
 
             return TransaleToPoint(maTranDiem);
         }
+
+        //Các phếp đối xứng
+        //ma trận đối xứng Oy
+        private Matrix MatrixSymmetryPointByOy()
+        {
+            float[,] z =
+            {
+                {-1, 0, 0 },
+                {0, 1, 0 },
+                {0, 0, 1 }
+            };
+            return new Matrix(z);
+        }
+
+        //ma trận đối xứng tâm O
+        private Matrix MatrixSymmetryPointByO()
+        {
+            float[,] z =
+            {
+                {-1, 0, 0 },
+                {0, -1, 0 },
+                {0, 0, 1 }
+            };
+            return new Matrix(z);
+        }
+        //Đối xứng Ox
+        public Point DoiXungOx(Point firstP)
+        {
+            //Tìm ma trận biến đổi
+            Matrix SymmetryOx = MatrixSymmetryPointByOx();
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * SymmetryOx;
+
+            return TransaleToPoint(maTranDiem);
+
+        }
+        
+        //Đối xứng Oy
+        public Point DoiXungOy(Point firstP)
+        {
+            //Tìm ma trận biến đổi
+            Matrix SymmetryOy = MatrixSymmetryPointByOy();
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * SymmetryOy;
+
+            return TransaleToPoint(maTranDiem);
+        }
+
+        //Đối xứng tâm O
+        public Point DoiXungO(Point firstP)
+        {
+            //Tìm ma trận biến đổi
+            Matrix SymmetryO = MatrixSymmetryPointByO();
+
+            Matrix maTranDiem = TransaleToMatrixPoint(firstP);
+
+            maTranDiem = maTranDiem * SymmetryO;
+
+            return TransaleToPoint(maTranDiem);
+        }
     }
 }
