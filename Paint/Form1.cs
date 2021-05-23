@@ -191,6 +191,7 @@ namespace Paint
             newBitMap(pbDrawZone.Width, pbDrawZone.Height);
 
             cbWidthLine.SelectedIndex = 0;
+            cbColor.SelectedIndex = 0;
             cbDrawColor.Checked = false;
         }
 
@@ -334,7 +335,7 @@ namespace Paint
 
             try
             {
-                dtNam.FillColor(fillPoint, Color.Red);
+                dtNam.FillColor(fillPoint, clLine);
 
                 pbDrawZone.Image = dtNam.bm;
             }
@@ -1511,7 +1512,7 @@ namespace Paint
 
             //DrawLineByMidPoint(B, C, p, false); DrawLineByMidPoint(C, E, p, false);
             //DrawLineByMidPoint(E, D, p, false); DrawLineByMidPoint(D, B, p, false);
-            dtNam.DrawLineByMidPoint(new Point(B.X, (B.Y + D.Y) / 2), new Point(C.X, (C.Y + E.Y) / 2), new Pen(Color.Black, height / 2), true);
+            dtNam.DrawLineByMidPoint(new Point(B.X, (B.Y + D.Y) / 2), new Point(C.X, (C.Y + E.Y) / 2), new Pen(color, height / 2), true);
 
             dtNam.DrawTriangleByMidPoint(Y, Z, X, p, true);
 
@@ -2366,6 +2367,24 @@ namespace Paint
         private void buttonX_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbColor.SelectedItem.ToString() == "Black")
+                clLine = Color.Black;
+            else if (cbColor.SelectedItem.ToString() == "Blue")
+                clLine = Color.Blue;
+            else if (cbColor.SelectedItem.ToString() == "Red")
+                clLine = Color.Red;
+            else if (cbColor.SelectedItem.ToString() == "Yellow")
+                clLine = Color.Yellow;
+            else if (cbColor.SelectedItem.ToString() == "Orange")
+                clLine = Color.Orange;
+            else if (cbColor.SelectedItem.ToString() == "Green")
+                clLine = Color.Green;
+            else if (cbColor.SelectedItem.ToString() == "Brown")
+                clLine = Color.Brown;
         }
 
         private void btTatTiLe_Click(object sender, EventArgs e)
