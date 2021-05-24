@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Study\\Paint\\Paint\\Paint.csproj": {}
+    "D:\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\Study\\Paint\\Paint\\Paint.csproj": {
+    "D:\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Study\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "D:\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\Study\\Paint\\Paint\\Paint.csproj",
+        "projectPath": "D:\\Paint\\Paint\\Paint.csproj",
         "packagesPath": "C:\\Users\\huynh\\.nuget\\packages\\",
-        "outputPath": "D:\\Study\\Paint\\Paint\\obj\\",
+        "outputPath": "D:\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\huynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
