@@ -39,9 +39,9 @@ namespace Paint
             this.bnClear = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.elipseControl1 = new Paint.ElipseControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.elipseControl1 = new Paint.ElipseControl();
             ((System.ComponentModel.ISupportInitialize)(this.pb3D)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -163,6 +163,11 @@ namespace Paint
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
+            // elipseControl1
+            // 
+            this.elipseControl1.CornerRadius = 40;
+            this.elipseControl1.TargetControl = this;
+            // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::Paint.Properties.Resources._74522308_2519290034858047_5559712401621778432_o;
@@ -180,11 +185,6 @@ namespace Paint
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(182, 124);
             this.panel3.TabIndex = 26;
-            // 
-            // elipseControl1
-            // 
-            this.elipseControl1.CornerRadius = 40;
-            this.elipseControl1.TargetControl = this;
             // 
             // Draw3D
             // 
@@ -229,9 +229,9 @@ namespace Paint
         private System.Windows.Forms.Button bnClear;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private ElipseControl elipseControl1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
