@@ -1896,16 +1896,18 @@ namespace Paint
         {
             Pen p = new Pen(clLine, widthLine);
 
-
+            
             try
             {
                 xoaHinh();
 
                 //đổi điểm về tọa độ người dùng để tìm tỉ lệ
-                Ap = dt.changeToFakePoint(firstPoint);
+                Ap = dt.changeToFakePoint(Ap);
                 Bp = dt.changeToFakePoint(Bp);
+
+                //tịnh tiến các điểm
                 Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
-                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color); ;
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
 
                 //đổi điểm về tọa độ máy để vẽ
                 Ap = dt.changeToRealPoint(Ap);
@@ -2584,7 +2586,7 @@ namespace Paint
                     Bp = new Point();
                     Cp = new Point();
                     Dp = new Point();
-                    //dt.tim4DiemHinhThoi(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+
                     dt.tim4DiemHinhThoi_Canh(Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
                     dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
                 }
