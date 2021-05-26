@@ -40,6 +40,7 @@ namespace Paint
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            //dung phep chieu cabinet: 
             rectangularPopUp rectangular = new rectangularPopUp();
             rectangular.ShowDialog();
             if (rectangular.checkDraw == false) return;

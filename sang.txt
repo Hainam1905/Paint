@@ -1,5 +1,12 @@
-<<<<<<< HEAD
-Sang thêm một vài hàm trong drawtool, giao diện mới: 3DForm.cs.
-=======
-Sang đã xong!
->>>>>>> 853b4a6bf25720d7de21a41c7a8844d42bd84bf4
+
+TỌA ĐỘ 3D: 
+Hình hộp chữ nhật: 
+	để vẽ hình hộp chữ nhật dễ nhìn, ta chọn tọa độ sau: 
+	tâm O(0,0,0) chiều dài 20,rộng 30, cao 30; 
+	tâm (40,30,10) chiều dài 30,20,20;
+Hình cầu: 
+để vẽ được hình cầu dễ nhìn, ta chọn tọa độ sau: 
+	tâm O(0,10,5) bán kính 20;
+	tâm O(50,10,5) bán kính 25;
+	tâm O(0,0,0) bán kính 30; 
+
