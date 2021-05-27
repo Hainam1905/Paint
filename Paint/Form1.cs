@@ -377,7 +377,7 @@ namespace Paint
             else if (btRotate.BackColor == SystemColors.ControlDark)
             {
                 btRotate.BackColor = SystemColors.Control;
-                transalte = String.Empty;
+                transalte = String.Empty;  
             }
         }
 
@@ -479,7 +479,7 @@ namespace Paint
             dt.circleMidPoint(input.xc, input.yc, input.R,Color.Black);
             Form1.hinh = 5;
             pbDrawZone.Image = bm;
-            displayPoint(new Point(input.xc, input.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+            displayPoint2(Form1.hinh);
 
         }
 
@@ -637,7 +637,7 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
-                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -672,7 +672,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
-                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -688,7 +688,7 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
-                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             //trường bổ sung
             if (line == "line")
@@ -769,7 +769,7 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
-                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -804,7 +804,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
-                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -820,7 +820,7 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
-                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             //trường bổ sung
             if (line=="line")
@@ -908,7 +908,7 @@ namespace Paint
 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
-                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -943,7 +943,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
-                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -959,7 +959,7 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
-                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             //trường bổ xung
 
@@ -1045,7 +1045,7 @@ namespace Paint
             Form1.hinh = 6;
             pbDrawZone.Image = bm;
 
-            displayPoint(new Point(input.xA, input.yA), new Point(input.xB, input.yB), new Point(input.xC, input.yC), new Point(input.xD, input.yD));
+            displayPoint2(Form1.hinh);
         }
 
         private void btn_drawElip_Click(object sender, EventArgs e)
@@ -1060,7 +1060,7 @@ namespace Paint
             Form1.hinh = 7;
             pbDrawZone.Image = bm;
 
-            displayPoint(new Point(input.xc, input.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+            displayPoint2(Form1.hinh);
         }
 
         private void btn_DoiXungQuaO_Click(object sender, EventArgs e)
@@ -1077,7 +1077,7 @@ namespace Paint
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
 
-                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -1113,7 +1113,7 @@ namespace Paint
 
                 Form1.hinh = 6;
 
-                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                displayPoint2(Form1.hinh);
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -1130,7 +1130,7 @@ namespace Paint
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b,Color.Black);
                 Form1.hinh = 7;
 
-                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                displayPoint2(Form1.hinh);
             }
 
             //trường bổ sung
@@ -1253,7 +1253,7 @@ namespace Paint
                     htron.sety(htron.gety() + ip.Y);
                     dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                     Form1.hinh = 5;
-                    displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                    displayPoint2(Form1.hinh);
                 }
                 else if (Form1.hinh == 6)//hình vuông
                 {
@@ -1274,7 +1274,7 @@ namespace Paint
                     dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
                     Form1.hinh = 6;
 
-                    displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                    displayPoint2(Form1.hinh);
                 }
                 else if (Form1.hinh == 7)// hình elip
                 {
@@ -1283,7 +1283,7 @@ namespace Paint
                     helip.yc = helip.yc + ip.Y;
                     dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                     Form1.hinh = 7;
-                    displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                    displayPoint2(Form1.hinh);
                 }
                 pbDrawZone.Image = bm;
             }
@@ -1326,7 +1326,7 @@ namespace Paint
                         htron.setR((int)(htron.getR() * float.Parse(tbTiLeX.Text)));
                         dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                         Form1.hinh = 5;
-                        displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                        displayPoint2(Form1.hinh);
                     }
                     else
                     {
@@ -1334,14 +1334,14 @@ namespace Paint
                         helip = helip2;
                         dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                         Form1.hinh = 7; // hinh tron thanh hinh elip
-                        displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                        displayPoint2(Form1.hinh);
                     }
 
 
                 }
                 else if (Form1.hinh == 6)//hình vuông
                 {
-                    
+                    hvuong.a = Convert.ToInt32(hvuong.a * float.Parse(tbTiLeX.Text));
                     xoaHinh();
                     int XO, YO, Dx, Dy;
 
@@ -1399,7 +1399,7 @@ namespace Paint
                     dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                     Form1.hinh = 6;
-                    displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+                    displayPoint2(Form1.hinh);
                 }
                 else if (Form1.hinh == 7)//hình elip
                 {
@@ -1409,7 +1409,7 @@ namespace Paint
 
                     dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                     Form1.hinh = 7;
-                    displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+                    displayPoint2(Form1.hinh);
                 }
                 pbDrawZone.Image = bm;
             }
@@ -2815,6 +2815,9 @@ namespace Paint
             {
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, bgColor);
             }
+
+            Form1.hinh = -1;
+
             displayPoint(new Point(x0, y0), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             pbDrawZone.Image = bm;
         }
@@ -2824,6 +2827,31 @@ namespace Paint
         {
             lbPoint.Text = "A= " + dt.changeToFakePoint(A).ToString()+"; B= " +dt.changeToFakePoint(B).ToString()+"\n"+
                             "C= " + dt.changeToFakePoint(C).ToString() + "; D= " + dt.changeToFakePoint(D).ToString();
+        }
+        private void displayPoint2(int hinh)
+        {
+            if (hinh  == 5) // hình tròn
+            {
+                Point p = new Point(htron.getx(), htron.gety());
+                lbPoint.Text = "tam C= " + dt.changeToFakePoint(p).ToString() + " R = " + (htron.getR()/5).ToString();
+            }
+            else if (hinh == 6)// hình vuông
+            {
+                Point A = new Point(hvuong.xA,hvuong.yA);
+                Point B = new Point(hvuong.xB, hvuong.yB);
+                Point C = new Point(hvuong.xC, hvuong.yC);
+                Point D = new Point(hvuong.xD, hvuong.yD);
+
+                lbPoint.Text = "A= " + dt.changeToFakePoint(A).ToString() + "; B= " + dt.changeToFakePoint(B).ToString() + "\n" +
+                           "C= " + dt.changeToFakePoint(C).ToString() + "; D= " + dt.changeToFakePoint(D).ToString() + "\n"
+                           + "a = " + (hvuong.a/5).ToString();
+
+            }
+            else if (hinh == 7)//hình elip
+            {
+                Point p = new Point(helip.xc, helip.yc);
+                lbPoint.Text = "tam C= " + dt.changeToFakePoint(p).ToString() + " a = " + (helip.a/5).ToString() + " b = " + (helip.b/5).ToString();
+            }
         }
         //hàm vẽ
         private void myDraw(MouseEventArgs e)
