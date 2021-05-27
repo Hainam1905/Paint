@@ -1244,7 +1244,8 @@ namespace Paint
                 {
                     tinhTienTamGiac();
                 }
-                Point ip = new Point(int.Parse(tbTinhTienX.Text), -int.Parse(tbTinhTienY.Text));
+                //Point ip = new Point(int.Parse(tbTinhTienX.Text), -int.Parse(tbTinhTienY.Text));
+                Point ip = new Point(int.Parse(tbTinhTienX.Text)*5, -int.Parse(tbTinhTienY.Text)*5);
                 if (Form1.hinh == 5)// hình tròn
                 {
                     xoaHinh();
@@ -1284,6 +1285,7 @@ namespace Paint
                     Form1.hinh = 7;
                     displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                 }
+                pbDrawZone.Image = bm;
             }
         }
 
