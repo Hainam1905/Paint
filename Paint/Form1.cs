@@ -376,7 +376,7 @@ namespace Paint
             else if (btRotate.BackColor == SystemColors.ControlDark)
             {
                 btRotate.BackColor = SystemColors.Control;
-                transalte = String.Empty;
+                transalte = String.Empty;  
             }
         }
 
@@ -2466,6 +2466,7 @@ namespace Paint
             {
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, bgColor);
             }
+            Form1.hinh = -1;
             pbDrawZone.Image = bm;
         }
 

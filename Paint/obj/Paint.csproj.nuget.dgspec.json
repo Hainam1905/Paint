@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj": {}
+    "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj": {
+    "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\n18dc\\.nuget\\packages\\",
-        "outputPath": "D:\\MyCode\\Csharp\\tam\\Paint\\Paint\\obj\\",
+        "projectPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\Vanic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\n18dc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vanic\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
