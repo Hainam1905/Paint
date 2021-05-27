@@ -479,6 +479,8 @@ namespace Paint
             dt.circleMidPoint(input.xc, input.yc, input.R,Color.Black);
             Form1.hinh = 5;
             pbDrawZone.Image = bm;
+            displayPoint(new Point(input.xc, input.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
+
         }
 
         private void btn_tinhtien_Click(object sender, EventArgs e)
@@ -635,6 +637,7 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -669,6 +672,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
+                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -684,6 +688,7 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
+                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             //trường bổ sung
             if (line == "line")
@@ -699,6 +704,7 @@ namespace Paint
                 Bp = dt.changeToRealPoint(Bp);
 
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
 
             }
             else if (line == "hinhThoi" || line == "HCN")
@@ -725,6 +731,7 @@ namespace Paint
                 Dp = dt.changeToRealPoint(Dp);
 
                 dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+                displayPoint(Ap, Bp, Cp, Dp);
             }
             else if (line == "tamGiac")
             {
@@ -746,6 +753,7 @@ namespace Paint
 
                 //vẽ hình
                 dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
             }
             pbDrawZone.Image = bm;
         }
@@ -761,6 +769,7 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -795,6 +804,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
+                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -810,9 +820,10 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
+                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             //trường bổ sung
-            if(line=="line")
+            if (line=="line")
             {
                 xoaHinh();
                 Ap = dt.changeToFakePoint(Ap);
@@ -825,6 +836,7 @@ namespace Paint
                 Bp = dt.changeToRealPoint(Bp);
 
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
 
             }
             else if(line == "hinhThoi" || line == "HCN")
@@ -851,6 +863,7 @@ namespace Paint
                 Dp = dt.changeToRealPoint(Dp);
 
                 dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+                displayPoint(Ap, Bp, Cp, Dp);
             }
             else if(line == "tamGiac")
             {
@@ -872,6 +885,7 @@ namespace Paint
 
                 //vẽ hình
                 dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
             }
            
             pbDrawZone.Image = bm;
@@ -894,6 +908,7 @@ namespace Paint
 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -928,6 +943,7 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
+                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
             }
             else if (Form1.hinh == 7)//hinh elip
             {
@@ -943,6 +959,7 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                 Form1.hinh = 7;
+                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             //trường bổ xung
 
@@ -959,7 +976,7 @@ namespace Paint
                 Bp = dt.changeToRealPoint(Bp);
 
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
-
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
             }
             else if (line == "hinhThoi" || line == "HCN")
             {
@@ -985,6 +1002,7 @@ namespace Paint
                 Dp = dt.changeToRealPoint(Dp);
 
                 dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+                displayPoint(Ap, Bp, Bp, Dp);
             }
             else if (line == "tamGiac")
             {
@@ -1006,6 +1024,7 @@ namespace Paint
 
                 //vẽ hình
                 dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
             }
             pbDrawZone.Image = bm;
         }
@@ -1025,6 +1044,8 @@ namespace Paint
             dt.drawLineDDA(input.xD, input.yD, input.xA, input.yA, Color.Black);
             Form1.hinh = 6;
             pbDrawZone.Image = bm;
+
+            displayPoint(new Point(input.xA, input.yA), new Point(input.xB, input.yB), new Point(input.xC, input.yC), new Point(input.xD, input.yD));
         }
 
         private void btn_drawElip_Click(object sender, EventArgs e)
@@ -1038,6 +1059,8 @@ namespace Paint
 
             Form1.hinh = 7;
             pbDrawZone.Image = bm;
+
+            displayPoint(new Point(input.xc, input.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
         }
 
         private void btn_DoiXungQuaO_Click(object sender, EventArgs e)
@@ -1053,6 +1076,8 @@ namespace Paint
                 
                 dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                 Form1.hinh = 5;
+
+                displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
             else if (Form1.hinh == 6)//hình vuông
             {
@@ -1087,7 +1112,10 @@ namespace Paint
                 dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                 Form1.hinh = 6;
-            }else if (Form1.hinh == 7)//hinh elip
+
+                displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
+            }
+            else if (Form1.hinh == 7)//hinh elip
             {
                 xoaHinh();
                 Point A = new Point(helip.xc, helip.yc);
@@ -1101,6 +1129,8 @@ namespace Paint
 
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b,Color.Black);
                 Form1.hinh = 7;
+
+                displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             }
 
             //trường bổ sung
@@ -1117,6 +1147,7 @@ namespace Paint
                 Bp = dt.changeToRealPoint(Bp);
 
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
 
             }
             else if (line == "hinhThoi" || line == "HCN")
@@ -1143,6 +1174,8 @@ namespace Paint
                 Dp = dt.changeToRealPoint(Dp);
 
                 dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+
+                displayPoint(Ap, Bp, Cp, Dp);
             }
             else if (line == "tamGiac")
             {
@@ -1164,6 +1197,7 @@ namespace Paint
 
                 //vẽ hình
                 dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
             }
 
             pbDrawZone.Image = bm;
@@ -1218,6 +1252,7 @@ namespace Paint
                     htron.sety(htron.gety() + ip.Y);
                     dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                     Form1.hinh = 5;
+                    displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                 }
                 else if (Form1.hinh == 6)//hình vuông
                 {
@@ -1237,6 +1272,8 @@ namespace Paint
                     dt.drawLineDDA(hvuong.xC, hvuong.yC, hvuong.xD, hvuong.yD, Color.Black);
                     dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
                     Form1.hinh = 6;
+
+                    displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
                 }
                 else if (Form1.hinh == 7)// hình elip
                 {
@@ -1245,6 +1282,7 @@ namespace Paint
                     helip.yc = helip.yc + ip.Y;
                     dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                     Form1.hinh = 7;
+                    displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                 }
             }
         }
@@ -1286,6 +1324,7 @@ namespace Paint
                         htron.setR((int)(htron.getR() * float.Parse(tbTiLeX.Text)));
                         dt.circleMidPoint(htron.getx(), htron.gety(), htron.getR(), Color.Black);
                         Form1.hinh = 5;
+                        displayPoint(new Point(htron.getx(), htron.gety()), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                     }
                     else
                     {
@@ -1293,6 +1332,7 @@ namespace Paint
                         helip = helip2;
                         dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                         Form1.hinh = 7; // hinh tron thanh hinh elip
+                        displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                     }
 
 
@@ -1357,6 +1397,7 @@ namespace Paint
                     dt.drawLineDDA(hvuong.xD, hvuong.yD, hvuong.xA, hvuong.yA, Color.Black);
 
                     Form1.hinh = 6;
+                    displayPoint(new Point(hvuong.xA, hvuong.yA), new Point(hvuong.xB, hvuong.yB), new Point(hvuong.xC, hvuong.yC), new Point(hvuong.xD, hvuong.yD));
                 }
                 else if (Form1.hinh == 7)//hình elip
                 {
@@ -1366,6 +1407,7 @@ namespace Paint
 
                     dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, Color.Black);
                     Form1.hinh = 7;
+                    displayPoint(new Point(helip.xc, helip.yc), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
                 }
                 pbDrawZone.Image = bm;
             }
@@ -1850,7 +1892,7 @@ namespace Paint
                     Ap = ct.RotateAroundPoint(aroundPoint, Ap, int.Parse(tbRotate.Text), clLine);
                     Bp = ct.RotateAroundPoint(aroundPoint, Bp, int.Parse(tbRotate.Text), clLine);
                     dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, new Pen(clLine, widthLine), true);
-
+                    displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
                     pbDrawZone.Image = bm;
                 }
             }
@@ -1878,6 +1920,7 @@ namespace Paint
                     Ap = ct.SymmetricalPointByLine(oldPoint, newPoint, Ap, clLine);
                     Bp = ct.SymmetricalPointByLine(oldPoint, newPoint, Bp, clLine);
                     dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p,true);
+                    displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
 
                 }
                 catch (Exception)
@@ -1897,21 +1940,24 @@ namespace Paint
         {
             Pen p = new Pen(clLine, widthLine);
 
-
+            
             try
             {
                 xoaHinh();
 
                 //đổi điểm về tọa độ người dùng để tìm tỉ lệ
-                Ap = dt.changeToFakePoint(firstPoint);
+                Ap = dt.changeToFakePoint(Ap);
                 Bp = dt.changeToFakePoint(Bp);
+
+                //tịnh tiến các điểm
                 Ap = ct.TinhTien(Ap, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
-                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color); ;
+                Bp = ct.TinhTien(Bp, int.Parse(tbTinhTienX.Text), int.Parse(tbTinhTienY.Text), p.Color);
 
                 //đổi điểm về tọa độ máy để vẽ
                 Ap = dt.changeToRealPoint(Ap);
                 Bp = dt.changeToRealPoint(Bp);
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p, true);
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
             }
             catch (FormatException)
             {
@@ -1956,6 +2002,8 @@ namespace Paint
                 Ap = dt.changeToRealPoint(Ap);
                 Bp = dt.changeToRealPoint(Bp);
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p,true);
+
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
             }
             catch (FormatException)
             {
@@ -1989,6 +2037,8 @@ namespace Paint
                     Dp = ct.RotateAroundPoint(aroundPoint, Dp, int.Parse(tbRotate.Text), clLine);
                     //vẽ hình
                     dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+
+                    displayPoint(Ap, Bp, Cp, Dp);
                     pbDrawZone.Image = bm;
                 }
             }
@@ -2022,6 +2072,8 @@ namespace Paint
 
                     //vẽ hình thoi
                     dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                    displayPoint(Ap, Bp, Cp, Dp);
                 }
                 catch (Exception)
                 {
@@ -2060,6 +2112,8 @@ namespace Paint
                 Cp = dt.changeToRealPoint(Cp);
                 Dp = dt.changeToRealPoint(Dp);
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                displayPoint(Ap, Bp, Cp, Dp);
 
             }
             catch (FormatException)
@@ -2117,6 +2171,8 @@ namespace Paint
 
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
 
+                displayPoint(Ap, Bp, Cp, Dp);
+
             }
             catch (FormatException)
             {
@@ -2150,6 +2206,8 @@ namespace Paint
                     Dp = ct.RotateAroundPoint(aroundPoint, Dp, int.Parse(tbRotate.Text), clLine);
                     //vẽ hình
                     dt.VeHinhTuGiac(new Pen(clLine, widthLine), Ap, Bp, Cp, Dp);
+
+                    displayPoint(Ap, Bp, Cp, Dp);
                     pbDrawZone.Image = bm;
                 }
             }
@@ -2183,6 +2241,8 @@ namespace Paint
 
                     //vẽ hình thoi
                     dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                    displayPoint(Ap, Bp, Cp, Dp);
                 }
                 catch (Exception)
                 {
@@ -2223,6 +2283,8 @@ namespace Paint
                 Cp = dt.changeToRealPoint(Cp);
                 Dp = dt.changeToRealPoint(Dp);
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                displayPoint(Ap, Bp, Cp, Dp);
 
             }
             catch (FormatException)
@@ -2279,6 +2341,8 @@ namespace Paint
                 Dp = dt.changeToRealPoint(Dp);
 
                 dt.VeHinhTuGiac(p, Ap, Bp, Cp, Dp);
+
+                displayPoint(Ap, Bp, Cp, Dp);
 
 
 
@@ -2411,6 +2475,8 @@ namespace Paint
                     Cp = ct.RotateAroundPoint(aroundPoint, Cp, int.Parse(tbRotate.Text), clLine);
                     //vẽ hình
                     dt.veHinhTamGiac(Ap, Bp, Cp, new Pen(clLine, widthLine));
+
+                    displayPoint(Ap, Bp, Cp, new Point(x0, y0));
                     pbDrawZone.Image = bm;
                 }
             }
@@ -2442,6 +2508,8 @@ namespace Paint
 
                     //vẽ hình
                     dt.veHinhTamGiac(Ap, Bp, Cp, p);
+
+                    displayPoint(Ap, Bp, Cp, new Point(x0, y0));
                 }
                 catch (Exception)
                 {
@@ -2481,6 +2549,8 @@ namespace Paint
                 Bp = dt.changeToRealPoint(Bp);
                 Cp = dt.changeToRealPoint(Cp);
                 dt.veHinhTamGiac(Ap, Bp, Cp, p);
+
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
 
             }
             catch (FormatException)
@@ -2538,6 +2608,8 @@ namespace Paint
 
                 dt.veHinhTamGiac(Ap, Bp, Cp, p);
 
+                displayPoint(Ap, Bp, Cp, new Point(x0, y0));
+
             }
             catch (FormatException)
             {
@@ -2577,6 +2649,7 @@ namespace Paint
                 Ap = new Point(oldPoint.X, oldPoint.Y);
                 Bp = new Point(newPoint.X, newPoint.Y);
                 dt.MidPoint(Ap.X, Bp.X, Ap.Y, Bp.Y, p, true);
+                displayPoint(Ap, Bp, new Point(x0, y0), new Point(x0, y0));
             }
             pbDrawZone.Image = bm;
         }
@@ -2603,9 +2676,10 @@ namespace Paint
                     Bp = new Point();
                     Cp = new Point();
                     Dp = new Point();
-                    //dt.tim4DiemHinhThoi(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
+
                     dt.tim4DiemHinhThoi_Canh(Ap, ref Bp, ref Cp, ref Dp, int.Parse(txtCheoA.Text), int.Parse(txtCheoB.Text));
                     dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
+                    displayPoint(Ap, Bp, Cp, Dp);
                 }
             }
             catch (FormatException)
@@ -2648,6 +2722,7 @@ namespace Paint
                     //dt.tim4DiemHinhChuNhat(e.Location, ref Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
                     dt.tim4DiemHCN_Canh(Ap, ref Bp, ref Cp, ref Dp, int.Parse(tbWidth.Text), int.Parse(tbHeight.Text));
                     dt.VeHinhTuGiac(pen, Ap, Bp, Cp, Dp);
+                    displayPoint(Ap, Bp, Cp, Dp);
                 }
             }
             catch (FormatException)
@@ -2693,6 +2768,7 @@ namespace Paint
                     Cp = new Point();
                     dt.tim3DiemTamGiac(newPoint, ref Ap, ref Bp, ref Cp, int.Parse(tbChieuCao.Text), int.Parse(tbRongDay.Text));
                     dt.veHinhTamGiac(Ap, Bp, Cp, p);
+                    displayPoint(Ap, Bp, Cp, new Point(x0, y0));
                 }
             }
             catch (FormatException)
@@ -2737,9 +2813,16 @@ namespace Paint
             {
                 dt.drawEllipsMidPoint(helip.xc, helip.yc, helip.a, helip.b, bgColor);
             }
+            displayPoint(new Point(x0, y0), new Point(x0, y0), new Point(x0, y0), new Point(x0, y0));
             pbDrawZone.Image = bm;
         }
-
+        
+        //hiển thị tọa độ
+        private void displayPoint(Point A, Point B, Point C, Point D)
+        {
+            lbPoint.Text = "A= " + dt.changeToFakePoint(A).ToString()+"; B= " +dt.changeToFakePoint(B).ToString()+"\n"+
+                            "C= " + dt.changeToFakePoint(C).ToString() + "; D= " + dt.changeToFakePoint(D).ToString();
+        }
         //hàm vẽ
         private void myDraw(MouseEventArgs e)
         {
