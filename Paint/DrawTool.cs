@@ -3010,9 +3010,9 @@ namespace Paint
         }
         public void veHinhTamGiac(Point day1TGC, Point day2TGC, Point dinhTGC, Pen pen)
         {
-            DDALineGrid(day1TGC.X, day2TGC.X, day1TGC.Y, day2TGC.Y, pen);
-            DDALineGrid(day2TGC.X, dinhTGC.X, day2TGC.Y, dinhTGC.Y, pen);
-            DDALineGrid(dinhTGC.X, day1TGC.X, dinhTGC.Y, day1TGC.Y, pen);
+            MidPoint(day1TGC.X, day2TGC.X, day1TGC.Y, day2TGC.Y, pen,true);
+            MidPoint(day2TGC.X, dinhTGC.X, day2TGC.Y, dinhTGC.Y, pen,true);
+            MidPoint(dinhTGC.X, day1TGC.X, dinhTGC.Y, day1TGC.Y, pen,true);
         }
         public void veHinhTron(int x, int y, int R, Color color)
         {

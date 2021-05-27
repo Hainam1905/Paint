@@ -9,7 +9,7 @@ namespace Paint
         public LorryLeft()
         {
             this.X = 10;
-            this.Y = 195;
+            this.Y = 200;
             this.Dicrection = 1; //left; 
             this.Exist = true;
             this.Type = 2; 

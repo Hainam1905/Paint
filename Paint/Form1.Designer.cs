@@ -81,10 +81,12 @@
             this.btDrawLine = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbColor = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.elipseControl1 = new Paint.ElipseControl();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbPoint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawZone)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -92,13 +94,14 @@
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbDrawZone
             // 
             this.pbDrawZone.BackColor = System.Drawing.SystemColors.Control;
             this.pbDrawZone.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pbDrawZone.Location = new System.Drawing.Point(406, 198);
+            this.pbDrawZone.Location = new System.Drawing.Point(406, 197);
             this.pbDrawZone.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbDrawZone.Name = "pbDrawZone";
             this.pbDrawZone.Size = new System.Drawing.Size(974, 585);
@@ -119,7 +122,7 @@
             this.btDrawPixel.Location = new System.Drawing.Point(83, 131);
             this.btDrawPixel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawPixel.Name = "btDrawPixel";
-            this.btDrawPixel.Size = new System.Drawing.Size(93, 46);
+            this.btDrawPixel.Size = new System.Drawing.Size(93, 45);
             this.btDrawPixel.TabIndex = 1;
             this.btDrawPixel.Text = "Vẽ\r\n";
             this.btDrawPixel.UseVisualStyleBackColor = false;
@@ -133,7 +136,7 @@
             this.btDrawArrow.Location = new System.Drawing.Point(182, 131);
             this.btDrawArrow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawArrow.Name = "btDrawArrow";
-            this.btDrawArrow.Size = new System.Drawing.Size(109, 46);
+            this.btDrawArrow.Size = new System.Drawing.Size(109, 45);
             this.btDrawArrow.TabIndex = 1;
             this.btDrawArrow.Text = "Mũi Tên";
             this.btDrawArrow.UseVisualStyleBackColor = false;
@@ -165,7 +168,7 @@
             this.lbDoDay.AutoSize = true;
             this.lbDoDay.BackColor = System.Drawing.Color.Transparent;
             this.lbDoDay.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbDoDay.Location = new System.Drawing.Point(32, 86);
+            this.lbDoDay.Location = new System.Drawing.Point(32, 85);
             this.lbDoDay.Name = "lbDoDay";
             this.lbDoDay.Size = new System.Drawing.Size(52, 17);
             this.lbDoDay.TabIndex = 3;
@@ -191,9 +194,9 @@
             this.btFillColor.Location = new System.Drawing.Point(294, 99);
             this.btFillColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btFillColor.Name = "btFillColor";
-            this.btFillColor.Size = new System.Drawing.Size(63, 78);
+            this.btFillColor.Size = new System.Drawing.Size(63, 77);
             this.btFillColor.TabIndex = 6;
-            this.btFillColor.Text = "Fill Color\r\n(Red)";
+            this.btFillColor.Text = "Fill Color\r\n";
             this.btFillColor.UseVisualStyleBackColor = false;
             this.btFillColor.Click += new System.EventHandler(this.btFillColor_Click);
             // 
@@ -201,7 +204,7 @@
             // 
             this.btSymmetry.BackColor = System.Drawing.SystemColors.Control;
             this.btSymmetry.ForeColor = System.Drawing.Color.Red;
-            this.btSymmetry.Location = new System.Drawing.Point(30, 26);
+            this.btSymmetry.Location = new System.Drawing.Point(30, 27);
             this.btSymmetry.Name = "btSymmetry";
             this.btSymmetry.Size = new System.Drawing.Size(463, 39);
             this.btSymmetry.TabIndex = 12;
@@ -240,13 +243,12 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1436, 60);
+            this.panel1.Size = new System.Drawing.Size(1386, 60);
             this.panel1.TabIndex = 41;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // buttonX
             // 
-            this.buttonX.BackgroundImage = global::Paint.Properties.Resources.XBT;
             this.buttonX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonX.ForeColor = System.Drawing.Color.Red;
@@ -271,7 +273,7 @@
             this.btn_drawElip.BackColor = System.Drawing.SystemColors.Control;
             this.btn_drawElip.Location = new System.Drawing.Point(232, 80);
             this.btn_drawElip.Name = "btn_drawElip";
-            this.btn_drawElip.Size = new System.Drawing.Size(108, 48);
+            this.btn_drawElip.Size = new System.Drawing.Size(107, 48);
             this.btn_drawElip.TabIndex = 21;
             this.btn_drawElip.Text = "Hình Elip";
             this.btn_drawElip.UseVisualStyleBackColor = false;
@@ -282,7 +284,7 @@
             this.btn_DrawSquare.BackColor = System.Drawing.SystemColors.Control;
             this.btn_DrawSquare.Location = new System.Drawing.Point(6, 80);
             this.btn_DrawSquare.Name = "btn_DrawSquare";
-            this.btn_DrawSquare.Size = new System.Drawing.Size(108, 49);
+            this.btn_DrawSquare.Size = new System.Drawing.Size(107, 49);
             this.btn_DrawSquare.TabIndex = 20;
             this.btn_DrawSquare.Text = "hình vuông";
             this.btn_DrawSquare.UseVisualStyleBackColor = false;
@@ -292,9 +294,9 @@
             // 
             this.btn_Quay.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Quay.ForeColor = System.Drawing.Color.Red;
-            this.btn_Quay.Location = new System.Drawing.Point(24, 26);
+            this.btn_Quay.Location = new System.Drawing.Point(24, 27);
             this.btn_Quay.Name = "btn_Quay";
-            this.btn_Quay.Size = new System.Drawing.Size(103, 78);
+            this.btn_Quay.Size = new System.Drawing.Size(103, 77);
             this.btn_Quay.TabIndex = 19;
             this.btn_Quay.Text = "Quay 60°";
             this.btn_Quay.UseVisualStyleBackColor = false;
@@ -304,7 +306,7 @@
             // 
             this.btn_DoiXungOy.BackColor = System.Drawing.SystemColors.Control;
             this.btn_DoiXungOy.ForeColor = System.Drawing.Color.Red;
-            this.btn_DoiXungOy.Location = new System.Drawing.Point(196, 73);
+            this.btn_DoiXungOy.Location = new System.Drawing.Point(197, 73);
             this.btn_DoiXungOy.Name = "btn_DoiXungOy";
             this.btn_DoiXungOy.Size = new System.Drawing.Size(128, 53);
             this.btn_DoiXungOy.TabIndex = 18;
@@ -318,7 +320,7 @@
             this.btn_DoiXungOx.ForeColor = System.Drawing.Color.Red;
             this.btn_DoiXungOx.Location = new System.Drawing.Point(30, 71);
             this.btn_DoiXungOx.Name = "btn_DoiXungOx";
-            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 54);
+            this.btn_DoiXungOx.Size = new System.Drawing.Size(128, 53);
             this.btn_DoiXungOx.TabIndex = 17;
             this.btn_DoiXungOx.Text = "đối xứng qua Ox";
             this.btn_DoiXungOx.UseVisualStyleBackColor = false;
@@ -330,7 +332,7 @@
             this.btn_DoiXungQuaO.ForeColor = System.Drawing.Color.Red;
             this.btn_DoiXungQuaO.Location = new System.Drawing.Point(353, 73);
             this.btn_DoiXungQuaO.Name = "btn_DoiXungQuaO";
-            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(140, 52);
+            this.btn_DoiXungQuaO.Size = new System.Drawing.Size(139, 52);
             this.btn_DoiXungQuaO.TabIndex = 16;
             this.btn_DoiXungQuaO.Text = "đối xứng qua O(0,0)";
             this.btn_DoiXungQuaO.UseVisualStyleBackColor = false;
@@ -350,7 +352,7 @@
             // btTatTiLe
             // 
             this.btTatTiLe.ForeColor = System.Drawing.Color.Red;
-            this.btTatTiLe.Location = new System.Drawing.Point(428, 70);
+            this.btTatTiLe.Location = new System.Drawing.Point(427, 69);
             this.btTatTiLe.Name = "btTatTiLe";
             this.btTatTiLe.Size = new System.Drawing.Size(31, 29);
             this.btTatTiLe.TabIndex = 41;
@@ -443,7 +445,7 @@
             // 
             this.lbTiLeX.AutoSize = true;
             this.lbTiLeX.ForeColor = System.Drawing.Color.Red;
-            this.lbTiLeX.Location = new System.Drawing.Point(268, 72);
+            this.lbTiLeX.Location = new System.Drawing.Point(267, 72);
             this.lbTiLeX.Name = "lbTiLeX";
             this.lbTiLeX.Size = new System.Drawing.Size(23, 20);
             this.lbTiLeX.TabIndex = 35;
@@ -485,7 +487,7 @@
             // 
             // tbTinhTienX
             // 
-            this.tbTinhTienX.Location = new System.Drawing.Point(43, 74);
+            this.tbTinhTienX.Location = new System.Drawing.Point(43, 75);
             this.tbTinhTienX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbTinhTienX.Name = "tbTinhTienX";
             this.tbTinhTienX.Size = new System.Drawing.Size(33, 27);
@@ -496,7 +498,7 @@
             // 
             this.lbTinhTienX.AutoSize = true;
             this.lbTinhTienX.ForeColor = System.Drawing.Color.Red;
-            this.lbTinhTienX.Location = new System.Drawing.Point(18, 74);
+            this.lbTinhTienX.Location = new System.Drawing.Point(18, 75);
             this.lbTinhTienX.Name = "lbTinhTienX";
             this.lbTinhTienX.Size = new System.Drawing.Size(23, 20);
             this.lbTinhTienX.TabIndex = 30;
@@ -539,7 +541,7 @@
             // lbRongDay
             // 
             this.lbRongDay.AutoSize = true;
-            this.lbRongDay.Location = new System.Drawing.Point(5, 238);
+            this.lbRongDay.Location = new System.Drawing.Point(5, 237);
             this.lbRongDay.Name = "lbRongDay";
             this.lbRongDay.Size = new System.Drawing.Size(38, 20);
             this.lbRongDay.TabIndex = 26;
@@ -550,7 +552,7 @@
             // lbChieuCao
             // 
             this.lbChieuCao.AutoSize = true;
-            this.lbChieuCao.Location = new System.Drawing.Point(6, 202);
+            this.lbChieuCao.Location = new System.Drawing.Point(6, 203);
             this.lbChieuCao.Name = "lbChieuCao";
             this.lbChieuCao.Size = new System.Drawing.Size(37, 20);
             this.lbChieuCao.TabIndex = 25;
@@ -572,7 +574,7 @@
             // 
             // tbHeight
             // 
-            this.tbHeight.Location = new System.Drawing.Point(287, 238);
+            this.tbHeight.Location = new System.Drawing.Point(287, 237);
             this.tbHeight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbHeight.Name = "tbHeight";
             this.tbHeight.Size = new System.Drawing.Size(44, 27);
@@ -581,7 +583,7 @@
             // 
             // tbWidth
             // 
-            this.tbWidth.Location = new System.Drawing.Point(287, 198);
+            this.tbWidth.Location = new System.Drawing.Point(287, 197);
             this.tbWidth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbWidth.Name = "tbWidth";
             this.tbWidth.Size = new System.Drawing.Size(44, 27);
@@ -591,7 +593,7 @@
             // lbHeight
             // 
             this.lbHeight.AutoSize = true;
-            this.lbHeight.Location = new System.Drawing.Point(231, 242);
+            this.lbHeight.Location = new System.Drawing.Point(231, 243);
             this.lbHeight.Name = "lbHeight";
             this.lbHeight.Size = new System.Drawing.Size(50, 20);
             this.lbHeight.TabIndex = 21;
@@ -601,7 +603,7 @@
             // lbWidth
             // 
             this.lbWidth.AutoSize = true;
-            this.lbWidth.Location = new System.Drawing.Point(231, 202);
+            this.lbWidth.Location = new System.Drawing.Point(231, 203);
             this.lbWidth.Name = "lbWidth";
             this.lbWidth.Size = new System.Drawing.Size(36, 20);
             this.lbWidth.TabIndex = 20;
@@ -622,7 +624,7 @@
             // 
             // txtCheoB
             // 
-            this.txtCheoB.Location = new System.Drawing.Point(180, 235);
+            this.txtCheoB.Location = new System.Drawing.Point(181, 235);
             this.txtCheoB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCheoB.Name = "txtCheoB";
             this.txtCheoB.Size = new System.Drawing.Size(42, 27);
@@ -632,7 +634,7 @@
             // 
             // txtCheoA
             // 
-            this.txtCheoA.Location = new System.Drawing.Point(180, 198);
+            this.txtCheoA.Location = new System.Drawing.Point(181, 197);
             this.txtCheoA.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCheoA.Name = "txtCheoA";
             this.txtCheoA.Size = new System.Drawing.Size(42, 27);
@@ -643,7 +645,7 @@
             // lbCheoB
             // 
             this.lbCheoB.AutoSize = true;
-            this.lbCheoB.Location = new System.Drawing.Point(113, 238);
+            this.lbCheoB.Location = new System.Drawing.Point(113, 237);
             this.lbCheoB.Name = "lbCheoB";
             this.lbCheoB.Size = new System.Drawing.Size(61, 20);
             this.lbCheoB.TabIndex = 16;
@@ -654,7 +656,7 @@
             // lbCheoA
             // 
             this.lbCheoA.AutoSize = true;
-            this.lbCheoA.Location = new System.Drawing.Point(114, 202);
+            this.lbCheoA.Location = new System.Drawing.Point(114, 203);
             this.lbCheoA.Name = "lbCheoA";
             this.lbCheoA.Size = new System.Drawing.Size(60, 20);
             this.lbCheoA.TabIndex = 15;
@@ -665,7 +667,7 @@
             // btHinhThoi
             // 
             this.btHinhThoi.BackColor = System.Drawing.SystemColors.Control;
-            this.btHinhThoi.Location = new System.Drawing.Point(108, 136);
+            this.btHinhThoi.Location = new System.Drawing.Point(107, 136);
             this.btHinhThoi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btHinhThoi.Name = "btHinhThoi";
             this.btHinhThoi.Size = new System.Drawing.Size(117, 49);
@@ -680,7 +682,7 @@
             this.btDrawLine.Location = new System.Drawing.Point(6, 27);
             this.btDrawLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btDrawLine.Name = "btDrawLine";
-            this.btDrawLine.Size = new System.Drawing.Size(334, 46);
+            this.btDrawLine.Size = new System.Drawing.Size(334, 45);
             this.btDrawLine.TabIndex = 13;
             this.btDrawLine.Text = "Đường thẳng";
             this.btDrawLine.UseVisualStyleBackColor = false;
@@ -710,7 +712,7 @@
             this.groupBox1.Controls.Add(this.tbHeight);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox1.ForeColor = System.Drawing.Color.Red;
-            this.groupBox1.Location = new System.Drawing.Point(25, 198);
+            this.groupBox1.Location = new System.Drawing.Point(25, 197);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(363, 285);
             this.groupBox1.TabIndex = 13;
@@ -720,8 +722,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.groupBox2.BackgroundImage = global::Paint.Properties.Resources.clockiconfis;
             this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox2.Controls.Add(this.cbColor);
             this.groupBox2.Controls.Add(this.btFillColor);
             this.groupBox2.Controls.Add(this.btConLacCD);
             this.groupBox2.Controls.Add(this.lbDoDay);
@@ -740,6 +742,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "                 Đồng Hồ Quả Lắc";
             // 
+            // cbColor
+            // 
+            this.cbColor.FormattingEnabled = true;
+            this.cbColor.Items.AddRange(new object[] {
+            "Black",
+            "Green",
+            "Blue",
+            "Red",
+            "Yellow",
+            "Orange",
+            "Brown"});
+            this.cbColor.Location = new System.Drawing.Point(0, 140);
+            this.cbColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbColor.Name = "cbColor";
+            this.cbColor.Size = new System.Drawing.Size(82, 28);
+            this.cbColor.TabIndex = 42;
+            this.cbColor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -757,7 +777,7 @@
             this.groupBox3.Controls.Add(this.lbTiLeY);
             this.groupBox3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox3.ForeColor = System.Drawing.Color.Red;
-            this.groupBox3.Location = new System.Drawing.Point(25, 66);
+            this.groupBox3.Location = new System.Drawing.Point(25, 67);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(498, 125);
             this.groupBox3.TabIndex = 40;
@@ -773,7 +793,7 @@
             this.groupBox5.Controls.Add(this.btn_DoiXungOy);
             this.groupBox5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox5.ForeColor = System.Drawing.Color.Red;
-            this.groupBox5.Location = new System.Drawing.Point(868, 66);
+            this.groupBox5.Location = new System.Drawing.Point(869, 67);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(512, 125);
             this.groupBox5.TabIndex = 21;
@@ -788,26 +808,39 @@
             this.groupBox4.Controls.Add(this.btRotate);
             this.groupBox4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.groupBox4.ForeColor = System.Drawing.Color.Red;
-            this.groupBox4.Location = new System.Drawing.Point(572, 66);
+            this.groupBox4.Location = new System.Drawing.Point(571, 67);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(250, 125);
             this.groupBox4.TabIndex = 20;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Phép Xoay";
             // 
-            // elipseControl1
+            // panel2
             // 
-            this.elipseControl1.CornerRadius = 40;
-            this.elipseControl1.TargetControl = this;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.lbPoint);
+            this.panel2.Location = new System.Drawing.Point(25, 712);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(267, 70);
+            this.panel2.TabIndex = 42;
+            // 
+            // lbPoint
+            // 
+            this.lbPoint.AutoSize = true;
+            this.lbPoint.Location = new System.Drawing.Point(9, 9);
+            this.lbPoint.Name = "lbPoint";
+            this.lbPoint.Size = new System.Drawing.Size(50, 20);
+            this.lbPoint.TabIndex = 0;
+            this.lbPoint.Text = "label1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.BackgroundImage = global::Paint.Properties.Resources.BG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1436, 814);
+            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
@@ -834,6 +867,8 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -913,6 +948,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonX;
+        private System.Windows.Forms.ComboBox cbColor;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbPoint;
     }
 }
 

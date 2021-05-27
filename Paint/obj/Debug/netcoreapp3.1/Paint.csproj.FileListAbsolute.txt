@@ -4,7 +4,6 @@ C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreap
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.runtimeconfig.dev.json
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.dll
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\bin\Debug\netcoreapp3.1\Paint.pdb
-C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csprojAssemblyReference.cache
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Animation.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Draw3D.resources
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Form1.resources
@@ -25,3 +24,4 @@ C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreap
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.dll
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
 C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+C:\Users\Vanic\OneDrive\Máy tính\Do_An\DA_KTDH\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csprojAssemblyReference.cache

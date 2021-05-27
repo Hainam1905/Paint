@@ -118,6 +118,11 @@ namespace Paint
             this.rO.Name = "rO";
             this.rO.Size = new System.Drawing.Size(57, 27);
             this.rO.TabIndex = 9;
+            this.rO.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // btDrawGlobular
             // 

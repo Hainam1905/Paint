@@ -151,6 +151,11 @@ namespace Paint
             this.length.Name = "length";
             this.length.Size = new System.Drawing.Size(62, 27);
             this.length.TabIndex = 11;
+            this.length.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // width
             // 
@@ -158,6 +163,12 @@ namespace Paint
             this.width.Name = "width";
             this.width.Size = new System.Drawing.Size(62, 27);
             this.width.TabIndex = 12;
+            this.width.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.width.ValueChanged += new System.EventHandler(this.width_ValueChanged);
             // 
             // height
             // 
@@ -165,6 +176,11 @@ namespace Paint
             this.height.Name = "height";
             this.height.Size = new System.Drawing.Size(62, 27);
             this.height.TabIndex = 13;
+            this.height.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
             // 
             // btGetValue
             // 
