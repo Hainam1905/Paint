@@ -12,7 +12,13 @@ namespace Paint
     {
 
         public int lengthRec, heightRec, widthRec; 
-        public int xOrec, yOrec, zOrec; 
+        public int xOrec, yOrec, zOrec;
+
+        private void width_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
         public bool checkDraw = false; 
         public rectangularPopUp()
         {

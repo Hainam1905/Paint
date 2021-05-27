@@ -40,6 +40,7 @@ namespace Paint
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            //dung phep chieu cabinet: 
             rectangularPopUp rectangular = new rectangularPopUp();
             rectangular.ShowDialog();
             if (rectangular.checkDraw == false) return;
@@ -58,14 +59,14 @@ namespace Paint
                 int yO = rectangular.yOrec;//yO
                 int zO = rectangular.zOrec; //zO
 
-                int xa, ya, za;
-               int xb, yb, zb;
-               int xc, yc, zc;
-               int xd, yd, zd;
-               int xe, ye, ze;
-               int xf, yf, zf;
-               int xg, yg, zg;
-               int xh, yh, zh;
+                int xa, ya;
+               int xb, yb;
+               int xc, yc;
+               int xd, yd;
+               int xe, ye;
+               int xf, yf;
+               int xg, yg;
+               int xh, yh;
 
                 int xa0, ya0, za0;
                 int xb0, yb0, zb0;
@@ -165,12 +166,12 @@ namespace Paint
                 drawPosition(xg0, yg0, zg0, xe, ye);
                 drawPosition(xh0, yh0, zh0, xf, yf);
 
-                drawLine(xa, ya, xb, yb);
+                drawLineIn3D(xa, ya, xb, yb);
                 drawLineDecrete(xb, yb, xc, yc);
                 drawLineDecreteIn3D(xc, yc, xd, yd);
                 drawLine(xd, yd, xa, ya);
 
-                drawLine(xa, ya, xe, ye);
+                drawLineIn3D(xa, ya, xe, ye);
                 drawLineIn3D(xb, yb, xf, yf);
                 drawLineDecreteIn3D(xc, yc, xg, yg);
                 drawLineIn3D(xd, yd, xh, yh);
@@ -251,6 +252,11 @@ namespace Paint
 
             int xr = Ox - 5 * y + 5 * x;
             int yr = Oy + 5 * y - z * 5;
+            Brush ve = new SolidBrush(Color.Red);
+            Font font = new Font("Arial", 10);
+            PointF drawPoint = new PointF(xr, yr);
+
+            g.DrawString("(" + x + "," + y + "," + z + ")", font, ve, drawPoint);
             g.FillRectangle(Brushes.Blue, xr , yr , 5, 5);
             pb3D.Image = bm3D;
         }
@@ -277,14 +283,10 @@ namespace Paint
             int xr1 = (x + 40) * 5;
             int yr1 = (40 - y) * 5;
 
-            int xr2 = (x + 40) * 5;
-            int yr2 = (40 - y) * 5;
-
+            
             Brush ve = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 10);
             PointF drawPoint = new PointF(xr1, yr1);
-            PointF drawPoint2 = new PointF(xr2, yr2);
-
 
             g.DrawString("("+x0+","+y0+","+z0+")", font, ve, drawPoint);
         }
@@ -394,11 +396,14 @@ namespace Paint
                 int zO = globular.zOGlo;
                 int rO = globular.rOGlo;
 
+
                 int xr = Ox - 5 * yO + 5 * xO;
                 int yr = Oy + 5 * yO - zO * 5;
+
                 setPixelAtSpecificPosition(xO,yO,zO);
                 dt.MidPointDrawCircleIn3D(xr, yr, rO, Color.Black);
                 dt.drawElipIn3Horizontal(xr, yr, rO, rO / 2, Color.Black);
+                //drawPosition(xO, yO, zO, xO, yO);
                 pb3D.Image = bm3D;
             }
             

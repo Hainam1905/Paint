@@ -258,3 +258,8 @@ D:\Study\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.csproj.CoreCompileInputs.cach
 D:\Study\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.dll
 D:\Study\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.pdb
 D:\Study\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.genruntimeconfig.cache
+D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Draw3D.resources
+D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Form2.resources
+D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.globularPopUp.resources
+D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.rectangularPopUp.resources
+D:\Paint\Paint\obj\Debug\netcoreapp3.1\Paint.Xechayquadoi.resources
