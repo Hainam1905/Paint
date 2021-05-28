@@ -377,6 +377,9 @@ namespace Paint
 
         public void MidPointDrawCircleIn3D(int x, int y, int R, Color color)
         {
+             x = (x + 40) * 5;
+            y = (40 - y) * 5;
+
             R = 5 * R;
             // Khởi tạo các giá trị cho thuật toán
             int i, j, d;
@@ -437,7 +440,8 @@ namespace Paint
         }
         public void drawElipIn3Horizontal(int x, int y, int a, int b, Color color)
         {
-
+             x = (x + 40) * 5;
+             y = (40 - y) * 5;
 
             a = a * 5;
             b = b * 5;

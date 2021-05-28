@@ -8,24 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Vanic\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\huynh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
+      "projectUniqueName": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
       "projectName": "Paint",
-      "projectPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\Paint.csproj",
-      "packagesPath": "C:\\Users\\Vanic\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vanic\\OneDrive\\Máy tính\\Do_An\\DA_KTDH\\Paint\\Paint\\obj\\",
+      "projectPath": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
+      "packagesPath": "C:\\Users\\huynh\\.nuget\\packages\\",
+      "outputPath": "D:\\Paint\\Paint\\Paint\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Vanic\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\huynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -68,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

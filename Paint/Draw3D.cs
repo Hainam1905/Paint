@@ -157,6 +157,23 @@ namespace Paint
                 xh = (int)((x + length / 2) - (y - width / 2) * a);
                 yh = (int)(z + height - (y - width / 2) * a);
 
+                /*if (length % 2 == 0)
+                {
+                    xb++;
+                    xc++;
+                    xf++;
+                    xg++;
+                }
+
+                if (width % 2 == 0)
+                {
+                    yc++;
+                    yd++;
+                    yg++;
+                    yh++;
+
+                }*/
+
                 drawPosition(xa0, ya0,za0, xc, yc);
                 drawPosition(xb0, yb0, zb0, xd, yd);
                 drawPosition(xc0, yc0, zc0, xa, ya);
@@ -246,12 +263,15 @@ namespace Paint
         }
         void setPixelAtSpecificPosition(int x, int y,int z)
         {
-            
-            
-            
 
-            int xr = Ox - 5 * y + 5 * x;
-            int yr = Oy + 5 * y - z * 5;
+
+
+
+            /*int xr = Ox - 5 * y + 5 * x;
+            int yr = Oy + 5 * y - z * 5;*/
+
+            int xr = (x + 40) * 5;
+            int yr = (40-y) * 5; 
             Brush ve = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 10);
             PointF drawPoint = new PointF(xr, yr);
@@ -387,7 +407,7 @@ namespace Paint
         {
             globularPopUp globular = new globularPopUp();
             globular.ShowDialog();
-
+            double a = Math.Sqrt(2) / 4; 
             if (globular.checkDrawGlo == false) return;
             else
             {
@@ -397,8 +417,8 @@ namespace Paint
                 int rO = globular.rOGlo;
 
 
-                int xr = Ox - 5 * yO + 5 * xO;
-                int yr = Oy + 5 * yO - zO * 5;
+                int xr =(int) (xO- yO * a);
+                int yr = (int) (zO -yO * a);
 
                 setPixelAtSpecificPosition(xO,yO,zO);
                 dt.MidPointDrawCircleIn3D(xr, yr, rO, Color.Black);
