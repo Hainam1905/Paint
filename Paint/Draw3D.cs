@@ -50,7 +50,7 @@ namespace Paint
                 int length = rectangular.lengthRec;
                 int height = rectangular.heightRec;
                 int width = rectangular.widthRec;
-
+                
                 int x = rectangular.xOrec; //xO
                 int y = rectangular.yOrec;//yO
                 int z = rectangular.zOrec; //zO
@@ -131,29 +131,27 @@ namespace Paint
                 xb = (int)((x - length / 2) - (y + width / 2) * a);
                 yb = ya;
 
-                //truc am x, truc duong y
+                
                 xc = (int)((x - length / 2) - (y - width / 2) * a);
                 yc = (int)(z - (y - width / 2) * a);
 
-                //yC = yD
-                //truc duong x, duong y
+                
                 xd = (int)((x + length / 2) - (y - width / 2) * a);
                 yd = yc;
 
-                /////////////////////
-                // xE = xA, yE=yA + chieucao
+                
                 xe = (int)((x + length / 2) - (y + width / 2) * a);
                 ye = (int)(z + height - (y + width / 2) * a);
 
-                //Tuong tu diem B
+                
                 xf = (int)((x - length / 2) - (y + width / 2) * a);
                 yf = (int)(z + height - (y + width / 2) * a);
 
-                //Tuong tu diem C
+                
                 xg = (int)((x - length / 2) - (y - width / 2) * a);
                 yg = (int)(z + height - (y - width / 2) * a);
 
-                //Tuong tu diem D
+                
                 xh = (int)((x + length / 2) - (y - width / 2) * a);
                 yh = (int)(z + height - (y - width / 2) * a);
 
