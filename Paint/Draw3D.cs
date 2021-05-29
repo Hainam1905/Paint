@@ -420,7 +420,7 @@ namespace Paint
 
                 setPixelAtSpecificPosition(xr, yr,xO,yO,zO);
                 dt.MidPointDrawCircleIn3D(xr, yr, rO, Color.Black);
-                dt.drawElipIn3Horizontal(xr, yr, rO, rO / 2, Color.Black);
+                dt.drawElipIn3Horizontal(xr, yr, rO, (int)(rO*a), Color.Black);
                 //drawPosition(xO, yO, zO, xO, yO);
                 pb3D.Image = bm3D;
             }
