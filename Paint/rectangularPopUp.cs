@@ -14,6 +14,11 @@ namespace Paint
         public int lengthRec, heightRec, widthRec; 
         public int xOrec, yOrec, zOrec;
 
+        private void rectangularPopUp_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void width_ValueChanged(object sender, EventArgs e)
         {
 
@@ -31,9 +36,10 @@ namespace Paint
             heightRec = int.Parse(height.Value.ToString());
             widthRec = int.Parse(width.Value.ToString());
 
-            xOrec = int.Parse(xO.Value.ToString());
-            yOrec = int.Parse(yO.Value.ToString());
-            zOrec = int.Parse(zO.Value.ToString());
+            xOrec = Int32.Parse(xO.Text);
+            yOrec = Int32.Parse(yO.Text);
+            zOrec = Int32.Parse(zO.Text);
+
             checkDraw = true;
             this.Close(); 
         }

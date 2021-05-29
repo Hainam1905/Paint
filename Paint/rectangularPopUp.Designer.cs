@@ -33,9 +33,6 @@ namespace Paint
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.xO = new System.Windows.Forms.NumericUpDown();
-            this.yO = new System.Windows.Forms.NumericUpDown();
-            this.zO = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -44,9 +41,9 @@ namespace Paint
             this.width = new System.Windows.Forms.NumericUpDown();
             this.height = new System.Windows.Forms.NumericUpDown();
             this.btGetValue = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.xO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zO)).BeginInit();
+            this.zO = new System.Windows.Forms.TextBox();
+            this.yO = new System.Windows.Forms.TextBox();
+            this.xO = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.length)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.height)).BeginInit();
@@ -87,27 +84,6 @@ namespace Paint
             this.label4.Size = new System.Drawing.Size(27, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "zO";
-            // 
-            // xO
-            // 
-            this.xO.Location = new System.Drawing.Point(94, 119);
-            this.xO.Name = "xO";
-            this.xO.Size = new System.Drawing.Size(62, 27);
-            this.xO.TabIndex = 4;
-            // 
-            // yO
-            // 
-            this.yO.Location = new System.Drawing.Point(276, 119);
-            this.yO.Name = "yO";
-            this.yO.Size = new System.Drawing.Size(62, 27);
-            this.yO.TabIndex = 5;
-            // 
-            // zO
-            // 
-            this.zO.Location = new System.Drawing.Point(437, 119);
-            this.zO.Name = "zO";
-            this.zO.Size = new System.Drawing.Size(62, 27);
-            this.zO.TabIndex = 6;
             // 
             // label5
             // 
@@ -192,11 +168,38 @@ namespace Paint
             this.btGetValue.UseVisualStyleBackColor = true;
             this.btGetValue.Click += new System.EventHandler(this.btGetValue_Click);
             // 
+            // zO
+            // 
+            this.zO.Location = new System.Drawing.Point(437, 119);
+            this.zO.Name = "zO";
+            this.zO.Size = new System.Drawing.Size(62, 27);
+            this.zO.TabIndex = 15;
+            this.zO.Text = "0";
+            // 
+            // yO
+            // 
+            this.yO.Location = new System.Drawing.Point(263, 123);
+            this.yO.Name = "yO";
+            this.yO.Size = new System.Drawing.Size(62, 27);
+            this.yO.TabIndex = 16;
+            this.yO.Text = "0";
+            // 
+            // xO
+            // 
+            this.xO.Location = new System.Drawing.Point(104, 126);
+            this.xO.Name = "xO";
+            this.xO.Size = new System.Drawing.Size(62, 27);
+            this.xO.TabIndex = 17;
+            this.xO.Text = "0";
+            // 
             // rectangularPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 446);
+            this.Controls.Add(this.xO);
+            this.Controls.Add(this.yO);
+            this.Controls.Add(this.zO);
             this.Controls.Add(this.btGetValue);
             this.Controls.Add(this.height);
             this.Controls.Add(this.width);
@@ -205,18 +208,13 @@ namespace Paint
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.zO);
-            this.Controls.Add(this.yO);
-            this.Controls.Add(this.xO);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "rectangularPopUp";
             this.Text = "Nhập vào thông số của hình hộp chữ nhật";
-            ((System.ComponentModel.ISupportInitialize)(this.xO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zO)).EndInit();
+            this.Load += new System.EventHandler(this.rectangularPopUp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.length)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.width)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.height)).EndInit();
@@ -231,9 +229,6 @@ namespace Paint
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown xO;
-        private System.Windows.Forms.NumericUpDown yO;
-        private System.Windows.Forms.NumericUpDown zO;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -242,5 +237,8 @@ namespace Paint
         private System.Windows.Forms.NumericUpDown width;
         private System.Windows.Forms.NumericUpDown height;
         private System.Windows.Forms.Button btGetValue;
+        private System.Windows.Forms.TextBox zO;
+        private System.Windows.Forms.TextBox yO;
+        private System.Windows.Forms.TextBox xO;
     }
 }

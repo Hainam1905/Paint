@@ -20,13 +20,18 @@ namespace Paint
 
         private void btDrawGlobular_Click(object sender, EventArgs e)
         {
-            xOGlo = int.Parse(xO.Value.ToString());
-            yOGlo = int.Parse(yO.Value.ToString());
-            zOGlo = int.Parse(zO.Value.ToString());
+            xOGlo = int.Parse(xO.Text);
+            yOGlo = int.Parse(yO.Text);
+            zOGlo = int.Parse(zO.Text);
 
             rOGlo = int.Parse(rO.Value.ToString());
             checkDrawGlo = true;
             this.Close(); 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void label1_Click(object sender, EventArgs e)

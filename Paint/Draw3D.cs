@@ -54,7 +54,7 @@ namespace Paint
                 int x = rectangular.xOrec; //xO
                 int y = rectangular.yOrec;//yO
                 int z = rectangular.zOrec; //zO
-
+                
                 int xO = rectangular.xOrec; //xO
                 int yO = rectangular.yOrec;//yO
                 int zO = rectangular.zOrec; //zO
@@ -259,7 +259,7 @@ namespace Paint
         {
 
         }
-        void setPixelAtSpecificPosition(int x, int y,int z)
+        void setPixelAtSpecificPosition(int xr, int yr, int x, int y,int z)
         {
 
 
@@ -268,8 +268,8 @@ namespace Paint
             /*int xr = Ox - 5 * y + 5 * x;
             int yr = Oy + 5 * y - z * 5;*/
 
-            int xr = (x + 40) * 5;
-            int yr = (40-y) * 5; 
+             xr = (xr + 40) * 5;
+             yr = (40-yr) * 5; 
             Brush ve = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 10);
             PointF drawPoint = new PointF(xr, yr);
@@ -414,11 +414,11 @@ namespace Paint
                 int zO = globular.zOGlo;
                 int rO = globular.rOGlo;
 
-
+                
                 int xr =(int) (xO- yO * a);
                 int yr = (int) (zO -yO * a);
 
-                setPixelAtSpecificPosition(xO,yO,zO);
+                setPixelAtSpecificPosition(xr, yr,xO,yO,zO);
                 dt.MidPointDrawCircleIn3D(xr, yr, rO, Color.Black);
                 dt.drawElipIn3Horizontal(xr, yr, rO, rO / 2, Color.Black);
                 //drawPosition(xO, yO, zO, xO, yO);

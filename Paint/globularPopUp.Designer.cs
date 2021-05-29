@@ -33,15 +33,12 @@ namespace Paint
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.xO = new System.Windows.Forms.NumericUpDown();
-            this.yO = new System.Windows.Forms.NumericUpDown();
-            this.zO = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.rO = new System.Windows.Forms.NumericUpDown();
             this.btDrawGlobular = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.xO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zO)).BeginInit();
+            this.zO = new System.Windows.Forms.TextBox();
+            this.yO = new System.Windows.Forms.TextBox();
+            this.xO = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.rO)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,27 +79,6 @@ namespace Paint
             this.label4.TabIndex = 3;
             this.label4.Text = "zO";
             // 
-            // xO
-            // 
-            this.xO.Location = new System.Drawing.Point(86, 118);
-            this.xO.Name = "xO";
-            this.xO.Size = new System.Drawing.Size(57, 27);
-            this.xO.TabIndex = 4;
-            // 
-            // yO
-            // 
-            this.yO.Location = new System.Drawing.Point(253, 118);
-            this.yO.Name = "yO";
-            this.yO.Size = new System.Drawing.Size(57, 27);
-            this.yO.TabIndex = 5;
-            // 
-            // zO
-            // 
-            this.zO.Location = new System.Drawing.Point(467, 118);
-            this.zO.Name = "zO";
-            this.zO.Size = new System.Drawing.Size(57, 27);
-            this.zO.TabIndex = 6;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -134,17 +110,42 @@ namespace Paint
             this.btDrawGlobular.UseVisualStyleBackColor = true;
             this.btDrawGlobular.Click += new System.EventHandler(this.btDrawGlobular_Click);
             // 
+            // zO
+            // 
+            this.zO.Location = new System.Drawing.Point(454, 118);
+            this.zO.Name = "zO";
+            this.zO.Size = new System.Drawing.Size(62, 27);
+            this.zO.TabIndex = 11;
+            this.zO.Text = "0";
+            // 
+            // yO
+            // 
+            this.yO.Location = new System.Drawing.Point(254, 122);
+            this.yO.Name = "yO";
+            this.yO.Size = new System.Drawing.Size(62, 27);
+            this.yO.TabIndex = 12;
+            this.yO.Text = "0";
+            this.yO.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // xO
+            // 
+            this.xO.Location = new System.Drawing.Point(84, 122);
+            this.xO.Name = "xO";
+            this.xO.Size = new System.Drawing.Size(62, 27);
+            this.xO.TabIndex = 13;
+            this.xO.Text = "0";
+            // 
             // globularPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 446);
+            this.Controls.Add(this.xO);
+            this.Controls.Add(this.yO);
+            this.Controls.Add(this.zO);
             this.Controls.Add(this.btDrawGlobular);
             this.Controls.Add(this.rO);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.zO);
-            this.Controls.Add(this.yO);
-            this.Controls.Add(this.xO);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -152,9 +153,6 @@ namespace Paint
             this.Name = "globularPopUp";
             this.Text = "Nhập vào thông số của hình cầu";
             this.Load += new System.EventHandler(this.globularPopUp_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.xO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.yO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.zO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -167,11 +165,11 @@ namespace Paint
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown xO;
-        private System.Windows.Forms.NumericUpDown yO;
-        private System.Windows.Forms.NumericUpDown zO;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown rO;
         private System.Windows.Forms.Button btDrawGlobular;
+        private System.Windows.Forms.TextBox zO;
+        private System.Windows.Forms.TextBox yO;
+        private System.Windows.Forms.TextBox xO;
     }
 }
