@@ -190,7 +190,7 @@ namespace Paint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Paint.Properties.Resources.BG;
+            this.BackgroundImage = global::Paint.Properties.Resources.backrgroundKTDH;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1296, 724);
             this.Controls.Add(this.panel3);

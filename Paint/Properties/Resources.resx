@@ -124,17 +124,14 @@
   <data name="XBT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\XBT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="3diconfis" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\3diconfis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="HCaufis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HCaufis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ptit-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ptit-logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HCN3dFis" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HCN3dFis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CarICon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CarICon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BGTeam10" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BGTeam10.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,16 +139,22 @@
   <data name="delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CarICon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CarICon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BG.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HCN3dFis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HCN3dFis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="74522308_2519290034858047_5559712401621778432_o" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\74522308_2519290034858047_5559712401621778432_o.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clockiconfis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clockiconfis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="3diconfis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\3diconfis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BG.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="backrgroundKTDH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backrgroundKTDH.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
