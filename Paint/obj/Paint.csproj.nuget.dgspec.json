@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Paint\\Paint\\Paint\\Paint.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint\\Paint.csproj": {}
   },
   "projects": {
-    "D:\\Paint\\Paint\\Paint\\Paint.csproj": {
+    "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint\\Paint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint\\Paint.csproj",
         "projectName": "Paint",
-        "projectPath": "D:\\Paint\\Paint\\Paint\\Paint.csproj",
-        "packagesPath": "C:\\Users\\huynh\\.nuget\\packages\\",
-        "outputPath": "D:\\Paint\\Paint\\Paint\\obj\\",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint\\Paint.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\Code\\KyThuatDoHoa\\Paint\\Paint\\Paint\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\huynh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -57,7 +55,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -56,6 +56,12 @@ namespace Paint
             {
                 transalte = null;
             }*/
+            if (btCheck == btAnimArrow)
+            {
+                cbIsStop.Visible = false;
+                cbIsStop.Checked = true;
+                countDrawConLac = 0;
+            }
             if (btCheck == btConLacCD)
             {
                 cbIsStop.Visible = false;
@@ -142,6 +148,7 @@ namespace Paint
                 TurnOffModeDraw(btFillColor);
                 TurnOffModeDraw(btTamGiac);
                 TurnOffModeDraw(btRotate);
+                TurnOffModeDraw(btAnimArrow);
 
                 btDrawPixel.BackColor = SystemColors.ControlDark;
 
@@ -168,6 +175,7 @@ namespace Paint
                 TurnOffModeDraw(btFillColor);
                 TurnOffModeDraw(btTamGiac);
                 TurnOffModeDraw(btRotate);
+                TurnOffModeDraw(btAnimArrow);
 
                 btDrawArrow.BackColor = SystemColors.ControlDark;
                 line = "arrow";
@@ -439,6 +447,7 @@ namespace Paint
                 TurnOffModeDraw(btHCN);
                 TurnOffModeDraw(btTamGiac);
                 TurnOffModeDraw(btRotate);
+                TurnOffModeDraw(btAnimArrow);
 
                 btFillColor.BackColor = SystemColors.ControlDark;
 
@@ -1426,6 +1435,7 @@ namespace Paint
                 TurnOffModeDraw(btConLacCD);
                 TurnOffModeDraw(btFillColor);
                 TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btAnimArrow);
                 btDrawLine.BackColor = SystemColors.ControlDark;
 
                 line = "line";
@@ -1448,6 +1458,7 @@ namespace Paint
                 TurnOffModeDraw(btTamGiac);;
                 TurnOffModeDraw(btConLacCD);
                 TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btAnimArrow);
 
                 btHinhThoi.BackColor = SystemColors.ControlDark;
                 lbCheoA.Visible = true;
@@ -1478,6 +1489,7 @@ namespace Paint
                 TurnOffModeDraw(btTamGiac);
                 TurnOffModeDraw(btConLacCD);
                 TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btAnimArrow);
 
                 btHCN.BackColor = SystemColors.ControlDark;
                 lbWidth.Visible = true;
@@ -1508,6 +1520,7 @@ namespace Paint
                 TurnOffModeDraw(btHCN);
                 TurnOffModeDraw(btConLacCD);
                 TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btAnimArrow);
 
                 btTamGiac.BackColor = SystemColors.ControlDark;
                 lbChieuCao.Visible = true;
@@ -1533,7 +1546,6 @@ namespace Paint
 
 
             dtNam.DrawCircle(centerP, R, p, isColor);
-
             //if(pbDrawZone != null) pbDrawZone.Image = bm;
         }
 
@@ -1678,6 +1690,8 @@ namespace Paint
             {
                 if (countDrawConLac == 0)
                 {
+                    pbDrawZone.Image = dtNam.bm;
+                    cbIsStop.Checked = false;
                     t.Start();
                     Thread.Sleep(50);
                     newPoint = Point.Empty;
@@ -1686,6 +1700,138 @@ namespace Paint
                 {
                     if (cbIsStop.Checked)
                     {
+                        pbDrawZone.Image = dtNam.bm;
+                        cbIsStop.Checked = false;
+                        t.Start();
+                        Thread.Sleep(50);
+                        newPoint = Point.Empty;
+                    }
+                }
+                countDrawConLac++;
+            }
+        }
+
+        private void DrawAnimArrow(Point A, Pen pen, int lengh, Boolean isStop)
+        {
+            ChangeTool ct = new ChangeTool(label2);
+            Point B = new Point(A.X + lengh, A.Y);
+            Point animA = A;
+            Point animB = B;
+            Boolean chieuDuong = true;
+            Pen deleteP = new Pen(SystemColors.Control, pen.Width);
+
+            int distance = 1;
+            int maxDistance = lengh * 3;
+            Point tdMin = new Point(A.X + lengh / 2, A.Y);
+            Point tdMax = new Point(A.X + maxDistance + lengh / 2, A.Y);
+
+            if(!isStop)
+            {
+                dtNam.DrawArrow(A, B, pen, false);
+            }
+            while(!isStop)
+            {
+                isStop = cbIsStop.Checked;
+
+                dtNam.DrawArrow(animA, animB, deleteP, false);
+                if (distance == maxDistance)
+                {
+                    chieuDuong = false;
+
+                    //Đối xứng
+                    //animA = ct.TinhTien(animA, distance, 0, pen.Color);
+                    //animB = ct.TinhTien(animB, distance, 0, pen.Color);
+                    animA = ct.SymmetricalPointByLine(new Point(tdMax.X, 0), tdMax, animA, pen.Color);
+                    animB = ct.SymmetricalPointByLine(new Point(tdMax.X, 0), tdMax, animB, pen.Color);
+                    //dtNam.DrawArrow(animA, animB, pen, false);
+                    //dtNam.DrawLineByMidPoint(new Point(tdMax.X, 0), animA, pen, false);
+                    pbDrawZone.Refresh();
+                }
+                else if (distance == 0)
+                {
+                    chieuDuong = true;
+
+                    //Đối xứng
+                    //animA = ct.TinhTien(animA, 1, 0, pen.Color);
+                    //animB = ct.TinhTien(animB, 1, 0, pen.Color);
+                    animA = ct.SymmetricalPointByLine(new Point(tdMin.X, 0), tdMin, animA, pen.Color);
+                    animB = ct.SymmetricalPointByLine(new Point(tdMin.X, 0), tdMin, animB, pen.Color);
+                    //dtNam.DrawArrow(animA, animB, pen, false);
+                }
+                else
+                {
+                    if (chieuDuong)
+                    {
+                        animA = ct.TinhTien(animA, 1, 0, pen.Color);
+                        animB = ct.TinhTien(animB, 1, 0, pen.Color);
+                    }
+                    else
+                    {
+                        animA = ct.TinhTien(animA, -1, 0, pen.Color);
+                        animB = ct.TinhTien(animB, -1, 0, pen.Color);
+                    }
+                }    
+
+                dtNam.DrawArrow(animA, animB, pen, false);
+                pbDrawZone.Refresh();
+                Thread.Sleep(5);
+
+                if (chieuDuong)
+                {
+                    distance++;
+                }
+                else
+                {
+                    distance--;
+                }
+
+            }
+        }
+
+        private void AnimArrow()
+        {
+            //Animation animation = new Animation();
+            Point point = newPoint;
+            label2.Text = newPoint.ToString();
+            int lengh = 50;
+
+            Pen pen = new Pen(clLine, int.Parse(cbWidthLine.Text));
+
+            //DrawTool dtNew = new DrawTool(pbDrawZone, label2);
+            //dtChon.ResetBitmap();
+            //dtNew.DrawConLacThang(new Point(200, 200), 50 * int.Parse(cbWidthLine.Text), 10 * int.Parse(cbWidthLine.Text), clLine);
+            //dtNam.DrawConLacThang(new Point(200, 200), 50 , 10 , clLine, cbDrawColor.Checked);
+            //DrawConLacThang(new Point(200, 200), 50, 10, clLine, cbDrawColor.Checked);
+
+            DrawAnimArrow(point, pen, lengh, cbIsStop.Checked);
+        }
+
+        private void ThreadAnimArrow(MouseEventArgs e)
+        {
+            Thread t = new Thread(AnimArrow);
+            t.IsBackground = true;
+
+            resetPoint(ref oldPoint);
+            if (bMouseUp == true)
+            {
+                newPoint = e.Location;
+            }
+
+            if (newPoint != Point.Empty)
+            {
+                if (countDrawConLac == 0)
+                {
+                    pbDrawZone.Image = dtNam.bm;
+                    cbIsStop.Checked = false;
+                    t.Start();
+                    Thread.Sleep(50);
+                    newPoint = Point.Empty;
+                }
+                else
+                {
+                    if (cbIsStop.Checked)
+                    {
+                        pbDrawZone.Image = dtNam.bm;
                         cbIsStop.Checked = false;
                         t.Start();
                         Thread.Sleep(50);
@@ -1709,9 +1855,10 @@ namespace Paint
                 TurnOffModeDraw(btHCN);
                 TurnOffModeDraw(btTamGiac);
                 TurnOffModeDraw(btRotate);
+                TurnOffModeDraw(btAnimArrow);
 
                 cbIsStop.Visible = true;
-                cbIsStop.Checked = false;
+                //cbIsStop.Checked = false;
                 line = "con lac";
             }
             else if (btConLacCD.BackColor == SystemColors.ControlDark)
@@ -1719,6 +1866,7 @@ namespace Paint
                 btConLacCD.BackColor = SystemColors.Control;
 
                 cbIsStop.Visible = false;
+                cbIsStop.Checked = false;
                 line = String.Empty;
             }
         }
@@ -2483,6 +2631,41 @@ namespace Paint
                 }
             }
         }
+
+        private void btConacCD_Click(object sender, EventArgs e)
+        {
+            if (btAnimArrow.BackColor == SystemColors.Control)
+            {
+                btAnimArrow.BackColor = SystemColors.ControlDark;
+                TurnOffModeDraw(btDrawArrow);
+                TurnOffModeDraw(btDrawPixel);
+                TurnOffModeDraw(btFillColor);
+                TurnOffModeDraw(btDrawLine);
+                TurnOffModeDraw(btHinhThoi);
+                TurnOffModeDraw(btHCN);
+                TurnOffModeDraw(btTamGiac);
+                TurnOffModeDraw(btRotate);
+                TurnOffModeDraw(btConLacCD);
+
+                cbIsStop.Visible = true;
+                //cbIsStop.Checked = false;
+                line = "animation arrow";
+            }
+            else if (btAnimArrow.BackColor == SystemColors.ControlDark)
+            {
+                btAnimArrow.BackColor = SystemColors.Control;
+
+                cbIsStop.Visible = false;
+                cbIsStop.Checked = false;
+                line = String.Empty;
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void SymmetryTamGiac(MouseEventArgs e)
         {
             if (bMouseDown == true && bMousePress == false)
@@ -2941,6 +3124,10 @@ namespace Paint
                         return;
                     }
                     veTamGiac(e);
+                }
+                else if (line == "animation arrow")
+                {
+                    ThreadAnimArrow(e);
                 }
             }
         }
