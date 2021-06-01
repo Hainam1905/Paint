@@ -4,6 +4,7 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
+//final
 
 namespace Paint
 {
@@ -91,7 +92,19 @@ namespace Paint
                 }
             }
         }
-
+        public void DrawLineBitmap3D(Point A, Point B, Pen pen, Bitmap bm3D)
+        {
+            for (int i = A.X; i <= B.X; i++)
+            {
+                for (int j = A.Y; j <= B.Y; j++)
+                {
+                    if (i > 0 && i < bm3D.Width && j > 0 && j < bm3D.Height)
+                    {
+                        bm3D.SetPixel(i, j, pen.Color);
+                    }
+                }
+            }
+        }
         public void PutPixel(int x, int y, Color color)
         {
 
@@ -377,8 +390,8 @@ namespace Paint
 
         public void MidPointDrawCircleIn3D(int x, int y, int R, Color color)
         {
-             x = (x + 40) * 5;
-            y = (40 - y) * 5;
+            x = (x + 80) * 5;
+            y = (80 - y) * 5;
 
             R = 5 * R;
             // Khởi tạo các giá trị cho thuật toán
@@ -440,8 +453,8 @@ namespace Paint
         }
         public void drawElipIn3Horizontal(int x, int y, int a, int b, Color color)
         {
-             x = (x + 40) * 5;
-             y = (40 - y) * 5;
+            x = (x + 80) * 5;
+            y = (80 - y) * 5;
 
             a = a * 5;
             b = b * 5;

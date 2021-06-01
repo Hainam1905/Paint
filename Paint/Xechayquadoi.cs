@@ -34,6 +34,7 @@ namespace Paint
         int ySun = 80;
         int tempySun = 80;
         bool check = false;
+        bool checkStop = true;
         List<Vehicle> listVehicle; 
 
 
@@ -1379,18 +1380,50 @@ namespace Paint
                 pb1.Image = bm1;
                 Thread.Sleep(100);
             }
-            paintSun(xSun, ySun, Color.Red);
+            //paintSun(xSun, ySun, Color.Red);
+            //paintSkyandSoid(Color.LightBlue, Color.LightBlue);
+
+            //xoa mat troi cu: 
+            dt1.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.LightBlue);
+            paintSun(xSun, tempySun, Color.LightBlue);
             paintSkyandSoid(Color.LightBlue, Color.LightBlue);
+
+
             pb1.Image = bm1;
             Thread.Sleep(100);
-
+            int rTemp = 10; 
             while (true)
             {
-                
-                if (check == false)
+                if (checkStop == true) 
+                { 
+                    for(int i = 1; i <= 3; i++)
+                    {
+                        dt1.MidPointDrawCircleAnimation(xSun, tempySun, rTemp, Color.Yellow);
+                        paintSun(xSun, tempySun, Color.Red);
+
+                        pb1.Image = bm1;
+                        Thread.Sleep(500);
+
+                        //xoa mat troi cu: 
+                        dt1.MidPointDrawCircleAnimation(xSun, tempySun, rTemp, Color.LightBlue);
+                        paintSun(xSun, tempySun, Color.LightBlue);
+
+                        rTemp *= 2; 
+
+                    }
+                    checkStop = false;
+                    rTemp = 10;
+
+                    dt1.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.Yellow);
+                    paintSun(xSun, tempySun, Color.Red);
+                    pb1.Image = bm1;
+                    Thread.Sleep(100);
+                }
+
+                else if (check == false && checkStop==false)
                 {
                     
-
+                    
                     //xoa mat troi cu: 
                     dt1.MidPointDrawCircleAnimation(xSun, tempySun, 65, Color.LightBlue);
                     paintSun(xSun, tempySun, Color.LightBlue);
@@ -1422,17 +1455,18 @@ namespace Paint
                     Thread.Sleep(400);
                 }
                 
-                else
+                else if(check == true && checkStop == false)
                 {
                     
                      Thread.Sleep(3000);
                     clearMoon(xSun,ySun);
                     
                     paintSkyandSoid(Color.LightBlue, Color.LightYellow);
-                    drawSun(xSun, ySun);
-                    paintSun(xSun, ySun, Color.Red);
+                    //drawSun(xSun, ySun);
+                    //paintSun(xSun, ySun, Color.Red);
                     tempySun = ySun;
                     check = false;
+                    checkStop = true; 
                     pb1.Image = bm1;
                     Thread.Sleep(100); 
                 }

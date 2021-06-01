@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//final
 namespace Paint
 
 {
@@ -204,48 +204,23 @@ namespace Paint
         }
         void tructoado()
         {
-            int temp2 = 0;
-            for (int i = 40; i <= 140; i++)
+            //vẽ lưới dọc
+            for (int i = 0; i < bm3D.Width; i += 5)
             {
-                g.DrawLine(new Pen(Color.White), 5 * i, 0, 5 * i, 200);//doc
-                if (i * 5 <= 400)
-                {
-                    g.DrawLine(new Pen(Color.White), 200, temp2, 0, i * 5);//cheo
-
-                }
-                g.DrawLine(new Pen(Color.White), 5 * i, 200, 0 + temp2, 400);//cheo
-                g.DrawLine(new Pen(Color.White), (i - 40) * 5, 400 - temp2, 600, 400 - temp2);//ngang
-                temp2 += 5;
+                dt.DrawLineBitmap3D(new Point(i, 0), new Point(i, bm3D.Height), new Pen(Color.White, 1f), bm3D);
             }
 
-            int temp = 10;
-            for (int i = 0; i <= 40; i++)
+            //vẽ lưới ngang
+            for (int i = 0; i < bm3D.Height; i += 5)
             {
-
-                g.DrawLine(new Pen(Color.White), 200, 5 * i, 600, 5 * i);//ngang
-                g.DrawLine(new Pen(Color.White), i * 5, 0, 5 * i, 400 - i * 5);//doc
-
-
-                if (i > 20)
-                {
-                    g.DrawLine(new Pen(Color.White), 200, temp, 0, i * 10);//cheo oy
-                    g.DrawLine(new Pen(Color.White), i * 5, 0, 0, i * 5);//cheo oz
-                    temp += 10;
-                }
-                else
-                {
-                    g.DrawLine(new Pen(Color.White), i * 10, 0, 0, i * 10);
-                    g.DrawLine(new Pen(Color.White), i * 5, 0, 0, i * 5);
-                }
-
+                dt.DrawLineBitmap3D(new Point(0, i), new Point(bm3D.Width, i), new Pen(Color.White, 1f), bm3D);
             }
 
-            //goc toa do ao: (200,200)
-            //3 truc
-            g.DrawLine(new Pen(Color.Red), 200, 200, 600, 200);//ox
-            g.DrawLine(new Pen(Color.Red), 200, 0, 200, 200);//oz
-            g.DrawLine(new Pen(Color.Red), 200, 200, 0, 400);//oy
-            
+
+            dt.DrawLineBitmap3D(new Point(400, 0), new Point(400, 400), new Pen(Color.Red, 1.05f), bm3D);
+            dt.DrawLineBitmap3D(new Point(400, 400), new Point(1000, 400), new Pen(Color.Red, 1.05f), bm3D);
+            g.DrawLine(new Pen(Color.Red), 400, 400, 0, 800);//oy
+
             pb3D.Image = bm3D;
 
         }
@@ -265,11 +240,8 @@ namespace Paint
 
 
 
-            /*int xr = Ox - 5 * y + 5 * x;
-            int yr = Oy + 5 * y - z * 5;*/
-
-             xr = (xr + 40) * 5;
-             yr = (40-yr) * 5; 
+            xr = (xr + 80) * 5;
+            yr = (80 - yr) * 5;
             Brush ve = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 10);
             PointF drawPoint = new PointF(xr, yr);
@@ -282,15 +254,15 @@ namespace Paint
         {
 
 
-            
 
-            int xr1 = (x1 + 40) * 5;
-            int yr1 = (40 - y1) * 5;
 
-            int xr2 = (x2 + 40) * 5;
-            int yr2 = (40 - y2) * 5;
+            int xr1 = (x1 + 80) * 5;
+            int yr1 = (80 - y1) * 5;
 
-            
+            int xr2 = (x2 + 80) * 5;
+            int yr2 = (80 - y2) * 5;
+
+
 
             //width không tác động: 
             dt.DrawMidPoint(new Point(xr1, yr1), new Point(xr2, yr2), new Pen(Color.Black), 10);
@@ -298,10 +270,10 @@ namespace Paint
         }
         void drawPosition(int x0, int y0, int z0, int x,int y)
         {
-            int xr1 = (x + 40) * 5;
-            int yr1 = (40 - y) * 5;
+            int xr1 = x * 5 + 400;
+            int yr1 = 400 - y * 5;
 
-            
+
             Brush ve = new SolidBrush(Color.Red);
             Font font = new Font("Arial", 10);
             PointF drawPoint = new PointF(xr1, yr1);
@@ -312,16 +284,11 @@ namespace Paint
         {
 
 
-            /*int xr1 = Ox - 5 * y1 + 5 * x1;
-            int yr1 = Oy + 5 * y1 - z1 * 5;
+            int xr1 = (x1 + 80) * 5;
+            int yr1 = (80 - y1) * 5;
 
-            int xr2 = Ox - 5 * y2 + 5 * x2;
-            int yr2 = Oy + 5 * y2 - z2 * 5;*/
-            int xr1 = (x1 + 40) * 5;
-            int yr1 = (40 - y1) * 5;
-
-            int xr2 = (x2 + 40) * 5;
-            int yr2 = (40 - y2) * 5;
+            int xr2 = (x2 + 80) * 5;
+            int yr2 = (80 - y2) * 5;
 
             dt.DrawMidPointIn3D(new Point(xr1, yr1), new Point(xr2, yr2), new Pen(Color.Black), 1);
             pb3D.Image = bm3D;
@@ -330,18 +297,11 @@ namespace Paint
         {
 
 
+            int xr1 = (x1 + 80) * 5;
+            int yr1 = (80 - y1) * 5;
 
-            /*int xr1 = Ox - 5 * y1 + 5 * x1;
-            int yr1 = Oy + 5 * y1 - z1 * 5;
-
-            int xr2 = Ox - 5 * y2 + 5 * x2;
-            int yr2 = Oy + 5 * y2 - z2 * 5;*/
-
-            int xr1 = (x1 + 40) * 5;
-            int yr1 = (40 - y1) * 5; 
-
-            int xr2 = (x2 + 40) * 5;
-            int yr2 = (40 - y2) * 5;
+            int xr2 = (x2 + 80) * 5;
+            int yr2 = (80 - y2) * 5;
 
             dt.drawMidPointDeCreteIn3D(new Point(xr1, yr1), new Point(xr2, yr2), new Pen(Color.Black), 1);
             pb3D.Image = bm3D;
@@ -350,18 +310,12 @@ namespace Paint
         {
 
 
-            /*
-                        int xr1 = Ox - 5 * y1 + 5 * x1;
-                        int yr1 = Oy + 5 * y1 - z1 * 5;
+            int xr1 = (x1 + 80) * 5;
+            int yr1 = (80 - y1) * 5;
 
-                        int xr2 = Ox - 5 * y2 + 5 * x2;
-                        int yr2 = Oy + 5 * y2 - z2 * 5;*/
+            int xr2 = (x2 + 80) * 5;
+            int yr2 = (80 - y2) * 5;
 
-            int xr1 = (x1 + 40) * 5;
-            int yr1 = (40 - y1) * 5;
-
-            int xr2 = (x2 + 40) * 5;
-            int yr2 = (40 - y2) * 5;
 
             dt.drawMidPointDeCrete(new Point(xr1, yr1), new Point(xr2, yr2), new Pen(Color.Black), 1);
             pb3D.Image = bm3D;

@@ -40,8 +40,6 @@ namespace Paint
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.elipseControl1 = new Paint.ElipseControl();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pb3D)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +47,7 @@ namespace Paint
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(377, 97);
+            this.label1.Location = new System.Drawing.Point(424, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 20);
             this.label1.TabIndex = 1;
@@ -59,7 +57,7 @@ namespace Paint
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(654, 309);
+            this.label2.Location = new System.Drawing.Point(1035, 463);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 20);
             this.label2.TabIndex = 2;
@@ -68,7 +66,7 @@ namespace Paint
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(81, 500);
+            this.label3.Location = new System.Drawing.Point(152, 748);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 20);
             this.label3.TabIndex = 3;
@@ -82,9 +80,9 @@ namespace Paint
             this.btnDrawRec.ForeColor = System.Drawing.Color.Yellow;
             this.btnDrawRec.Image = global::Paint.Properties.Resources.HCN3dFis;
             this.btnDrawRec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDrawRec.Location = new System.Drawing.Point(831, 138);
+            this.btnDrawRec.Location = new System.Drawing.Point(1114, 264);
             this.btnDrawRec.Name = "btnDrawRec";
-            this.btnDrawRec.Size = new System.Drawing.Size(373, 155);
+            this.btnDrawRec.Size = new System.Drawing.Size(241, 125);
             this.btnDrawRec.TabIndex = 10;
             this.btnDrawRec.Text = "                    Vẽ hộp chữ nhật";
             this.btnDrawRec.UseVisualStyleBackColor = false;
@@ -93,9 +91,9 @@ namespace Paint
             // pb3D
             // 
             this.pb3D.BackColor = System.Drawing.Color.LightGray;
-            this.pb3D.Location = new System.Drawing.Point(114, 120);
+            this.pb3D.Location = new System.Drawing.Point(51, 75);
             this.pb3D.Name = "pb3D";
-            this.pb3D.Size = new System.Drawing.Size(534, 400);
+            this.pb3D.Size = new System.Drawing.Size(978, 672);
             this.pb3D.TabIndex = 19;
             this.pb3D.TabStop = false;
             this.pb3D.Click += new System.EventHandler(this.pb3D_Click);
@@ -117,9 +115,9 @@ namespace Paint
             this.btDrawElip.ForeColor = System.Drawing.Color.Yellow;
             this.btDrawElip.Image = global::Paint.Properties.Resources.HCaufis;
             this.btDrawElip.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDrawElip.Location = new System.Drawing.Point(831, 335);
+            this.btDrawElip.Location = new System.Drawing.Point(1114, 453);
             this.btDrawElip.Name = "btDrawElip";
-            this.btDrawElip.Size = new System.Drawing.Size(373, 160);
+            this.btDrawElip.Size = new System.Drawing.Size(241, 148);
             this.btDrawElip.TabIndex = 22;
             this.btDrawElip.Text = "               Vẽ hình cầu";
             this.btDrawElip.UseVisualStyleBackColor = false;
@@ -132,7 +130,7 @@ namespace Paint
             this.bnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.bnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bnClear.Location = new System.Drawing.Point(973, 534);
+            this.bnClear.Location = new System.Drawing.Point(1195, 642);
             this.bnClear.Name = "bnClear";
             this.bnClear.Size = new System.Drawing.Size(94, 105);
             this.bnClear.TabIndex = 23;
@@ -143,10 +141,11 @@ namespace Paint
             // 
             this.panel1.BackColor = System.Drawing.Color.Red;
             this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1296, 69);
+            this.panel1.Size = new System.Drawing.Size(1385, 69);
             this.panel1.TabIndex = 24;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
@@ -168,33 +167,13 @@ namespace Paint
             this.elipseControl1.CornerRadius = 40;
             this.elipseControl1.TargetControl = this;
             // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::Paint.Properties.Resources._74522308_2519290034858047_5559712401621778432_o;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Location = new System.Drawing.Point(30, 565);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(129, 124);
-            this.panel2.TabIndex = 25;
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = global::Paint.Properties.Resources.ptit_logo;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(174, 565);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(182, 124);
-            this.panel3.TabIndex = 26;
-            // 
             // Draw3D
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Paint.Properties.Resources.backrgroundKTDH;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1296, 724);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(1385, 777);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.bnClear);
             this.Controls.Add(this.btDrawElip);
@@ -203,7 +182,6 @@ namespace Paint
             this.Controls.Add(this.btnDrawRec);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Draw3D";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -211,6 +189,7 @@ namespace Paint
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pb3D)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,8 +209,6 @@ namespace Paint
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private ElipseControl elipseControl1;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
     }
 }
 
